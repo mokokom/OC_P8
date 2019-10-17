@@ -1,6 +1,6 @@
 /*jshint eqeqeq:false */
-(function (window) {
-	'use strict';
+(function(window) {
+	"use strict";
 
 	/**
 	 * Creates a new client side storage object and will create an empty
@@ -11,21 +11,22 @@
 	 * real life you probably would be making AJAX calls
 	 */
 	function Store(name, callback) {
-		callback = callback || function () {};
+		callback = callback || function() {};
 
 		this._dbName = name;
 
+		// * localStorage = property of Window object. accessible in navigator
 		if (!localStorage[name]) {
 			var data = {
-				todos: []
+				todos: [] // * if localStorage[name] = undefined -> data = object with todos property key and empty array value
 			};
-
-			localStorage[name] = JSON.stringify(data);
+			localStorage[name] = JSON.stringify(data); // * In order to store it properly in localStorage as a string (otherwise [Object object])
 		}
 
-		callback.call(this, JSON.parse(localStorage[name]));
+		callback.call(this, JSON.stringify(localStorage[name]));
+		// ? what is call and what this callback.call does now
+		// * The call() method is a predefined JavaScript method. It can be used to invoke (call) a method with an owner object as an argument (parameter).
 	}
-
 	/**
 	 * Finds items based on a query given as a JS object
 	 *
@@ -39,21 +40,24 @@
 	 *	 // hello: world in their properties
 	 * });
 	 */
-	Store.prototype.find = function (query, callback) {
+	Store.prototype.find = function(query, callback) {
 		if (!callback) {
 			return;
 		}
 
 		var todos = JSON.parse(localStorage[this._dbName]).todos;
 
-		callback.call(this, todos.filter(function (todo) {
-			for (var q in query) {
-				if (query[q] !== todo[q]) {
-					return false;
+		callback.call(
+			this,
+			todos.filter(function(todo) {
+				for (var q in query) {
+					if (query[q] !== todo[q]) {
+						return false;
+					}
 				}
-			}
-			return true;
-		}));
+				return true;
+			})
+		);
 	};
 
 	/**
@@ -61,8 +65,8 @@
 	 *
 	 * @param {function} callback The callback to fire upon retrieving data
 	 */
-	Store.prototype.findAll = function (callback) {
-		callback = callback || function () {};
+	Store.prototype.findAll = function(callback) {
+		callback = callback || function() {};
 		callback.call(this, JSON.parse(localStorage[this._dbName]).todos);
 	};
 
@@ -74,21 +78,22 @@
 	 * @param {function} callback The callback to fire after saving
 	 * @param {number} id An optional param to enter an ID of an item to update
 	 */
-	Store.prototype.save = function (updateData, callback, id) {
+	Store.prototype.save = function(updateData, callback, id) {
 		var data = JSON.parse(localStorage[this._dbName]);
 		var todos = data.todos;
 
-		callback = callback || function () {};
+		callback = callback || function() {};
 
 		// Generate an ID
-	    var newId = ""; 
-	    var charset = "0123456789";
-
-        for (var i = 0; i < 6; i++) {
-     		newId += charset.charAt(Math.floor(Math.random() * charset.length));
+		var newId = ""; /* var charset = "0123456789"; */ // ? is charset needed
+		/* var newId = "" */ for (var i = 0; i < 6; i++) {
+			newId += Math.floor(Math.random() * 10);
+			/* newId += charset.charAt(Math.floor(Math.random() * charset.length)); */ // ? is charset needed
 		}
 
 		// If an ID was actually given, find the item and update each property
+		// * model.js call save() with two args: newData and callback. No id
+		// * this section is to update a todo
 		if (id) {
 			for (var i = 0; i < todos.length; i++) {
 				if (todos[i].id === id) {
@@ -102,11 +107,9 @@
 			localStorage[this._dbName] = JSON.stringify(data);
 			callback.call(this, todos);
 		} else {
-
-    		// Assign an ID
+			// Assign an ID // * This section is to add a todo
+			updateData.id = newId;
 			updateData.id = parseInt(newId);
-    
-
 			todos.push(updateData);
 			localStorage[this._dbName] = JSON.stringify(data);
 			callback.call(this, [updateData]);
@@ -119,11 +122,11 @@
 	 * @param {number} id The ID of the item you want to remove
 	 * @param {function} callback The callback to fire after saving
 	 */
-	Store.prototype.remove = function (id, callback) {
+	Store.prototype.remove = function(id, callback) {
 		var data = JSON.parse(localStorage[this._dbName]);
 		var todos = data.todos;
 		var todoId;
-		
+
 		for (var i = 0; i < todos.length; i++) {
 			if (todos[i].id == id) {
 				todoId = todos[i].id;
@@ -145,8 +148,8 @@
 	 *
 	 * @param {function} callback The callback to fire after dropping the data
 	 */
-	Store.prototype.drop = function (callback) {
-		var data = {todos: []};
+	Store.prototype.drop = function(callback) {
+		var data = { todos: [] };
 		localStorage[this._dbName] = JSON.stringify(data);
 		callback.call(this, data.todos);
 	};
