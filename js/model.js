@@ -45,6 +45,7 @@
 	 * model.read({ foo: 'bar', hello: 'world' });
 	 */
 	Model.prototype.read = function(query, callback) {
+		// ? why query = showAll(data) / Constuctor.prototype.showAll (check controller.js l.64). For me it should be: anonymous(data)
 		var queryType = typeof query;
 		callback = callback || function() {};
 
@@ -101,6 +102,7 @@
 		};
 
 		this.storage.findAll(function(data) {
+			// ? why function(data) is equal to getCount(data) in store.js l.67 and not anonymous(data)
 			data.forEach(function(todo) {
 				if (todo.completed) {
 					todos.completed++;

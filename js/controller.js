@@ -52,9 +52,9 @@
 	 * @param {string} '' | 'active' | 'completed'
 	 */
 	Controller.prototype.setView = function(locationHash) {
-		var route = locationHash.split("/")[1];
-		var page = route || "";
-		this._updateFilterState(page);
+		var route = locationHash.split("/")[1]; // * Split the locationHash "#/active" to "active" (for ex)
+		var page = route || ""; // * assign page to route result
+		this._updateFilterState(page); // * call the method with page
 	};
 
 	/**
@@ -64,6 +64,7 @@
 	Controller.prototype.showAll = function() {
 		var self = this;
 		self.model.read(function(data) {
+			// ? don't understand how it works, see model.js l.47
 			self.view.render("showEntries", data);
 		});
 	};
@@ -278,7 +279,7 @@
 	Controller.prototype._updateFilterState = function(currentPage) {
 		// Store a reference to the active route, allowing us to re-filter todo
 		// items as they are marked complete or incomplete.
-		this._activeRoute = currentPage;
+		this._activeRoute = currentPage; // * Define _activeRoute
 
 		if (currentPage === "") {
 			this._activeRoute = "All";

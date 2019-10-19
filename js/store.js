@@ -67,7 +67,7 @@
 	 */
 	Store.prototype.findAll = function(callback) {
 		callback = callback || function() {};
-		callback.call(this, JSON.parse(localStorage[this._dbName]).todos);
+		callback.call(this, JSON.parse(localStorage[this._dbName]).todos); // ? what "this" important for
 	};
 
 	/**
@@ -85,11 +85,36 @@
 		callback = callback || function() {};
 
 		// Generate an ID
-		var newId = ""; /* var charset = "0123456789"; */ // ? is charset needed
-		/* var newId = "" */ for (var i = 0; i < 6; i++) {
-			newId += Math.floor(Math.random() * 10);
-			/* newId += charset.charAt(Math.floor(Math.random() * charset.length)); */ // ? is charset needed
+		/* var charset = "0123456789";
+		var newId = "";
+		for (var i = 0; i < 6; i++) {
+			newId += charset.charAt(Math.floor(Math.random() * charset.length));
+		} */
+
+		/* var newId = ""; // ? is charset needed
+		for (var i = 0; i < 6; i++) {
+			newId += Math.floor(Math.random() * 9) + 1;
+		} */
+
+		// * make sure that newId doesn't start by zero (otherwise it might be shortened by the parseInt), and doesn't already exist in the todo.id list
+		var newId = "";
+		function createId() {
+			for (var i = 0; i < 6; i++) {
+				newId += Math.floor(Math.random() * 10);
+			}
+			if (newId.charAt(0) === "0") {
+				newId = "";
+				createId();
+			}
+			for (let todo of todos) {
+				if (todo.id === parseInt(newId)) {
+					newId = "";
+					createId();
+				}
+			}
+			return newId;
 		}
+		createId();
 
 		// If an ID was actually given, find the item and update each property
 		// * model.js call save() with two args: newData and callback. No id
@@ -114,6 +139,7 @@
 			localStorage[this._dbName] = JSON.stringify(data);
 			callback.call(this, [updateData]);
 		}
+		console.log(todos);
 	};
 
 	/**
