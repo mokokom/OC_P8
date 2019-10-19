@@ -97,24 +97,26 @@
 		} */
 
 		// * make sure that newId doesn't start by zero (otherwise it might be shortened by the parseInt), and doesn't already exist in the todo.id list
-		var newId = "";
-		function createId() {
-			for (var i = 0; i < 6; i++) {
-				newId += Math.floor(Math.random() * 10);
-			}
-			if (newId.charAt(0) === "0") {
-				newId = "";
-				createId();
-			}
-			for (let todo of todos) {
-				if (todo.id === parseInt(newId)) {
+		if (!id) {
+			var newId = "";
+			function createId() {
+				for (var i = 0; i < 6; i++) {
+					newId += Math.floor(Math.random() * 10);
+				}
+				if (newId.charAt(0) === "0") {
 					newId = "";
 					createId();
 				}
+				for (let todo of todos) {
+					if (todo.id === parseInt(newId)) {
+						newId = "";
+						createId();
+					}
+				}
+				return newId;
 			}
-			return newId;
+			createId();
 		}
-		createId();
 
 		// If an ID was actually given, find the item and update each property
 		// * model.js call save() with two args: newData and callback. No id
