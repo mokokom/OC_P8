@@ -13,7 +13,9 @@
 		self.model = model;
 		self.view = view;
 
+		// * Here bind is not the js method but created in View.prototype
 		self.view.bind("newTodo", function(title) {
+			// * title value come from callback
 			self.addItem(title);
 		});
 

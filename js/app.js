@@ -20,6 +20,7 @@
 	function setView() {
 		todo.controller.setView(document.location.hash); // * location.hash = Return the anchor part of a URL
 	}
+	console.log(todo);
 
 	$on(window, "load", setView);
 	$on(window, "hashchange", setView);

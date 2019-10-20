@@ -176,6 +176,7 @@
 
 	View.prototype.bind = function(event, handler) {
 		var self = this;
+		// * chewk how this callback works
 		if (event === "newTodo") {
 			$on(self.$newTodo, "change", function() {
 				handler(self.$newTodo.value);

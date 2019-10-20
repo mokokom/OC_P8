@@ -32,6 +32,7 @@
 	 * @constructor
 	 */
 	function Template() {
+		// ? what is {{foo}}
 		this.defaultTemplate =
 			'<li data-id="{{id}}" class="{{completed}}">' +
 			'<div class="view">' +
