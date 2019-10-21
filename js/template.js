@@ -1,4 +1,3 @@
-/*jshint laxbreak:true */
 (function(window) {
 	"use strict";
 
@@ -11,9 +10,8 @@
 		"`": "&#x60;"
 	};
 
-	// ? what is chr
+	// ? how chr value is passing.
 	var escapeHtmlChar = function(chr) {
-		console.log(chr);
 		return htmlEscapes[chr];
 	};
 

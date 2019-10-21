@@ -144,6 +144,7 @@
 
 	View.prototype._bindItemEditDone = function(handler) {
 		var self = this;
+		console.log(this);
 		$delegate(self.$todoList, "li .edit", "blur", function() {
 			if (!this.dataset.iscanceled) {
 				handler({
@@ -192,6 +193,7 @@
 		} else if (event === "itemEdit") {
 			$delegate(self.$todoList, "li label", "dblclick", function() {
 				handler({ id: self._itemId(this) });
+				console.log(this);
 			});
 		} else if (event === "itemRemove") {
 			$delegate(self.$todoList, ".destroy", "click", function() {

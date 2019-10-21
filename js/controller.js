@@ -67,6 +67,7 @@
 		var self = this;
 		self.model.read(function(data) {
 			// ? don't understand how it works, see model.js l.47
+			// * callback function from model.read retourn parse todos
 			self.view.render("showEntries", data);
 		});
 	};
@@ -165,11 +166,11 @@
 			items = data;
 		});
 
-		items.forEach(function(item) {
+		/* items.forEach(function(item) {
 			if (item.id === id) {
 				console.log("Element with ID: " + id + " has been removed.");
 			}
-		});
+		}); */
 
 		self.model.remove(id, function() {
 			self.view.render("removeItem", id);
@@ -281,7 +282,7 @@
 	Controller.prototype._updateFilterState = function(currentPage) {
 		// Store a reference to the active route, allowing us to re-filter todo
 		// items as they are marked complete or incomplete.
-		this._activeRoute = currentPage; // * Define _activeRoute
+		this._activeRoute = currentPage;
 
 		if (currentPage === "") {
 			this._activeRoute = "All";

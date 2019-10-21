@@ -15,12 +15,11 @@
 
 		this._dbName = name;
 
-		// * localStorage = property of Window object. accessible in navigator
 		if (!localStorage[name]) {
 			var data = {
-				todos: [] // * if localStorage[name] = undefined -> data = object with todos property key and empty array value
+				todos: []
 			};
-			localStorage[name] = JSON.stringify(data); // * In order to store it properly in localStorage as a string (otherwise [Object object])
+			localStorage[name] = JSON.stringify(data);
 		}
 
 		callback.call(this, JSON.stringify(localStorage[name]));
@@ -67,7 +66,7 @@
 	 */
 	Store.prototype.findAll = function(callback) {
 		callback = callback || function() {};
-		callback.call(this, JSON.parse(localStorage[this._dbName]).todos); // ? what "this" important for
+		callback.call(this, JSON.parse(localStorage[this._dbName]).todos); // * "this" indicates where the function attached to "call" should refere to
 	};
 
 	/**
@@ -96,7 +95,7 @@
 			newId += Math.floor(Math.random() * 9) + 1;
 		} */
 
-		// * make sure that newId doesn't start by zero (otherwise it might be shortened by the parseInt), and doesn't already exist in the todo.id list
+		// Make sure that newId doesn't start by zero (otherwise it might be shortened by the parseInt), and doesn't already exist in the todo.id list
 		if (!id) {
 			var newId = "";
 			function createId() {
@@ -119,8 +118,6 @@
 		}
 
 		// If an ID was actually given, find the item and update each property
-		// * model.js call save() with two args: newData and callback. No id
-		// * this section is to update a todo
 		if (id) {
 			for (var i = 0; i < todos.length; i++) {
 				if (todos[i].id === id) {
@@ -134,14 +131,13 @@
 			localStorage[this._dbName] = JSON.stringify(data);
 			callback.call(this, todos);
 		} else {
-			// Assign an ID // * This section is to add a todo
+			// Assign an ID
 			updateData.id = newId;
 			updateData.id = parseInt(newId);
 			todos.push(updateData);
 			localStorage[this._dbName] = JSON.stringify(data);
 			callback.call(this, [updateData]);
 		}
-		console.log(todos);
 	};
 
 	/**
@@ -161,12 +157,12 @@
 			}
 		}
 
+		// * No need to have 2 loops
 		/* for (var i = 0; i < todos.length; i++) {
 			if (todos[i].id == id) {
 				todoId = todos[i].id;
 			}
 		}
-
 		for (var i = 0; i < todos.length; i++) {
 			if (todos[i].id == todoId) {
 				todos.splice(i, 1);
