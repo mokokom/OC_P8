@@ -115,7 +115,7 @@
 					: "none";
 			},
 			toggleAll: function() {
-				self.$toggleAll.checked = parameter.checked;
+				self.$toggleAll.checked = parameter.checked; // * if all todo are completed parameter.checked = true otherwise false
 			},
 			setFilter: function() {
 				self._setFilter(parameter);
@@ -177,7 +177,7 @@
 
 	View.prototype.bind = function(event, handler) {
 		var self = this;
-		// * chewk how this callback works
+		// * check how this callback works
 		if (event === "newTodo") {
 			$on(self.$newTodo, "change", function() {
 				handler(self.$newTodo.value);
