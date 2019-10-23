@@ -80,10 +80,9 @@
 	Store.prototype.save = function(updateData, callback, id) {
 		var data = JSON.parse(localStorage[this._dbName]);
 		var todos = data.todos;
+		let newId;
 
 		callback = callback || function() {};
-
-		let newId;
 		// Make sure that newId doesn't start by zero (otherwise it might be shortened by the parseInt), and doesn't already exist in the todo.id list
 		if (!id) {
 			/* var newId = "";
@@ -112,11 +111,9 @@
 				if (todo.id > max) {
 					max = todo.id;
 				}
-				max++;
-				newId = max;
+				newId = max + 1;
 			}
 		}
-
 		// If an ID was actually given, find the item and update each property
 		if (id) {
 			for (var i = 0; i < todos.length; i++) {

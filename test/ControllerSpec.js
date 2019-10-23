@@ -7,7 +7,6 @@ describe("controller", function() {
 
 	var setUpModel = function(todos) {
 		model.read.and.callFake(function(query, callback) {
-			// ????
 			callback = callback || query;
 			callback(todos);
 		});
@@ -40,14 +39,17 @@ describe("controller", function() {
 	};
 
 	var createViewStub = function() {
-		var eventRegistry = {};
+		var eventRegistry = {}; // * object that stock an event attached to the handler (here the constructor Controller)
+		// * "eventRegistry" == "viewCommands" in view.js l.137
 		return {
 			render: jasmine.createSpy("render"),
 			bind: function(event, handler) {
+				// * see controller.js l.17. It fake the result of View.prototype.bind l.178
 				eventRegistry[event] = handler;
 			},
 			trigger: function(event, parameter) {
-				eventRegistry[event](parameter);
+				// * "event" == "viewCmd" in view.js l.137
+				eventRegistry[event](parameter); // * ==  viewCommands[viewCmd]() in view.js l.137
 			}
 		};
 	};
@@ -205,7 +207,7 @@ describe("controller", function() {
 	describe("toggle all", function() {
 		it("should toggle all todos to completed", function() {
 			// TODO: write test
-			// controller.js l.223 ? l.205 // ? how to check test when depending on an eventListner (here click on toggleAll)
+			// controller.js l.223 ? l.205
 			setUpModel([
 				{ id: 11, title: "my todo", completed: true },
 				{ id: 12, title: "my todo", completed: false }
@@ -213,10 +215,13 @@ describe("controller", function() {
 
 			subject.setView("");
 
-			/* view.bind("toggleAll", function(status) {
-				this.toggleAll(status.completed);
-				console.log(this);
-			}); */
+			view.trigger("toggleAll", { completed: true }); // * act as controller.js l.46
+
+			expect(model.read).toHaveBeenCalledWith(
+				{ completed: false }, // * controller.js l.224, searching uncompleted todo to turn them completed
+				jasmine.any(Function)
+			);
+			/* expect(view.render).toHaveBeenCalledWith("updateElementCount", 0); */
 		});
 
 		it("should update the view", function() {
@@ -242,9 +247,10 @@ describe("controller", function() {
 
 			subject.setView("");
 
-			view.render.calls.reset();
+			view.render.calls.reset(); // *  Reset this spy as if it has never been called.
 			model.read.calls.reset();
 			model.read.and.callFake(function(callback) {
+				// * By chaining the spy with and.callFake, all calls to the spy will delegate to the supplied function.
 				callback([
 					{
 						title: "a new todo",
@@ -252,8 +258,10 @@ describe("controller", function() {
 					}
 				]);
 			});
+			// * model.read act as the model.js read method which return the todos parse list
 
-			view.trigger("newTodo", "a new todo");
+			view.trigger("newTodo", "a new todo"); // equal line in view.js l.137 ? no
+			// * trigger should act as View.protoype.bind. Here "a new todo" equal the result of handler in "if(event === newTodo)" statement where event is "newTodo"
 
 			expect(model.read).toHaveBeenCalled();
 
