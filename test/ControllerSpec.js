@@ -44,7 +44,7 @@ describe("controller", function() {
 		return {
 			render: jasmine.createSpy("render"),
 			bind: function(event, handler) {
-				eventRegistry[event] = handler; // ? how come eventRegistry have multiple method and how to use it
+				eventRegistry[event] = handler;
 			},
 			trigger: function(event, parameter) {
 				eventRegistry[event](parameter);
@@ -213,17 +213,10 @@ describe("controller", function() {
 
 			subject.setView("");
 
-			/* view.eventRegistry = {
-				toggleAll: function() {
-					this.$toggleAll.checked = parameter.checked;
-					console.log(this);
-				}
-			}; */
-
-			view.bind("toggleAll", function(status) {
+			/* view.bind("toggleAll", function(status) {
 				this.toggleAll(status.completed);
 				console.log(this);
-			});
+			}); */
 		});
 
 		it("should update the view", function() {

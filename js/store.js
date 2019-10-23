@@ -83,21 +83,10 @@
 
 		callback = callback || function() {};
 
-		// Generate an ID
-		/* var charset = "0123456789";
-		var newId = "";
-		for (var i = 0; i < 6; i++) {
-			newId += charset.charAt(Math.floor(Math.random() * charset.length));
-		} */
-
-		/* var newId = ""; // ? is charset needed
-		for (var i = 0; i < 6; i++) {
-			newId += Math.floor(Math.random() * 9) + 1;
-		} */
-
+		let newId;
 		// Make sure that newId doesn't start by zero (otherwise it might be shortened by the parseInt), and doesn't already exist in the todo.id list
 		if (!id) {
-			var newId = "";
+			/* var newId = "";
 			function createId() {
 				for (var i = 0; i < 6; i++) {
 					newId += Math.floor(Math.random() * 10);
@@ -114,7 +103,18 @@
 				}
 				return newId;
 			}
-			createId();
+			createId(); */
+			let max = 0;
+			if (todos.length === 0) {
+				newId = 1;
+			}
+			for (let todo of todos) {
+				if (todo.id > max) {
+					max = todo.id;
+				}
+				max++;
+				newId = max;
+			}
 		}
 
 		// If an ID was actually given, find the item and update each property
