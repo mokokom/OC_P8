@@ -8,7 +8,31 @@
 	 * @param {object} model The model instance
 	 * @param {object} view The view instance
 	 */
-	function Controller(model, view) {
+	class Controller {
+		constructor(model, view) {
+			this.model = model;
+			this.view = view;
+			this.addItem = this.addItem.bind(this);
+			this.view.bind("newTodo", title => {
+				// * title value come from callback
+				console.log(this.view);
+				this.addItem(title);
+			});
+		}
+		addItem(title) {
+			var self = this;
+
+			if (title.trim() === "") {
+				return;
+			}
+
+			self.model.create(title, function() {
+				self.view.render("clearNewTodo");
+				self._filter(true);
+			});
+		}
+	}
+	/* function Controller(model, view) {
 		var self = this;
 		self.model = model;
 		self.view = view;
@@ -46,7 +70,7 @@
 		self.view.bind("toggleAll", function(status) {
 			self.toggleAll(status.completed);
 		});
-	}
+	} */
 
 	/**
 	 * Loads and initialises the view

@@ -308,7 +308,10 @@ describe("controller", function() {
 			subject.setView("");
 			view.trigger("itemRemove", { id: 42 });
 
-			expect(model.read).toHaveBeenCalledWith(jasmine.any(Function)); // * controller.js l.165: get all the todos from model.js
+			/* expect(model.read).toHaveBeenCalledWith(jasmine.any(Function)); */
+
+			// * controller.js l.165: get all the todos from model.js. note: Since the return valu items is never user I delete it
+
 			expect(model.remove).toHaveBeenCalledWith(42, jasmine.any(Function)); // * controller.js l.175
 		});
 
