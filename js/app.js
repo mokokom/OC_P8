@@ -24,7 +24,7 @@ import View from "./view.js";
 	let todo = new Todo("todos-vanillajs");
 
 	function setView() {
-		todo.controller.setView(document.location.hash); // * location.hash = Return the anchor part of a URL
+		todo.controller.setView(document.location.hash);
 	}
 	setView();
 

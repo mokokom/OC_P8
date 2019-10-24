@@ -215,9 +215,9 @@ export default class Controller {
 	 * @param {string} '' | 'active' | 'completed'
 	 */
 	setView(locationHash) {
-		let route = locationHash.split("/")[1]; // * Split the locationHash "#/active" to "active" (for ex)
-		let page = route || ""; // * assign page to route result
-		this._updateFilterState(page); // * call the method with page
+		let route = locationHash.split("/")[1];
+		let page = route || "";
+		this._updateFilterState(page);
 	}
 
 	/**
@@ -226,8 +226,6 @@ export default class Controller {
 	 */
 	showAll() {
 		this.model.read(data => {
-			// ? don't understand how it works, see model.js l.47
-			// * callback function from model.read retourn parse todos
 			this.view.render("showEntries", data);
 		});
 	}

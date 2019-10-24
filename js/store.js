@@ -75,31 +75,17 @@ export default class Store {
 	 * @param {function} callback The callback to fire after saving
 	 * @param {number} id An optional param to enter an ID of an item to update
 	 */
-	save = function(updateData, callback, id) {
+	save(updateData, callback, id) {
 		let data = JSON.parse(localStorage[this._dbName]);
 		let todos = data.todos;
-		let newId;
 
 		callback = callback || function() {};
-		// Make sure that newId doesn't start by zero (otherwise it might be shortened by the parseInt), and doesn't already exist in the todo.id list
-		if (!id) {
-			let max = 0;
-			if (todos.length === 0) {
-				newId = 1;
-			}
-			for (let todo of todos) {
-				if (todo.id > max) {
-					max = todo.id;
-				}
-				newId = max + 1;
-			}
-		}
 		// If an ID was actually given, find the item and update each property
 		if (id) {
-			for (let i = 0; i < todos.length; i++) {
-				if (todos[i].id === id) {
+			for (let todo of todos) {
+				if (todo.id === id) {
 					for (let key in updateData) {
-						todos[i][key] = updateData[key];
+						todo[key] = updateData[key];
 					}
 					break;
 				}
@@ -109,13 +95,34 @@ export default class Store {
 			callback.call(this, todos);
 		} else {
 			// Assign an ID
+			let newId = this.createId(todos);
 			updateData.id = newId;
 			updateData.id = parseInt(newId);
 			todos.push(updateData);
 			localStorage[this._dbName] = JSON.stringify(data);
 			callback.call(this, [updateData]);
 		}
-	};
+	}
+
+	/**
+	 * Will create a unique id for the new created todo
+	 *
+	 * @param {number} todos The todos array to iterate trough it and get a new unique id
+	 */
+	createId(todos) {
+		let newId;
+		let max = 0;
+		if (todos.length === 0) {
+			newId = 1;
+		}
+		for (let todo of todos) {
+			if (todo.id > max) {
+				max = todo.id;
+			}
+			newId = max + 1;
+		}
+		return newId;
+	}
 
 	/**
 	 * Will remove an item from the Store based on its ID
