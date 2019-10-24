@@ -161,10 +161,10 @@
 	 */
 	Controller.prototype.removeItem = function(id) {
 		var self = this;
-		var items;
+		/* var items; // * items is never use
 		self.model.read(function(data) {
 			items = data;
-		});
+		}); */
 
 		/* items.forEach(function(item) {
 			if (item.id === id) {
