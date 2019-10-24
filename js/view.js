@@ -25,7 +25,7 @@ export default class View {
 		this.$newTodo = qs(".new-todo");
 	}
 	_removeItem(id) {
-		var elem = qs('[data-id="' + id + '"]');
+		let elem = qs('[data-id="' + id + '"]');
 
 		if (elem) {
 			this.$todoList.removeChild(elem);
@@ -45,7 +45,7 @@ export default class View {
 	}
 
 	_elementComplete(id, completed) {
-		var listItem = qs('[data-id="' + id + '"]');
+		let listItem = qs('[data-id="' + id + '"]');
 
 		if (!listItem) {
 			return;
@@ -58,7 +58,7 @@ export default class View {
 	}
 
 	_editItem(id, title) {
-		var listItem = qs('[data-id="' + id + '"]');
+		let listItem = qs('[data-id="' + id + '"]');
 
 		if (!listItem) {
 			return;
@@ -66,7 +66,7 @@ export default class View {
 
 		listItem.className = listItem.className + " editing";
 
-		var input = document.createElement("input");
+		let input = document.createElement("input");
 		input.className = "edit";
 
 		listItem.appendChild(input);
@@ -75,13 +75,13 @@ export default class View {
 	}
 
 	_editItemDone(id, title) {
-		var listItem = qs('[data-id="' + id + '"]');
+		let listItem = qs('[data-id="' + id + '"]');
 
 		if (!listItem) {
 			return;
 		}
 
-		var input = qs("input.edit", listItem);
+		let input = qs("input.edit", listItem);
 		listItem.removeChild(input);
 
 		listItem.className = listItem.className.replace("editing", "");
@@ -92,7 +92,7 @@ export default class View {
 	}
 
 	render(viewCmd, parameter) {
-		var viewCommands = {
+		let viewCommands = {
 			showEntries: () => {
 				this.$todoList.innerHTML = this.template.show(parameter);
 			},
@@ -134,12 +134,12 @@ export default class View {
 	}
 
 	_itemId(element) {
-		var li = $parent(element, "li");
+		let li = $parent(element, "li");
 		return parseInt(li.dataset.id, 10);
 	}
 
 	_bindItemEditDone(handler) {
-		var self = this;
+		let self = this;
 		$delegate(self.$todoList, "li .edit", "blur", function() {
 			if (!this.dataset.iscanceled) {
 				handler({
@@ -159,7 +159,7 @@ export default class View {
 	}
 
 	_bindItemEditCancel(handler) {
-		var self = this;
+		let self = this;
 		$delegate(self.$todoList, "li .edit", "keyup", function(event) {
 			if (event.keyCode === self.ESCAPE_KEY) {
 				this.dataset.iscanceled = true;
@@ -171,39 +171,39 @@ export default class View {
 	}
 
 	bind(event, handler) {
-		var self = this;
+		let self = this;
 		// * check how this callback works
 		if (event === "newTodo") {
-			$on(self.$newTodo, "change", function() {
-				handler(self.$newTodo.value);
+			$on(this.$newTodo, "change", () => {
+				handler(this.$newTodo.value);
 			});
 		} else if (event === "removeCompleted") {
-			$on(self.$clearCompleted, "click", function() {
+			$on(this.$clearCompleted, "click", () => {
 				handler();
 			});
 		} else if (event === "toggleAll") {
-			$on(self.$toggleAll, "click", function() {
+			$on(this.$toggleAll, "click", function() {
 				handler({ completed: this.checked });
 			});
 		} else if (event === "itemEdit") {
-			$delegate(self.$todoList, "li label", "dblclick", function() {
+			$delegate(this.$todoList, "li label", "dblclick", function() {
 				handler({ id: self._itemId(this) });
 			});
 		} else if (event === "itemRemove") {
-			$delegate(self.$todoList, ".destroy", "click", function() {
+			$delegate(this.$todoList, ".destroy", "click", function() {
 				handler({ id: self._itemId(this) });
 			});
 		} else if (event === "itemToggle") {
-			$delegate(self.$todoList, ".toggle", "click", function() {
+			$delegate(this.$todoList, ".toggle", "click", function() {
 				handler({
 					id: self._itemId(this),
 					completed: this.checked
 				});
 			});
 		} else if (event === "itemEditDone") {
-			self._bindItemEditDone(handler);
+			this._bindItemEditDone(handler);
 		} else if (event === "itemEditCancel") {
-			self._bindItemEditCancel(handler);
+			this._bindItemEditCancel(handler);
 		}
 	}
 }

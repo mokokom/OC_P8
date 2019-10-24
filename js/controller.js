@@ -174,7 +174,7 @@ export default class Controller {
 	 * @param {boolean|undefined} force  forces a re-painting of todo items.
 	 */
 	_filter(force) {
-		var activeRoute =
+		let activeRoute =
 			this._activeRoute.charAt(0).toUpperCase() + this._activeRoute.substr(1);
 
 		// Update the elements on the page, which change with each completed todo
@@ -215,8 +215,8 @@ export default class Controller {
 	 * @param {string} '' | 'active' | 'completed'
 	 */
 	setView(locationHash) {
-		var route = locationHash.split("/")[1]; // * Split the locationHash "#/active" to "active" (for ex)
-		var page = route || ""; // * assign page to route result
+		let route = locationHash.split("/")[1]; // * Split the locationHash "#/active" to "active" (for ex)
+		let page = route || ""; // * assign page to route result
 		this._updateFilterState(page); // * call the method with page
 	}
 

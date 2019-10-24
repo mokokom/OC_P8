@@ -15,7 +15,7 @@ export default class Store {
 		this._dbName = name;
 
 		if (!localStorage[name]) {
-			var data = {
+			let data = {
 				todos: []
 			};
 			localStorage[name] = JSON.stringify(data);
@@ -42,12 +42,12 @@ export default class Store {
 			return;
 		}
 
-		var todos = JSON.parse(localStorage[this._dbName]).todos;
+		let todos = JSON.parse(localStorage[this._dbName]).todos;
 
 		callback.call(
 			this,
 			todos.filter(todo => {
-				for (var q in query) {
+				for (let q in query) {
 					if (query[q] !== todo[q]) {
 						return false;
 					}
@@ -76,8 +76,8 @@ export default class Store {
 	 * @param {number} id An optional param to enter an ID of an item to update
 	 */
 	save = function(updateData, callback, id) {
-		var data = JSON.parse(localStorage[this._dbName]);
-		var todos = data.todos;
+		let data = JSON.parse(localStorage[this._dbName]);
+		let todos = data.todos;
 		let newId;
 
 		callback = callback || function() {};
@@ -96,9 +96,9 @@ export default class Store {
 		}
 		// If an ID was actually given, find the item and update each property
 		if (id) {
-			for (var i = 0; i < todos.length; i++) {
+			for (let i = 0; i < todos.length; i++) {
 				if (todos[i].id === id) {
-					for (var key in updateData) {
+					for (let key in updateData) {
 						todos[i][key] = updateData[key];
 					}
 					break;
@@ -124,27 +124,15 @@ export default class Store {
 	 * @param {function} callback The callback to fire after saving
 	 */
 	remove(id, callback) {
-		var data = JSON.parse(localStorage[this._dbName]);
-		var todos = data.todos;
-		/* var todoId; */
+		let data = JSON.parse(localStorage[this._dbName]);
+		let todos = data.todos;
+		/* let todoId; */
 
-		for (var i = 0; i < todos.length; i++) {
+		for (let i = 0; i < todos.length; i++) {
 			if (todos[i].id == id) {
 				todos.splice(i, 1);
 			}
 		}
-
-		// * No need to have 2 loops
-		/* for (var i = 0; i < todos.length; i++) {
-			if (todos[i].id == id) {
-				todoId = todos[i].id;
-			}
-		}
-		for (var i = 0; i < todos.length; i++) {
-			if (todos[i].id == todoId) {
-				todos.splice(i, 1);
-			}
-		} */
 
 		localStorage[this._dbName] = JSON.stringify(data);
 		callback.call(this, todos);
@@ -156,24 +144,8 @@ export default class Store {
 	 * @param {function} callback The callback to fire after dropping the data
 	 */
 	drop(callback) {
-		var data = { todos: [] };
+		let data = { todos: [] };
 		localStorage[this._dbName] = JSON.stringify(data);
 		callback.call(this, data.todos);
 	}
 }
-/* function Store(name, callback) {
-		callback = callback || function() {};
-
-		this._dbName = name;
-
-		if (!localStorage[name]) {
-			var data = {
-				todos: []
-			};
-			localStorage[name] = JSON.stringify(data);
-		}
-
-		callback.call(this, JSON.stringify(localStorage[name]));
-		// ? what is call and what this callback.call does now
-		// * The call() method is a predefined JavaScript method. It can be used to invoke (call) a method with an owner object as an argument (parameter).
-	} */

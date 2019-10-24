@@ -21,7 +21,7 @@ import View from "./view.js";
 		}
 	}
 
-	var todo = new Todo("todos-vanillajs");
+	let todo = new Todo("todos-vanillajs");
 
 	function setView() {
 		todo.controller.setView(document.location.hash); // * location.hash = Return the anchor part of a URL

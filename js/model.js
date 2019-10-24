@@ -18,7 +18,7 @@ export default class Model {
 		title = title || "";
 		callback = callback || function() {};
 
-		var newItem = {
+		let newItem = {
 			title: title.trim(),
 			completed: false
 		};
@@ -43,7 +43,7 @@ export default class Model {
 	 */
 	read(query, callback) {
 		// ? why query = showAll(data) / Constuctor.prototype.showAll (check controller.js l.64). For me it should be: anonymous(data)
-		var queryType = typeof query;
+		let queryType = typeof query;
 		callback = callback || function() {};
 
 		if (queryType === "function") {
@@ -91,7 +91,7 @@ export default class Model {
 	 * Returns a count of all todos
 	 */
 	getCount(callback) {
-		var todos = {
+		let todos = {
 			active: 0,
 			completed: 0,
 			total: 0
