@@ -228,7 +228,7 @@
 		 * todo-list
 		 */
 		showAll() {
-			this.model.read(function(data) {
+			this.model.read(data => {
 				// ? don't understand how it works, see model.js l.47
 				// * callback function from model.read retourn parse todos
 				this.view.render("showEntries", data);
@@ -239,7 +239,7 @@
 		 * Renders all active tasks
 		 */
 		showActive() {
-			this.model.read({ completed: false }, function(data) {
+			this.model.read({ completed: false }, data => {
 				this.view.render("showEntries", data);
 			});
 		}
@@ -248,7 +248,7 @@
 		 * Renders all completed tasks
 		 */
 		showCompleted() {
-			this.model.read({ completed: true }, function(data) {
+			this.model.read({ completed: true }, data => {
 				this.view.render("showEntries", data);
 			});
 		}
