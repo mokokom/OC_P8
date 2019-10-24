@@ -145,7 +145,7 @@
 		 */
 		toggleAll(completed) {
 			this.model.read({ completed: !completed }, data => {
-				data.forEach(function(item) {
+				data.forEach(item => {
 					this.toggleComplete(item.id, completed, true);
 				});
 			});

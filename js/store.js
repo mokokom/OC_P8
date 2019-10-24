@@ -10,7 +10,25 @@
 	 * @param {function} callback Our fake DB uses callbacks because in
 	 * real life you probably would be making AJAX calls
 	 */
-	function Store(name, callback) {
+	class Store {
+		constructor(name, callback) {
+			callback = callback || function() {};
+
+			this._dbName = name;
+
+			if (!localStorage[name]) {
+				var data = {
+					todos: []
+				};
+				localStorage[name] = JSON.stringify(data);
+			}
+
+			callback.call(this, JSON.stringify(localStorage[name]));
+		}
+		// ? what is call and what this callback.call does now
+		// * The call() method is a predefined JavaScript method. It can be used to invoke (call) a method with an owner object as an argument (parameter).
+	}
+	/* function Store(name, callback) {
 		callback = callback || function() {};
 
 		this._dbName = name;
@@ -25,7 +43,7 @@
 		callback.call(this, JSON.stringify(localStorage[name]));
 		// ? what is call and what this callback.call does now
 		// * The call() method is a predefined JavaScript method. It can be used to invoke (call) a method with an owner object as an argument (parameter).
-	}
+	} */
 	/**
 	 * Finds items based on a query given as a JS object
 	 *
