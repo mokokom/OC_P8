@@ -141,7 +141,6 @@ export default class View {
 
 	_bindItemEditDone(handler) {
 		var self = this;
-		console.log(this);
 		$delegate(self.$todoList, "li .edit", "blur", function() {
 			if (!this.dataset.iscanceled) {
 				handler({
