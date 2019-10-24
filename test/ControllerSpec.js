@@ -1,5 +1,7 @@
 /*global app, jasmine, describe, it, beforeEach, expect */
 
+import Controller from "../js/controller.js";
+
 describe("controller", function() {
 	"use strict";
 
@@ -63,7 +65,7 @@ describe("controller", function() {
 			"update"
 		]);
 		view = createViewStub();
-		subject = new app.Controller(model, view); // * linked with script on SpecRunner.html
+		subject = new Controller(model, view); // * linked with script on SpecRunner.html
 	});
 
 	it("should show entries on start-up", function() {
