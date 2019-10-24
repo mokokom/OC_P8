@@ -111,7 +111,7 @@
 		 */
 		removeCompletedItems() {
 			this.model.read({ completed: true }, data => {
-				data.forEach(function(item) {
+				data.forEach(item => {
 					this.removeItem(item.id);
 				});
 			});
