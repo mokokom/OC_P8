@@ -227,6 +227,7 @@ describe("controller", function() {
 
 			view.trigger("toggleAll", { completed: true }); // * act as controller.js l.46 to act as toggleAll has been clicked
 
+			expect(model.getCount).toHaveBeenCalledWith(jasmine.any(Function));
 			expect(model.read).toHaveBeenCalledWith(
 				{ completed: false }, // * controller.js l.224, searching uncompleted todo to turn them completed
 				jasmine.any(Function)
