@@ -89,6 +89,7 @@ describe("controller", function() {
 			subject.setView(""); // * Set view is a prototype method from controller.js. This method calls indirectly the view.render method
 
 			expect(view.render).toHaveBeenCalledWith("showEntries", [todo]); // * showEntries is first arg in controller.js prototype showAll, showCompleted and showActive methods
+			expect(view.render).toHaveBeenCalledWith("setFilter", "");
 		});
 
 		it('should show all entries without "all" route', function() {
@@ -98,6 +99,7 @@ describe("controller", function() {
 			subject.setView("#/");
 
 			expect(view.render).toHaveBeenCalledWith("showEntries", [todo]);
+			expect(view.render).toHaveBeenCalledWith("setFilter", "");
 		});
 
 		it("should show active entries", function() {
@@ -108,6 +110,7 @@ describe("controller", function() {
 			subject.setView("#/active");
 
 			expect(view.render).toHaveBeenCalledWith("showEntries", [todo]);
+			expect(view.render).toHaveBeenCalledWith("setFilter", "active");
 		});
 
 		it("should show completed entries", function() {
@@ -118,6 +121,7 @@ describe("controller", function() {
 			subject.setView("#/completed");
 
 			expect(view.render).toHaveBeenCalledWith("showEntries", [todo]);
+			expect(view.render).toHaveBeenCalledWith("setFilter", "completed");
 		});
 	});
 
@@ -142,7 +146,10 @@ describe("controller", function() {
 	});
 
 	it("should check the toggle all button, if all todos are completed", function() {
-		setUpModel([{ title: "my todo", completed: true }]);
+		setUpModel([
+			{ title: "my todo", completed: true },
+			{ title: "my todo2", completed: true }
+		]);
 
 		subject.setView("");
 
@@ -209,7 +216,6 @@ describe("controller", function() {
 	describe("toggle all", function() {
 		it("should toggle all todos to completed", function() {
 			// TODO: write test
-			// controller.js l.223 ? l.205
 			setUpModel([
 				{ id: 11, title: "my todo", completed: false },
 				{ id: 12, title: "my todo", completed: false }
@@ -218,6 +224,7 @@ describe("controller", function() {
 			subject.setView("");
 
 			model.getCount.and.callFake(function(callback) {
+				// * simule that all todos are turn to completed. Note: model.getCount is update but model.read is still completed.false
 				callback({
 					active: 0,
 					completed: 2,
@@ -227,7 +234,7 @@ describe("controller", function() {
 
 			view.trigger("toggleAll", { completed: true }); // * act as controller.js l.46 to act as toggleAll has been clicked
 
-			expect(model.getCount).toHaveBeenCalledWith(jasmine.any(Function));
+			expect(model.getCount).toHaveBeenCalledWith(jasmine.any(Function)); // * controller.js l.240 check and send back object that list active, completed and total of todos
 			expect(model.read).toHaveBeenCalledWith(
 				{ completed: false }, // * controller.js l.224, searching uncompleted todo to turn them completed
 				jasmine.any(Function)
@@ -285,7 +292,6 @@ describe("controller", function() {
 				completed: true
 			});
 
-			expect(model.getCount).toHaveBeenCalledWith(jasmine.any(Function)); // * controller.js l.240 check and send back object that list active, completed and total of todos
 			expect(view.render).toHaveBeenCalledWith("toggleAll", { checked: true }); // * controller.js l.247: this update the toggleAll button from grey to dark
 			expect(view.render).toHaveBeenCalledWith("updateElementCount", 0); // * controller.js l.241: check all todos.active -> in this case 0 because when toggleAll clicked it modify all todos.active to todos.completes
 		});
@@ -298,14 +304,18 @@ describe("controller", function() {
 
 			subject.setView("");
 
-			view.trigger("newTodo", "my test"); // * act as "change" event fire (see controller.js l.17)
+			view.trigger("newTodo", "a new todo");
 
 			expect(model.create).toHaveBeenCalledWith(
-				// * controller.js l.106: add a new todo to the model
-				"my test",
+				"a new todo",
 				jasmine.any(Function)
 			);
-			expect(view.render).toHaveBeenCalledWith("clearNewTodo");
+			expect(model.read).toHaveBeenCalledWith(jasmine.any(Function));
+			expect(model.getCount).toHaveBeenCalledWith(jasmine.any(Function));
+			expect(model.create).toHaveBeenCalledWith(
+				"a new todo",
+				jasmine.any(Function)
+			);
 		});
 
 		it("should add a new todo to the view", function() {
@@ -337,6 +347,7 @@ describe("controller", function() {
 					completed: false
 				}
 			]);
+			expect(view.render).toHaveBeenCalledWith("clearNewTodo");
 		});
 
 		it("should clear the input field when a new todo is added", function() {
@@ -357,6 +368,7 @@ describe("controller", function() {
 			setUpModel([todo]);
 
 			subject.setView("");
+
 			view.trigger("itemRemove", { id: 42 });
 
 			expect(model.read).toHaveBeenCalledWith(jasmine.any(Function));
@@ -371,9 +383,24 @@ describe("controller", function() {
 			setUpModel([todo]);
 
 			subject.setView("");
+			model.getCount.and.callFake(function(callback) {
+				// * simule that we delete the only todo
+				callback({
+					active: 0,
+					completed: 0,
+					total: 0
+				});
+			});
 			view.trigger("itemRemove", { id: 42 });
 
 			expect(view.render).toHaveBeenCalledWith("removeItem", 42);
+			expect(view.render).toHaveBeenCalledWith("clearCompletedButton", {
+				completed: 0,
+				visible: false
+			});
+			expect(view.render).toHaveBeenCalledWith("contentBlockVisibility", {
+				visible: false
+			});
 		});
 
 		it("should update the element count", function() {
