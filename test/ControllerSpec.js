@@ -429,6 +429,30 @@ describe("controller", function() {
 			expect(model.remove).toHaveBeenCalledWith(42, jasmine.any(Function));
 		});
 
+		//* added by me
+		it("should remove a completed entry and keep active one from the model", function() {
+			var todos = [
+				{ id: 42, title: "my todo", completed: true },
+				{ id: 43, title: "my todo2", completed: false }
+			];
+			setUpModel(todos);
+
+			subject.setView("");
+
+			model.read.and.callFake(function(query, callback) {
+				callback = callback || query;
+				callback([{ id: 42, title: "my todo", completed: true }]);
+			});
+			view.trigger("removeCompleted");
+
+			expect(model.read).toHaveBeenCalledWith(
+				{ completed: true },
+				jasmine.any(Function)
+			);
+			expect(model.remove).toHaveBeenCalledWith(42, jasmine.any(Function));
+			expect(model.remove).not.toHaveBeenCalledWith(43, jasmine.any(Function));
+		});
+
 		it("should remove a completed entry from the view", function() {
 			var todo = { id: 42, title: "my todo", completed: true };
 			setUpModel([todo]);
@@ -437,6 +461,26 @@ describe("controller", function() {
 			view.trigger("removeCompleted");
 
 			expect(view.render).toHaveBeenCalledWith("removeItem", 42);
+		});
+
+		// * added by me
+		it("should remove a completed entry and keep active one from the view", function() {
+			var todos = [
+				{ id: 42, title: "my todo", completed: true },
+				{ id: 43, title: "my todo2", completed: false }
+			];
+			setUpModel(todos);
+
+			subject.setView("");
+
+			model.read.and.callFake(function(query, callback) {
+				callback = callback || query;
+				callback([{ id: 42, title: "my todo", completed: true }]);
+			});
+			view.trigger("removeCompleted");
+
+			expect(view.render).toHaveBeenCalledWith("removeItem", 42);
+			expect(view.render).not.toHaveBeenCalledWith("removeItem", 43);
 		});
 	});
 

@@ -6,3 +6,5 @@ node_modules/todomvc-common
 !node_modules/todomvc-common/base.css
 
 node_modules
+
+wallaby.js
