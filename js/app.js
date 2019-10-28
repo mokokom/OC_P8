@@ -1,17 +1,20 @@
 /*global app, $on */
 
-import Controller from "./controller.js";
+/* import Controller from "./controller.js";
 import Model from "./model.js";
 import Store from "./store.js";
 import Template from "./template.js";
-import View from "./view.js";
+import View from "./view.js"; */
+import Todo from "./todo.js";
+import Helpers from "./helpers.js";
+let helpers = new Helpers();
 /**
  * Sets up a brand new Todo list.
  *
  * @param {string} name The name of your new to do list.
  */
 (function() {
-	class Todo {
+	/* 	class Todo {
 		constructor(name) {
 			this.storage = new Store(name);
 			this.model = new Model(this.storage);
@@ -19,7 +22,7 @@ import View from "./view.js";
 			this.view = new View(this.template);
 			this.controller = new Controller(this.model, this.view);
 		}
-	}
+	} */
 
 	let todo = new Todo("todos-vanillajs");
 
@@ -28,6 +31,6 @@ import View from "./view.js";
 	}
 	setView();
 
-	$on(window, "load", setView);
-	$on(window, "hashchange", setView);
+	helpers.$on(window, "load", setView);
+	helpers.$on(window, "hashchange", setView);
 })();

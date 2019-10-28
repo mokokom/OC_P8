@@ -1,5 +1,5 @@
 /*global qs, qsa, $on, $parent, $delegate */
-import Helpers from "./test.js";
+import Helpers from "./helpers.js";
 let helpers = new Helpers();
 
 /**
@@ -67,7 +67,7 @@ export default class View {
 	 * @param {number} id The id of the todo to remove
 	 */
 	_removeItem(id) {
-		let elem = qs('[data-id="' + id + '"]');
+		let elem = helpers.qs('[data-id="' + id + '"]');
 
 		if (elem) {
 			this.$todoList.removeChild(elem);
@@ -90,8 +90,9 @@ export default class View {
 	 * @param {string} currentPage The name of the current page
 	 */
 	_setFilter(currentPage) {
-		qs(".filters .selected").className = "";
-		qs('.filters [href="#/' + currentPage + '"]').className = "selected";
+		helpers.qs(".filters .selected").className = "";
+		helpers.qs('.filters [href="#/' + currentPage + '"]').className =
+			"selected";
 	}
 
 	/**
@@ -100,7 +101,7 @@ export default class View {
 	 * @param {boolean} completed Indicate the todo state
 	 */
 	_elementComplete(id, completed) {
-		let listItem = qs('[data-id="' + id + '"]');
+		let listItem = helpers.qs('[data-id="' + id + '"]');
 
 		if (!listItem) {
 			return;
@@ -109,7 +110,7 @@ export default class View {
 		listItem.className = completed ? "completed" : "";
 
 		// In case it was toggled from an event and not by clicking the checkbox
-		qs("input", listItem).checked = completed;
+		helpers.qs("input", listItem).checked = completed;
 	}
 	/**
 	 *
@@ -117,7 +118,7 @@ export default class View {
 	 * @param {string} title the title of the todo to edit
 	 */
 	_editItem(id, title) {
-		let listItem = qs('[data-id="' + id + '"]');
+		let listItem = helpers.qs('[data-id="' + id + '"]');
 
 		if (!listItem) {
 			return;
@@ -138,18 +139,18 @@ export default class View {
 	 * @param {string} title The name of the todo that has been edited
 	 */
 	_editItemDone(id, title) {
-		let listItem = qs('[data-id="' + id + '"]');
+		let listItem = helpers.qs('[data-id="' + id + '"]');
 
 		if (!listItem) {
 			return;
 		}
 
-		let input = qs("input.edit", listItem);
+		let input = helpers.qs("input.edit", listItem);
 		listItem.removeChild(input);
 
 		listItem.className = listItem.className.replace("editing", "");
 
-		qsa("label", listItem).forEach(function(label) {
+		helpers.qsa("label", listItem).forEach(function(label) {
 			label.textContent = title;
 		});
 	}
@@ -207,7 +208,7 @@ export default class View {
 	 * @return {number} The id of the parent li element of the targeted HTML tag
 	 */
 	_itemId(element) {
-		let li = $parent(element, "li");
+		let li = helpers.$parent(element, "li");
 		return parseInt(li.dataset.id, 10);
 	}
 
@@ -217,7 +218,7 @@ export default class View {
 	 */
 	_bindItemEditDone(handler) {
 		let self = this;
-		$delegate(self.$todoList, "li .edit", "blur", function() {
+		helpers.$delegate(self.$todoList, "li .edit", "blur", function() {
 			if (!this.dataset.iscanceled) {
 				handler({
 					id: self._itemId(this),
@@ -226,7 +227,7 @@ export default class View {
 			}
 		});
 
-		$delegate(self.$todoList, "li .edit", "keypress", function(event) {
+		helpers.$delegate(self.$todoList, "li .edit", "keypress", function(event) {
 			if (event.keyCode === self.ENTER_KEY) {
 				// Remove the cursor from the input when you hit enter just like if it
 				// were a real form
@@ -240,7 +241,7 @@ export default class View {
 	 */
 	_bindItemEditCancel(handler) {
 		let self = this;
-		$delegate(self.$todoList, "li .edit", "keyup", function(event) {
+		helpers.$delegate(self.$todoList, "li .edit", "keyup", function(event) {
 			if (event.keyCode === self.ESCAPE_KEY) {
 				this.dataset.iscanceled = true;
 				this.blur();
@@ -259,27 +260,27 @@ export default class View {
 		let self = this;
 		// * check how this callback works
 		if (event === "newTodo") {
-			$on(this.$newTodo, "change", () => {
+			helpers.$on(this.$newTodo, "change", () => {
 				handler(this.$newTodo.value);
 			});
 		} else if (event === "removeCompleted") {
-			$on(this.$clearCompleted, "click", () => {
+			helpers.$on(this.$clearCompleted, "click", () => {
 				handler();
 			});
 		} else if (event === "toggleAll") {
-			$on(this.$toggleAll, "click", function() {
+			helpers.$on(this.$toggleAll, "click", function() {
 				handler({ completed: this.checked });
 			});
 		} else if (event === "itemEdit") {
-			$delegate(this.$todoList, "li label", "dblclick", function() {
+			helpers.$delegate(this.$todoList, "li label", "dblclick", function() {
 				handler({ id: self._itemId(this) });
 			});
 		} else if (event === "itemRemove") {
-			$delegate(this.$todoList, ".destroy", "click", function() {
+			helpers.$delegate(this.$todoList, ".destroy", "click", function() {
 				handler({ id: self._itemId(this) });
 			});
 		} else if (event === "itemToggle") {
-			$delegate(this.$todoList, ".toggle", "click", function() {
+			helpers.$delegate(this.$todoList, ".toggle", "click", function() {
 				handler({
 					id: self._itemId(this),
 					completed: this.checked
