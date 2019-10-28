@@ -1,17 +1,24 @@
 /*jshint eqeqeq:false */
-
 /**
- * Creates a new client side storage object and will create an empty
- * collection if no collection already exists.
+ * Takes a model and view and acts as the controller between them.
  *
- * @param {string} name The name of our DB we want to use
- * @param {function} callback Our fake DB uses callbacks because in
- * real life you probably would be making AJAX calls
+ * @example
+ * let myStorage = new MyStore(name, callback);
  */
 export default class Store {
+	/**
+	 * Creates a new client side storage object and will create an empty
+	 * collection if no collection already exists.
+	 * @constructor
+	 * @param {string} name The name of our DB we want to use
+	 * @param {function} callback Our fake DB uses callbacks because in
+	 * real life you probably would be making AJAX calls
+	 */
 	constructor(name, callback) {
 		callback = callback || function() {};
-
+		/**
+		 * @type {string} name of the database
+		 */
 		this._dbName = name;
 
 		if (!localStorage[name]) {
@@ -107,8 +114,10 @@ export default class Store {
 	/**
 	 * Will create a unique id for the new created todo
 	 *
-	 * @param {number} todos The todos array to iterate trough it and get a new unique id
+	 * @param {array} todos The todos array to iterate trough it and get a new unique id
+	 * @return {number} Return an brand new and unique id
 	 */
+
 	createId(todos) {
 		let newId;
 		let max = 0;

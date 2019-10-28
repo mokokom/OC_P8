@@ -39,13 +39,13 @@
 </nav>
 
 <div class="content" data-ice="content"><div class="header-notice">
-  <div data-ice="importPath" class="import-path"><pre class="prettyprint"><code data-ice="importPathCode">import Store from &apos;<span><a href="file/js/store.js.html#lineNumber11">./js/store.js</a></span>&apos;</code></pre></div>
+  <div data-ice="importPath" class="import-path"><pre class="prettyprint"><code data-ice="importPathCode">import Store from &apos;<span><a href="file/js/store.js.html#lineNumber8">./js/store.js</a></span>&apos;</code></pre></div>
   <span data-ice="access">public</span>
   <span data-ice="kind">class</span>
   
   
   
-  <span data-ice="source">| <span><a href="file/js/store.js.html#lineNumber11">source</a></span></span>
+  <span data-ice="source">| <span><a href="file/js/store.js.html#lineNumber8">source</a></span></span>
 </div>
 
 <div class="self-detail detail">
@@ -65,14 +65,20 @@
 
   
   
-  <div class="description" data-ice="description"><p>Creates a new client side storage object and will create an empty
-collection if no collection already exists.</p>
+  <div class="description" data-ice="description"><p>Takes a model and view and acts as the controller between them.</p>
 </div>
   
 
   
 
-  
+  <div data-ice="exampleDocs">
+    <h4>Example:</h4>
+    
+  <div class="example-doc" data-ice="exampleDoc">
+      
+      <pre class="prettyprint source-code"><code data-ice="exampleCode">let myStorage = new MyStore(name, callback);</code></pre>
+    </div>
+</div>
 
   
 
@@ -99,13 +105,15 @@ collection if no collection already exists.</p>
           
           
           
-          <span class="code" data-ice="name"><span><a href="class/js/store.js~Store.html#instance-constructor-constructor">constructor</a></span></span><span class="code" data-ice="signature">()</span>
+          <span class="code" data-ice="name"><span><a href="class/js/store.js~Store.html#instance-constructor-constructor">constructor</a></span></span><span class="code" data-ice="signature">(name: <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String">string</a></span>, callback: <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Function">function</a></span>)</span>
         </p>
       </div>
       <div>
         
         
-        
+        <div data-ice="description"><p>Creates a new client side storage object and will create an empty
+collection if no collection already exists.</p>
+</div>
       </div>
     </td>
     <td>
@@ -134,7 +142,7 @@ collection if no collection already exists.</p>
           
           
           
-          <span class="code" data-ice="name"><span><a href="class/js/store.js~Store.html#instance-member-_dbName">_dbName</a></span></span><span class="code" data-ice="signature">: <span>*</span></span>
+          <span class="code" data-ice="name"><span><a href="class/js/store.js~Store.html#instance-member-_dbName">_dbName</a></span></span><span class="code" data-ice="signature">: <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String">string</a></span></span>
         </p>
       </div>
       <div>
@@ -169,7 +177,7 @@ collection if no collection already exists.</p>
           
           
           
-          <span class="code" data-ice="name"><span><a href="class/js/store.js~Store.html#instance-method-createId">createId</a></span></span><span class="code" data-ice="signature">(todos: <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number">number</a></span>): <span>*</span></span>
+          <span class="code" data-ice="name"><span><a href="class/js/store.js~Store.html#instance-method-createId">createId</a></span></span><span class="code" data-ice="signature">(todos: <span>array</span>): <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number">number</a></span></span>
         </p>
       </div>
       <div>
@@ -347,22 +355,49 @@ collection if no collection already exists.</p>
     
     
     
-    <span class="code" data-ice="name">constructor</span><span class="code" data-ice="signature">()</span>
+    <span class="code" data-ice="name">constructor</span><span class="code" data-ice="signature">(name: <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String">string</a></span>, callback: <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Function">function</a></span>)</span>
     <span class="right-info">
       
       
-      <span data-ice="source"><span><a href="file/js/store.js.html#lineNumber12">source</a></span></span>
+      <span data-ice="source"><span><a href="file/js/store.js.html#lineNumber17">source</a></span></span>
     </span>
   </h3>
 
   
   
   
-  
+  <div data-ice="description"><p>Creates a new client side storage object and will create an empty
+collection if no collection already exists.</p>
+</div>
 
   
 
-  <div data-ice="properties">
+  <div data-ice="properties"><div data-ice="properties">
+  <h4 data-ice="title">Params:</h4>
+  <table class="params">
+    <thead>
+    <tr><td>Name</td><td>Type</td><td>Attribute</td><td>Description</td></tr>
+    </thead>
+    <tbody>
+    
+    <tr data-ice="property" data-depth="0">
+      <td data-ice="name" class="code" data-depth="0">name</td>
+      <td data-ice="type" class="code"><span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String">string</a></span></td>
+      <td data-ice="appendix"></td>
+      <td data-ice="description"><p>The name of our DB we want to use</p>
+</td>
+    </tr>
+<tr data-ice="property" data-depth="0">
+      <td data-ice="name" class="code" data-depth="0">callback</td>
+      <td data-ice="type" class="code"><span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Function">function</a></span></td>
+      <td data-ice="appendix"></td>
+      <td data-ice="description"><p>Our fake DB uses callbacks because in
+real life you probably would be making AJAX calls</p>
+</td>
+    </tr>
+</tbody>
+  </table>
+</div>
 </div>
 
   
@@ -393,11 +428,11 @@ collection if no collection already exists.</p>
     
     
     
-    <span class="code" data-ice="name">_dbName</span><span class="code" data-ice="signature">: <span>*</span></span>
+    <span class="code" data-ice="name">_dbName</span><span class="code" data-ice="signature">: <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String">string</a></span></span>
     <span class="right-info">
       
       
-      <span data-ice="source"><span><a href="file/js/store.js.html#lineNumber15">source</a></span></span>
+      <span data-ice="source"><span><a href="file/js/store.js.html#lineNumber22">source</a></span></span>
     </span>
   </h3>
 
@@ -439,11 +474,11 @@ collection if no collection already exists.</p>
     
     
     
-    <span class="code" data-ice="name">createId</span><span class="code" data-ice="signature">(todos: <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number">number</a></span>): <span>*</span></span>
+    <span class="code" data-ice="name">createId</span><span class="code" data-ice="signature">(todos: <span>array</span>): <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number">number</a></span></span>
     <span class="right-info">
       
       
-      <span data-ice="source"><span><a href="file/js/store.js.html#lineNumber112">source</a></span></span>
+      <span data-ice="source"><span><a href="file/js/store.js.html#lineNumber121">source</a></span></span>
     </span>
   </h3>
 
@@ -465,7 +500,7 @@ collection if no collection already exists.</p>
     
     <tr data-ice="property" data-depth="0">
       <td data-ice="name" class="code" data-depth="0">todos</td>
-      <td data-ice="type" class="code"><span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number">number</a></span></td>
+      <td data-ice="type" class="code"><span>array</span></td>
       <td data-ice="appendix"></td>
       <td data-ice="description"><p>The todos array to iterate trough it and get a new unique id</p>
 </td>
@@ -480,8 +515,9 @@ collection if no collection already exists.</p>
     <table>
       <tbody>
         <tr>
-          <td class="return-type code" data-ice="returnType"><span>*</span></td>
-          
+          <td class="return-type code" data-ice="returnType"><span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number">number</a></span></td>
+          <td class="return-desc" data-ice="returnDescription"><p>Return an brand new and unique id</p>
+</td>
         </tr>
       </tbody>
     </table>
@@ -516,7 +552,7 @@ collection if no collection already exists.</p>
     <span class="right-info">
       
       
-      <span data-ice="source"><span><a href="file/js/store.js.html#lineNumber153">source</a></span></span>
+      <span data-ice="source"><span><a href="file/js/store.js.html#lineNumber162">source</a></span></span>
     </span>
   </h3>
 
@@ -577,7 +613,7 @@ collection if no collection already exists.</p>
     <span class="right-info">
       
       
-      <span data-ice="source"><span><a href="file/js/store.js.html#lineNumber40">source</a></span></span>
+      <span data-ice="source"><span><a href="file/js/store.js.html#lineNumber47">source</a></span></span>
     </span>
   </h3>
 
@@ -656,7 +692,7 @@ completed running</p>
     <span class="right-info">
       
       
-      <span data-ice="source"><span><a href="file/js/store.js.html#lineNumber65">source</a></span></span>
+      <span data-ice="source"><span><a href="file/js/store.js.html#lineNumber72">source</a></span></span>
     </span>
   </h3>
 
@@ -717,7 +753,7 @@ completed running</p>
     <span class="right-info">
       
       
-      <span data-ice="source"><span><a href="file/js/store.js.html#lineNumber133">source</a></span></span>
+      <span data-ice="source"><span><a href="file/js/store.js.html#lineNumber142">source</a></span></span>
     </span>
   </h3>
 
@@ -785,7 +821,7 @@ completed running</p>
     <span class="right-info">
       
       
-      <span data-ice="source"><span><a href="file/js/store.js.html#lineNumber78">source</a></span></span>
+      <span data-ice="source"><span><a href="file/js/store.js.html#lineNumber85">source</a></span></span>
     </span>
   </h3>
 

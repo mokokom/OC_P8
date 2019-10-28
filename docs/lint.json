@@ -1,56 +1,30 @@
 [
   {
-    "name": "Controller#editItem",
-    "filePath": "js/controller.js",
-    "lines": [
-      {
-        "lineNumber": 65,
-        "line": "\t/**"
-      },
-      {
-        "lineNumber": 66,
-        "line": "\t * Triggers the item editing mode."
-      },
-      {
-        "lineNumber": 67,
-        "line": "\t * @param {number}"
-      },
-      {
-        "lineNumber": 68,
-        "line": "\t */"
-      },
-      {
-        "lineNumber": 69,
-        "line": "\teditItem(id) {"
-      }
-    ],
-    "codeParams": [
-      "id"
-    ],
-    "docParams": []
-  },
-  {
     "name": "Controller#setView",
     "filePath": "js/controller.js",
     "lines": [
       {
-        "lineNumber": 233,
+        "lineNumber": 244,
         "line": "\t/**"
       },
       {
-        "lineNumber": 234,
-        "line": "\t * Loads and initialises the view"
+        "lineNumber": 245,
+        "line": "\t * Loads and initialises the view."
       },
       {
-        "lineNumber": 235,
+        "lineNumber": 246,
+        "line": "\t *"
+      },
+      {
+        "lineNumber": 247,
         "line": "\t * @param {string} '' | 'active' | 'completed'"
       },
       {
-        "lineNumber": 236,
+        "lineNumber": 248,
         "line": "\t */"
       },
       {
-        "lineNumber": 237,
+        "lineNumber": 249,
         "line": "\tsetView(locationHash) {"
       }
     ],

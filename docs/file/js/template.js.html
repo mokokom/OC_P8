@@ -39,7 +39,10 @@
 </nav>
 
 <div class="content" data-ice="content"><h1 data-ice="title">js/template.js</h1>
-<pre class="source-code line-number raw-source-code"><code class="prettyprint linenums" data-ice="content">let htmlEscapes = {
+<pre class="source-code line-number raw-source-code"><code class="prettyprint linenums" data-ice="content">/**
+ * @type {object} Stores all signs that could result of conflict
+ */
+let htmlEscapes = {
 	&quot;&amp;&quot;: &quot;&amp;amp;&quot;,
 	&quot;&lt;&quot;: &quot;&amp;lt;&quot;,
 	&quot;&gt;&quot;: &quot;&amp;gt;&quot;,
@@ -48,13 +51,28 @@
 	&quot;`&quot;: &quot;&amp;#x60;&quot;
 };
 
+/**
+ *
+ * @param {string} chr Represent the incompatible HTML sign define by the new RegExp
+ * @return {string} Return a string with the HTML equivalent writing of the incompatible sign
+ */
 let escapeHtmlChar = function(chr) {
 	return htmlEscapes[chr];
 };
 
+/**
+ * @type {object} Represent the charachter to exclude from the user input
+ */
 let reUnescapedHtml = /[&amp;&lt;&gt;&quot;&apos;`]/g;
+/**
+ * @type {object} Represent the charachter to exclude from the user input
+ */
 let reHasUnescapedHtml = new RegExp(reUnescapedHtml.source);
 
+/**
+ *
+ * @param {string} string The string to check with RegExp
+ */
 let escape = function(string) {
 	return string &amp;&amp; reHasUnescapedHtml.test(string)
 		? string.replace(reUnescapedHtml, escapeHtmlChar)
@@ -63,11 +81,17 @@ let escape = function(string) {
 
 /**
  * Sets up defaults for all the Template methods such as a default template
- *
- * @constructor
+ * @example
+ * let myTemplate = new MyTemplate();
  */
 export default class Template {
+	/**
+	 * @constructor
+	 */
 	constructor() {
+		/**
+		 * @type {string} default template which create an html implementation for each todo
+		 */
 		this.defaultTemplate =
 			&apos;&lt;li data-id=&quot;{{id}}&quot; class=&quot;{{completed}}&quot;&gt;&apos; +
 			&apos;&lt;div class=&quot;view&quot;&gt;&apos; +
@@ -80,11 +104,9 @@ export default class Template {
 	/**
 	 * Creates an &lt;li&gt; HTML string and returns it for placement in your app.
 	 *
-	 * NOTE: In real life you should be using a templating engine such as Mustache
-	 * or Handlebars, however, this is a vanilla JS example.
+	 * NOTE: In real life you should be using a templating engine such as Mustache or Handlebars, however, this is a vanilla JS example.
 	 *
-	 * @param {object} data The object containing keys you want to find in the
-	 *                      template to replace.
+	 * @param {object} data The object containing keys you want to find in the template to replace.
 	 * @returns {string} HTML String of an &lt;li&gt; element
 	 *
 	 * @example

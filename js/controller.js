@@ -1,5 +1,6 @@
 /**
- * Takes a model and view and acts as the controller between them
+ * Takes a model and view and acts as the controller between them.
+ *
  * @example
  * let myController = new MyController(model, view);
  */
@@ -51,7 +52,8 @@ export default class Controller {
 	/**
 	 * An event to fire whenever you want to add an item. Simply pass in the event
 	 * object and it'll handle the DOM insertion and saving of the new item.
-	 * @param {string} title
+	 *
+	 * @param {string} title The title of the new todo to add
 	 */
 	addItem(title) {
 		if (title.trim() === "") {
@@ -65,7 +67,8 @@ export default class Controller {
 	}
 	/**
 	 * Triggers the item editing mode.
-	 * @param {number}
+	 *
+	 * @param {number} id The id of the todo to edite
 	 */
 	editItem(id) {
 		this.model.read(id, data => {
@@ -74,8 +77,9 @@ export default class Controller {
 	}
 	/**
 	 * Finishes the item editing mode successfully.
-	 * @param {number} id
-	 * @param {string} title
+	 *
+	 * @param {number} id The id of the save todo edite
+	 * @param {string} title Todo's title
 	 */
 	editItemSave(id, title) {
 		while (title[0] === " ") {
@@ -96,7 +100,8 @@ export default class Controller {
 	}
 	/**
 	 * Cancels the item editing mode.
-	 * @param {number} id
+	 *
+	 * @param {number} id The id of the todo to cancel the editing
 	 */
 	editItemCancel(id) {
 		this.model.read(id, data => {
@@ -106,8 +111,8 @@ export default class Controller {
 	/**
 	 * By giving it an ID it'll find the DOM element matching that ID,
 	 * remove it from the DOM and also remove it from storage.
-	 * @param {number} id
-	 * The ID of the item to remove from the DOM and storage
+	 *
+	 * @param {number} id The ID of the item to remove from the DOM and storage.
 	 */
 	removeItem(id) {
 		this.model.remove(id, () => {
@@ -133,8 +138,7 @@ export default class Controller {
 	 * in storage based on the checkbox's state.
 	 *
 	 * @param {number} id The ID of the element to complete or uncomplete
-	 * @param {object} completed To check the state of complete
-	 *                          or not
+	 * @param {object} completed To check the state of complete or not
 	 * @param {boolean|undefined} silent Prevent re-filtering the todo items
 	 */
 	toggleComplete(id, completed, silent) {
@@ -150,9 +154,10 @@ export default class Controller {
 		}
 	}
 	/**
-	 * Will toggle ALL checkboxes' on/off state and completeness of models.
+	 * Will toggle ALL checkboxes' on/off state and completeness of models
 	 * Just pass in the event object.
-	 * @param {boolean|undefined} completed
+	 *
+	 * @param {boolean|undefined} completed State of the toggleAll checkbox
 	 */
 	toggleAll(completed) {
 		this.model.read({ completed: !completed }, data => {
@@ -166,6 +171,7 @@ export default class Controller {
 	/**
 	 * Updates the pieces of the page which change depending on the remaining
 	 * number of todos.
+	 *
 	 * @private
 	 */
 	_updateCount() {
@@ -186,6 +192,7 @@ export default class Controller {
 	}
 	/**
 	 * Re-filters the todo items, based on the active route.
+	 *
 	 * @param {boolean|undefined} force  forces a re-painting of todo items.
 	 * @private
 	 */
@@ -207,19 +214,22 @@ export default class Controller {
 			this["show" + activeRoute]();
 		}
 		/**
-		 * Store a reference to the last active route, allowing us to add condition and not show the new active route if it's the same as the last active route
+		 * Store a reference to the last active route, allowing us to add condition and not show the new active route if it's the same as the last active route.
+		 *
 		 * @type {string} _lastActiveRoute
 		 */
 		this._lastActiveRoute = activeRoute;
 	}
 	/**
-	 * Simply updates the filter nav's selected states
+	 * Simply updates the filter nav's selected states.
+	 *
 	 * @param {string} currentPage
 	 * @private
 	 */
 	_updateFilterState(currentPage) {
 		/**
 		 * Store a reference to the active route, allowing us to re-filter todo items as they are marked complete or incomplete.
+		 *
 		 * @type {string} _activeRoute
 		 */
 		this._activeRoute = currentPage;
@@ -233,7 +243,8 @@ export default class Controller {
 		this.view.render("setFilter", currentPage);
 	}
 	/**
-	 * Loads and initialises the view
+	 * Loads and initialises the view.
+	 *
 	 * @param {string} '' | 'active' | 'completed'
 	 */
 	setView(locationHash) {

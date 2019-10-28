@@ -1,3 +1,6 @@
+/**
+ * @type {object} Stores all signs that could result of conflict
+ */
 let htmlEscapes = {
 	"&": "&amp;",
 	"<": "&lt;",
@@ -7,13 +10,28 @@ let htmlEscapes = {
 	"`": "&#x60;"
 };
 
+/**
+ *
+ * @param {string} chr Represent the incompatible HTML sign define by the new RegExp
+ * @return {string} Return a string with the HTML equivalent writing of the incompatible sign
+ */
 let escapeHtmlChar = function(chr) {
 	return htmlEscapes[chr];
 };
 
+/**
+ * @type {object} Represent the charachter to exclude from the user input
+ */
 let reUnescapedHtml = /[&<>"'`]/g;
+/**
+ * @type {object} Represent the charachter to exclude from the user input
+ */
 let reHasUnescapedHtml = new RegExp(reUnescapedHtml.source);
 
+/**
+ *
+ * @param {string} string The string to check with RegExp
+ */
 let escape = function(string) {
 	return string && reHasUnescapedHtml.test(string)
 		? string.replace(reUnescapedHtml, escapeHtmlChar)
@@ -22,11 +40,17 @@ let escape = function(string) {
 
 /**
  * Sets up defaults for all the Template methods such as a default template
- *
- * @constructor
+ * @example
+ * let myTemplate = new MyTemplate();
  */
 export default class Template {
+	/**
+	 * @constructor
+	 */
 	constructor() {
+		/**
+		 * @type {string} default template which create an html implementation for each todo
+		 */
 		this.defaultTemplate =
 			'<li data-id="{{id}}" class="{{completed}}">' +
 			'<div class="view">' +
@@ -39,11 +63,9 @@ export default class Template {
 	/**
 	 * Creates an <li> HTML string and returns it for placement in your app.
 	 *
-	 * NOTE: In real life you should be using a templating engine such as Mustache
-	 * or Handlebars, however, this is a vanilla JS example.
+	 * NOTE: In real life you should be using a templating engine such as Mustache or Handlebars, however, this is a vanilla JS example.
 	 *
-	 * @param {object} data The object containing keys you want to find in the
-	 *                      template to replace.
+	 * @param {object} data The object containing keys you want to find in the template to replace.
 	 * @returns {string} HTML String of an <li> element
 	 *
 	 * @example
