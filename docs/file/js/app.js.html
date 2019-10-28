@@ -40,7 +40,6 @@
 
 <div class="content" data-ice="content"><h1 data-ice="title">js/app.js</h1>
 <pre class="source-code line-number raw-source-code"><code class="prettyprint linenums" data-ice="content">/*global app, $on */
-
 import Controller from &quot;./controller.js&quot;;
 import Model from &quot;./model.js&quot;;
 import Store from &quot;./store.js&quot;;
@@ -63,7 +62,6 @@ import View from &quot;./view.js&quot;;
 	}
 
 	let todo = new Todo(&quot;todos-vanillajs&quot;);
-	console.log(todo.storage);
 
 	function setView() {
 		todo.controller.setView(document.location.hash);

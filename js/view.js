@@ -1,4 +1,6 @@
 /*global qs, qsa, $on, $parent, $delegate */
+import Helpers from "./test.js";
+let helpers = new Helpers();
 
 /**
  * View that abstracts away the browser's DOM completely.
@@ -32,36 +34,33 @@ export default class View {
 		this.ESCAPE_KEY = 27;
 
 		/**
-		 * @type {object}
+		 * @type {object} Represent the HTML tag that contains the ".todo-list" class
 		 */
-		this.$todoList = qs(".todo-list");
+		this.$todoList = helpers.qs(".todo-list");
 		/**
-		 * @type {object}
+		 * @type {object} Represent the HTML tag that contains the ".todo-count" class
 		 */
-		this.$todoItemCounter = qs(".todo-count");
+		this.$todoItemCounter = helpers.qs(".todo-count");
 		/**
-		 * @type {object}
+		 * @type {object} Represent the HTML tag that contains the ".clear-completed" class
 		 */
-		this.$clearCompleted = qs(".clear-completed");
+		this.$clearCompleted = helpers.qs(".clear-completed");
 		/**
-		 * @type {object}
+		 * @type {object} Represent the HTML tag that contains the ".main" class
 		 */
-		this.$main = qs(".main");
+		this.$main = helpers.qs(".main");
 		/**
-		 * @type {object}
+		 * @type {object} Represent the HTML tag that contains the ".footer" class
 		 */
-		this.$footer = qs(".footer");
+		this.$footer = helpers.qs(".footer");
 		/**
-		 * @type {object}
+		 * @type {object} Represent the HTML tag that contains the ".toggle-all" class
 		 */
-		this.$toggleAll = qs(".toggle-all");
+		this.$toggleAll = helpers.qs(".toggle-all");
 		/**
-		 * @type {object}
+		 * @type {object} Represent the HTML tag that contains the ".new-todo" class
 		 */
-		this.$newTodo = qs(".new-todo");
-		/**
-		 * @type {object}
-		 */
+		this.$newTodo = helpers.qs(".new-todo");
 	}
 	/**
 	 *
