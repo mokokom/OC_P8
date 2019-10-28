@@ -30,9 +30,11 @@
   <ul>
     
   <li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/js/controller.js~Controller.html">Controller</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/js/helpers.js~Helpers.html">Helpers</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/js/model.js~Model.html">Model</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/js/store.js~Store.html">Store</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/js/template.js~Template.html">Template</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/js/todo.js~Todo.html">Todo</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/js/view.js~View.html">View</a></span></span></li>
 </ul>
 </div>
@@ -40,31 +42,24 @@
 
 <div class="content" data-ice="content"><h1 data-ice="title">js/helpers.js</h1>
 <pre class="source-code line-number raw-source-code"><code class="prettyprint linenums" data-ice="content">/*global NodeList */
-/**
- * @param {function} window
- */
-(function(window) {
-	&quot;use strict&quot;;
-
-	// Get element(s) by CSS selector:
-	window.qs = function(selector, scope) {
+export default class Helpers {
+	qs(selector, scope) {
 		return (scope || document).querySelector(selector);
-	};
-	window.qsa = function(selector, scope) {
+	}
+
+	qsa(selector, scope) {
 		return (scope || document).querySelectorAll(selector);
-	};
+	}
 
-	// addEventListener wrapper:
-	window.$on = function(target, type, callback, useCapture) {
+	$on(target, type, callback, useCapture) {
 		target.addEventListener(type, callback, !!useCapture);
-	};
+	}
 
-	// Attach a handler to event for all elements that match the selector,
-	// now or in the future, based on a root element
-	window.$delegate = function(target, selector, type, handler) {
+	$delegate(target, selector, type, handler) {
+		self = this;
 		function dispatchEvent(event) {
 			let targetElement = event.target;
-			let potentialElements = window.qsa(selector, target);
+			let potentialElements = self.qsa(selector, target);
 			let hasMatch =
 				Array.prototype.indexOf.call(potentialElements, targetElement) &gt;= 0;
 
@@ -76,25 +71,21 @@
 		// https://developer.mozilla.org/en-US/docs/Web/Events/blur
 		let useCapture = type === &quot;blur&quot; || type === &quot;focus&quot;;
 
-		window.$on(target, type, dispatchEvent, useCapture);
-	};
+		this.$on(target, type, dispatchEvent, useCapture);
+	}
 
-	// Find the element&apos;s parent with the given tag name:
-	// $parent(qs(&apos;a&apos;), &apos;div&apos;);
-	window.$parent = function(element, tagName) {
+	$parent(element, tagName) {
 		if (!element.parentNode) {
 			return;
 		}
 		if (element.parentNode.tagName.toLowerCase() === tagName.toLowerCase()) {
 			return element.parentNode;
 		}
-		return window.$parent(element.parentNode, tagName);
-	};
+		return this.$parent(element.parentNode, tagName);
+	}
+}
 
-	// Allow for looping on nodes by chaining:
-	// qsa(&apos;.foo&apos;).forEach(function () {})
-	NodeList.prototype.forEach = Array.prototype.forEach;
-})(window);
+NodeList.prototype.forEach = Array.prototype.forEach;
 </code></pre>
 
 </div>

@@ -1,17 +1,14 @@
 /*global NodeList */
 export default class Helpers {
 	qs(selector, scope) {
-		console.log(selector, scope);
 		return (scope || document).querySelector(selector);
 	}
 
 	qsa(selector, scope) {
-		console.log(selector, scope);
 		return (scope || document).querySelectorAll(selector);
 	}
 
 	$on(target, type, callback, useCapture) {
-		console.log(target, type, callback, useCapture);
 		target.addEventListener(type, callback, !!useCapture);
 	}
 

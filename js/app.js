@@ -14,16 +14,6 @@ let helpers = new Helpers();
  * @param {string} name The name of your new to do list.
  */
 (function() {
-	/* 	class Todo {
-		constructor(name) {
-			this.storage = new Store(name);
-			this.model = new Model(this.storage);
-			this.template = new Template();
-			this.view = new View(this.template);
-			this.controller = new Controller(this.model, this.view);
-		}
-	} */
-
 	let todo = new Todo("todos-vanillajs");
 
 	function setView() {

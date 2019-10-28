@@ -30,9 +30,11 @@
   <ul>
     
   <li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/js/controller.js~Controller.html">Controller</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/js/helpers.js~Helpers.html">Helpers</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/js/model.js~Model.html">Model</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/js/store.js~Store.html">Store</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/js/template.js~Template.html">Template</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/js/todo.js~Todo.html">Todo</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/js/view.js~View.html">View</a></span></span></li>
 </ul>
 </div>
@@ -40,27 +42,21 @@
 
 <div class="content" data-ice="content"><h1 data-ice="title">js/app.js</h1>
 <pre class="source-code line-number raw-source-code"><code class="prettyprint linenums" data-ice="content">/*global app, $on */
-import Controller from &quot;./controller.js&quot;;
+
+/* import Controller from &quot;./controller.js&quot;;
 import Model from &quot;./model.js&quot;;
 import Store from &quot;./store.js&quot;;
 import Template from &quot;./template.js&quot;;
-import View from &quot;./view.js&quot;;
+import View from &quot;./view.js&quot;; */
+import Todo from &quot;./todo.js&quot;;
+import Helpers from &quot;./helpers.js&quot;;
+let helpers = new Helpers();
 /**
  * Sets up a brand new Todo list.
  *
  * @param {string} name The name of your new to do list.
  */
 (function() {
-	class Todo {
-		constructor(name) {
-			this.storage = new Store(name);
-			this.model = new Model(this.storage);
-			this.template = new Template();
-			this.view = new View(this.template);
-			this.controller = new Controller(this.model, this.view);
-		}
-	}
-
 	let todo = new Todo(&quot;todos-vanillajs&quot;);
 
 	function setView() {
@@ -68,8 +64,8 @@ import View from &quot;./view.js&quot;;
 	}
 	setView();
 
-	$on(window, &quot;load&quot;, setView);
-	$on(window, &quot;hashchange&quot;, setView);
+	helpers.$on(window, &quot;load&quot;, setView);
+	helpers.$on(window, &quot;hashchange&quot;, setView);
 })();
 </code></pre>
 

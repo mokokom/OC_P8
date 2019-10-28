@@ -6,6 +6,12 @@ window.esdocSearchIndex = [
     "class"
   ],
   [
+    "./js/helpers.js~helpers",
+    "class/js/helpers.js~Helpers.html",
+    "<span>Helpers</span> <span class=\"search-result-import-path\">./js/helpers.js</span>",
+    "class"
+  ],
+  [
     "./js/model.js~model",
     "class/js/model.js~Model.html",
     "<span>Model</span> <span class=\"search-result-import-path\">./js/model.js</span>",
@@ -21,6 +27,12 @@ window.esdocSearchIndex = [
     "./js/template.js~template",
     "class/js/template.js~Template.html",
     "<span>Template</span> <span class=\"search-result-import-path\">./js/template.js</span>",
+    "class"
+  ],
+  [
+    "./js/todo.js~todo",
+    "class/js/todo.js~Todo.html",
+    "<span>Todo</span> <span class=\"search-result-import-path\">./js/todo.js</span>",
     "class"
   ],
   [
@@ -450,6 +462,36 @@ window.esdocSearchIndex = [
     "file"
   ],
   [
+    "js/helpers.js~helpers#$delegate",
+    "class/js/helpers.js~Helpers.html#instance-method-$delegate",
+    "js/helpers.js~Helpers#$delegate",
+    "method"
+  ],
+  [
+    "js/helpers.js~helpers#$on",
+    "class/js/helpers.js~Helpers.html#instance-method-$on",
+    "js/helpers.js~Helpers#$on",
+    "method"
+  ],
+  [
+    "js/helpers.js~helpers#$parent",
+    "class/js/helpers.js~Helpers.html#instance-method-$parent",
+    "js/helpers.js~Helpers#$parent",
+    "method"
+  ],
+  [
+    "js/helpers.js~helpers#qs",
+    "class/js/helpers.js~Helpers.html#instance-method-qs",
+    "js/helpers.js~Helpers#qs",
+    "method"
+  ],
+  [
+    "js/helpers.js~helpers#qsa",
+    "class/js/helpers.js~Helpers.html#instance-method-qsa",
+    "js/helpers.js~Helpers#qsa",
+    "method"
+  ],
+  [
     "js/model.js",
     "file/js/model.js.html",
     "js/model.js",
@@ -592,6 +634,48 @@ window.esdocSearchIndex = [
     "class/js/template.js~Template.html#instance-method-show",
     "js/template.js~Template#show",
     "method"
+  ],
+  [
+    "js/todo.js",
+    "file/js/todo.js.html",
+    "js/todo.js",
+    "file"
+  ],
+  [
+    "js/todo.js~todo#constructor",
+    "class/js/todo.js~Todo.html#instance-constructor-constructor",
+    "js/todo.js~Todo#constructor",
+    "method"
+  ],
+  [
+    "js/todo.js~todo#controller",
+    "class/js/todo.js~Todo.html#instance-member-controller",
+    "js/todo.js~Todo#controller",
+    "member"
+  ],
+  [
+    "js/todo.js~todo#model",
+    "class/js/todo.js~Todo.html#instance-member-model",
+    "js/todo.js~Todo#model",
+    "member"
+  ],
+  [
+    "js/todo.js~todo#storage",
+    "class/js/todo.js~Todo.html#instance-member-storage",
+    "js/todo.js~Todo#storage",
+    "member"
+  ],
+  [
+    "js/todo.js~todo#template",
+    "class/js/todo.js~Todo.html#instance-member-template",
+    "js/todo.js~Todo#template",
+    "member"
+  ],
+  [
+    "js/todo.js~todo#view",
+    "class/js/todo.js~Todo.html#instance-member-view",
+    "js/todo.js~Todo#view",
+    "member"
   ],
   [
     "js/view.js",

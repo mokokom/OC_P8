@@ -2,8 +2,8 @@
 <html>
 <head>
   <meta charset="utf-8">
-  <base data-ice="baseUrl">
-  <title data-ice="title">Home</title>
+  <base data-ice="baseUrl" href="../../">
+  <title data-ice="title">js/todo.js</title>
   <link type="text/css" rel="stylesheet" href="css/style.css">
   <link type="text/css" rel="stylesheet" href="css/prettify-tomorrow.css">
   <script src="script/prettify/prettify.js"></script>
@@ -40,7 +40,24 @@
 </div>
 </nav>
 
-<div class="content" data-ice="content">
+<div class="content" data-ice="content"><h1 data-ice="title">js/todo.js</h1>
+<pre class="source-code line-number raw-source-code"><code class="prettyprint linenums" data-ice="content">import Controller from &quot;./controller.js&quot;;
+import Model from &quot;./model.js&quot;;
+import Store from &quot;./store.js&quot;;
+import Template from &quot;./template.js&quot;;
+import View from &quot;./view.js&quot;;
+
+export default class Todo {
+	constructor(name) {
+		this.storage = new Store(name);
+		this.model = new Model(this.storage);
+		this.template = new Template();
+		this.view = new View(this.template);
+		this.controller = new Controller(this.model, this.view);
+	}
+}
+</code></pre>
+
 </div>
 
 <footer class="footer">
