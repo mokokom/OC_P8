@@ -1,21 +1,12 @@
 {
-  "coverage": "43.83%",
+  "coverage": "54.79%",
   "expectCount": 73,
-  "actualCount": 32,
+  "actualCount": 40,
   "files": {
     "js/controller.js": {
       "expectCount": 21,
-      "actualCount": 13,
-      "undocumentLines": [
-        9,
-        10,
-        11,
-        59,
-        67,
-        87,
-        194,
-        202
-      ]
+      "actualCount": 21,
+      "undocumentLines": []
     },
     "js/model.js": {
       "expectCount": 9,

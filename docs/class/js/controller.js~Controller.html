@@ -39,13 +39,13 @@
 </nav>
 
 <div class="content" data-ice="content"><div class="header-notice">
-  <div data-ice="importPath" class="import-path"><pre class="prettyprint"><code data-ice="importPathCode">import Controller from &apos;<span><a href="file/js/controller.js.html#lineNumber8">./js/controller.js</a></span>&apos;</code></pre></div>
+  <div data-ice="importPath" class="import-path"><pre class="prettyprint"><code data-ice="importPathCode">import Controller from &apos;<span><a href="file/js/controller.js.html#lineNumber6">./js/controller.js</a></span>&apos;</code></pre></div>
   <span data-ice="access">public</span>
   <span data-ice="kind">class</span>
   
   
   
-  <span data-ice="source">| <span><a href="file/js/controller.js.html#lineNumber8">source</a></span></span>
+  <span data-ice="source">| <span><a href="file/js/controller.js.html#lineNumber6">source</a></span></span>
 </div>
 
 <div class="self-detail detail">
@@ -71,7 +71,14 @@
 
   
 
-  
+  <div data-ice="exampleDocs">
+    <h4>Example:</h4>
+    
+  <div class="example-doc" data-ice="exampleDoc">
+      
+      <pre class="prettyprint source-code"><code data-ice="exampleCode">let myController = new MyController(model, view);</code></pre>
+    </div>
+</div>
 
   
 
@@ -98,7 +105,7 @@
           
           
           
-          <span class="code" data-ice="name"><span><a href="class/js/controller.js~Controller.html#instance-constructor-constructor">constructor</a></span></span><span class="code" data-ice="signature">()</span>
+          <span class="code" data-ice="name"><span><a href="class/js/controller.js~Controller.html#instance-constructor-constructor">constructor</a></span></span><span class="code" data-ice="signature">(model: <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object">object</a></span>, view: <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object">object</a></span>)</span>
         </p>
       </div>
       <div>
@@ -133,7 +140,7 @@
           
           
           
-          <span class="code" data-ice="name"><span><a href="class/js/controller.js~Controller.html#instance-member-model">model</a></span></span><span class="code" data-ice="signature">: <span>*</span></span>
+          <span class="code" data-ice="name"><span><a href="class/js/controller.js~Controller.html#instance-member-model">model</a></span></span><span class="code" data-ice="signature">: <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object">Object</a></span></span>
         </p>
       </div>
       <div>
@@ -161,7 +168,7 @@
           
           
           
-          <span class="code" data-ice="name"><span><a href="class/js/controller.js~Controller.html#instance-member-view">view</a></span></span><span class="code" data-ice="signature">: <span>*</span></span>
+          <span class="code" data-ice="name"><span><a href="class/js/controller.js~Controller.html#instance-member-view">view</a></span></span><span class="code" data-ice="signature">: <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object">Object</a></span></span>
         </p>
       </div>
       <div>
@@ -195,13 +202,14 @@
           
           
           
-          <span class="code" data-ice="name"><span><a href="class/js/controller.js~Controller.html#instance-member-_activeRoute">_activeRoute</a></span></span><span class="code" data-ice="signature">: <span>*</span></span>
+          <span class="code" data-ice="name"><span><a href="class/js/controller.js~Controller.html#instance-member-_activeRoute">_activeRoute</a></span></span><span class="code" data-ice="signature">: <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String">string</a></span></span>
         </p>
       </div>
       <div>
         
         
-        
+        <div data-ice="description"><p>Store a reference to the active route, allowing us to re-filter todo items as they are marked complete or incomplete.</p>
+</div>
       </div>
     </td>
     <td>
@@ -223,7 +231,7 @@
           
           
           
-          <span class="code" data-ice="name"><span><a href="class/js/controller.js~Controller.html#instance-member-_lastActiveRoute">_lastActiveRoute</a></span></span><span class="code" data-ice="signature">: <span>*</span></span>
+          <span class="code" data-ice="name"><span><a href="class/js/controller.js~Controller.html#instance-member-_lastActiveRoute">_lastActiveRoute</a></span></span><span class="code" data-ice="signature">: <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String">string</a></span></span>
         </p>
       </div>
       <div>
@@ -258,7 +266,7 @@
           
           
           
-          <span class="code" data-ice="name"><span><a href="class/js/controller.js~Controller.html#instance-method-addItem">addItem</a></span></span><span class="code" data-ice="signature">(title: <span>*</span>)</span>
+          <span class="code" data-ice="name"><span><a href="class/js/controller.js~Controller.html#instance-method-addItem">addItem</a></span></span><span class="code" data-ice="signature">(title: <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String">string</a></span>)</span>
         </p>
       </div>
       <div>
@@ -287,13 +295,14 @@
           
           
           
-          <span class="code" data-ice="name"><span><a href="class/js/controller.js~Controller.html#instance-method-editItem">editItem</a></span></span><span class="code" data-ice="signature">(id: <span>*</span>)</span>
+          <span class="code" data-ice="name"><span><a href="class/js/controller.js~Controller.html#instance-method-editItem">editItem</a></span></span><span class="code" data-ice="signature">()</span>
         </p>
       </div>
       <div>
         
         
-        
+        <div data-ice="description"><p>Triggers the item editing mode.</p>
+</div>
       </div>
     </td>
     <td>
@@ -315,13 +324,14 @@
           
           
           
-          <span class="code" data-ice="name"><span><a href="class/js/controller.js~Controller.html#instance-method-editItemCancel">editItemCancel</a></span></span><span class="code" data-ice="signature">(id: <span>*</span>)</span>
+          <span class="code" data-ice="name"><span><a href="class/js/controller.js~Controller.html#instance-method-editItemCancel">editItemCancel</a></span></span><span class="code" data-ice="signature">(id: <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number">number</a></span>)</span>
         </p>
       </div>
       <div>
         
         
-        
+        <div data-ice="description"><p>Cancels the item editing mode.</p>
+</div>
       </div>
     </td>
     <td>
@@ -343,13 +353,14 @@
           
           
           
-          <span class="code" data-ice="name"><span><a href="class/js/controller.js~Controller.html#instance-method-editItemSave">editItemSave</a></span></span><span class="code" data-ice="signature">(id: <span>*</span>, title: <span>*</span>)</span>
+          <span class="code" data-ice="name"><span><a href="class/js/controller.js~Controller.html#instance-method-editItemSave">editItemSave</a></span></span><span class="code" data-ice="signature">(id: <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number">number</a></span>, title: <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String">string</a></span>)</span>
         </p>
       </div>
       <div>
         
         
-        
+        <div data-ice="description"><p>Finishes the item editing mode successfully.</p>
+</div>
       </div>
     </td>
     <td>
@@ -546,7 +557,7 @@ remove it from the DOM and also remove it from storage.</p>
           
           
           
-          <span class="code" data-ice="name"><span><a href="class/js/controller.js~Controller.html#instance-method-toggleAll">toggleAll</a></span></span><span class="code" data-ice="signature">(completed: <span>*</span>)</span>
+          <span class="code" data-ice="name"><span><a href="class/js/controller.js~Controller.html#instance-method-toggleAll">toggleAll</a></span></span><span class="code" data-ice="signature">(completed: <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Boolean">boolean</a></span> | <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/undefined">undefined</a></span>)</span>
         </p>
       </div>
       <div>
@@ -576,13 +587,13 @@ Just pass in the event object.</p>
           
           
           
-          <span class="code" data-ice="name"><span><a href="class/js/controller.js~Controller.html#instance-method-toggleComplete">toggleComplete</a></span></span><span class="code" data-ice="signature">(id: <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number">number</a></span>, checkbox: <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object">object</a></span>, silent: <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Boolean">boolean</a></span> | <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/undefined">undefined</a></span>)</span>
+          <span class="code" data-ice="name"><span><a href="class/js/controller.js~Controller.html#instance-method-toggleComplete">toggleComplete</a></span></span><span class="code" data-ice="signature">(id: <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number">number</a></span>, completed: <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object">object</a></span>, silent: <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Boolean">boolean</a></span> | <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/undefined">undefined</a></span>)</span>
         </p>
       </div>
       <div>
         
         
-        <div data-ice="description"><p>Give it an ID of a model and a checkbox and it will update the item
+        <div data-ice="description"><p>Give it an ID of a model and it will update the item
 in storage based on the checkbox&apos;s state.</p>
 </div>
       </div>
@@ -671,7 +682,7 @@ number of todos.</p>
           
           
           
-          <span class="code" data-ice="name"><span><a href="class/js/controller.js~Controller.html#instance-method-_updateFilterState">_updateFilterState</a></span></span><span class="code" data-ice="signature">(currentPage: <span>*</span>)</span>
+          <span class="code" data-ice="name"><span><a href="class/js/controller.js~Controller.html#instance-method-_updateFilterState">_updateFilterState</a></span></span><span class="code" data-ice="signature">(currentPage: <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String">string</a></span>)</span>
         </p>
       </div>
       <div>
@@ -704,11 +715,11 @@ number of todos.</p>
     
     
     
-    <span class="code" data-ice="name">constructor</span><span class="code" data-ice="signature">()</span>
+    <span class="code" data-ice="name">constructor</span><span class="code" data-ice="signature">(model: <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object">object</a></span>, view: <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object">object</a></span>)</span>
     <span class="right-info">
       
       
-      <span data-ice="source"><span><a href="file/js/controller.js.html#lineNumber9">source</a></span></span>
+      <span data-ice="source"><span><a href="file/js/controller.js.html#lineNumber13">source</a></span></span>
     </span>
   </h3>
 
@@ -719,7 +730,31 @@ number of todos.</p>
 
   
 
-  <div data-ice="properties">
+  <div data-ice="properties"><div data-ice="properties">
+  <h4 data-ice="title">Params:</h4>
+  <table class="params">
+    <thead>
+    <tr><td>Name</td><td>Type</td><td>Attribute</td><td>Description</td></tr>
+    </thead>
+    <tbody>
+    
+    <tr data-ice="property" data-depth="0">
+      <td data-ice="name" class="code" data-depth="0">model</td>
+      <td data-ice="type" class="code"><span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object">object</a></span></td>
+      <td data-ice="appendix"></td>
+      <td data-ice="description"><p>The model instance</p>
+</td>
+    </tr>
+<tr data-ice="property" data-depth="0">
+      <td data-ice="name" class="code" data-depth="0">view</td>
+      <td data-ice="type" class="code"><span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object">object</a></span></td>
+      <td data-ice="appendix"></td>
+      <td data-ice="description"><p>The view instance</p>
+</td>
+    </tr>
+</tbody>
+  </table>
+</div>
 </div>
 
   
@@ -750,11 +785,11 @@ number of todos.</p>
     
     
     
-    <span class="code" data-ice="name">model</span><span class="code" data-ice="signature">: <span>*</span></span>
+    <span class="code" data-ice="name">model</span><span class="code" data-ice="signature">: <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object">Object</a></span></span>
     <span class="right-info">
       
       
-      <span data-ice="source"><span><a href="file/js/controller.js.html#lineNumber10">source</a></span></span>
+      <span data-ice="source"><span><a href="file/js/controller.js.html#lineNumber17">source</a></span></span>
     </span>
   </h3>
 
@@ -793,11 +828,11 @@ number of todos.</p>
     
     
     
-    <span class="code" data-ice="name">view</span><span class="code" data-ice="signature">: <span>*</span></span>
+    <span class="code" data-ice="name">view</span><span class="code" data-ice="signature">: <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object">Object</a></span></span>
     <span class="right-info">
       
       
-      <span data-ice="source"><span><a href="file/js/controller.js.html#lineNumber11">source</a></span></span>
+      <span data-ice="source"><span><a href="file/js/controller.js.html#lineNumber21">source</a></span></span>
     </span>
   </h3>
 
@@ -838,18 +873,19 @@ number of todos.</p>
     
     
     
-    <span class="code" data-ice="name">_activeRoute</span><span class="code" data-ice="signature">: <span>*</span></span>
+    <span class="code" data-ice="name">_activeRoute</span><span class="code" data-ice="signature">: <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String">string</a></span></span>
     <span class="right-info">
       
       
-      <span data-ice="source"><span><a href="file/js/controller.js.html#lineNumber202">source</a></span></span>
+      <span data-ice="source"><span><a href="file/js/controller.js.html#lineNumber224">source</a></span></span>
     </span>
   </h3>
 
   
   
   
-  
+  <div data-ice="description"><p>Store a reference to the active route, allowing us to re-filter todo items as they are marked complete or incomplete.</p>
+</div>
 
   
 
@@ -881,11 +917,11 @@ number of todos.</p>
     
     
     
-    <span class="code" data-ice="name">_lastActiveRoute</span><span class="code" data-ice="signature">: <span>*</span></span>
+    <span class="code" data-ice="name">_lastActiveRoute</span><span class="code" data-ice="signature">: <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String">string</a></span></span>
     <span class="right-info">
       
       
-      <span data-ice="source"><span><a href="file/js/controller.js.html#lineNumber194">source</a></span></span>
+      <span data-ice="source"><span><a href="file/js/controller.js.html#lineNumber212">source</a></span></span>
     </span>
   </h3>
 
@@ -927,11 +963,11 @@ number of todos.</p>
     
     
     
-    <span class="code" data-ice="name">addItem</span><span class="code" data-ice="signature">(title: <span>*</span>)</span>
+    <span class="code" data-ice="name">addItem</span><span class="code" data-ice="signature">(title: <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String">string</a></span>)</span>
     <span class="right-info">
       
       
-      <span data-ice="source"><span><a href="file/js/controller.js.html#lineNumber46">source</a></span></span>
+      <span data-ice="source"><span><a href="file/js/controller.js.html#lineNumber56">source</a></span></span>
     </span>
   </h3>
 
@@ -954,7 +990,7 @@ object and it&apos;ll handle the DOM insertion and saving of the new item.</p>
     
     <tr data-ice="property" data-depth="0">
       <td data-ice="name" class="code" data-depth="0">title</td>
-      <td data-ice="type" class="code"><span>*</span></td>
+      <td data-ice="type" class="code"><span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String">string</a></span></td>
       <td data-ice="appendix"></td>
       <td data-ice="description"></td>
     </tr>
@@ -988,38 +1024,23 @@ object and it&apos;ll handle the DOM insertion and saving of the new item.</p>
     
     
     
-    <span class="code" data-ice="name">editItem</span><span class="code" data-ice="signature">(id: <span>*</span>)</span>
+    <span class="code" data-ice="name">editItem</span><span class="code" data-ice="signature">()</span>
     <span class="right-info">
       
       
-      <span data-ice="source"><span><a href="file/js/controller.js.html#lineNumber59">source</a></span></span>
+      <span data-ice="source"><span><a href="file/js/controller.js.html#lineNumber70">source</a></span></span>
     </span>
   </h3>
 
   
   
   
-  
-
-  
-
-  <div data-ice="properties"><div data-ice="properties">
-  <h4 data-ice="title">Params:</h4>
-  <table class="params">
-    <thead>
-    <tr><td>Name</td><td>Type</td><td>Attribute</td><td>Description</td></tr>
-    </thead>
-    <tbody>
-    
-    <tr data-ice="property" data-depth="0">
-      <td data-ice="name" class="code" data-depth="0">id</td>
-      <td data-ice="type" class="code"><span>*</span></td>
-      <td data-ice="appendix"></td>
-      <td data-ice="description"></td>
-    </tr>
-</tbody>
-  </table>
+  <div data-ice="description"><p>Triggers the item editing mode.</p>
 </div>
+
+  
+
+  <div data-ice="properties">
 </div>
 
   
@@ -1047,18 +1068,19 @@ object and it&apos;ll handle the DOM insertion and saving of the new item.</p>
     
     
     
-    <span class="code" data-ice="name">editItemCancel</span><span class="code" data-ice="signature">(id: <span>*</span>)</span>
+    <span class="code" data-ice="name">editItemCancel</span><span class="code" data-ice="signature">(id: <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number">number</a></span>)</span>
     <span class="right-info">
       
       
-      <span data-ice="source"><span><a href="file/js/controller.js.html#lineNumber87">source</a></span></span>
+      <span data-ice="source"><span><a href="file/js/controller.js.html#lineNumber101">source</a></span></span>
     </span>
   </h3>
 
   
   
   
-  
+  <div data-ice="description"><p>Cancels the item editing mode.</p>
+</div>
 
   
 
@@ -1072,7 +1094,7 @@ object and it&apos;ll handle the DOM insertion and saving of the new item.</p>
     
     <tr data-ice="property" data-depth="0">
       <td data-ice="name" class="code" data-depth="0">id</td>
-      <td data-ice="type" class="code"><span>*</span></td>
+      <td data-ice="type" class="code"><span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number">number</a></span></td>
       <td data-ice="appendix"></td>
       <td data-ice="description"></td>
     </tr>
@@ -1106,18 +1128,19 @@ object and it&apos;ll handle the DOM insertion and saving of the new item.</p>
     
     
     
-    <span class="code" data-ice="name">editItemSave</span><span class="code" data-ice="signature">(id: <span>*</span>, title: <span>*</span>)</span>
+    <span class="code" data-ice="name">editItemSave</span><span class="code" data-ice="signature">(id: <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number">number</a></span>, title: <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String">string</a></span>)</span>
     <span class="right-info">
       
       
-      <span data-ice="source"><span><a href="file/js/controller.js.html#lineNumber67">source</a></span></span>
+      <span data-ice="source"><span><a href="file/js/controller.js.html#lineNumber80">source</a></span></span>
     </span>
   </h3>
 
   
   
   
-  
+  <div data-ice="description"><p>Finishes the item editing mode successfully.</p>
+</div>
 
   
 
@@ -1131,13 +1154,13 @@ object and it&apos;ll handle the DOM insertion and saving of the new item.</p>
     
     <tr data-ice="property" data-depth="0">
       <td data-ice="name" class="code" data-depth="0">id</td>
-      <td data-ice="type" class="code"><span>*</span></td>
+      <td data-ice="type" class="code"><span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number">number</a></span></td>
       <td data-ice="appendix"></td>
       <td data-ice="description"></td>
     </tr>
 <tr data-ice="property" data-depth="0">
       <td data-ice="name" class="code" data-depth="0">title</td>
-      <td data-ice="type" class="code"><span>*</span></td>
+      <td data-ice="type" class="code"><span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String">string</a></span></td>
       <td data-ice="appendix"></td>
       <td data-ice="description"></td>
     </tr>
@@ -1175,7 +1198,7 @@ object and it&apos;ll handle the DOM insertion and saving of the new item.</p>
     <span class="right-info">
       
       
-      <span data-ice="source"><span><a href="file/js/controller.js.html#lineNumber109">source</a></span></span>
+      <span data-ice="source"><span><a href="file/js/controller.js.html#lineNumber122">source</a></span></span>
     </span>
   </h3>
 
@@ -1219,7 +1242,7 @@ object and it&apos;ll handle the DOM insertion and saving of the new item.</p>
     <span class="right-info">
       
       
-      <span data-ice="source"><span><a href="file/js/controller.js.html#lineNumber99">source</a></span></span>
+      <span data-ice="source"><span><a href="file/js/controller.js.html#lineNumber112">source</a></span></span>
     </span>
   </h3>
 
@@ -1244,8 +1267,7 @@ remove it from the DOM and also remove it from storage.</p>
       <td data-ice="name" class="code" data-depth="0">id</td>
       <td data-ice="type" class="code"><span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number">number</a></span></td>
       <td data-ice="appendix"></td>
-      <td data-ice="description"><p>The ID of the item to remove from the DOM and
-storage</p>
+      <td data-ice="description"><p>The ID of the item to remove from the DOM and storage</p>
 </td>
     </tr>
 </tbody>
@@ -1282,7 +1304,7 @@ storage</p>
     <span class="right-info">
       
       
-      <span data-ice="source"><span><a href="file/js/controller.js.html#lineNumber217">source</a></span></span>
+      <span data-ice="source"><span><a href="file/js/controller.js.html#lineNumber238">source</a></span></span>
     </span>
   </h3>
 
@@ -1343,7 +1365,7 @@ storage</p>
     <span class="right-info">
       
       
-      <span data-ice="source"><span><a href="file/js/controller.js.html#lineNumber236">source</a></span></span>
+      <span data-ice="source"><span><a href="file/js/controller.js.html#lineNumber257">source</a></span></span>
     </span>
   </h3>
 
@@ -1387,7 +1409,7 @@ storage</p>
     <span class="right-info">
       
       
-      <span data-ice="source"><span><a href="file/js/controller.js.html#lineNumber227">source</a></span></span>
+      <span data-ice="source"><span><a href="file/js/controller.js.html#lineNumber248">source</a></span></span>
     </span>
   </h3>
 
@@ -1432,7 +1454,7 @@ todo-list</p>
     <span class="right-info">
       
       
-      <span data-ice="source"><span><a href="file/js/controller.js.html#lineNumber245">source</a></span></span>
+      <span data-ice="source"><span><a href="file/js/controller.js.html#lineNumber266">source</a></span></span>
     </span>
   </h3>
 
@@ -1472,11 +1494,11 @@ todo-list</p>
     
     
     
-    <span class="code" data-ice="name">toggleAll</span><span class="code" data-ice="signature">(completed: <span>*</span>)</span>
+    <span class="code" data-ice="name">toggleAll</span><span class="code" data-ice="signature">(completed: <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Boolean">boolean</a></span> | <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/undefined">undefined</a></span>)</span>
     <span class="right-info">
       
       
-      <span data-ice="source"><span><a href="file/js/controller.js.html#lineNumber143">source</a></span></span>
+      <span data-ice="source"><span><a href="file/js/controller.js.html#lineNumber157">source</a></span></span>
     </span>
   </h3>
 
@@ -1499,7 +1521,7 @@ Just pass in the event object.</p>
     
     <tr data-ice="property" data-depth="0">
       <td data-ice="name" class="code" data-depth="0">completed</td>
-      <td data-ice="type" class="code"><span>*</span></td>
+      <td data-ice="type" class="code"><span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Boolean">boolean</a></span> | <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/undefined">undefined</a></span></td>
       <td data-ice="appendix"></td>
       <td data-ice="description"></td>
     </tr>
@@ -1533,18 +1555,18 @@ Just pass in the event object.</p>
     
     
     
-    <span class="code" data-ice="name">toggleComplete</span><span class="code" data-ice="signature">(id: <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number">number</a></span>, checkbox: <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object">object</a></span>, silent: <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Boolean">boolean</a></span> | <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/undefined">undefined</a></span>)</span>
+    <span class="code" data-ice="name">toggleComplete</span><span class="code" data-ice="signature">(id: <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number">number</a></span>, completed: <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object">object</a></span>, silent: <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Boolean">boolean</a></span> | <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/undefined">undefined</a></span>)</span>
     <span class="right-info">
       
       
-      <span data-ice="source"><span><a href="file/js/controller.js.html#lineNumber127">source</a></span></span>
+      <span data-ice="source"><span><a href="file/js/controller.js.html#lineNumber140">source</a></span></span>
     </span>
   </h3>
 
   
   
   
-  <div data-ice="description"><p>Give it an ID of a model and a checkbox and it will update the item
+  <div data-ice="description"><p>Give it an ID of a model and it will update the item
 in storage based on the checkbox&apos;s state.</p>
 </div>
 
@@ -1566,10 +1588,10 @@ in storage based on the checkbox&apos;s state.</p>
 </td>
     </tr>
 <tr data-ice="property" data-depth="0">
-      <td data-ice="name" class="code" data-depth="0">checkbox</td>
+      <td data-ice="name" class="code" data-depth="0">completed</td>
       <td data-ice="type" class="code"><span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object">object</a></span></td>
       <td data-ice="appendix"></td>
-      <td data-ice="description"><p>The checkbox to check the state of complete
+      <td data-ice="description"><p>To check the state of complete
                          or not</p>
 </td>
     </tr>
@@ -1616,7 +1638,7 @@ in storage based on the checkbox&apos;s state.</p>
     <span class="right-info">
       
       
-      <span data-ice="source"><span><a href="file/js/controller.js.html#lineNumber176">source</a></span></span>
+      <span data-ice="source"><span><a href="file/js/controller.js.html#lineNumber192">source</a></span></span>
     </span>
   </h3>
 
@@ -1677,7 +1699,7 @@ in storage based on the checkbox&apos;s state.</p>
     <span class="right-info">
       
       
-      <span data-ice="source"><span><a href="file/js/controller.js.html#lineNumber156">source</a></span></span>
+      <span data-ice="source"><span><a href="file/js/controller.js.html#lineNumber171">source</a></span></span>
     </span>
   </h3>
 
@@ -1718,11 +1740,11 @@ number of todos.</p>
     
     
     
-    <span class="code" data-ice="name">_updateFilterState</span><span class="code" data-ice="signature">(currentPage: <span>*</span>)</span>
+    <span class="code" data-ice="name">_updateFilterState</span><span class="code" data-ice="signature">(currentPage: <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String">string</a></span>)</span>
     <span class="right-info">
       
       
-      <span data-ice="source"><span><a href="file/js/controller.js.html#lineNumber199">source</a></span></span>
+      <span data-ice="source"><span><a href="file/js/controller.js.html#lineNumber219">source</a></span></span>
     </span>
   </h3>
 
@@ -1744,7 +1766,7 @@ number of todos.</p>
     
     <tr data-ice="property" data-depth="0">
       <td data-ice="name" class="code" data-depth="0">currentPage</td>
-      <td data-ice="type" class="code"><span>*</span></td>
+      <td data-ice="type" class="code"><span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String">string</a></span></td>
       <td data-ice="appendix"></td>
       <td data-ice="description"></td>
     </tr>

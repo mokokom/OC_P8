@@ -578,7 +578,7 @@
     "__docId__": 49,
     "kind": "file",
     "name": "js/controller.js",
-    "content": "/**\n * Takes a model and view and acts as the controller between them\n *\n * @constructor\n * @param {object} model The model instance\n * @param {object} view The view instance\n */\nexport default class Controller {\n\tconstructor(model, view) {\n\t\tthis.model = model;\n\t\tthis.view = view;\n\t\tthis.addItem = this.addItem.bind(this);\n\t\t/* this.view = this.view.bind(this); */\n\t\tthis.view.bind(\"newTodo\", title => {\n\t\t\tthis.addItem(title);\n\t\t});\n\t\tthis.view.bind(\"itemEdit\", item => {\n\t\t\tthis.editItem(item.id);\n\t\t});\n\t\tthis.view.bind(\"itemEditDone\", item => {\n\t\t\tthis.editItemSave(item.id, item.title);\n\t\t});\n\t\tthis.view.bind(\"itemEditCancel\", item => {\n\t\t\tthis.editItemCancel(item.id);\n\t\t});\n\t\tthis.view.bind(\"itemRemove\", item => {\n\t\t\tthis.removeItem(item.id);\n\t\t});\n\n\t\tthis.view.bind(\"itemToggle\", item => {\n\t\t\tthis.toggleComplete(item.id, item.completed);\n\t\t});\n\n\t\tthis.view.bind(\"removeCompleted\", () => {\n\t\t\tthis.removeCompletedItems();\n\t\t});\n\n\t\tthis.view.bind(\"toggleAll\", status => {\n\t\t\tthis.toggleAll(status.completed);\n\t\t});\n\t}\n\t/**\n\t * An event to fire whenever you want to add an item. Simply pass in the event\n\t * object and it'll handle the DOM insertion and saving of the new item.\n\t */\n\taddItem(title) {\n\t\tif (title.trim() === \"\") {\n\t\t\treturn;\n\t\t}\n\n\t\tthis.model.create(title, () => {\n\t\t\tthis.view.render(\"clearNewTodo\");\n\t\t\tthis._filter(true);\n\t\t});\n\t}\n\t/*\n\t * Triggers the item editing mode.\n\t */\n\teditItem(id) {\n\t\tthis.model.read(id, data => {\n\t\t\tthis.view.render(\"editItem\", { id: id, title: data[0].title });\n\t\t});\n\t}\n\t/*\n\t * Finishes the item editing mode successfully.\n\t */\n\teditItemSave(id, title) {\n\t\twhile (title[0] === \" \") {\n\t\t\ttitle = title.slice(1);\n\t\t}\n\n\t\twhile (title[title.length - 1] === \" \") {\n\t\t\ttitle = title.slice(0, -1);\n\t\t}\n\n\t\tif (title.length !== 0) {\n\t\t\tthis.model.update(id, { title: title }, () => {\n\t\t\t\tthis.view.render(\"editItemDone\", { id: id, title: title });\n\t\t\t});\n\t\t} else {\n\t\t\tthis.removeItem(id);\n\t\t}\n\t}\n\t/*\n\t * Cancels the item editing mode.\n\t */\n\teditItemCancel(id) {\n\t\tthis.model.read(id, data => {\n\t\t\tthis.view.render(\"editItemDone\", { id: id, title: data[0].title });\n\t\t});\n\t}\n\t/**\n\t * By giving it an ID it'll find the DOM element matching that ID,\n\t * remove it from the DOM and also remove it from storage.\n\t *\n\t * @param {number} id The ID of the item to remove from the DOM and\n\t * storage\n\t */\n\tremoveItem(id) {\n\t\tthis.model.remove(id, () => {\n\t\t\tthis.view.render(\"removeItem\", id);\n\t\t});\n\n\t\tthis._filter();\n\t}\n\t/**\n\t * Will remove all completed items from the DOM and storage.\n\t */\n\tremoveCompletedItems() {\n\t\tthis.model.read({ completed: true }, data => {\n\t\t\tdata.forEach(item => {\n\t\t\t\tthis.removeItem(item.id);\n\t\t\t});\n\t\t});\n\n\t\tthis._filter();\n\t}\n\t/**\n\t * Give it an ID of a model and a checkbox and it will update the item\n\t * in storage based on the checkbox's state.\n\t *\n\t * @param {number} id The ID of the element to complete or uncomplete\n\t * @param {object} checkbox The checkbox to check the state of complete\n\t *                          or not\n\t * @param {boolean|undefined} silent Prevent re-filtering the todo items\n\t */\n\ttoggleComplete(id, completed, silent) {\n\t\tthis.model.update(id, { completed: completed }, () => {\n\t\t\tthis.view.render(\"elementComplete\", {\n\t\t\t\tid: id,\n\t\t\t\tcompleted: completed\n\t\t\t});\n\t\t});\n\n\t\tif (!silent) {\n\t\t\tthis._filter();\n\t\t}\n\t}\n\t/**\n\t * Will toggle ALL checkboxes' on/off state and completeness of models.\n\t * Just pass in the event object.\n\t */\n\ttoggleAll(completed) {\n\t\tthis.model.read({ completed: !completed }, data => {\n\t\t\tdata.forEach(item => {\n\t\t\t\tthis.toggleComplete(item.id, completed, true);\n\t\t\t});\n\t\t});\n\n\t\tthis._filter();\n\t}\n\t/**\n\t * Updates the pieces of the page which change depending on the remaining\n\t * number of todos.\n\t */\n\t_updateCount() {\n\t\tthis.model.getCount(todos => {\n\t\t\tthis.view.render(\"updateElementCount\", todos.active);\n\t\t\tthis.view.render(\"clearCompletedButton\", {\n\t\t\t\tcompleted: todos.completed,\n\t\t\t\tvisible: todos.completed > 0\n\t\t\t});\n\n\t\t\tthis.view.render(\"toggleAll\", {\n\t\t\t\tchecked: todos.completed === todos.total\n\t\t\t});\n\t\t\tthis.view.render(\"contentBlockVisibility\", {\n\t\t\t\tvisible: todos.total > 0\n\t\t\t});\n\t\t});\n\t}\n\t/**\n\t * Re-filters the todo items, based on the active route.\n\t * @param {boolean|undefined} force  forces a re-painting of todo items.\n\t */\n\t_filter(force) {\n\t\tlet activeRoute =\n\t\t\tthis._activeRoute.charAt(0).toUpperCase() + this._activeRoute.substr(1);\n\n\t\t// Update the elements on the page, which change with each completed todo\n\t\tthis._updateCount();\n\n\t\t// If the last active route isn't \"All\", or we're switching routes, we\n\t\t// re-create the todo item elements, calling:\n\t\t//   this.show[All|Active|Completed]();\n\t\tif (\n\t\t\tforce ||\n\t\t\tthis._lastActiveRoute !== \"All\" ||\n\t\t\tthis._lastActiveRoute !== activeRoute\n\t\t) {\n\t\t\tthis[\"show\" + activeRoute]();\n\t\t}\n\n\t\tthis._lastActiveRoute = activeRoute;\n\t}\n\t/**\n\t * Simply updates the filter nav's selected states\n\t */\n\t_updateFilterState(currentPage) {\n\t\t// Store a reference to the active route, allowing us to re-filter todo\n\t\t// items as they are marked complete or incomplete.\n\t\tthis._activeRoute = currentPage;\n\n\t\tif (currentPage === \"\") {\n\t\t\tthis._activeRoute = \"All\";\n\t\t}\n\n\t\tthis._filter();\n\n\t\tthis.view.render(\"setFilter\", currentPage);\n\t}\n\t/**\n\t * Loads and initialises the view\n\t *\n\t * @param {string} '' | 'active' | 'completed'\n\t */\n\tsetView(locationHash) {\n\t\tlet route = locationHash.split(\"/\")[1];\n\t\tlet page = route || \"\";\n\t\tthis._updateFilterState(page);\n\t}\n\n\t/**\n\t * An event to fire on load. Will get all items and display them in the\n\t * todo-list\n\t */\n\tshowAll() {\n\t\tthis.model.read(data => {\n\t\t\tthis.view.render(\"showEntries\", data);\n\t\t});\n\t}\n\n\t/**\n\t * Renders all active tasks\n\t */\n\tshowActive() {\n\t\tthis.model.read({ completed: false }, data => {\n\t\t\tthis.view.render(\"showEntries\", data);\n\t\t});\n\t}\n\n\t/**\n\t * Renders all completed tasks\n\t */\n\tshowCompleted() {\n\t\tthis.model.read({ completed: true }, data => {\n\t\t\tthis.view.render(\"showEntries\", data);\n\t\t});\n\t}\n}\n",
+    "content": "/**\n * Takes a model and view and acts as the controller between them\n * @example\n * let myController = new MyController(model, view);\n */\nexport default class Controller {\n\t/**\n\t *\n\t * @constructor\n\t * @param {object} model The model instance\n\t * @param {object} view The view instance\n\t */\n\tconstructor(model, view) {\n\t\t/**\n\t\t * @type {Object} model\n\t\t */\n\t\tthis.model = model;\n\t\t/**\n\t\t * @type {Object} view\n\t\t */\n\t\tthis.view = view;\n\t\tthis.addItem = this.addItem.bind(this);\n\t\tthis.view.bind(\"newTodo\", title => {\n\t\t\tthis.addItem(title);\n\t\t});\n\t\tthis.view.bind(\"itemEdit\", item => {\n\t\t\tthis.editItem(item.id);\n\t\t});\n\t\tthis.view.bind(\"itemEditDone\", item => {\n\t\t\tthis.editItemSave(item.id, item.title);\n\t\t});\n\t\tthis.view.bind(\"itemEditCancel\", item => {\n\t\t\tthis.editItemCancel(item.id);\n\t\t});\n\t\tthis.view.bind(\"itemRemove\", item => {\n\t\t\tthis.removeItem(item.id);\n\t\t});\n\n\t\tthis.view.bind(\"itemToggle\", item => {\n\t\t\tthis.toggleComplete(item.id, item.completed);\n\t\t});\n\n\t\tthis.view.bind(\"removeCompleted\", () => {\n\t\t\tthis.removeCompletedItems();\n\t\t});\n\n\t\tthis.view.bind(\"toggleAll\", status => {\n\t\t\tthis.toggleAll(status.completed);\n\t\t});\n\t}\n\t/**\n\t * An event to fire whenever you want to add an item. Simply pass in the event\n\t * object and it'll handle the DOM insertion and saving of the new item.\n\t * @param {string} title\n\t */\n\taddItem(title) {\n\t\tif (title.trim() === \"\") {\n\t\t\treturn;\n\t\t}\n\n\t\tthis.model.create(title, () => {\n\t\t\tthis.view.render(\"clearNewTodo\");\n\t\t\tthis._filter(true);\n\t\t});\n\t}\n\t/**\n\t * Triggers the item editing mode.\n\t * @param {number}\n\t */\n\teditItem(id) {\n\t\tthis.model.read(id, data => {\n\t\t\tthis.view.render(\"editItem\", { id: id, title: data[0].title });\n\t\t});\n\t}\n\t/**\n\t * Finishes the item editing mode successfully.\n\t * @param {number} id\n\t * @param {string} title\n\t */\n\teditItemSave(id, title) {\n\t\twhile (title[0] === \" \") {\n\t\t\ttitle = title.slice(1);\n\t\t}\n\n\t\twhile (title[title.length - 1] === \" \") {\n\t\t\ttitle = title.slice(0, -1);\n\t\t}\n\n\t\tif (title.length !== 0) {\n\t\t\tthis.model.update(id, { title: title }, () => {\n\t\t\t\tthis.view.render(\"editItemDone\", { id: id, title: title });\n\t\t\t});\n\t\t} else {\n\t\t\tthis.removeItem(id);\n\t\t}\n\t}\n\t/**\n\t * Cancels the item editing mode.\n\t * @param {number} id\n\t */\n\teditItemCancel(id) {\n\t\tthis.model.read(id, data => {\n\t\t\tthis.view.render(\"editItemDone\", { id: id, title: data[0].title });\n\t\t});\n\t}\n\t/**\n\t * By giving it an ID it'll find the DOM element matching that ID,\n\t * remove it from the DOM and also remove it from storage.\n\t * @param {number} id\n\t * The ID of the item to remove from the DOM and storage\n\t */\n\tremoveItem(id) {\n\t\tthis.model.remove(id, () => {\n\t\t\tthis.view.render(\"removeItem\", id);\n\t\t});\n\n\t\tthis._filter();\n\t}\n\t/**\n\t * Will remove all completed items from the DOM and storage.\n\t */\n\tremoveCompletedItems() {\n\t\tthis.model.read({ completed: true }, data => {\n\t\t\tdata.forEach(item => {\n\t\t\t\tthis.removeItem(item.id);\n\t\t\t});\n\t\t});\n\n\t\tthis._filter();\n\t}\n\t/**\n\t * Give it an ID of a model and it will update the item\n\t * in storage based on the checkbox's state.\n\t *\n\t * @param {number} id The ID of the element to complete or uncomplete\n\t * @param {object} completed To check the state of complete\n\t *                          or not\n\t * @param {boolean|undefined} silent Prevent re-filtering the todo items\n\t */\n\ttoggleComplete(id, completed, silent) {\n\t\tthis.model.update(id, { completed: completed }, () => {\n\t\t\tthis.view.render(\"elementComplete\", {\n\t\t\t\tid: id,\n\t\t\t\tcompleted: completed\n\t\t\t});\n\t\t});\n\n\t\tif (!silent) {\n\t\t\tthis._filter();\n\t\t}\n\t}\n\t/**\n\t * Will toggle ALL checkboxes' on/off state and completeness of models.\n\t * Just pass in the event object.\n\t * @param {boolean|undefined} completed\n\t */\n\ttoggleAll(completed) {\n\t\tthis.model.read({ completed: !completed }, data => {\n\t\t\tdata.forEach(item => {\n\t\t\t\tthis.toggleComplete(item.id, completed, true);\n\t\t\t});\n\t\t});\n\n\t\tthis._filter();\n\t}\n\t/**\n\t * Updates the pieces of the page which change depending on the remaining\n\t * number of todos.\n\t * @private\n\t */\n\t_updateCount() {\n\t\tthis.model.getCount(todos => {\n\t\t\tthis.view.render(\"updateElementCount\", todos.active);\n\t\t\tthis.view.render(\"clearCompletedButton\", {\n\t\t\t\tcompleted: todos.completed,\n\t\t\t\tvisible: todos.completed > 0\n\t\t\t});\n\n\t\t\tthis.view.render(\"toggleAll\", {\n\t\t\t\tchecked: todos.completed === todos.total\n\t\t\t});\n\t\t\tthis.view.render(\"contentBlockVisibility\", {\n\t\t\t\tvisible: todos.total > 0\n\t\t\t});\n\t\t});\n\t}\n\t/**\n\t * Re-filters the todo items, based on the active route.\n\t * @param {boolean|undefined} force  forces a re-painting of todo items.\n\t * @private\n\t */\n\t_filter(force) {\n\t\tlet activeRoute =\n\t\t\tthis._activeRoute.charAt(0).toUpperCase() + this._activeRoute.substr(1);\n\n\t\t// Update the elements on the page, which change with each completed todo\n\t\tthis._updateCount();\n\n\t\t// If the last active route isn't \"All\", or we're switching routes, we\n\t\t// re-create the todo item elements, calling:\n\t\t//   this.show[All|Active|Completed]();\n\t\tif (\n\t\t\tforce ||\n\t\t\tthis._lastActiveRoute !== \"All\" ||\n\t\t\tthis._lastActiveRoute !== activeRoute\n\t\t) {\n\t\t\tthis[\"show\" + activeRoute]();\n\t\t}\n\t\t/**\n\t\t * @type {string} _lastActiveRoute\n\t\t */\n\t\tthis._lastActiveRoute = activeRoute;\n\t}\n\t/**\n\t * Simply updates the filter nav's selected states\n\t * @param {string} currentPage\n\t * @private\n\t */\n\t_updateFilterState(currentPage) {\n\t\t/**\n\t\t * Store a reference to the active route, allowing us to re-filter todo items as they are marked complete or incomplete.\n\t\t * @type {string} _activeRoute\n\t\t */\n\t\tthis._activeRoute = currentPage;\n\n\t\tif (currentPage === \"\") {\n\t\t\tthis._activeRoute = \"All\";\n\t\t}\n\n\t\tthis._filter();\n\n\t\tthis.view.render(\"setFilter\", currentPage);\n\t}\n\t/**\n\t * Loads and initialises the view\n\t * @param {string} '' | 'active' | 'completed'\n\t */\n\tsetView(locationHash) {\n\t\tlet route = locationHash.split(\"/\")[1];\n\t\tlet page = route || \"\";\n\t\tthis._updateFilterState(page);\n\t}\n\n\t/**\n\t * An event to fire on load. Will get all items and display them in the\n\t * todo-list\n\t */\n\tshowAll() {\n\t\tthis.model.read(data => {\n\t\t\tthis.view.render(\"showEntries\", data);\n\t\t});\n\t}\n\n\t/**\n\t * Renders all active tasks\n\t */\n\tshowActive() {\n\t\tthis.model.read({ completed: false }, data => {\n\t\t\tthis.view.render(\"showEntries\", data);\n\t\t});\n\t}\n\n\t/**\n\t * Renders all completed tasks\n\t */\n\tshowCompleted() {\n\t\tthis.model.read({ completed: true }, data => {\n\t\t\tthis.view.render(\"showEntries\", data);\n\t\t});\n\t}\n}\n",
     "static": true,
     "longname": "/Users/Mokoke/Documents/DEV/OCR/P8/oc_p8_dev/js/controller.js",
     "access": "public",
@@ -597,7 +597,24 @@
     "importPath": "./js/controller.js",
     "importStyle": "Controller",
     "description": "Takes a model and view and acts as the controller between them",
-    "lineNumber": 8,
+    "examples": [
+      "let myController = new MyController(model, view);"
+    ],
+    "lineNumber": 6,
+    "interface": false
+  },
+  {
+    "__docId__": 51,
+    "kind": "constructor",
+    "name": "constructor",
+    "memberof": "js/controller.js~Controller",
+    "generator": false,
+    "async": false,
+    "static": false,
+    "longname": "js/controller.js~Controller#constructor",
+    "access": "public",
+    "description": "",
+    "lineNumber": 13,
     "unknown": [
       {
         "tagName": "@constructor",
@@ -625,22 +642,7 @@
         "name": "view",
         "description": "The view instance"
       }
-    ],
-    "interface": false
-  },
-  {
-    "__docId__": 51,
-    "kind": "constructor",
-    "name": "constructor",
-    "memberof": "js/controller.js~Controller",
-    "generator": false,
-    "async": false,
-    "static": false,
-    "longname": "js/controller.js~Controller#constructor",
-    "access": "public",
-    "description": null,
-    "lineNumber": 9,
-    "undocument": true
+    ]
   },
   {
     "__docId__": 52,
@@ -650,13 +652,15 @@
     "static": false,
     "longname": "js/controller.js~Controller#model",
     "access": "public",
-    "description": null,
-    "lineNumber": 10,
-    "undocument": true,
+    "description": "",
+    "lineNumber": 17,
     "type": {
+      "nullable": null,
       "types": [
-        "*"
-      ]
+        "Object"
+      ],
+      "spread": false,
+      "description": null
     }
   },
   {
@@ -667,13 +671,15 @@
     "static": false,
     "longname": "js/controller.js~Controller#view",
     "access": "public",
-    "description": null,
-    "lineNumber": 11,
-    "undocument": true,
+    "description": "",
+    "lineNumber": 21,
     "type": {
+      "nullable": null,
       "types": [
-        "*"
-      ]
+        "Object"
+      ],
+      "spread": false,
+      "description": null
     }
   },
   {
@@ -687,13 +693,17 @@
     "longname": "js/controller.js~Controller#addItem",
     "access": "public",
     "description": "An event to fire whenever you want to add an item. Simply pass in the event\nobject and it'll handle the DOM insertion and saving of the new item.",
-    "lineNumber": 46,
+    "lineNumber": 56,
     "params": [
       {
-        "name": "title",
+        "nullable": null,
         "types": [
-          "*"
-        ]
+          "string"
+        ],
+        "spread": false,
+        "optional": false,
+        "name": "title",
+        "description": ""
       }
     ],
     "return": null
@@ -708,17 +718,9 @@
     "static": false,
     "longname": "js/controller.js~Controller#editItem",
     "access": "public",
-    "description": null,
-    "lineNumber": 59,
-    "undocument": true,
-    "params": [
-      {
-        "name": "id",
-        "types": [
-          "*"
-        ]
-      }
-    ],
+    "description": "Triggers the item editing mode.",
+    "lineNumber": 70,
+    "params": [],
     "return": null
   },
   {
@@ -731,21 +733,28 @@
     "static": false,
     "longname": "js/controller.js~Controller#editItemSave",
     "access": "public",
-    "description": null,
-    "lineNumber": 67,
-    "undocument": true,
+    "description": "Finishes the item editing mode successfully.",
+    "lineNumber": 80,
     "params": [
       {
-        "name": "id",
+        "nullable": null,
         "types": [
-          "*"
-        ]
+          "number"
+        ],
+        "spread": false,
+        "optional": false,
+        "name": "id",
+        "description": ""
       },
       {
-        "name": "title",
+        "nullable": null,
         "types": [
-          "*"
-        ]
+          "string"
+        ],
+        "spread": false,
+        "optional": false,
+        "name": "title",
+        "description": ""
       }
     ],
     "return": null
@@ -760,15 +769,18 @@
     "static": false,
     "longname": "js/controller.js~Controller#editItemCancel",
     "access": "public",
-    "description": null,
-    "lineNumber": 87,
-    "undocument": true,
+    "description": "Cancels the item editing mode.",
+    "lineNumber": 101,
     "params": [
       {
-        "name": "id",
+        "nullable": null,
         "types": [
-          "*"
-        ]
+          "number"
+        ],
+        "spread": false,
+        "optional": false,
+        "name": "id",
+        "description": ""
       }
     ],
     "return": null
@@ -784,7 +796,7 @@
     "longname": "js/controller.js~Controller#removeItem",
     "access": "public",
     "description": "By giving it an ID it'll find the DOM element matching that ID,\nremove it from the DOM and also remove it from storage.",
-    "lineNumber": 99,
+    "lineNumber": 112,
     "params": [
       {
         "nullable": null,
@@ -794,7 +806,7 @@
         "spread": false,
         "optional": false,
         "name": "id",
-        "description": "The ID of the item to remove from the DOM and\nstorage"
+        "description": "The ID of the item to remove from the DOM and storage"
       }
     ],
     "return": null
@@ -810,7 +822,7 @@
     "longname": "js/controller.js~Controller#removeCompletedItems",
     "access": "public",
     "description": "Will remove all completed items from the DOM and storage.",
-    "lineNumber": 109,
+    "lineNumber": 122,
     "params": [],
     "return": null
   },
@@ -824,8 +836,8 @@
     "static": false,
     "longname": "js/controller.js~Controller#toggleComplete",
     "access": "public",
-    "description": "Give it an ID of a model and a checkbox and it will update the item\nin storage based on the checkbox's state.",
-    "lineNumber": 127,
+    "description": "Give it an ID of a model and it will update the item\nin storage based on the checkbox's state.",
+    "lineNumber": 140,
     "params": [
       {
         "nullable": null,
@@ -844,8 +856,8 @@
         ],
         "spread": false,
         "optional": false,
-        "name": "checkbox",
-        "description": "The checkbox to check the state of complete\n                         or not"
+        "name": "completed",
+        "description": "To check the state of complete\n                         or not"
       },
       {
         "nullable": null,
@@ -872,13 +884,18 @@
     "longname": "js/controller.js~Controller#toggleAll",
     "access": "public",
     "description": "Will toggle ALL checkboxes' on/off state and completeness of models.\nJust pass in the event object.",
-    "lineNumber": 143,
+    "lineNumber": 157,
     "params": [
       {
-        "name": "completed",
+        "nullable": null,
         "types": [
-          "*"
-        ]
+          "boolean",
+          "undefined"
+        ],
+        "spread": false,
+        "optional": false,
+        "name": "completed",
+        "description": ""
       }
     ],
     "return": null
@@ -894,7 +911,7 @@
     "longname": "js/controller.js~Controller#_updateCount",
     "access": "private",
     "description": "Updates the pieces of the page which change depending on the remaining\nnumber of todos.",
-    "lineNumber": 156,
+    "lineNumber": 171,
     "params": [],
     "return": null
   },
@@ -909,7 +926,7 @@
     "longname": "js/controller.js~Controller#_filter",
     "access": "private",
     "description": "Re-filters the todo items, based on the active route.",
-    "lineNumber": 176,
+    "lineNumber": 192,
     "params": [
       {
         "nullable": null,
@@ -933,13 +950,15 @@
     "static": false,
     "longname": "js/controller.js~Controller#_lastActiveRoute",
     "access": "private",
-    "description": null,
-    "lineNumber": 194,
-    "undocument": true,
+    "description": "",
+    "lineNumber": 212,
     "type": {
+      "nullable": null,
       "types": [
-        "*"
-      ]
+        "string"
+      ],
+      "spread": false,
+      "description": null
     }
   },
   {
@@ -953,13 +972,17 @@
     "longname": "js/controller.js~Controller#_updateFilterState",
     "access": "private",
     "description": "Simply updates the filter nav's selected states",
-    "lineNumber": 199,
+    "lineNumber": 219,
     "params": [
       {
-        "name": "currentPage",
+        "nullable": null,
         "types": [
-          "*"
-        ]
+          "string"
+        ],
+        "spread": false,
+        "optional": false,
+        "name": "currentPage",
+        "description": ""
       }
     ],
     "return": null
@@ -972,13 +995,15 @@
     "static": false,
     "longname": "js/controller.js~Controller#_activeRoute",
     "access": "private",
-    "description": null,
-    "lineNumber": 202,
-    "undocument": true,
+    "description": "Store a reference to the active route, allowing us to re-filter todo items as they are marked complete or incomplete.",
+    "lineNumber": 224,
     "type": {
+      "nullable": null,
       "types": [
-        "*"
-      ]
+        "string"
+      ],
+      "spread": false,
+      "description": null
     }
   },
   {
@@ -992,7 +1017,7 @@
     "longname": "js/controller.js~Controller#setView",
     "access": "public",
     "description": "Loads and initialises the view",
-    "lineNumber": 217,
+    "lineNumber": 238,
     "params": [
       {
         "nullable": null,
@@ -1018,7 +1043,7 @@
     "longname": "js/controller.js~Controller#showAll",
     "access": "public",
     "description": "An event to fire on load. Will get all items and display them in the\ntodo-list",
-    "lineNumber": 227,
+    "lineNumber": 248,
     "params": [],
     "return": null
   },
@@ -1033,7 +1058,7 @@
     "longname": "js/controller.js~Controller#showActive",
     "access": "public",
     "description": "Renders all active tasks",
-    "lineNumber": 236,
+    "lineNumber": 257,
     "params": [],
     "return": null
   },
@@ -1048,7 +1073,7 @@
     "longname": "js/controller.js~Controller#showCompleted",
     "access": "public",
     "description": "Renders all completed tasks",
-    "lineNumber": 245,
+    "lineNumber": 266,
     "params": [],
     "return": null
   },
