@@ -1,0 +1,94 @@
+[
+  {
+    "name": "Controller#toggleComplete",
+    "filePath": "js/controller.js",
+    "lines": [
+      {
+        "lineNumber": 117,
+        "line": "\t/**"
+      },
+      {
+        "lineNumber": 118,
+        "line": "\t * Give it an ID of a model and a checkbox and it will update the item"
+      },
+      {
+        "lineNumber": 119,
+        "line": "\t * in storage based on the checkbox's state."
+      },
+      {
+        "lineNumber": 120,
+        "line": "\t *"
+      },
+      {
+        "lineNumber": 121,
+        "line": "\t * @param {number} id The ID of the element to complete or uncomplete"
+      },
+      {
+        "lineNumber": 122,
+        "line": "\t * @param {object} checkbox The checkbox to check the state of complete"
+      },
+      {
+        "lineNumber": 123,
+        "line": "\t *                          or not"
+      },
+      {
+        "lineNumber": 124,
+        "line": "\t * @param {boolean|undefined} silent Prevent re-filtering the todo items"
+      },
+      {
+        "lineNumber": 125,
+        "line": "\t */"
+      },
+      {
+        "lineNumber": 126,
+        "line": "\ttoggleComplete(id, completed, silent) {"
+      }
+    ],
+    "codeParams": [
+      "id",
+      "completed",
+      "silent"
+    ],
+    "docParams": [
+      "id",
+      "checkbox",
+      "silent"
+    ]
+  },
+  {
+    "name": "Controller#setView",
+    "filePath": "js/controller.js",
+    "lines": [
+      {
+        "lineNumber": 211,
+        "line": "\t/**"
+      },
+      {
+        "lineNumber": 212,
+        "line": "\t * Loads and initialises the view"
+      },
+      {
+        "lineNumber": 213,
+        "line": "\t *"
+      },
+      {
+        "lineNumber": 214,
+        "line": "\t * @param {string} '' | 'active' | 'completed'"
+      },
+      {
+        "lineNumber": 215,
+        "line": "\t */"
+      },
+      {
+        "lineNumber": 216,
+        "line": "\tsetView(locationHash) {"
+      }
+    ],
+    "codeParams": [
+      "locationHash"
+    ],
+    "docParams": [
+      "''"
+    ]
+  }
+]

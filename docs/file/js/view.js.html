@@ -1,0 +1,267 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <base data-ice="baseUrl" href="../../">
+  <title data-ice="title">js/view.js</title>
+  <link type="text/css" rel="stylesheet" href="css/style.css">
+  <link type="text/css" rel="stylesheet" href="css/prettify-tomorrow.css">
+  <script src="script/prettify/prettify.js"></script>
+  <script src="script/manual.js"></script>
+</head>
+<body class="layout-container" data-ice="rootContainer">
+
+<header>
+  <a href="./">Home</a>
+  
+  <a href="identifiers.html">Reference</a>
+  <a href="source.html">Source</a>
+  
+  <div class="search-box">
+  <span>
+    <img src="./image/search.png">
+    <span class="search-input-edge"></span><input class="search-input"><span class="search-input-edge"></span>
+  </span>
+    <ul class="search-result"></ul>
+  </div>
+</header>
+
+<nav class="navigation" data-ice="nav"><div>
+  <ul>
+    
+  <li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/js/controller.js~Controller.html">Controller</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/js/model.js~Model.html">Model</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/js/store.js~Store.html">Store</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/js/template.js~Template.html">Template</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/js/view.js~View.html">View</a></span></span></li>
+</ul>
+</div>
+</nav>
+
+<div class="content" data-ice="content"><h1 data-ice="title">js/view.js</h1>
+<pre class="source-code line-number raw-source-code"><code class="prettyprint linenums" data-ice="content">/*global qs, qsa, $on, $parent, $delegate */
+
+/**
+ * View that abstracts away the browser&apos;s DOM completely.
+ * It has two simple entry points:
+ *
+ *   - bind(eventName, handler)
+ *     Takes a todo application event and registers the handler
+ *   - render(command, parameterObject)
+ *     Renders the given command with the options
+ */
+export default class View {
+	constructor(template) {
+		this.template = template;
+
+		this.ENTER_KEY = 13;
+		this.ESCAPE_KEY = 27;
+
+		this.$todoList = qs(&quot;.todo-list&quot;);
+		this.$todoItemCounter = qs(&quot;.todo-count&quot;);
+		this.$clearCompleted = qs(&quot;.clear-completed&quot;);
+		this.$main = qs(&quot;.main&quot;);
+		this.$footer = qs(&quot;.footer&quot;);
+		this.$toggleAll = qs(&quot;.toggle-all&quot;);
+		this.$newTodo = qs(&quot;.new-todo&quot;);
+	}
+	_removeItem(id) {
+		let elem = qs(&apos;[data-id=&quot;&apos; + id + &apos;&quot;]&apos;);
+
+		if (elem) {
+			this.$todoList.removeChild(elem);
+		}
+	}
+
+	_clearCompletedButton(completedCount, visible) {
+		this.$clearCompleted.innerHTML = this.template.clearCompletedButton(
+			completedCount
+		);
+		this.$clearCompleted.style.display = visible ? &quot;block&quot; : &quot;none&quot;;
+	}
+
+	_setFilter(currentPage) {
+		qs(&quot;.filters .selected&quot;).className = &quot;&quot;;
+		qs(&apos;.filters [href=&quot;#/&apos; + currentPage + &apos;&quot;]&apos;).className = &quot;selected&quot;;
+	}
+
+	_elementComplete(id, completed) {
+		let listItem = qs(&apos;[data-id=&quot;&apos; + id + &apos;&quot;]&apos;);
+
+		if (!listItem) {
+			return;
+		}
+
+		listItem.className = completed ? &quot;completed&quot; : &quot;&quot;;
+
+		// In case it was toggled from an event and not by clicking the checkbox
+		qs(&quot;input&quot;, listItem).checked = completed;
+	}
+
+	_editItem(id, title) {
+		let listItem = qs(&apos;[data-id=&quot;&apos; + id + &apos;&quot;]&apos;);
+
+		if (!listItem) {
+			return;
+		}
+
+		listItem.className = listItem.className + &quot; editing&quot;;
+
+		let input = document.createElement(&quot;input&quot;);
+		input.className = &quot;edit&quot;;
+
+		listItem.appendChild(input);
+		input.focus();
+		input.value = title;
+	}
+
+	_editItemDone(id, title) {
+		let listItem = qs(&apos;[data-id=&quot;&apos; + id + &apos;&quot;]&apos;);
+
+		if (!listItem) {
+			return;
+		}
+
+		let input = qs(&quot;input.edit&quot;, listItem);
+		listItem.removeChild(input);
+
+		listItem.className = listItem.className.replace(&quot;editing&quot;, &quot;&quot;);
+
+		qsa(&quot;label&quot;, listItem).forEach(function(label) {
+			label.textContent = title;
+		});
+	}
+
+	render(viewCmd, parameter) {
+		let viewCommands = {
+			showEntries: () =&gt; {
+				this.$todoList.innerHTML = this.template.show(parameter);
+			},
+			removeItem: () =&gt; {
+				this._removeItem(parameter);
+			},
+			updateElementCount: () =&gt; {
+				this.$todoItemCounter.innerHTML = this.template.itemCounter(parameter);
+			},
+			clearCompletedButton: () =&gt; {
+				this._clearCompletedButton(parameter.completed, parameter.visible);
+			},
+			contentBlockVisibility: () =&gt; {
+				this.$main.style.display = this.$footer.style.display = parameter.visible
+					? &quot;block&quot;
+					: &quot;none&quot;;
+			},
+			toggleAll: () =&gt; {
+				this.$toggleAll.checked = parameter.checked; // * if all todo are completed parameter.checked = true otherwise false
+			},
+			setFilter: () =&gt; {
+				this._setFilter(parameter);
+			},
+			clearNewTodo: () =&gt; {
+				this.$newTodo.value = &quot;&quot;;
+			},
+			elementComplete: () =&gt; {
+				this._elementComplete(parameter.id, parameter.completed);
+			},
+			editItem: () =&gt; {
+				this._editItem(parameter.id, parameter.title);
+			},
+			editItemDone: () =&gt; {
+				this._editItemDone(parameter.id, parameter.title);
+			}
+		};
+
+		viewCommands[viewCmd]();
+	}
+
+	_itemId(element) {
+		let li = $parent(element, &quot;li&quot;);
+		return parseInt(li.dataset.id, 10);
+	}
+
+	_bindItemEditDone(handler) {
+		let self = this;
+		$delegate(self.$todoList, &quot;li .edit&quot;, &quot;blur&quot;, function() {
+			if (!this.dataset.iscanceled) {
+				handler({
+					id: self._itemId(this),
+					title: this.value
+				});
+			}
+		});
+
+		$delegate(self.$todoList, &quot;li .edit&quot;, &quot;keypress&quot;, function(event) {
+			if (event.keyCode === self.ENTER_KEY) {
+				// Remove the cursor from the input when you hit enter just like if it
+				// were a real form
+				this.blur();
+			}
+		});
+	}
+
+	_bindItemEditCancel(handler) {
+		let self = this;
+		$delegate(self.$todoList, &quot;li .edit&quot;, &quot;keyup&quot;, function(event) {
+			if (event.keyCode === self.ESCAPE_KEY) {
+				this.dataset.iscanceled = true;
+				this.blur();
+
+				handler({ id: self._itemId(this) });
+			}
+		});
+	}
+
+	bind(event, handler) {
+		let self = this;
+		// * check how this callback works
+		if (event === &quot;newTodo&quot;) {
+			$on(this.$newTodo, &quot;change&quot;, () =&gt; {
+				handler(this.$newTodo.value);
+			});
+		} else if (event === &quot;removeCompleted&quot;) {
+			$on(this.$clearCompleted, &quot;click&quot;, () =&gt; {
+				handler();
+			});
+		} else if (event === &quot;toggleAll&quot;) {
+			$on(this.$toggleAll, &quot;click&quot;, function() {
+				handler({ completed: this.checked });
+			});
+		} else if (event === &quot;itemEdit&quot;) {
+			$delegate(this.$todoList, &quot;li label&quot;, &quot;dblclick&quot;, function() {
+				handler({ id: self._itemId(this) });
+			});
+		} else if (event === &quot;itemRemove&quot;) {
+			$delegate(this.$todoList, &quot;.destroy&quot;, &quot;click&quot;, function() {
+				handler({ id: self._itemId(this) });
+			});
+		} else if (event === &quot;itemToggle&quot;) {
+			$delegate(this.$todoList, &quot;.toggle&quot;, &quot;click&quot;, function() {
+				handler({
+					id: self._itemId(this),
+					completed: this.checked
+				});
+			});
+		} else if (event === &quot;itemEditDone&quot;) {
+			this._bindItemEditDone(handler);
+		} else if (event === &quot;itemEditCancel&quot;) {
+			this._bindItemEditCancel(handler);
+		}
+	}
+}
+</code></pre>
+
+</div>
+
+<footer class="footer">
+  Generated by <a href="https://esdoc.org">ESDoc<span data-ice="esdocVersion">(1.1.0)</span><img src="./image/esdoc-logo-mini-black.png"></a>
+</footer>
+
+<script src="script/search_index.js"></script>
+<script src="script/search.js"></script>
+<script src="script/pretty-print.js"></script>
+<script src="script/inherited-summary.js"></script>
+<script src="script/test-summary.js"></script>
+<script src="script/inner-link.js"></script>
+<script src="script/patch-for-local.js"></script>
+</body>
+</html>

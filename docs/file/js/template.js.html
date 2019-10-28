@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <base data-ice="baseUrl" href="../../">
+  <title data-ice="title">js/template.js</title>
+  <link type="text/css" rel="stylesheet" href="css/style.css">
+  <link type="text/css" rel="stylesheet" href="css/prettify-tomorrow.css">
+  <script src="script/prettify/prettify.js"></script>
+  <script src="script/manual.js"></script>
+</head>
+<body class="layout-container" data-ice="rootContainer">
+
+<header>
+  <a href="./">Home</a>
+  
+  <a href="identifiers.html">Reference</a>
+  <a href="source.html">Source</a>
+  
+  <div class="search-box">
+  <span>
+    <img src="./image/search.png">
+    <span class="search-input-edge"></span><input class="search-input"><span class="search-input-edge"></span>
+  </span>
+    <ul class="search-result"></ul>
+  </div>
+</header>
+
+<nav class="navigation" data-ice="nav"><div>
+  <ul>
+    
+  <li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/js/controller.js~Controller.html">Controller</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/js/model.js~Model.html">Model</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/js/store.js~Store.html">Store</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/js/template.js~Template.html">Template</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/js/view.js~View.html">View</a></span></span></li>
+</ul>
+</div>
+</nav>
+
+<div class="content" data-ice="content"><h1 data-ice="title">js/template.js</h1>
+<pre class="source-code line-number raw-source-code"><code class="prettyprint linenums" data-ice="content">let htmlEscapes = {
+	&quot;&amp;&quot;: &quot;&amp;amp;&quot;,
+	&quot;&lt;&quot;: &quot;&amp;lt;&quot;,
+	&quot;&gt;&quot;: &quot;&amp;gt;&quot;,
+	&apos;&quot;&apos;: &quot;&amp;quot;&quot;,
+	&quot;&apos;&quot;: &quot;&amp;#x27;&quot;,
+	&quot;`&quot;: &quot;&amp;#x60;&quot;
+};
+
+let escapeHtmlChar = function(chr) {
+	return htmlEscapes[chr];
+};
+
+let reUnescapedHtml = /[&amp;&lt;&gt;&quot;&apos;`]/g;
+let reHasUnescapedHtml = new RegExp(reUnescapedHtml.source);
+
+let escape = function(string) {
+	return string &amp;&amp; reHasUnescapedHtml.test(string)
+		? string.replace(reUnescapedHtml, escapeHtmlChar)
+		: string;
+};
+
+/**
+ * Sets up defaults for all the Template methods such as a default template
+ *
+ * @constructor
+ */
+export default class Template {
+	constructor() {
+		this.defaultTemplate =
+			&apos;&lt;li data-id=&quot;{{id}}&quot; class=&quot;{{completed}}&quot;&gt;&apos; +
+			&apos;&lt;div class=&quot;view&quot;&gt;&apos; +
+			&apos;&lt;input class=&quot;toggle&quot; type=&quot;checkbox&quot; {{checked}}&gt;&apos; +
+			&quot;&lt;label&gt;{{title}}&lt;/label&gt;&quot; +
+			&apos;&lt;button class=&quot;destroy&quot;&gt;&lt;/button&gt;&apos; +
+			&quot;&lt;/div&gt;&quot; +
+			&quot;&lt;/li&gt;&quot;;
+	}
+	/**
+	 * Creates an &lt;li&gt; HTML string and returns it for placement in your app.
+	 *
+	 * NOTE: In real life you should be using a templating engine such as Mustache
+	 * or Handlebars, however, this is a vanilla JS example.
+	 *
+	 * @param {object} data The object containing keys you want to find in the
+	 *                      template to replace.
+	 * @returns {string} HTML String of an &lt;li&gt; element
+	 *
+	 * @example
+	 * view.show({
+	 *	id: 1,
+	 *	title: &quot;Hello World&quot;,
+	 *	completed: 0,
+	 * });
+	 */
+	show(data) {
+		let i, l;
+		let view = &quot;&quot;;
+
+		for (i = 0, l = data.length; i &lt; l; i++) {
+			let template = this.defaultTemplate;
+			let completed = &quot;&quot;;
+			let checked = &quot;&quot;;
+
+			if (data[i].completed) {
+				completed = &quot;completed&quot;;
+				checked = &quot;checked&quot;;
+			}
+
+			template = template.replace(&quot;{{id}}&quot;, data[i].id);
+			template = template.replace(&quot;{{title}}&quot;, escape(data[i].title));
+			template = template.replace(&quot;{{completed}}&quot;, completed);
+			template = template.replace(&quot;{{checked}}&quot;, checked);
+
+			view = view + template;
+		}
+
+		return view;
+	}
+
+	/**
+	 * Displays a counter of how many to dos are left to complete
+	 *
+	 * @param {number} activeTodos The number of active todos.
+	 * @returns {string} String containing the count
+	 */
+	itemCounter(activeTodos) {
+		let plural = activeTodos === 1 ? &quot;&quot; : &quot;s&quot;;
+
+		return &quot;&lt;strong&gt;&quot; + activeTodos + &quot;&lt;/strong&gt; item&quot; + plural + &quot; left&quot;;
+	}
+
+	/**
+	 * Updates the text within the &quot;Clear completed&quot; button
+	 *
+	 * @param  {[type]} completedTodos The number of completed todos.
+	 * @returns {string} String containing the count
+	 */
+	clearCompletedButton(completedTodos) {
+		if (completedTodos &gt; 0) {
+			return &quot;Clear completed&quot;;
+		} else {
+			return &quot;&quot;;
+		}
+	}
+}
+</code></pre>
+
+</div>
+
+<footer class="footer">
+  Generated by <a href="https://esdoc.org">ESDoc<span data-ice="esdocVersion">(1.1.0)</span><img src="./image/esdoc-logo-mini-black.png"></a>
+</footer>
+
+<script src="script/search_index.js"></script>
+<script src="script/search.js"></script>
+<script src="script/pretty-print.js"></script>
+<script src="script/inherited-summary.js"></script>
+<script src="script/test-summary.js"></script>
+<script src="script/inner-link.js"></script>
+<script src="script/patch-for-local.js"></script>
+</body>
+</html>

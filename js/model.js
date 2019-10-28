@@ -42,7 +42,6 @@ export default class Model {
 	 * model.read({ foo: 'bar', hello: 'world' });
 	 */
 	read(query, callback) {
-		// ? why query = showAll(data) / Constuctor.prototype.showAll (check controller.js l.64). For me it should be: anonymous(data)
 		let queryType = typeof query;
 		callback = callback || function() {};
 

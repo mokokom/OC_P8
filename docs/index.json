@@ -1,0 +1,2461 @@
+[
+  {
+    "__docId__": 1,
+    "kind": "external",
+    "name": "Infinity",
+    "externalLink": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Infinity",
+    "memberof": "js/.external-ecmascript.js",
+    "static": true,
+    "longname": "js/.external-ecmascript.js~Infinity",
+    "access": "public",
+    "description": "",
+    "builtinExternal": true
+  },
+  {
+    "__docId__": 2,
+    "kind": "external",
+    "name": "NaN",
+    "externalLink": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/NaN",
+    "memberof": "js/.external-ecmascript.js",
+    "static": true,
+    "longname": "js/.external-ecmascript.js~NaN",
+    "access": "public",
+    "description": "",
+    "builtinExternal": true
+  },
+  {
+    "__docId__": 3,
+    "kind": "external",
+    "name": "undefined",
+    "externalLink": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/undefined",
+    "memberof": "js/.external-ecmascript.js",
+    "static": true,
+    "longname": "js/.external-ecmascript.js~undefined",
+    "access": "public",
+    "description": "",
+    "builtinExternal": true
+  },
+  {
+    "__docId__": 4,
+    "kind": "external",
+    "name": "null",
+    "externalLink": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/null",
+    "memberof": "js/.external-ecmascript.js",
+    "static": true,
+    "longname": "js/.external-ecmascript.js~null",
+    "access": "public",
+    "description": "",
+    "builtinExternal": true
+  },
+  {
+    "__docId__": 5,
+    "kind": "external",
+    "name": "Object",
+    "externalLink": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object",
+    "memberof": "js/.external-ecmascript.js",
+    "static": true,
+    "longname": "js/.external-ecmascript.js~Object",
+    "access": "public",
+    "description": "",
+    "builtinExternal": true
+  },
+  {
+    "__docId__": 6,
+    "kind": "external",
+    "name": "object",
+    "externalLink": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object",
+    "memberof": "js/.external-ecmascript.js",
+    "static": true,
+    "longname": "js/.external-ecmascript.js~object",
+    "access": "public",
+    "description": "",
+    "builtinExternal": true
+  },
+  {
+    "__docId__": 7,
+    "kind": "external",
+    "name": "Function",
+    "externalLink": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Function",
+    "memberof": "js/.external-ecmascript.js",
+    "static": true,
+    "longname": "js/.external-ecmascript.js~Function",
+    "access": "public",
+    "description": "",
+    "builtinExternal": true
+  },
+  {
+    "__docId__": 8,
+    "kind": "external",
+    "name": "function",
+    "externalLink": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Function",
+    "memberof": "js/.external-ecmascript.js",
+    "static": true,
+    "longname": "js/.external-ecmascript.js~function",
+    "access": "public",
+    "description": "",
+    "builtinExternal": true
+  },
+  {
+    "__docId__": 9,
+    "kind": "external",
+    "name": "Boolean",
+    "externalLink": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Boolean",
+    "memberof": "js/.external-ecmascript.js",
+    "static": true,
+    "longname": "js/.external-ecmascript.js~Boolean",
+    "access": "public",
+    "description": "",
+    "builtinExternal": true
+  },
+  {
+    "__docId__": 10,
+    "kind": "external",
+    "name": "boolean",
+    "externalLink": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Boolean",
+    "memberof": "js/.external-ecmascript.js",
+    "static": true,
+    "longname": "js/.external-ecmascript.js~boolean",
+    "access": "public",
+    "description": "",
+    "builtinExternal": true
+  },
+  {
+    "__docId__": 11,
+    "kind": "external",
+    "name": "Symbol",
+    "externalLink": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Symbol",
+    "memberof": "js/.external-ecmascript.js",
+    "static": true,
+    "longname": "js/.external-ecmascript.js~Symbol",
+    "access": "public",
+    "description": "",
+    "builtinExternal": true
+  },
+  {
+    "__docId__": 12,
+    "kind": "external",
+    "name": "Error",
+    "externalLink": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Error",
+    "memberof": "js/.external-ecmascript.js",
+    "static": true,
+    "longname": "js/.external-ecmascript.js~Error",
+    "access": "public",
+    "description": "",
+    "builtinExternal": true
+  },
+  {
+    "__docId__": 13,
+    "kind": "external",
+    "name": "EvalError",
+    "externalLink": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/EvalError",
+    "memberof": "js/.external-ecmascript.js",
+    "static": true,
+    "longname": "js/.external-ecmascript.js~EvalError",
+    "access": "public",
+    "description": "",
+    "builtinExternal": true
+  },
+  {
+    "__docId__": 14,
+    "kind": "external",
+    "name": "InternalError",
+    "externalLink": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/InternalError",
+    "memberof": "js/.external-ecmascript.js",
+    "static": true,
+    "longname": "js/.external-ecmascript.js~InternalError",
+    "access": "public",
+    "description": "",
+    "builtinExternal": true
+  },
+  {
+    "__docId__": 15,
+    "kind": "external",
+    "name": "RangeError",
+    "externalLink": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/RangeError",
+    "memberof": "js/.external-ecmascript.js",
+    "static": true,
+    "longname": "js/.external-ecmascript.js~RangeError",
+    "access": "public",
+    "description": "",
+    "builtinExternal": true
+  },
+  {
+    "__docId__": 16,
+    "kind": "external",
+    "name": "ReferenceError",
+    "externalLink": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/ReferenceError",
+    "memberof": "js/.external-ecmascript.js",
+    "static": true,
+    "longname": "js/.external-ecmascript.js~ReferenceError",
+    "access": "public",
+    "description": "",
+    "builtinExternal": true
+  },
+  {
+    "__docId__": 17,
+    "kind": "external",
+    "name": "SyntaxError",
+    "externalLink": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/SyntaxError",
+    "memberof": "js/.external-ecmascript.js",
+    "static": true,
+    "longname": "js/.external-ecmascript.js~SyntaxError",
+    "access": "public",
+    "description": "",
+    "builtinExternal": true
+  },
+  {
+    "__docId__": 18,
+    "kind": "external",
+    "name": "TypeError",
+    "externalLink": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/TypeError",
+    "memberof": "js/.external-ecmascript.js",
+    "static": true,
+    "longname": "js/.external-ecmascript.js~TypeError",
+    "access": "public",
+    "description": "",
+    "builtinExternal": true
+  },
+  {
+    "__docId__": 19,
+    "kind": "external",
+    "name": "URIError",
+    "externalLink": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/URIError",
+    "memberof": "js/.external-ecmascript.js",
+    "static": true,
+    "longname": "js/.external-ecmascript.js~URIError",
+    "access": "public",
+    "description": "",
+    "builtinExternal": true
+  },
+  {
+    "__docId__": 20,
+    "kind": "external",
+    "name": "Number",
+    "externalLink": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number",
+    "memberof": "js/.external-ecmascript.js",
+    "static": true,
+    "longname": "js/.external-ecmascript.js~Number",
+    "access": "public",
+    "description": "",
+    "builtinExternal": true
+  },
+  {
+    "__docId__": 21,
+    "kind": "external",
+    "name": "number",
+    "externalLink": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number",
+    "memberof": "js/.external-ecmascript.js",
+    "static": true,
+    "longname": "js/.external-ecmascript.js~number",
+    "access": "public",
+    "description": "",
+    "builtinExternal": true
+  },
+  {
+    "__docId__": 22,
+    "kind": "external",
+    "name": "Date",
+    "externalLink": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Date",
+    "memberof": "js/.external-ecmascript.js",
+    "static": true,
+    "longname": "js/.external-ecmascript.js~Date",
+    "access": "public",
+    "description": "",
+    "builtinExternal": true
+  },
+  {
+    "__docId__": 23,
+    "kind": "external",
+    "name": "String",
+    "externalLink": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String",
+    "memberof": "js/.external-ecmascript.js",
+    "static": true,
+    "longname": "js/.external-ecmascript.js~String",
+    "access": "public",
+    "description": "",
+    "builtinExternal": true
+  },
+  {
+    "__docId__": 24,
+    "kind": "external",
+    "name": "string",
+    "externalLink": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String",
+    "memberof": "js/.external-ecmascript.js",
+    "static": true,
+    "longname": "js/.external-ecmascript.js~string",
+    "access": "public",
+    "description": "",
+    "builtinExternal": true
+  },
+  {
+    "__docId__": 25,
+    "kind": "external",
+    "name": "RegExp",
+    "externalLink": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/RegExp",
+    "memberof": "js/.external-ecmascript.js",
+    "static": true,
+    "longname": "js/.external-ecmascript.js~RegExp",
+    "access": "public",
+    "description": "",
+    "builtinExternal": true
+  },
+  {
+    "__docId__": 26,
+    "kind": "external",
+    "name": "Array",
+    "externalLink": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array",
+    "memberof": "js/.external-ecmascript.js",
+    "static": true,
+    "longname": "js/.external-ecmascript.js~Array",
+    "access": "public",
+    "description": "",
+    "builtinExternal": true
+  },
+  {
+    "__docId__": 27,
+    "kind": "external",
+    "name": "Int8Array",
+    "externalLink": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Int8Array",
+    "memberof": "js/.external-ecmascript.js",
+    "static": true,
+    "longname": "js/.external-ecmascript.js~Int8Array",
+    "access": "public",
+    "description": "",
+    "builtinExternal": true
+  },
+  {
+    "__docId__": 28,
+    "kind": "external",
+    "name": "Uint8Array",
+    "externalLink": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Uint8Array",
+    "memberof": "js/.external-ecmascript.js",
+    "static": true,
+    "longname": "js/.external-ecmascript.js~Uint8Array",
+    "access": "public",
+    "description": "",
+    "builtinExternal": true
+  },
+  {
+    "__docId__": 29,
+    "kind": "external",
+    "name": "Uint8ClampedArray",
+    "externalLink": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Uint8ClampedArray",
+    "memberof": "js/.external-ecmascript.js",
+    "static": true,
+    "longname": "js/.external-ecmascript.js~Uint8ClampedArray",
+    "access": "public",
+    "description": "",
+    "builtinExternal": true
+  },
+  {
+    "__docId__": 30,
+    "kind": "external",
+    "name": "Int16Array",
+    "externalLink": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Int16Array",
+    "memberof": "js/.external-ecmascript.js",
+    "static": true,
+    "longname": "js/.external-ecmascript.js~Int16Array",
+    "access": "public",
+    "description": "",
+    "builtinExternal": true
+  },
+  {
+    "__docId__": 31,
+    "kind": "external",
+    "name": "Uint16Array",
+    "externalLink": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Uint16Array",
+    "memberof": "js/.external-ecmascript.js",
+    "static": true,
+    "longname": "js/.external-ecmascript.js~Uint16Array",
+    "access": "public",
+    "description": "",
+    "builtinExternal": true
+  },
+  {
+    "__docId__": 32,
+    "kind": "external",
+    "name": "Int32Array",
+    "externalLink": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Int32Array",
+    "memberof": "js/.external-ecmascript.js",
+    "static": true,
+    "longname": "js/.external-ecmascript.js~Int32Array",
+    "access": "public",
+    "description": "",
+    "builtinExternal": true
+  },
+  {
+    "__docId__": 33,
+    "kind": "external",
+    "name": "Uint32Array",
+    "externalLink": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Uint32Array",
+    "memberof": "js/.external-ecmascript.js",
+    "static": true,
+    "longname": "js/.external-ecmascript.js~Uint32Array",
+    "access": "public",
+    "description": "",
+    "builtinExternal": true
+  },
+  {
+    "__docId__": 34,
+    "kind": "external",
+    "name": "Float32Array",
+    "externalLink": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Float32Array",
+    "memberof": "js/.external-ecmascript.js",
+    "static": true,
+    "longname": "js/.external-ecmascript.js~Float32Array",
+    "access": "public",
+    "description": "",
+    "builtinExternal": true
+  },
+  {
+    "__docId__": 35,
+    "kind": "external",
+    "name": "Float64Array",
+    "externalLink": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Float64Array",
+    "memberof": "js/.external-ecmascript.js",
+    "static": true,
+    "longname": "js/.external-ecmascript.js~Float64Array",
+    "access": "public",
+    "description": "",
+    "builtinExternal": true
+  },
+  {
+    "__docId__": 36,
+    "kind": "external",
+    "name": "Map",
+    "externalLink": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Map",
+    "memberof": "js/.external-ecmascript.js",
+    "static": true,
+    "longname": "js/.external-ecmascript.js~Map",
+    "access": "public",
+    "description": "",
+    "builtinExternal": true
+  },
+  {
+    "__docId__": 37,
+    "kind": "external",
+    "name": "Set",
+    "externalLink": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Set",
+    "memberof": "js/.external-ecmascript.js",
+    "static": true,
+    "longname": "js/.external-ecmascript.js~Set",
+    "access": "public",
+    "description": "",
+    "builtinExternal": true
+  },
+  {
+    "__docId__": 38,
+    "kind": "external",
+    "name": "WeakMap",
+    "externalLink": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/WeakMap",
+    "memberof": "js/.external-ecmascript.js",
+    "static": true,
+    "longname": "js/.external-ecmascript.js~WeakMap",
+    "access": "public",
+    "description": "",
+    "builtinExternal": true
+  },
+  {
+    "__docId__": 39,
+    "kind": "external",
+    "name": "WeakSet",
+    "externalLink": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/WeakSet",
+    "memberof": "js/.external-ecmascript.js",
+    "static": true,
+    "longname": "js/.external-ecmascript.js~WeakSet",
+    "access": "public",
+    "description": "",
+    "builtinExternal": true
+  },
+  {
+    "__docId__": 40,
+    "kind": "external",
+    "name": "ArrayBuffer",
+    "externalLink": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/ArrayBuffer",
+    "memberof": "js/.external-ecmascript.js",
+    "static": true,
+    "longname": "js/.external-ecmascript.js~ArrayBuffer",
+    "access": "public",
+    "description": "",
+    "builtinExternal": true
+  },
+  {
+    "__docId__": 41,
+    "kind": "external",
+    "name": "DataView",
+    "externalLink": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/DataView",
+    "memberof": "js/.external-ecmascript.js",
+    "static": true,
+    "longname": "js/.external-ecmascript.js~DataView",
+    "access": "public",
+    "description": "",
+    "builtinExternal": true
+  },
+  {
+    "__docId__": 42,
+    "kind": "external",
+    "name": "JSON",
+    "externalLink": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/JSON",
+    "memberof": "js/.external-ecmascript.js",
+    "static": true,
+    "longname": "js/.external-ecmascript.js~JSON",
+    "access": "public",
+    "description": "",
+    "builtinExternal": true
+  },
+  {
+    "__docId__": 43,
+    "kind": "external",
+    "name": "Promise",
+    "externalLink": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise",
+    "memberof": "js/.external-ecmascript.js",
+    "static": true,
+    "longname": "js/.external-ecmascript.js~Promise",
+    "access": "public",
+    "description": "",
+    "builtinExternal": true
+  },
+  {
+    "__docId__": 44,
+    "kind": "external",
+    "name": "Generator",
+    "externalLink": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Generator",
+    "memberof": "js/.external-ecmascript.js",
+    "static": true,
+    "longname": "js/.external-ecmascript.js~Generator",
+    "access": "public",
+    "description": "",
+    "builtinExternal": true
+  },
+  {
+    "__docId__": 45,
+    "kind": "external",
+    "name": "GeneratorFunction",
+    "externalLink": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/GeneratorFunction",
+    "memberof": "js/.external-ecmascript.js",
+    "static": true,
+    "longname": "js/.external-ecmascript.js~GeneratorFunction",
+    "access": "public",
+    "description": "",
+    "builtinExternal": true
+  },
+  {
+    "__docId__": 46,
+    "kind": "external",
+    "name": "Reflect",
+    "externalLink": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Reflect",
+    "memberof": "js/.external-ecmascript.js",
+    "static": true,
+    "longname": "js/.external-ecmascript.js~Reflect",
+    "access": "public",
+    "description": "",
+    "builtinExternal": true
+  },
+  {
+    "__docId__": 47,
+    "kind": "external",
+    "name": "Proxy",
+    "externalLink": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Proxy",
+    "memberof": "js/.external-ecmascript.js",
+    "static": true,
+    "longname": "js/.external-ecmascript.js~Proxy",
+    "access": "public",
+    "description": "",
+    "builtinExternal": true
+  },
+  {
+    "__docId__": 48,
+    "kind": "file",
+    "name": "js/app.js",
+    "content": "/*global app, $on */\n\nimport Controller from \"./controller.js\";\nimport Model from \"./model.js\";\nimport Store from \"./store.js\";\nimport Template from \"./template.js\";\nimport View from \"./view.js\";\n/**\n * Sets up a brand new Todo list.\n *\n * @param {string} name The name of your new to do list.\n */\n(function() {\n\tclass Todo {\n\t\tconstructor(name) {\n\t\t\tthis.storage = new Store(name);\n\t\t\tthis.model = new Model(this.storage);\n\t\t\tthis.template = new Template();\n\t\t\tthis.view = new View(this.template);\n\t\t\tthis.controller = new Controller(this.model, this.view);\n\t\t}\n\t}\n\n\tlet todo = new Todo(\"todos-vanillajs\");\n\n\tfunction setView() {\n\t\ttodo.controller.setView(document.location.hash);\n\t}\n\tsetView();\n\n\t$on(window, \"load\", setView);\n\t$on(window, \"hashchange\", setView);\n})();\n",
+    "static": true,
+    "longname": "/Users/Mokoke/Documents/DEV/OCR/P8/oc_p8_dev/js/app.js",
+    "access": "public",
+    "description": null,
+    "lineNumber": 1
+  },
+  {
+    "__docId__": 49,
+    "kind": "file",
+    "name": "js/controller.js",
+    "content": "/**\n * Takes a model and view and acts as the controller between them\n *\n * @constructor\n * @param {object} model The model instance\n * @param {object} view The view instance\n */\nexport default class Controller {\n\tconstructor(model, view) {\n\t\tthis.model = model;\n\t\tthis.view = view;\n\t\tthis.addItem = this.addItem.bind(this);\n\t\t/* this.view = this.view.bind(this); */\n\t\tthis.view.bind(\"newTodo\", title => {\n\t\t\tthis.addItem(title);\n\t\t});\n\t\tthis.view.bind(\"itemEdit\", item => {\n\t\t\tthis.editItem(item.id);\n\t\t});\n\t\tthis.view.bind(\"itemEditDone\", item => {\n\t\t\tthis.editItemSave(item.id, item.title);\n\t\t});\n\t\tthis.view.bind(\"itemEditCancel\", item => {\n\t\t\tthis.editItemCancel(item.id);\n\t\t});\n\t\tthis.view.bind(\"itemRemove\", item => {\n\t\t\tthis.removeItem(item.id);\n\t\t});\n\n\t\tthis.view.bind(\"itemToggle\", item => {\n\t\t\tthis.toggleComplete(item.id, item.completed);\n\t\t});\n\n\t\tthis.view.bind(\"removeCompleted\", () => {\n\t\t\tthis.removeCompletedItems();\n\t\t});\n\n\t\tthis.view.bind(\"toggleAll\", status => {\n\t\t\tthis.toggleAll(status.completed);\n\t\t});\n\t}\n\t/**\n\t * An event to fire whenever you want to add an item. Simply pass in the event\n\t * object and it'll handle the DOM insertion and saving of the new item.\n\t */\n\taddItem(title) {\n\t\tif (title.trim() === \"\") {\n\t\t\treturn;\n\t\t}\n\n\t\tthis.model.create(title, () => {\n\t\t\tthis.view.render(\"clearNewTodo\");\n\t\t\tthis._filter(true);\n\t\t});\n\t}\n\t/*\n\t * Triggers the item editing mode.\n\t */\n\teditItem(id) {\n\t\tthis.model.read(id, data => {\n\t\t\tthis.view.render(\"editItem\", { id: id, title: data[0].title });\n\t\t});\n\t}\n\t/*\n\t * Finishes the item editing mode successfully.\n\t */\n\teditItemSave(id, title) {\n\t\twhile (title[0] === \" \") {\n\t\t\ttitle = title.slice(1);\n\t\t}\n\n\t\twhile (title[title.length - 1] === \" \") {\n\t\t\ttitle = title.slice(0, -1);\n\t\t}\n\n\t\tif (title.length !== 0) {\n\t\t\tthis.model.update(id, { title: title }, () => {\n\t\t\t\tthis.view.render(\"editItemDone\", { id: id, title: title });\n\t\t\t});\n\t\t} else {\n\t\t\tthis.removeItem(id);\n\t\t}\n\t}\n\t/*\n\t * Cancels the item editing mode.\n\t */\n\teditItemCancel(id) {\n\t\tthis.model.read(id, data => {\n\t\t\tthis.view.render(\"editItemDone\", { id: id, title: data[0].title });\n\t\t});\n\t}\n\t/**\n\t * By giving it an ID it'll find the DOM element matching that ID,\n\t * remove it from the DOM and also remove it from storage.\n\t *\n\t * @param {number} id The ID of the item to remove from the DOM and\n\t * storage\n\t */\n\tremoveItem(id) {\n\t\tthis.model.remove(id, () => {\n\t\t\tthis.view.render(\"removeItem\", id);\n\t\t});\n\n\t\tthis._filter();\n\t}\n\t/**\n\t * Will remove all completed items from the DOM and storage.\n\t */\n\tremoveCompletedItems() {\n\t\tthis.model.read({ completed: true }, data => {\n\t\t\tdata.forEach(item => {\n\t\t\t\tthis.removeItem(item.id);\n\t\t\t});\n\t\t});\n\n\t\tthis._filter();\n\t}\n\t/**\n\t * Give it an ID of a model and a checkbox and it will update the item\n\t * in storage based on the checkbox's state.\n\t *\n\t * @param {number} id The ID of the element to complete or uncomplete\n\t * @param {object} checkbox The checkbox to check the state of complete\n\t *                          or not\n\t * @param {boolean|undefined} silent Prevent re-filtering the todo items\n\t */\n\ttoggleComplete(id, completed, silent) {\n\t\tthis.model.update(id, { completed: completed }, () => {\n\t\t\tthis.view.render(\"elementComplete\", {\n\t\t\t\tid: id,\n\t\t\t\tcompleted: completed\n\t\t\t});\n\t\t});\n\n\t\tif (!silent) {\n\t\t\tthis._filter();\n\t\t}\n\t}\n\t/**\n\t * Will toggle ALL checkboxes' on/off state and completeness of models.\n\t * Just pass in the event object.\n\t */\n\ttoggleAll(completed) {\n\t\tthis.model.read({ completed: !completed }, data => {\n\t\t\tdata.forEach(item => {\n\t\t\t\tthis.toggleComplete(item.id, completed, true);\n\t\t\t});\n\t\t});\n\n\t\tthis._filter();\n\t}\n\t/**\n\t * Updates the pieces of the page which change depending on the remaining\n\t * number of todos.\n\t */\n\t_updateCount() {\n\t\tthis.model.getCount(todos => {\n\t\t\tthis.view.render(\"updateElementCount\", todos.active);\n\t\t\tthis.view.render(\"clearCompletedButton\", {\n\t\t\t\tcompleted: todos.completed,\n\t\t\t\tvisible: todos.completed > 0\n\t\t\t});\n\n\t\t\tthis.view.render(\"toggleAll\", {\n\t\t\t\tchecked: todos.completed === todos.total\n\t\t\t});\n\t\t\tthis.view.render(\"contentBlockVisibility\", {\n\t\t\t\tvisible: todos.total > 0\n\t\t\t});\n\t\t});\n\t}\n\t/**\n\t * Re-filters the todo items, based on the active route.\n\t * @param {boolean|undefined} force  forces a re-painting of todo items.\n\t */\n\t_filter(force) {\n\t\tlet activeRoute =\n\t\t\tthis._activeRoute.charAt(0).toUpperCase() + this._activeRoute.substr(1);\n\n\t\t// Update the elements on the page, which change with each completed todo\n\t\tthis._updateCount();\n\n\t\t// If the last active route isn't \"All\", or we're switching routes, we\n\t\t// re-create the todo item elements, calling:\n\t\t//   this.show[All|Active|Completed]();\n\t\tif (\n\t\t\tforce ||\n\t\t\tthis._lastActiveRoute !== \"All\" ||\n\t\t\tthis._lastActiveRoute !== activeRoute\n\t\t) {\n\t\t\tthis[\"show\" + activeRoute]();\n\t\t}\n\n\t\tthis._lastActiveRoute = activeRoute;\n\t}\n\t/**\n\t * Simply updates the filter nav's selected states\n\t */\n\t_updateFilterState(currentPage) {\n\t\t// Store a reference to the active route, allowing us to re-filter todo\n\t\t// items as they are marked complete or incomplete.\n\t\tthis._activeRoute = currentPage;\n\n\t\tif (currentPage === \"\") {\n\t\t\tthis._activeRoute = \"All\";\n\t\t}\n\n\t\tthis._filter();\n\n\t\tthis.view.render(\"setFilter\", currentPage);\n\t}\n\t/**\n\t * Loads and initialises the view\n\t *\n\t * @param {string} '' | 'active' | 'completed'\n\t */\n\tsetView(locationHash) {\n\t\tlet route = locationHash.split(\"/\")[1];\n\t\tlet page = route || \"\";\n\t\tthis._updateFilterState(page);\n\t}\n\n\t/**\n\t * An event to fire on load. Will get all items and display them in the\n\t * todo-list\n\t */\n\tshowAll() {\n\t\tthis.model.read(data => {\n\t\t\tthis.view.render(\"showEntries\", data);\n\t\t});\n\t}\n\n\t/**\n\t * Renders all active tasks\n\t */\n\tshowActive() {\n\t\tthis.model.read({ completed: false }, data => {\n\t\t\tthis.view.render(\"showEntries\", data);\n\t\t});\n\t}\n\n\t/**\n\t * Renders all completed tasks\n\t */\n\tshowCompleted() {\n\t\tthis.model.read({ completed: true }, data => {\n\t\t\tthis.view.render(\"showEntries\", data);\n\t\t});\n\t}\n}\n",
+    "static": true,
+    "longname": "/Users/Mokoke/Documents/DEV/OCR/P8/oc_p8_dev/js/controller.js",
+    "access": "public",
+    "description": null,
+    "lineNumber": 1
+  },
+  {
+    "__docId__": 50,
+    "kind": "class",
+    "name": "Controller",
+    "memberof": "js/controller.js",
+    "static": true,
+    "longname": "js/controller.js~Controller",
+    "access": "public",
+    "export": true,
+    "importPath": "./js/controller.js",
+    "importStyle": "Controller",
+    "description": "Takes a model and view and acts as the controller between them",
+    "lineNumber": 8,
+    "unknown": [
+      {
+        "tagName": "@constructor",
+        "tagValue": ""
+      }
+    ],
+    "params": [
+      {
+        "nullable": null,
+        "types": [
+          "object"
+        ],
+        "spread": false,
+        "optional": false,
+        "name": "model",
+        "description": "The model instance"
+      },
+      {
+        "nullable": null,
+        "types": [
+          "object"
+        ],
+        "spread": false,
+        "optional": false,
+        "name": "view",
+        "description": "The view instance"
+      }
+    ],
+    "interface": false
+  },
+  {
+    "__docId__": 51,
+    "kind": "constructor",
+    "name": "constructor",
+    "memberof": "js/controller.js~Controller",
+    "generator": false,
+    "async": false,
+    "static": false,
+    "longname": "js/controller.js~Controller#constructor",
+    "access": "public",
+    "description": null,
+    "lineNumber": 9,
+    "undocument": true
+  },
+  {
+    "__docId__": 52,
+    "kind": "member",
+    "name": "model",
+    "memberof": "js/controller.js~Controller",
+    "static": false,
+    "longname": "js/controller.js~Controller#model",
+    "access": "public",
+    "description": null,
+    "lineNumber": 10,
+    "undocument": true,
+    "type": {
+      "types": [
+        "*"
+      ]
+    }
+  },
+  {
+    "__docId__": 53,
+    "kind": "member",
+    "name": "view",
+    "memberof": "js/controller.js~Controller",
+    "static": false,
+    "longname": "js/controller.js~Controller#view",
+    "access": "public",
+    "description": null,
+    "lineNumber": 11,
+    "undocument": true,
+    "type": {
+      "types": [
+        "*"
+      ]
+    }
+  },
+  {
+    "__docId__": 55,
+    "kind": "method",
+    "name": "addItem",
+    "memberof": "js/controller.js~Controller",
+    "generator": false,
+    "async": false,
+    "static": false,
+    "longname": "js/controller.js~Controller#addItem",
+    "access": "public",
+    "description": "An event to fire whenever you want to add an item. Simply pass in the event\nobject and it'll handle the DOM insertion and saving of the new item.",
+    "lineNumber": 46,
+    "params": [
+      {
+        "name": "title",
+        "types": [
+          "*"
+        ]
+      }
+    ],
+    "return": null
+  },
+  {
+    "__docId__": 56,
+    "kind": "method",
+    "name": "editItem",
+    "memberof": "js/controller.js~Controller",
+    "generator": false,
+    "async": false,
+    "static": false,
+    "longname": "js/controller.js~Controller#editItem",
+    "access": "public",
+    "description": null,
+    "lineNumber": 59,
+    "undocument": true,
+    "params": [
+      {
+        "name": "id",
+        "types": [
+          "*"
+        ]
+      }
+    ],
+    "return": null
+  },
+  {
+    "__docId__": 57,
+    "kind": "method",
+    "name": "editItemSave",
+    "memberof": "js/controller.js~Controller",
+    "generator": false,
+    "async": false,
+    "static": false,
+    "longname": "js/controller.js~Controller#editItemSave",
+    "access": "public",
+    "description": null,
+    "lineNumber": 67,
+    "undocument": true,
+    "params": [
+      {
+        "name": "id",
+        "types": [
+          "*"
+        ]
+      },
+      {
+        "name": "title",
+        "types": [
+          "*"
+        ]
+      }
+    ],
+    "return": null
+  },
+  {
+    "__docId__": 58,
+    "kind": "method",
+    "name": "editItemCancel",
+    "memberof": "js/controller.js~Controller",
+    "generator": false,
+    "async": false,
+    "static": false,
+    "longname": "js/controller.js~Controller#editItemCancel",
+    "access": "public",
+    "description": null,
+    "lineNumber": 87,
+    "undocument": true,
+    "params": [
+      {
+        "name": "id",
+        "types": [
+          "*"
+        ]
+      }
+    ],
+    "return": null
+  },
+  {
+    "__docId__": 59,
+    "kind": "method",
+    "name": "removeItem",
+    "memberof": "js/controller.js~Controller",
+    "generator": false,
+    "async": false,
+    "static": false,
+    "longname": "js/controller.js~Controller#removeItem",
+    "access": "public",
+    "description": "By giving it an ID it'll find the DOM element matching that ID,\nremove it from the DOM and also remove it from storage.",
+    "lineNumber": 99,
+    "params": [
+      {
+        "nullable": null,
+        "types": [
+          "number"
+        ],
+        "spread": false,
+        "optional": false,
+        "name": "id",
+        "description": "The ID of the item to remove from the DOM and\nstorage"
+      }
+    ],
+    "return": null
+  },
+  {
+    "__docId__": 60,
+    "kind": "method",
+    "name": "removeCompletedItems",
+    "memberof": "js/controller.js~Controller",
+    "generator": false,
+    "async": false,
+    "static": false,
+    "longname": "js/controller.js~Controller#removeCompletedItems",
+    "access": "public",
+    "description": "Will remove all completed items from the DOM and storage.",
+    "lineNumber": 109,
+    "params": [],
+    "return": null
+  },
+  {
+    "__docId__": 61,
+    "kind": "method",
+    "name": "toggleComplete",
+    "memberof": "js/controller.js~Controller",
+    "generator": false,
+    "async": false,
+    "static": false,
+    "longname": "js/controller.js~Controller#toggleComplete",
+    "access": "public",
+    "description": "Give it an ID of a model and a checkbox and it will update the item\nin storage based on the checkbox's state.",
+    "lineNumber": 127,
+    "params": [
+      {
+        "nullable": null,
+        "types": [
+          "number"
+        ],
+        "spread": false,
+        "optional": false,
+        "name": "id",
+        "description": "The ID of the element to complete or uncomplete"
+      },
+      {
+        "nullable": null,
+        "types": [
+          "object"
+        ],
+        "spread": false,
+        "optional": false,
+        "name": "checkbox",
+        "description": "The checkbox to check the state of complete\n                         or not"
+      },
+      {
+        "nullable": null,
+        "types": [
+          "boolean",
+          "undefined"
+        ],
+        "spread": false,
+        "optional": false,
+        "name": "silent",
+        "description": "Prevent re-filtering the todo items"
+      }
+    ],
+    "return": null
+  },
+  {
+    "__docId__": 62,
+    "kind": "method",
+    "name": "toggleAll",
+    "memberof": "js/controller.js~Controller",
+    "generator": false,
+    "async": false,
+    "static": false,
+    "longname": "js/controller.js~Controller#toggleAll",
+    "access": "public",
+    "description": "Will toggle ALL checkboxes' on/off state and completeness of models.\nJust pass in the event object.",
+    "lineNumber": 143,
+    "params": [
+      {
+        "name": "completed",
+        "types": [
+          "*"
+        ]
+      }
+    ],
+    "return": null
+  },
+  {
+    "__docId__": 63,
+    "kind": "method",
+    "name": "_updateCount",
+    "memberof": "js/controller.js~Controller",
+    "generator": false,
+    "async": false,
+    "static": false,
+    "longname": "js/controller.js~Controller#_updateCount",
+    "access": "private",
+    "description": "Updates the pieces of the page which change depending on the remaining\nnumber of todos.",
+    "lineNumber": 156,
+    "params": [],
+    "return": null
+  },
+  {
+    "__docId__": 64,
+    "kind": "method",
+    "name": "_filter",
+    "memberof": "js/controller.js~Controller",
+    "generator": false,
+    "async": false,
+    "static": false,
+    "longname": "js/controller.js~Controller#_filter",
+    "access": "private",
+    "description": "Re-filters the todo items, based on the active route.",
+    "lineNumber": 176,
+    "params": [
+      {
+        "nullable": null,
+        "types": [
+          "boolean",
+          "undefined"
+        ],
+        "spread": false,
+        "optional": false,
+        "name": "force",
+        "description": "forces a re-painting of todo items."
+      }
+    ],
+    "return": null
+  },
+  {
+    "__docId__": 65,
+    "kind": "member",
+    "name": "_lastActiveRoute",
+    "memberof": "js/controller.js~Controller",
+    "static": false,
+    "longname": "js/controller.js~Controller#_lastActiveRoute",
+    "access": "private",
+    "description": null,
+    "lineNumber": 194,
+    "undocument": true,
+    "type": {
+      "types": [
+        "*"
+      ]
+    }
+  },
+  {
+    "__docId__": 66,
+    "kind": "method",
+    "name": "_updateFilterState",
+    "memberof": "js/controller.js~Controller",
+    "generator": false,
+    "async": false,
+    "static": false,
+    "longname": "js/controller.js~Controller#_updateFilterState",
+    "access": "private",
+    "description": "Simply updates the filter nav's selected states",
+    "lineNumber": 199,
+    "params": [
+      {
+        "name": "currentPage",
+        "types": [
+          "*"
+        ]
+      }
+    ],
+    "return": null
+  },
+  {
+    "__docId__": 67,
+    "kind": "member",
+    "name": "_activeRoute",
+    "memberof": "js/controller.js~Controller",
+    "static": false,
+    "longname": "js/controller.js~Controller#_activeRoute",
+    "access": "private",
+    "description": null,
+    "lineNumber": 202,
+    "undocument": true,
+    "type": {
+      "types": [
+        "*"
+      ]
+    }
+  },
+  {
+    "__docId__": 69,
+    "kind": "method",
+    "name": "setView",
+    "memberof": "js/controller.js~Controller",
+    "generator": false,
+    "async": false,
+    "static": false,
+    "longname": "js/controller.js~Controller#setView",
+    "access": "public",
+    "description": "Loads and initialises the view",
+    "lineNumber": 217,
+    "params": [
+      {
+        "nullable": null,
+        "types": [
+          "string"
+        ],
+        "spread": false,
+        "optional": false,
+        "name": "''",
+        "description": "| 'active' | 'completed'"
+      }
+    ],
+    "return": null
+  },
+  {
+    "__docId__": 70,
+    "kind": "method",
+    "name": "showAll",
+    "memberof": "js/controller.js~Controller",
+    "generator": false,
+    "async": false,
+    "static": false,
+    "longname": "js/controller.js~Controller#showAll",
+    "access": "public",
+    "description": "An event to fire on load. Will get all items and display them in the\ntodo-list",
+    "lineNumber": 227,
+    "params": [],
+    "return": null
+  },
+  {
+    "__docId__": 71,
+    "kind": "method",
+    "name": "showActive",
+    "memberof": "js/controller.js~Controller",
+    "generator": false,
+    "async": false,
+    "static": false,
+    "longname": "js/controller.js~Controller#showActive",
+    "access": "public",
+    "description": "Renders all active tasks",
+    "lineNumber": 236,
+    "params": [],
+    "return": null
+  },
+  {
+    "__docId__": 72,
+    "kind": "method",
+    "name": "showCompleted",
+    "memberof": "js/controller.js~Controller",
+    "generator": false,
+    "async": false,
+    "static": false,
+    "longname": "js/controller.js~Controller#showCompleted",
+    "access": "public",
+    "description": "Renders all completed tasks",
+    "lineNumber": 245,
+    "params": [],
+    "return": null
+  },
+  {
+    "__docId__": 73,
+    "kind": "file",
+    "name": "js/helpers.js",
+    "content": "/*global NodeList */\n(function(window) {\n\t\"use strict\";\n\n\t// Get element(s) by CSS selector:\n\twindow.qs = function(selector, scope) {\n\t\treturn (scope || document).querySelector(selector);\n\t};\n\twindow.qsa = function(selector, scope) {\n\t\treturn (scope || document).querySelectorAll(selector);\n\t};\n\n\t// addEventListener wrapper:\n\twindow.$on = function(target, type, callback, useCapture) {\n\t\ttarget.addEventListener(type, callback, !!useCapture);\n\t};\n\n\t// Attach a handler to event for all elements that match the selector,\n\t// now or in the future, based on a root element\n\twindow.$delegate = function(target, selector, type, handler) {\n\t\tfunction dispatchEvent(event) {\n\t\t\tlet targetElement = event.target;\n\t\t\tlet potentialElements = window.qsa(selector, target);\n\t\t\tlet hasMatch =\n\t\t\t\tArray.prototype.indexOf.call(potentialElements, targetElement) >= 0;\n\n\t\t\tif (hasMatch) {\n\t\t\t\thandler.call(targetElement, event);\n\t\t\t}\n\t\t}\n\n\t\t// https://developer.mozilla.org/en-US/docs/Web/Events/blur\n\t\tlet useCapture = type === \"blur\" || type === \"focus\";\n\n\t\twindow.$on(target, type, dispatchEvent, useCapture);\n\t};\n\n\t// Find the element's parent with the given tag name:\n\t// $parent(qs('a'), 'div');\n\twindow.$parent = function(element, tagName) {\n\t\tif (!element.parentNode) {\n\t\t\treturn;\n\t\t}\n\t\tif (element.parentNode.tagName.toLowerCase() === tagName.toLowerCase()) {\n\t\t\treturn element.parentNode;\n\t\t}\n\t\treturn window.$parent(element.parentNode, tagName);\n\t};\n\n\t// Allow for looping on nodes by chaining:\n\t// qsa('.foo').forEach(function () {})\n\tNodeList.prototype.forEach = Array.prototype.forEach;\n})(window);\n",
+    "static": true,
+    "longname": "/Users/Mokoke/Documents/DEV/OCR/P8/oc_p8_dev/js/helpers.js",
+    "access": "public",
+    "description": null,
+    "lineNumber": 1
+  },
+  {
+    "__docId__": 74,
+    "kind": "file",
+    "name": "js/model.js",
+    "content": "/**\n * Creates a new Model instance and hooks up the storage.\n *\n * @constructor\n * @param {object} storage A reference to the client side storage class\n */\nexport default class Model {\n\tconstructor(storage) {\n\t\tthis.storage = storage;\n\t}\n\t/**\n\t * Creates a new todo model\n\t *\n\t * @param {string} [title] The title of the task\n\t * @param {function} [callback] The callback to fire after the model is created\n\t */\n\tcreate(title, callback) {\n\t\ttitle = title || \"\";\n\t\tcallback = callback || function() {};\n\n\t\tlet newItem = {\n\t\t\ttitle: title.trim(),\n\t\t\tcompleted: false\n\t\t};\n\n\t\tthis.storage.save(newItem, callback);\n\t}\n\n\t/**\n\t * Finds and returns a model in storage. If no query is given it'll simply\n\t * return everything. If you pass in a string or number it'll look that up as\n\t * the ID of the model to find. Lastly, you can pass it an object to match\n\t * against.\n\t *\n\t * @param {string|number|object} [query] A query to match models against\n\t * @param {function} [callback] The callback to fire after the model is found\n\t *\n\t * @example\n\t * model.read(1, func); // Will find the model with an ID of 1\n\t * model.read('1'); // Same as above\n\t * //Below will find a model with foo equalling bar and hello equalling world.\n\t * model.read({ foo: 'bar', hello: 'world' });\n\t */\n\tread(query, callback) {\n\t\tlet queryType = typeof query;\n\t\tcallback = callback || function() {};\n\n\t\tif (queryType === \"function\") {\n\t\t\tcallback = query;\n\t\t\treturn this.storage.findAll(callback);\n\t\t} else if (queryType === \"string\" || queryType === \"number\") {\n\t\t\tquery = parseInt(query, 10);\n\t\t\tthis.storage.find({ id: query }, callback);\n\t\t} else {\n\t\t\tthis.storage.find(query, callback);\n\t\t}\n\t}\n\t/**\n\t * Updates a model by giving it an ID, data to update, and a callback to fire when\n\t * the update is complete.\n\t *\n\t * @param {number} id The id of the model to update\n\t * @param {object} data The properties to update and their new value\n\t * @param {function} callback The callback to fire when the update is complete.\n\t */\n\tupdate(id, data, callback) {\n\t\tthis.storage.save(data, callback, id);\n\t}\n\n\t/**\n\t * Removes a model from storage\n\t *\n\t * @param {number} id The ID of the model to remove\n\t * @param {function} callback The callback to fire when the removal is complete.\n\t */\n\tremove(id, callback) {\n\t\tthis.storage.remove(id, callback);\n\t}\n\n\t/**\n\t * WARNING: Will remove ALL data from storage.\n\t *\n\t * @param {function} callback The callback to fire when the storage is wiped.\n\t */\n\tremoveAll(callback) {\n\t\tthis.storage.drop(callback);\n\t}\n\n\t/**\n\t * Returns a count of all todos\n\t */\n\tgetCount(callback) {\n\t\tlet todos = {\n\t\t\tactive: 0,\n\t\t\tcompleted: 0,\n\t\t\ttotal: 0\n\t\t};\n\n\t\tthis.storage.findAll(data => {\n\t\t\tdata.forEach(function(todo) {\n\t\t\t\tif (todo.completed) {\n\t\t\t\t\ttodos.completed++;\n\t\t\t\t} else {\n\t\t\t\t\ttodos.active++;\n\t\t\t\t}\n\n\t\t\t\ttodos.total++;\n\t\t\t});\n\t\t\tcallback(todos);\n\t\t});\n\t}\n}\n",
+    "static": true,
+    "longname": "/Users/Mokoke/Documents/DEV/OCR/P8/oc_p8_dev/js/model.js",
+    "access": "public",
+    "description": null,
+    "lineNumber": 1
+  },
+  {
+    "__docId__": 75,
+    "kind": "class",
+    "name": "Model",
+    "memberof": "js/model.js",
+    "static": true,
+    "longname": "js/model.js~Model",
+    "access": "public",
+    "export": true,
+    "importPath": "./js/model.js",
+    "importStyle": "Model",
+    "description": "Creates a new Model instance and hooks up the storage.",
+    "lineNumber": 7,
+    "unknown": [
+      {
+        "tagName": "@constructor",
+        "tagValue": ""
+      }
+    ],
+    "params": [
+      {
+        "nullable": null,
+        "types": [
+          "object"
+        ],
+        "spread": false,
+        "optional": false,
+        "name": "storage",
+        "description": "A reference to the client side storage class"
+      }
+    ],
+    "interface": false
+  },
+  {
+    "__docId__": 76,
+    "kind": "constructor",
+    "name": "constructor",
+    "memberof": "js/model.js~Model",
+    "generator": false,
+    "async": false,
+    "static": false,
+    "longname": "js/model.js~Model#constructor",
+    "access": "public",
+    "description": null,
+    "lineNumber": 8,
+    "undocument": true
+  },
+  {
+    "__docId__": 77,
+    "kind": "member",
+    "name": "storage",
+    "memberof": "js/model.js~Model",
+    "static": false,
+    "longname": "js/model.js~Model#storage",
+    "access": "public",
+    "description": null,
+    "lineNumber": 9,
+    "undocument": true,
+    "type": {
+      "types": [
+        "*"
+      ]
+    }
+  },
+  {
+    "__docId__": 78,
+    "kind": "method",
+    "name": "create",
+    "memberof": "js/model.js~Model",
+    "generator": false,
+    "async": false,
+    "static": false,
+    "longname": "js/model.js~Model#create",
+    "access": "public",
+    "description": "Creates a new todo model",
+    "lineNumber": 17,
+    "params": [
+      {
+        "nullable": null,
+        "types": [
+          "string"
+        ],
+        "spread": false,
+        "optional": true,
+        "name": "title",
+        "description": "The title of the task"
+      },
+      {
+        "nullable": null,
+        "types": [
+          "function"
+        ],
+        "spread": false,
+        "optional": true,
+        "name": "callback",
+        "description": "The callback to fire after the model is created"
+      }
+    ],
+    "return": null
+  },
+  {
+    "__docId__": 79,
+    "kind": "method",
+    "name": "read",
+    "memberof": "js/model.js~Model",
+    "generator": false,
+    "async": false,
+    "static": false,
+    "longname": "js/model.js~Model#read",
+    "access": "public",
+    "description": "Finds and returns a model in storage. If no query is given it'll simply\nreturn everything. If you pass in a string or number it'll look that up as\nthe ID of the model to find. Lastly, you can pass it an object to match\nagainst.",
+    "examples": [
+      "model.read(1, func); // Will find the model with an ID of 1\nmodel.read('1'); // Same as above\n//Below will find a model with foo equalling bar and hello equalling world.\nmodel.read({ foo: 'bar', hello: 'world' });"
+    ],
+    "lineNumber": 44,
+    "params": [
+      {
+        "nullable": null,
+        "types": [
+          "string",
+          "number",
+          "object"
+        ],
+        "spread": false,
+        "optional": true,
+        "name": "query",
+        "description": "A query to match models against"
+      },
+      {
+        "nullable": null,
+        "types": [
+          "function"
+        ],
+        "spread": false,
+        "optional": true,
+        "name": "callback",
+        "description": "The callback to fire after the model is found"
+      }
+    ],
+    "return": {
+      "types": [
+        "*"
+      ]
+    }
+  },
+  {
+    "__docId__": 80,
+    "kind": "method",
+    "name": "update",
+    "memberof": "js/model.js~Model",
+    "generator": false,
+    "async": false,
+    "static": false,
+    "longname": "js/model.js~Model#update",
+    "access": "public",
+    "description": "Updates a model by giving it an ID, data to update, and a callback to fire when\nthe update is complete.",
+    "lineNumber": 66,
+    "params": [
+      {
+        "nullable": null,
+        "types": [
+          "number"
+        ],
+        "spread": false,
+        "optional": false,
+        "name": "id",
+        "description": "The id of the model to update"
+      },
+      {
+        "nullable": null,
+        "types": [
+          "object"
+        ],
+        "spread": false,
+        "optional": false,
+        "name": "data",
+        "description": "The properties to update and their new value"
+      },
+      {
+        "nullable": null,
+        "types": [
+          "function"
+        ],
+        "spread": false,
+        "optional": false,
+        "name": "callback",
+        "description": "The callback to fire when the update is complete."
+      }
+    ],
+    "return": null
+  },
+  {
+    "__docId__": 81,
+    "kind": "method",
+    "name": "remove",
+    "memberof": "js/model.js~Model",
+    "generator": false,
+    "async": false,
+    "static": false,
+    "longname": "js/model.js~Model#remove",
+    "access": "public",
+    "description": "Removes a model from storage",
+    "lineNumber": 76,
+    "params": [
+      {
+        "nullable": null,
+        "types": [
+          "number"
+        ],
+        "spread": false,
+        "optional": false,
+        "name": "id",
+        "description": "The ID of the model to remove"
+      },
+      {
+        "nullable": null,
+        "types": [
+          "function"
+        ],
+        "spread": false,
+        "optional": false,
+        "name": "callback",
+        "description": "The callback to fire when the removal is complete."
+      }
+    ],
+    "return": null
+  },
+  {
+    "__docId__": 82,
+    "kind": "method",
+    "name": "removeAll",
+    "memberof": "js/model.js~Model",
+    "generator": false,
+    "async": false,
+    "static": false,
+    "longname": "js/model.js~Model#removeAll",
+    "access": "public",
+    "description": "WARNING: Will remove ALL data from storage.",
+    "lineNumber": 85,
+    "params": [
+      {
+        "nullable": null,
+        "types": [
+          "function"
+        ],
+        "spread": false,
+        "optional": false,
+        "name": "callback",
+        "description": "The callback to fire when the storage is wiped."
+      }
+    ],
+    "return": null
+  },
+  {
+    "__docId__": 83,
+    "kind": "method",
+    "name": "getCount",
+    "memberof": "js/model.js~Model",
+    "generator": false,
+    "async": false,
+    "static": false,
+    "longname": "js/model.js~Model#getCount",
+    "access": "public",
+    "description": "Returns a count of all todos",
+    "lineNumber": 92,
+    "params": [
+      {
+        "name": "callback",
+        "types": [
+          "*"
+        ]
+      }
+    ],
+    "return": null
+  },
+  {
+    "__docId__": 84,
+    "kind": "file",
+    "name": "js/store.js",
+    "content": "/*jshint eqeqeq:false */\n\n/**\n * Creates a new client side storage object and will create an empty\n * collection if no collection already exists.\n *\n * @param {string} name The name of our DB we want to use\n * @param {function} callback Our fake DB uses callbacks because in\n * real life you probably would be making AJAX calls\n */\nexport default class Store {\n\tconstructor(name, callback) {\n\t\tcallback = callback || function() {};\n\n\t\tthis._dbName = name;\n\n\t\tif (!localStorage[name]) {\n\t\t\tlet data = {\n\t\t\t\ttodos: []\n\t\t\t};\n\t\t\tlocalStorage[name] = JSON.stringify(data);\n\t\t}\n\n\t\tcallback.call(this, JSON.stringify(localStorage[name]));\n\t}\n\n\t/**\n\t * Finds items based on a query given as a JS object\n\t *\n\t * @param {object} query The query to match against (i.e. {foo: 'bar'})\n\t * @param {function} callback\t The callback to fire when the query has\n\t * completed running\n\t *\n\t * @example\n\t * db.find({foo: 'bar', hello: 'world'}, function (data) {\n\t *\t // data will return any items that have foo: bar and\n\t *\t // hello: world in their properties\n\t * });\n\t */\n\tfind(query, callback) {\n\t\tif (!callback) {\n\t\t\treturn;\n\t\t}\n\n\t\tlet todos = JSON.parse(localStorage[this._dbName]).todos;\n\n\t\tcallback.call(\n\t\t\tthis,\n\t\t\ttodos.filter(todo => {\n\t\t\t\tfor (let q in query) {\n\t\t\t\t\tif (query[q] !== todo[q]) {\n\t\t\t\t\t\treturn false;\n\t\t\t\t\t}\n\t\t\t\t}\n\t\t\t\treturn true;\n\t\t\t})\n\t\t);\n\t}\n\n\t/**\n\t * Will retrieve all data from the collection\n\t *\n\t * @param {function} callback The callback to fire upon retrieving data\n\t */\n\tfindAll(callback) {\n\t\tcallback = callback || function() {};\n\t\tcallback.call(this, JSON.parse(localStorage[this._dbName]).todos); // * \"this\" indicates where the function attached to \"call\" should refere to\n\t}\n\n\t/**\n\t * Will save the given data to the DB. If no item exists it will create a new\n\t * item, otherwise it'll simply update an existing item's properties\n\t *\n\t * @param {object} updateData The data to save back into the DB\n\t * @param {function} callback The callback to fire after saving\n\t * @param {number} id An optional param to enter an ID of an item to update\n\t */\n\tsave(updateData, callback, id) {\n\t\tlet data = JSON.parse(localStorage[this._dbName]);\n\t\tlet todos = data.todos;\n\n\t\tcallback = callback || function() {};\n\t\t// If an ID was actually given, find the item and update each property\n\t\tif (id) {\n\t\t\tfor (let todo of todos) {\n\t\t\t\tif (todo.id === id) {\n\t\t\t\t\tfor (let key in updateData) {\n\t\t\t\t\t\ttodo[key] = updateData[key];\n\t\t\t\t\t}\n\t\t\t\t\tbreak;\n\t\t\t\t}\n\t\t\t}\n\n\t\t\tlocalStorage[this._dbName] = JSON.stringify(data);\n\t\t\tcallback.call(this, todos);\n\t\t} else {\n\t\t\t// Assign an ID\n\t\t\tlet newId = this.createId(todos);\n\t\t\tupdateData.id = newId;\n\t\t\tupdateData.id = parseInt(newId);\n\t\t\ttodos.push(updateData);\n\t\t\tlocalStorage[this._dbName] = JSON.stringify(data);\n\t\t\tcallback.call(this, [updateData]);\n\t\t}\n\t}\n\n\t/**\n\t * Will create a unique id for the new created todo\n\t *\n\t * @param {number} todos The todos array to iterate trough it and get a new unique id\n\t */\n\tcreateId(todos) {\n\t\tlet newId;\n\t\tlet max = 0;\n\t\tif (todos.length === 0) {\n\t\t\tnewId = 1;\n\t\t}\n\t\tfor (let todo of todos) {\n\t\t\tif (todo.id > max) {\n\t\t\t\tmax = todo.id;\n\t\t\t}\n\t\t\tnewId = max + 1;\n\t\t}\n\t\treturn newId;\n\t}\n\n\t/**\n\t * Will remove an item from the Store based on its ID\n\t *\n\t * @param {number} id The ID of the item you want to remove\n\t * @param {function} callback The callback to fire after saving\n\t */\n\tremove(id, callback) {\n\t\tlet data = JSON.parse(localStorage[this._dbName]);\n\t\tlet todos = data.todos;\n\t\t/* let todoId; */\n\n\t\tfor (let i = 0; i < todos.length; i++) {\n\t\t\tif (todos[i].id == id) {\n\t\t\t\ttodos.splice(i, 1);\n\t\t\t}\n\t\t}\n\n\t\tlocalStorage[this._dbName] = JSON.stringify(data);\n\t\tcallback.call(this, todos);\n\t}\n\n\t/**\n\t * Will drop all storage and start fresh\n\t *\n\t * @param {function} callback The callback to fire after dropping the data\n\t */\n\tdrop(callback) {\n\t\tlet data = { todos: [] };\n\t\tlocalStorage[this._dbName] = JSON.stringify(data);\n\t\tcallback.call(this, data.todos);\n\t}\n}\n",
+    "static": true,
+    "longname": "/Users/Mokoke/Documents/DEV/OCR/P8/oc_p8_dev/js/store.js",
+    "access": "public",
+    "description": null,
+    "lineNumber": 1
+  },
+  {
+    "__docId__": 85,
+    "kind": "class",
+    "name": "Store",
+    "memberof": "js/store.js",
+    "static": true,
+    "longname": "js/store.js~Store",
+    "access": "public",
+    "export": true,
+    "importPath": "./js/store.js",
+    "importStyle": "Store",
+    "description": "Creates a new client side storage object and will create an empty\ncollection if no collection already exists.",
+    "lineNumber": 11,
+    "params": [
+      {
+        "nullable": null,
+        "types": [
+          "string"
+        ],
+        "spread": false,
+        "optional": false,
+        "name": "name",
+        "description": "The name of our DB we want to use"
+      },
+      {
+        "nullable": null,
+        "types": [
+          "function"
+        ],
+        "spread": false,
+        "optional": false,
+        "name": "callback",
+        "description": "Our fake DB uses callbacks because in\nreal life you probably would be making AJAX calls"
+      }
+    ],
+    "interface": false
+  },
+  {
+    "__docId__": 86,
+    "kind": "constructor",
+    "name": "constructor",
+    "memberof": "js/store.js~Store",
+    "generator": false,
+    "async": false,
+    "static": false,
+    "longname": "js/store.js~Store#constructor",
+    "access": "public",
+    "description": null,
+    "lineNumber": 12,
+    "undocument": true
+  },
+  {
+    "__docId__": 87,
+    "kind": "member",
+    "name": "_dbName",
+    "memberof": "js/store.js~Store",
+    "static": false,
+    "longname": "js/store.js~Store#_dbName",
+    "access": "private",
+    "description": null,
+    "lineNumber": 15,
+    "undocument": true,
+    "type": {
+      "types": [
+        "*"
+      ]
+    }
+  },
+  {
+    "__docId__": 88,
+    "kind": "method",
+    "name": "find",
+    "memberof": "js/store.js~Store",
+    "generator": false,
+    "async": false,
+    "static": false,
+    "longname": "js/store.js~Store#find",
+    "access": "public",
+    "description": "Finds items based on a query given as a JS object",
+    "examples": [
+      "db.find({foo: 'bar', hello: 'world'}, function (data) {\n // data will return any items that have foo: bar and\n // hello: world in their properties\n});"
+    ],
+    "lineNumber": 40,
+    "params": [
+      {
+        "nullable": null,
+        "types": [
+          "object"
+        ],
+        "spread": false,
+        "optional": false,
+        "name": "query",
+        "description": "The query to match against (i.e. {foo: 'bar'})"
+      },
+      {
+        "nullable": null,
+        "types": [
+          "function"
+        ],
+        "spread": false,
+        "optional": false,
+        "name": "callback",
+        "description": "The callback to fire when the query has\ncompleted running"
+      }
+    ],
+    "return": null
+  },
+  {
+    "__docId__": 89,
+    "kind": "method",
+    "name": "findAll",
+    "memberof": "js/store.js~Store",
+    "generator": false,
+    "async": false,
+    "static": false,
+    "longname": "js/store.js~Store#findAll",
+    "access": "public",
+    "description": "Will retrieve all data from the collection",
+    "lineNumber": 65,
+    "params": [
+      {
+        "nullable": null,
+        "types": [
+          "function"
+        ],
+        "spread": false,
+        "optional": false,
+        "name": "callback",
+        "description": "The callback to fire upon retrieving data"
+      }
+    ],
+    "return": null
+  },
+  {
+    "__docId__": 90,
+    "kind": "method",
+    "name": "save",
+    "memberof": "js/store.js~Store",
+    "generator": false,
+    "async": false,
+    "static": false,
+    "longname": "js/store.js~Store#save",
+    "access": "public",
+    "description": "Will save the given data to the DB. If no item exists it will create a new\nitem, otherwise it'll simply update an existing item's properties",
+    "lineNumber": 78,
+    "params": [
+      {
+        "nullable": null,
+        "types": [
+          "object"
+        ],
+        "spread": false,
+        "optional": false,
+        "name": "updateData",
+        "description": "The data to save back into the DB"
+      },
+      {
+        "nullable": null,
+        "types": [
+          "function"
+        ],
+        "spread": false,
+        "optional": false,
+        "name": "callback",
+        "description": "The callback to fire after saving"
+      },
+      {
+        "nullable": null,
+        "types": [
+          "number"
+        ],
+        "spread": false,
+        "optional": false,
+        "name": "id",
+        "description": "An optional param to enter an ID of an item to update"
+      }
+    ],
+    "return": null
+  },
+  {
+    "__docId__": 91,
+    "kind": "method",
+    "name": "createId",
+    "memberof": "js/store.js~Store",
+    "generator": false,
+    "async": false,
+    "static": false,
+    "longname": "js/store.js~Store#createId",
+    "access": "public",
+    "description": "Will create a unique id for the new created todo",
+    "lineNumber": 112,
+    "params": [
+      {
+        "nullable": null,
+        "types": [
+          "number"
+        ],
+        "spread": false,
+        "optional": false,
+        "name": "todos",
+        "description": "The todos array to iterate trough it and get a new unique id"
+      }
+    ],
+    "return": {
+      "types": [
+        "*"
+      ]
+    }
+  },
+  {
+    "__docId__": 92,
+    "kind": "method",
+    "name": "remove",
+    "memberof": "js/store.js~Store",
+    "generator": false,
+    "async": false,
+    "static": false,
+    "longname": "js/store.js~Store#remove",
+    "access": "public",
+    "description": "Will remove an item from the Store based on its ID",
+    "lineNumber": 133,
+    "params": [
+      {
+        "nullable": null,
+        "types": [
+          "number"
+        ],
+        "spread": false,
+        "optional": false,
+        "name": "id",
+        "description": "The ID of the item you want to remove"
+      },
+      {
+        "nullable": null,
+        "types": [
+          "function"
+        ],
+        "spread": false,
+        "optional": false,
+        "name": "callback",
+        "description": "The callback to fire after saving"
+      }
+    ],
+    "return": null
+  },
+  {
+    "__docId__": 93,
+    "kind": "method",
+    "name": "drop",
+    "memberof": "js/store.js~Store",
+    "generator": false,
+    "async": false,
+    "static": false,
+    "longname": "js/store.js~Store#drop",
+    "access": "public",
+    "description": "Will drop all storage and start fresh",
+    "lineNumber": 153,
+    "params": [
+      {
+        "nullable": null,
+        "types": [
+          "function"
+        ],
+        "spread": false,
+        "optional": false,
+        "name": "callback",
+        "description": "The callback to fire after dropping the data"
+      }
+    ],
+    "return": null
+  },
+  {
+    "__docId__": 94,
+    "kind": "file",
+    "name": "js/template.js",
+    "content": "let htmlEscapes = {\n\t\"&\": \"&amp;\",\n\t\"<\": \"&lt;\",\n\t\">\": \"&gt;\",\n\t'\"': \"&quot;\",\n\t\"'\": \"&#x27;\",\n\t\"`\": \"&#x60;\"\n};\n\nlet escapeHtmlChar = function(chr) {\n\treturn htmlEscapes[chr];\n};\n\nlet reUnescapedHtml = /[&<>\"'`]/g;\nlet reHasUnescapedHtml = new RegExp(reUnescapedHtml.source);\n\nlet escape = function(string) {\n\treturn string && reHasUnescapedHtml.test(string)\n\t\t? string.replace(reUnescapedHtml, escapeHtmlChar)\n\t\t: string;\n};\n\n/**\n * Sets up defaults for all the Template methods such as a default template\n *\n * @constructor\n */\nexport default class Template {\n\tconstructor() {\n\t\tthis.defaultTemplate =\n\t\t\t'<li data-id=\"{{id}}\" class=\"{{completed}}\">' +\n\t\t\t'<div class=\"view\">' +\n\t\t\t'<input class=\"toggle\" type=\"checkbox\" {{checked}}>' +\n\t\t\t\"<label>{{title}}</label>\" +\n\t\t\t'<button class=\"destroy\"></button>' +\n\t\t\t\"</div>\" +\n\t\t\t\"</li>\";\n\t}\n\t/**\n\t * Creates an <li> HTML string and returns it for placement in your app.\n\t *\n\t * NOTE: In real life you should be using a templating engine such as Mustache\n\t * or Handlebars, however, this is a vanilla JS example.\n\t *\n\t * @param {object} data The object containing keys you want to find in the\n\t *                      template to replace.\n\t * @returns {string} HTML String of an <li> element\n\t *\n\t * @example\n\t * view.show({\n\t *\tid: 1,\n\t *\ttitle: \"Hello World\",\n\t *\tcompleted: 0,\n\t * });\n\t */\n\tshow(data) {\n\t\tlet i, l;\n\t\tlet view = \"\";\n\n\t\tfor (i = 0, l = data.length; i < l; i++) {\n\t\t\tlet template = this.defaultTemplate;\n\t\t\tlet completed = \"\";\n\t\t\tlet checked = \"\";\n\n\t\t\tif (data[i].completed) {\n\t\t\t\tcompleted = \"completed\";\n\t\t\t\tchecked = \"checked\";\n\t\t\t}\n\n\t\t\ttemplate = template.replace(\"{{id}}\", data[i].id);\n\t\t\ttemplate = template.replace(\"{{title}}\", escape(data[i].title));\n\t\t\ttemplate = template.replace(\"{{completed}}\", completed);\n\t\t\ttemplate = template.replace(\"{{checked}}\", checked);\n\n\t\t\tview = view + template;\n\t\t}\n\n\t\treturn view;\n\t}\n\n\t/**\n\t * Displays a counter of how many to dos are left to complete\n\t *\n\t * @param {number} activeTodos The number of active todos.\n\t * @returns {string} String containing the count\n\t */\n\titemCounter(activeTodos) {\n\t\tlet plural = activeTodos === 1 ? \"\" : \"s\";\n\n\t\treturn \"<strong>\" + activeTodos + \"</strong> item\" + plural + \" left\";\n\t}\n\n\t/**\n\t * Updates the text within the \"Clear completed\" button\n\t *\n\t * @param  {[type]} completedTodos The number of completed todos.\n\t * @returns {string} String containing the count\n\t */\n\tclearCompletedButton(completedTodos) {\n\t\tif (completedTodos > 0) {\n\t\t\treturn \"Clear completed\";\n\t\t} else {\n\t\t\treturn \"\";\n\t\t}\n\t}\n}\n",
+    "static": true,
+    "longname": "/Users/Mokoke/Documents/DEV/OCR/P8/oc_p8_dev/js/template.js",
+    "access": "public",
+    "description": null,
+    "lineNumber": 1
+  },
+  {
+    "__docId__": 95,
+    "kind": "variable",
+    "name": "htmlEscapes",
+    "memberof": "js/template.js",
+    "static": true,
+    "longname": "js/template.js~htmlEscapes",
+    "access": "public",
+    "export": false,
+    "importPath": "./js/template.js",
+    "importStyle": null,
+    "description": null,
+    "lineNumber": 1,
+    "undocument": true,
+    "type": {
+      "types": [
+        "{\"&\": string, \"<\": string, \">\": string, \"\"\": string, \"'\": string, \"`\": string}"
+      ]
+    },
+    "ignore": true
+  },
+  {
+    "__docId__": 96,
+    "kind": "function",
+    "name": "escapeHtmlChar",
+    "memberof": "js/template.js",
+    "generator": false,
+    "async": false,
+    "static": true,
+    "longname": "js/template.js~escapeHtmlChar",
+    "access": "public",
+    "export": false,
+    "importPath": "./js/template.js",
+    "importStyle": null,
+    "description": null,
+    "lineNumber": 10,
+    "undocument": true,
+    "params": [
+      {
+        "name": "chr",
+        "types": [
+          "*"
+        ]
+      }
+    ],
+    "return": {
+      "types": [
+        "*"
+      ]
+    },
+    "ignore": true
+  },
+  {
+    "__docId__": 97,
+    "kind": "variable",
+    "name": "reUnescapedHtml",
+    "memberof": "js/template.js",
+    "static": true,
+    "longname": "js/template.js~reUnescapedHtml",
+    "access": "public",
+    "export": false,
+    "importPath": "./js/template.js",
+    "importStyle": null,
+    "description": null,
+    "lineNumber": 14,
+    "undocument": true,
+    "type": {
+      "types": [
+        "undefined"
+      ]
+    },
+    "ignore": true
+  },
+  {
+    "__docId__": 98,
+    "kind": "variable",
+    "name": "reHasUnescapedHtml",
+    "memberof": "js/template.js",
+    "static": true,
+    "longname": "js/template.js~reHasUnescapedHtml",
+    "access": "public",
+    "export": false,
+    "importPath": "./js/template.js",
+    "importStyle": null,
+    "description": null,
+    "lineNumber": 15,
+    "undocument": true,
+    "type": {
+      "types": [
+        "*"
+      ]
+    },
+    "ignore": true
+  },
+  {
+    "__docId__": 99,
+    "kind": "function",
+    "name": "escape",
+    "memberof": "js/template.js",
+    "generator": false,
+    "async": false,
+    "static": true,
+    "longname": "js/template.js~escape",
+    "access": "public",
+    "export": false,
+    "importPath": "./js/template.js",
+    "importStyle": null,
+    "description": null,
+    "lineNumber": 17,
+    "undocument": true,
+    "params": [
+      {
+        "name": "string",
+        "types": [
+          "*"
+        ]
+      }
+    ],
+    "return": {
+      "types": [
+        "*"
+      ]
+    },
+    "ignore": true
+  },
+  {
+    "__docId__": 100,
+    "kind": "class",
+    "name": "Template",
+    "memberof": "js/template.js",
+    "static": true,
+    "longname": "js/template.js~Template",
+    "access": "public",
+    "export": true,
+    "importPath": "./js/template.js",
+    "importStyle": "Template",
+    "description": "Sets up defaults for all the Template methods such as a default template",
+    "lineNumber": 28,
+    "unknown": [
+      {
+        "tagName": "@constructor",
+        "tagValue": ""
+      }
+    ],
+    "interface": false
+  },
+  {
+    "__docId__": 101,
+    "kind": "constructor",
+    "name": "constructor",
+    "memberof": "js/template.js~Template",
+    "generator": false,
+    "async": false,
+    "static": false,
+    "longname": "js/template.js~Template#constructor",
+    "access": "public",
+    "description": null,
+    "lineNumber": 29,
+    "undocument": true
+  },
+  {
+    "__docId__": 102,
+    "kind": "member",
+    "name": "defaultTemplate",
+    "memberof": "js/template.js~Template",
+    "static": false,
+    "longname": "js/template.js~Template#defaultTemplate",
+    "access": "public",
+    "description": null,
+    "lineNumber": 30,
+    "undocument": true,
+    "type": {
+      "types": [
+        "*"
+      ]
+    }
+  },
+  {
+    "__docId__": 103,
+    "kind": "method",
+    "name": "show",
+    "memberof": "js/template.js~Template",
+    "generator": false,
+    "async": false,
+    "static": false,
+    "longname": "js/template.js~Template#show",
+    "access": "public",
+    "description": "Creates an <li> HTML string and returns it for placement in your app.\n\nNOTE: In real life you should be using a templating engine such as Mustache\nor Handlebars, however, this is a vanilla JS example.",
+    "examples": [
+      "view.show({\nid: 1,\ntitle: \"Hello World\",\ncompleted: 0,\n});"
+    ],
+    "lineNumber": 56,
+    "unknown": [
+      {
+        "tagName": "@returns",
+        "tagValue": "{string} HTML String of an <li> element"
+      }
+    ],
+    "params": [
+      {
+        "nullable": null,
+        "types": [
+          "object"
+        ],
+        "spread": false,
+        "optional": false,
+        "name": "data",
+        "description": "The object containing keys you want to find in the\n                     template to replace."
+      }
+    ],
+    "return": {
+      "nullable": null,
+      "types": [
+        "string"
+      ],
+      "spread": false,
+      "description": "HTML String of an <li> element"
+    }
+  },
+  {
+    "__docId__": 104,
+    "kind": "method",
+    "name": "itemCounter",
+    "memberof": "js/template.js~Template",
+    "generator": false,
+    "async": false,
+    "static": false,
+    "longname": "js/template.js~Template#itemCounter",
+    "access": "public",
+    "description": "Displays a counter of how many to dos are left to complete",
+    "lineNumber": 87,
+    "unknown": [
+      {
+        "tagName": "@returns",
+        "tagValue": "{string} String containing the count"
+      }
+    ],
+    "params": [
+      {
+        "nullable": null,
+        "types": [
+          "number"
+        ],
+        "spread": false,
+        "optional": false,
+        "name": "activeTodos",
+        "description": "The number of active todos."
+      }
+    ],
+    "return": {
+      "nullable": null,
+      "types": [
+        "string"
+      ],
+      "spread": false,
+      "description": "String containing the count"
+    }
+  },
+  {
+    "__docId__": 105,
+    "kind": "method",
+    "name": "clearCompletedButton",
+    "memberof": "js/template.js~Template",
+    "generator": false,
+    "async": false,
+    "static": false,
+    "longname": "js/template.js~Template#clearCompletedButton",
+    "access": "public",
+    "description": "Updates the text within the \"Clear completed\" button",
+    "lineNumber": 99,
+    "unknown": [
+      {
+        "tagName": "@returns",
+        "tagValue": "{string} String containing the count"
+      }
+    ],
+    "params": [
+      {
+        "nullable": null,
+        "types": [
+          "[type]"
+        ],
+        "spread": false,
+        "optional": false,
+        "name": "completedTodos",
+        "description": "The number of completed todos."
+      }
+    ],
+    "return": {
+      "nullable": null,
+      "types": [
+        "string"
+      ],
+      "spread": false,
+      "description": "String containing the count"
+    }
+  },
+  {
+    "__docId__": 106,
+    "kind": "file",
+    "name": "js/view.js",
+    "content": "/*global qs, qsa, $on, $parent, $delegate */\n\n/**\n * View that abstracts away the browser's DOM completely.\n * It has two simple entry points:\n *\n *   - bind(eventName, handler)\n *     Takes a todo application event and registers the handler\n *   - render(command, parameterObject)\n *     Renders the given command with the options\n */\nexport default class View {\n\tconstructor(template) {\n\t\tthis.template = template;\n\n\t\tthis.ENTER_KEY = 13;\n\t\tthis.ESCAPE_KEY = 27;\n\n\t\tthis.$todoList = qs(\".todo-list\");\n\t\tthis.$todoItemCounter = qs(\".todo-count\");\n\t\tthis.$clearCompleted = qs(\".clear-completed\");\n\t\tthis.$main = qs(\".main\");\n\t\tthis.$footer = qs(\".footer\");\n\t\tthis.$toggleAll = qs(\".toggle-all\");\n\t\tthis.$newTodo = qs(\".new-todo\");\n\t}\n\t_removeItem(id) {\n\t\tlet elem = qs('[data-id=\"' + id + '\"]');\n\n\t\tif (elem) {\n\t\t\tthis.$todoList.removeChild(elem);\n\t\t}\n\t}\n\n\t_clearCompletedButton(completedCount, visible) {\n\t\tthis.$clearCompleted.innerHTML = this.template.clearCompletedButton(\n\t\t\tcompletedCount\n\t\t);\n\t\tthis.$clearCompleted.style.display = visible ? \"block\" : \"none\";\n\t}\n\n\t_setFilter(currentPage) {\n\t\tqs(\".filters .selected\").className = \"\";\n\t\tqs('.filters [href=\"#/' + currentPage + '\"]').className = \"selected\";\n\t}\n\n\t_elementComplete(id, completed) {\n\t\tlet listItem = qs('[data-id=\"' + id + '\"]');\n\n\t\tif (!listItem) {\n\t\t\treturn;\n\t\t}\n\n\t\tlistItem.className = completed ? \"completed\" : \"\";\n\n\t\t// In case it was toggled from an event and not by clicking the checkbox\n\t\tqs(\"input\", listItem).checked = completed;\n\t}\n\n\t_editItem(id, title) {\n\t\tlet listItem = qs('[data-id=\"' + id + '\"]');\n\n\t\tif (!listItem) {\n\t\t\treturn;\n\t\t}\n\n\t\tlistItem.className = listItem.className + \" editing\";\n\n\t\tlet input = document.createElement(\"input\");\n\t\tinput.className = \"edit\";\n\n\t\tlistItem.appendChild(input);\n\t\tinput.focus();\n\t\tinput.value = title;\n\t}\n\n\t_editItemDone(id, title) {\n\t\tlet listItem = qs('[data-id=\"' + id + '\"]');\n\n\t\tif (!listItem) {\n\t\t\treturn;\n\t\t}\n\n\t\tlet input = qs(\"input.edit\", listItem);\n\t\tlistItem.removeChild(input);\n\n\t\tlistItem.className = listItem.className.replace(\"editing\", \"\");\n\n\t\tqsa(\"label\", listItem).forEach(function(label) {\n\t\t\tlabel.textContent = title;\n\t\t});\n\t}\n\n\trender(viewCmd, parameter) {\n\t\tlet viewCommands = {\n\t\t\tshowEntries: () => {\n\t\t\t\tthis.$todoList.innerHTML = this.template.show(parameter);\n\t\t\t},\n\t\t\tremoveItem: () => {\n\t\t\t\tthis._removeItem(parameter);\n\t\t\t},\n\t\t\tupdateElementCount: () => {\n\t\t\t\tthis.$todoItemCounter.innerHTML = this.template.itemCounter(parameter);\n\t\t\t},\n\t\t\tclearCompletedButton: () => {\n\t\t\t\tthis._clearCompletedButton(parameter.completed, parameter.visible);\n\t\t\t},\n\t\t\tcontentBlockVisibility: () => {\n\t\t\t\tthis.$main.style.display = this.$footer.style.display = parameter.visible\n\t\t\t\t\t? \"block\"\n\t\t\t\t\t: \"none\";\n\t\t\t},\n\t\t\ttoggleAll: () => {\n\t\t\t\tthis.$toggleAll.checked = parameter.checked; // * if all todo are completed parameter.checked = true otherwise false\n\t\t\t},\n\t\t\tsetFilter: () => {\n\t\t\t\tthis._setFilter(parameter);\n\t\t\t},\n\t\t\tclearNewTodo: () => {\n\t\t\t\tthis.$newTodo.value = \"\";\n\t\t\t},\n\t\t\telementComplete: () => {\n\t\t\t\tthis._elementComplete(parameter.id, parameter.completed);\n\t\t\t},\n\t\t\teditItem: () => {\n\t\t\t\tthis._editItem(parameter.id, parameter.title);\n\t\t\t},\n\t\t\teditItemDone: () => {\n\t\t\t\tthis._editItemDone(parameter.id, parameter.title);\n\t\t\t}\n\t\t};\n\n\t\tviewCommands[viewCmd]();\n\t}\n\n\t_itemId(element) {\n\t\tlet li = $parent(element, \"li\");\n\t\treturn parseInt(li.dataset.id, 10);\n\t}\n\n\t_bindItemEditDone(handler) {\n\t\tlet self = this;\n\t\t$delegate(self.$todoList, \"li .edit\", \"blur\", function() {\n\t\t\tif (!this.dataset.iscanceled) {\n\t\t\t\thandler({\n\t\t\t\t\tid: self._itemId(this),\n\t\t\t\t\ttitle: this.value\n\t\t\t\t});\n\t\t\t}\n\t\t});\n\n\t\t$delegate(self.$todoList, \"li .edit\", \"keypress\", function(event) {\n\t\t\tif (event.keyCode === self.ENTER_KEY) {\n\t\t\t\t// Remove the cursor from the input when you hit enter just like if it\n\t\t\t\t// were a real form\n\t\t\t\tthis.blur();\n\t\t\t}\n\t\t});\n\t}\n\n\t_bindItemEditCancel(handler) {\n\t\tlet self = this;\n\t\t$delegate(self.$todoList, \"li .edit\", \"keyup\", function(event) {\n\t\t\tif (event.keyCode === self.ESCAPE_KEY) {\n\t\t\t\tthis.dataset.iscanceled = true;\n\t\t\t\tthis.blur();\n\n\t\t\t\thandler({ id: self._itemId(this) });\n\t\t\t}\n\t\t});\n\t}\n\n\tbind(event, handler) {\n\t\tlet self = this;\n\t\t// * check how this callback works\n\t\tif (event === \"newTodo\") {\n\t\t\t$on(this.$newTodo, \"change\", () => {\n\t\t\t\thandler(this.$newTodo.value);\n\t\t\t});\n\t\t} else if (event === \"removeCompleted\") {\n\t\t\t$on(this.$clearCompleted, \"click\", () => {\n\t\t\t\thandler();\n\t\t\t});\n\t\t} else if (event === \"toggleAll\") {\n\t\t\t$on(this.$toggleAll, \"click\", function() {\n\t\t\t\thandler({ completed: this.checked });\n\t\t\t});\n\t\t} else if (event === \"itemEdit\") {\n\t\t\t$delegate(this.$todoList, \"li label\", \"dblclick\", function() {\n\t\t\t\thandler({ id: self._itemId(this) });\n\t\t\t});\n\t\t} else if (event === \"itemRemove\") {\n\t\t\t$delegate(this.$todoList, \".destroy\", \"click\", function() {\n\t\t\t\thandler({ id: self._itemId(this) });\n\t\t\t});\n\t\t} else if (event === \"itemToggle\") {\n\t\t\t$delegate(this.$todoList, \".toggle\", \"click\", function() {\n\t\t\t\thandler({\n\t\t\t\t\tid: self._itemId(this),\n\t\t\t\t\tcompleted: this.checked\n\t\t\t\t});\n\t\t\t});\n\t\t} else if (event === \"itemEditDone\") {\n\t\t\tthis._bindItemEditDone(handler);\n\t\t} else if (event === \"itemEditCancel\") {\n\t\t\tthis._bindItemEditCancel(handler);\n\t\t}\n\t}\n}\n",
+    "static": true,
+    "longname": "/Users/Mokoke/Documents/DEV/OCR/P8/oc_p8_dev/js/view.js",
+    "access": "public",
+    "description": null,
+    "lineNumber": 1
+  },
+  {
+    "__docId__": 107,
+    "kind": "class",
+    "name": "View",
+    "memberof": "js/view.js",
+    "static": true,
+    "longname": "js/view.js~View",
+    "access": "public",
+    "export": true,
+    "importPath": "./js/view.js",
+    "importStyle": "View",
+    "description": "View that abstracts away the browser's DOM completely.\nIt has two simple entry points:\n\n  - bind(eventName, handler)\n    Takes a todo application event and registers the handler\n  - render(command, parameterObject)\n    Renders the given command with the options",
+    "lineNumber": 12,
+    "interface": false
+  },
+  {
+    "__docId__": 108,
+    "kind": "constructor",
+    "name": "constructor",
+    "memberof": "js/view.js~View",
+    "generator": false,
+    "async": false,
+    "static": false,
+    "longname": "js/view.js~View#constructor",
+    "access": "public",
+    "description": null,
+    "lineNumber": 13,
+    "undocument": true
+  },
+  {
+    "__docId__": 109,
+    "kind": "member",
+    "name": "template",
+    "memberof": "js/view.js~View",
+    "static": false,
+    "longname": "js/view.js~View#template",
+    "access": "public",
+    "description": null,
+    "lineNumber": 14,
+    "undocument": true,
+    "type": {
+      "types": [
+        "*"
+      ]
+    }
+  },
+  {
+    "__docId__": 110,
+    "kind": "member",
+    "name": "ENTER_KEY",
+    "memberof": "js/view.js~View",
+    "static": false,
+    "longname": "js/view.js~View#ENTER_KEY",
+    "access": "public",
+    "description": null,
+    "lineNumber": 16,
+    "undocument": true,
+    "type": {
+      "types": [
+        "number"
+      ]
+    }
+  },
+  {
+    "__docId__": 111,
+    "kind": "member",
+    "name": "ESCAPE_KEY",
+    "memberof": "js/view.js~View",
+    "static": false,
+    "longname": "js/view.js~View#ESCAPE_KEY",
+    "access": "public",
+    "description": null,
+    "lineNumber": 17,
+    "undocument": true,
+    "type": {
+      "types": [
+        "number"
+      ]
+    }
+  },
+  {
+    "__docId__": 112,
+    "kind": "member",
+    "name": "$todoList",
+    "memberof": "js/view.js~View",
+    "static": false,
+    "longname": "js/view.js~View#$todoList",
+    "access": "public",
+    "description": null,
+    "lineNumber": 19,
+    "undocument": true,
+    "type": {
+      "types": [
+        "*"
+      ]
+    }
+  },
+  {
+    "__docId__": 113,
+    "kind": "member",
+    "name": "$todoItemCounter",
+    "memberof": "js/view.js~View",
+    "static": false,
+    "longname": "js/view.js~View#$todoItemCounter",
+    "access": "public",
+    "description": null,
+    "lineNumber": 20,
+    "undocument": true,
+    "type": {
+      "types": [
+        "*"
+      ]
+    }
+  },
+  {
+    "__docId__": 114,
+    "kind": "member",
+    "name": "$clearCompleted",
+    "memberof": "js/view.js~View",
+    "static": false,
+    "longname": "js/view.js~View#$clearCompleted",
+    "access": "public",
+    "description": null,
+    "lineNumber": 21,
+    "undocument": true,
+    "type": {
+      "types": [
+        "*"
+      ]
+    }
+  },
+  {
+    "__docId__": 115,
+    "kind": "member",
+    "name": "$main",
+    "memberof": "js/view.js~View",
+    "static": false,
+    "longname": "js/view.js~View#$main",
+    "access": "public",
+    "description": null,
+    "lineNumber": 22,
+    "undocument": true,
+    "type": {
+      "types": [
+        "*"
+      ]
+    }
+  },
+  {
+    "__docId__": 116,
+    "kind": "member",
+    "name": "$footer",
+    "memberof": "js/view.js~View",
+    "static": false,
+    "longname": "js/view.js~View#$footer",
+    "access": "public",
+    "description": null,
+    "lineNumber": 23,
+    "undocument": true,
+    "type": {
+      "types": [
+        "*"
+      ]
+    }
+  },
+  {
+    "__docId__": 117,
+    "kind": "member",
+    "name": "$toggleAll",
+    "memberof": "js/view.js~View",
+    "static": false,
+    "longname": "js/view.js~View#$toggleAll",
+    "access": "public",
+    "description": null,
+    "lineNumber": 24,
+    "undocument": true,
+    "type": {
+      "types": [
+        "*"
+      ]
+    }
+  },
+  {
+    "__docId__": 118,
+    "kind": "member",
+    "name": "$newTodo",
+    "memberof": "js/view.js~View",
+    "static": false,
+    "longname": "js/view.js~View#$newTodo",
+    "access": "public",
+    "description": null,
+    "lineNumber": 25,
+    "undocument": true,
+    "type": {
+      "types": [
+        "*"
+      ]
+    }
+  },
+  {
+    "__docId__": 119,
+    "kind": "method",
+    "name": "_removeItem",
+    "memberof": "js/view.js~View",
+    "generator": false,
+    "async": false,
+    "static": false,
+    "longname": "js/view.js~View#_removeItem",
+    "access": "private",
+    "description": null,
+    "lineNumber": 27,
+    "undocument": true,
+    "params": [
+      {
+        "name": "id",
+        "types": [
+          "*"
+        ]
+      }
+    ],
+    "return": null
+  },
+  {
+    "__docId__": 120,
+    "kind": "method",
+    "name": "_clearCompletedButton",
+    "memberof": "js/view.js~View",
+    "generator": false,
+    "async": false,
+    "static": false,
+    "longname": "js/view.js~View#_clearCompletedButton",
+    "access": "private",
+    "description": null,
+    "lineNumber": 35,
+    "undocument": true,
+    "params": [
+      {
+        "name": "completedCount",
+        "types": [
+          "*"
+        ]
+      },
+      {
+        "name": "visible",
+        "types": [
+          "*"
+        ]
+      }
+    ],
+    "return": null
+  },
+  {
+    "__docId__": 121,
+    "kind": "method",
+    "name": "_setFilter",
+    "memberof": "js/view.js~View",
+    "generator": false,
+    "async": false,
+    "static": false,
+    "longname": "js/view.js~View#_setFilter",
+    "access": "private",
+    "description": null,
+    "lineNumber": 42,
+    "undocument": true,
+    "params": [
+      {
+        "name": "currentPage",
+        "types": [
+          "*"
+        ]
+      }
+    ],
+    "return": null
+  },
+  {
+    "__docId__": 122,
+    "kind": "method",
+    "name": "_elementComplete",
+    "memberof": "js/view.js~View",
+    "generator": false,
+    "async": false,
+    "static": false,
+    "longname": "js/view.js~View#_elementComplete",
+    "access": "private",
+    "description": null,
+    "lineNumber": 47,
+    "undocument": true,
+    "params": [
+      {
+        "name": "id",
+        "types": [
+          "*"
+        ]
+      },
+      {
+        "name": "completed",
+        "types": [
+          "*"
+        ]
+      }
+    ],
+    "return": null
+  },
+  {
+    "__docId__": 123,
+    "kind": "method",
+    "name": "_editItem",
+    "memberof": "js/view.js~View",
+    "generator": false,
+    "async": false,
+    "static": false,
+    "longname": "js/view.js~View#_editItem",
+    "access": "private",
+    "description": null,
+    "lineNumber": 60,
+    "undocument": true,
+    "params": [
+      {
+        "name": "id",
+        "types": [
+          "*"
+        ]
+      },
+      {
+        "name": "title",
+        "types": [
+          "*"
+        ]
+      }
+    ],
+    "return": null
+  },
+  {
+    "__docId__": 124,
+    "kind": "method",
+    "name": "_editItemDone",
+    "memberof": "js/view.js~View",
+    "generator": false,
+    "async": false,
+    "static": false,
+    "longname": "js/view.js~View#_editItemDone",
+    "access": "private",
+    "description": null,
+    "lineNumber": 77,
+    "undocument": true,
+    "params": [
+      {
+        "name": "id",
+        "types": [
+          "*"
+        ]
+      },
+      {
+        "name": "title",
+        "types": [
+          "*"
+        ]
+      }
+    ],
+    "return": null
+  },
+  {
+    "__docId__": 125,
+    "kind": "method",
+    "name": "render",
+    "memberof": "js/view.js~View",
+    "generator": false,
+    "async": false,
+    "static": false,
+    "longname": "js/view.js~View#render",
+    "access": "public",
+    "description": null,
+    "lineNumber": 94,
+    "undocument": true,
+    "params": [
+      {
+        "name": "viewCmd",
+        "types": [
+          "*"
+        ]
+      },
+      {
+        "name": "parameter",
+        "types": [
+          "*"
+        ]
+      }
+    ],
+    "return": null
+  },
+  {
+    "__docId__": 126,
+    "kind": "method",
+    "name": "_itemId",
+    "memberof": "js/view.js~View",
+    "generator": false,
+    "async": false,
+    "static": false,
+    "longname": "js/view.js~View#_itemId",
+    "access": "private",
+    "description": null,
+    "lineNumber": 136,
+    "undocument": true,
+    "params": [
+      {
+        "name": "element",
+        "types": [
+          "*"
+        ]
+      }
+    ],
+    "return": {
+      "types": [
+        "*"
+      ]
+    }
+  },
+  {
+    "__docId__": 127,
+    "kind": "method",
+    "name": "_bindItemEditDone",
+    "memberof": "js/view.js~View",
+    "generator": false,
+    "async": false,
+    "static": false,
+    "longname": "js/view.js~View#_bindItemEditDone",
+    "access": "private",
+    "description": null,
+    "lineNumber": 141,
+    "undocument": true,
+    "params": [
+      {
+        "name": "handler",
+        "types": [
+          "*"
+        ]
+      }
+    ],
+    "return": null
+  },
+  {
+    "__docId__": 128,
+    "kind": "method",
+    "name": "_bindItemEditCancel",
+    "memberof": "js/view.js~View",
+    "generator": false,
+    "async": false,
+    "static": false,
+    "longname": "js/view.js~View#_bindItemEditCancel",
+    "access": "private",
+    "description": null,
+    "lineNumber": 161,
+    "undocument": true,
+    "params": [
+      {
+        "name": "handler",
+        "types": [
+          "*"
+        ]
+      }
+    ],
+    "return": null
+  },
+  {
+    "__docId__": 129,
+    "kind": "method",
+    "name": "bind",
+    "memberof": "js/view.js~View",
+    "generator": false,
+    "async": false,
+    "static": false,
+    "longname": "js/view.js~View#bind",
+    "access": "public",
+    "description": null,
+    "lineNumber": 173,
+    "undocument": true,
+    "params": [
+      {
+        "name": "event",
+        "types": [
+          "*"
+        ]
+      },
+      {
+        "name": "handler",
+        "types": [
+          "*"
+        ]
+      }
+    ],
+    "return": null
+  },
+  {
+    "kind": "index",
+    "content": "",
+    "longname": "/Users/Mokoke/Documents/DEV/OCR/P8/oc_p8_dev/README.md",
+    "name": "./README.md",
+    "static": true,
+    "access": "public"
+  },
+  {
+    "kind": "packageJSON",
+    "content": "{\n  \"private\": true,\n  \"dependencies\": {\n    \"todomvc-common\": \"^1.0.1\",\n    \"todomvc-app-css\": \"^2.0.1\"\n  },\n  \"devDependencies\": {\n    \"esdoc\": \"^1.1.0\",\n    \"esdoc-standard-plugin\": \"^1.0.0\",\n    \"jasmine-core\": \"^2.0.0\"\n  }\n}\n",
+    "longname": "/Users/Mokoke/Documents/DEV/OCR/P8/oc_p8_dev/package.json",
+    "name": "package.json",
+    "static": true,
+    "access": "public"
+  }
+]

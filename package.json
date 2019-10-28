@@ -5,6 +5,8 @@
     "todomvc-app-css": "^2.0.1"
   },
   "devDependencies": {
+    "esdoc": "^1.1.0",
+    "esdoc-standard-plugin": "^1.0.0",
     "jasmine-core": "^2.0.0"
   }
 }
