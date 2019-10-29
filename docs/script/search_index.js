@@ -54,6 +54,258 @@ window.esdocSearchIndex = [
     "variable"
   ],
   [
+    "",
+    "test-file/test/ControllerSpec.js.html#lineNumber5",
+    "controller",
+    "test"
+  ],
+  [
+    "",
+    "test-file/test/ControllerSpec.js.html#lineNumber516",
+    "controller edit item",
+    "test"
+  ],
+  [
+    "",
+    "test-file/test/ControllerSpec.js.html#lineNumber582",
+    "controller edit item should leave edit mode on cancel",
+    "test"
+  ],
+  [
+    "",
+    "test-file/test/ControllerSpec.js.html#lineNumber531",
+    "controller edit item should leave edit mode on done",
+    "test"
+  ],
+  [
+    "",
+    "test-file/test/ControllerSpec.js.html#lineNumber596",
+    "controller edit item should not persist the changes on cancel",
+    "test"
+  ],
+  [
+    "",
+    "test-file/test/ControllerSpec.js.html#lineNumber545",
+    "controller edit item should persist the changes on done",
+    "test"
+  ],
+  [
+    "",
+    "test-file/test/ControllerSpec.js.html#lineNumber560",
+    "controller edit item should remove the element from the model when persisting an empty title",
+    "test"
+  ],
+  [
+    "",
+    "test-file/test/ControllerSpec.js.html#lineNumber571",
+    "controller edit item should remove the element from the view when persisting an empty title",
+    "test"
+  ],
+  [
+    "",
+    "test-file/test/ControllerSpec.js.html#lineNumber517",
+    "controller edit item should switch to edit mode",
+    "test"
+  ],
+  [
+    "",
+    "test-file/test/ControllerSpec.js.html#lineNumber487",
+    "controller element complete toggle",
+    "test"
+  ],
+  [
+    "",
+    "test-file/test/ControllerSpec.js.html#lineNumber488",
+    "controller element complete toggle should update the model",
+    "test"
+  ],
+  [
+    "",
+    "test-file/test/ControllerSpec.js.html#lineNumber502",
+    "controller element complete toggle should update the view",
+    "test"
+  ],
+  [
+    "",
+    "test-file/test/ControllerSpec.js.html#lineNumber364",
+    "controller element removal",
+    "test"
+  ],
+  [
+    "",
+    "test-file/test/ControllerSpec.js.html#lineNumber365",
+    "controller element removal should remove an entry from the model",
+    "test"
+  ],
+  [
+    "",
+    "test-file/test/ControllerSpec.js.html#lineNumber381",
+    "controller element removal should remove an entry from the view",
+    "test"
+  ],
+  [
+    "",
+    "test-file/test/ControllerSpec.js.html#lineNumber406",
+    "controller element removal should update the element count",
+    "test"
+  ],
+  [
+    "",
+    "test-file/test/ControllerSpec.js.html#lineNumber300",
+    "controller new todo",
+    "test"
+  ],
+  [
+    "",
+    "test-file/test/ControllerSpec.js.html#lineNumber301",
+    "controller new todo should add a new todo to the model",
+    "test"
+  ],
+  [
+    "",
+    "test-file/test/ControllerSpec.js.html#lineNumber321",
+    "controller new todo should add a new todo to the view",
+    "test"
+  ],
+  [
+    "",
+    "test-file/test/ControllerSpec.js.html#lineNumber353",
+    "controller new todo should clear the input field when a new todo is added",
+    "test"
+  ],
+  [
+    "",
+    "test-file/test/ControllerSpec.js.html#lineNumber417",
+    "controller remove completed",
+    "test"
+  ],
+  [
+    "",
+    "test-file/test/ControllerSpec.js.html#lineNumber433",
+    "controller remove completed should remove a completed entry and keep active one from the model",
+    "test"
+  ],
+  [
+    "",
+    "test-file/test/ControllerSpec.js.html#lineNumber467",
+    "controller remove completed should remove a completed entry and keep active one from the view",
+    "test"
+  ],
+  [
+    "",
+    "test-file/test/ControllerSpec.js.html#lineNumber418",
+    "controller remove completed should remove a completed entry from the model",
+    "test"
+  ],
+  [
+    "",
+    "test-file/test/ControllerSpec.js.html#lineNumber456",
+    "controller remove completed should remove a completed entry from the view",
+    "test"
+  ],
+  [
+    "",
+    "test-file/test/ControllerSpec.js.html#lineNumber84",
+    "controller routing",
+    "test"
+  ],
+  [
+    "",
+    "test-file/test/ControllerSpec.js.html#lineNumber105",
+    "controller routing should show active entries",
+    "test"
+  ],
+  [
+    "",
+    "test-file/test/ControllerSpec.js.html#lineNumber95",
+    "controller routing should show all entries without \"all\" route",
+    "test"
+  ],
+  [
+    "",
+    "test-file/test/ControllerSpec.js.html#lineNumber85",
+    "controller routing should show all entries without a route",
+    "test"
+  ],
+  [
+    "",
+    "test-file/test/ControllerSpec.js.html#lineNumber116",
+    "controller routing should show completed entries",
+    "test"
+  ],
+  [
+    "",
+    "test-file/test/ControllerSpec.js.html#lineNumber148",
+    "controller should check the toggle all button, if all todos are completed",
+    "test"
+  ],
+  [
+    "",
+    "test-file/test/ControllerSpec.js.html#lineNumber162",
+    "controller should check the toggle all button, if all todos are not completed",
+    "test"
+  ],
+  [
+    "",
+    "test-file/test/ControllerSpec.js.html#lineNumber138",
+    "controller should hide the content block when no todos exists",
+    "test"
+  ],
+  [
+    "",
+    "test-file/test/ControllerSpec.js.html#lineNumber209",
+    "controller should highlight \"Active\" filter when switching to active view",
+    "test"
+  ],
+  [
+    "",
+    "test-file/test/ControllerSpec.js.html#lineNumber202",
+    "controller should highlight \"All\" filter by default",
+    "test"
+  ],
+  [
+    "",
+    "test-file/test/ControllerSpec.js.html#lineNumber175",
+    "controller should set the \"clear completed\" button",
+    "test"
+  ],
+  [
+    "",
+    "test-file/test/ControllerSpec.js.html#lineNumber71",
+    "controller should show entries on start-up",
+    "test"
+  ],
+  [
+    "",
+    "test-file/test/ControllerSpec.js.html#lineNumber128",
+    "controller should show the content block when todos exists",
+    "test"
+  ],
+  [
+    "",
+    "test-file/test/ControllerSpec.js.html#lineNumber188",
+    "controller should unset the \"clear completed\" button",
+    "test"
+  ],
+  [
+    "",
+    "test-file/test/ControllerSpec.js.html#lineNumber216",
+    "controller toggle all",
+    "test"
+  ],
+  [
+    "",
+    "test-file/test/ControllerSpec.js.html#lineNumber217",
+    "controller toggle all should toggle all todos to completed",
+    "test"
+  ],
+  [
+    "",
+    "test-file/test/ControllerSpec.js.html#lineNumber255",
+    "controller toggle all should update the view",
+    "test"
+  ],
+  [
     "js/.external-ecmascript.js~array",
     "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array",
     "js/.external-ecmascript.js~Array",
@@ -826,5 +1078,11 @@ window.esdocSearchIndex = [
     "class/js/view.js~View.html#instance-member-template",
     "js/view.js~View#template",
     "member"
+  ],
+  [
+    "test/controllerspec.js",
+    "test-file/test/ControllerSpec.js.html",
+    "test/ControllerSpec.js",
+    "testFile"
   ]
 ]

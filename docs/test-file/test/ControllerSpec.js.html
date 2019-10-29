@@ -1,0 +1,669 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <base data-ice="baseUrl" href="../../">
+  <title data-ice="title">test/ControllerSpec.js</title>
+  <link type="text/css" rel="stylesheet" href="css/style.css">
+  <link type="text/css" rel="stylesheet" href="css/prettify-tomorrow.css">
+  <script src="script/prettify/prettify.js"></script>
+  <script src="script/manual.js"></script>
+</head>
+<body class="layout-container" data-ice="rootContainer">
+
+<header>
+  <a href="./">Home</a>
+  <a href="./manual/index.html" data-ice="manualHeaderLink">Manual</a>
+  <a href="identifiers.html">Reference</a>
+  <a href="source.html">Source</a>
+  <a href="test.html" data-ice="testLink">Test</a>
+  <div class="search-box">
+  <span>
+    <img src="./image/search.png">
+    <span class="search-input-edge"></span><input class="search-input"><span class="search-input-edge"></span>
+  </span>
+    <ul class="search-result"></ul>
+  </div>
+</header>
+
+<nav class="navigation" data-ice="nav"><div>
+  <ul>
+    
+  <li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/js/controller.js~Controller.html">Controller</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/js/helpers.js~Helpers.html">Helpers</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/js/model.js~Model.html">Model</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/js/store.js~Store.html">Store</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/js/template.js~Template.html">Template</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/js/todo.js~Todo.html">Todo</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/js/view.js~View.html">View</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-helpers">helpers</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-todo">todo</a></span></span></li>
+</ul>
+</div>
+</nav>
+
+<div class="content" data-ice="content"><h1 data-ice="title">test/ControllerSpec.js</h1>
+<pre class="source-code line-number raw-source-code"><code class="prettyprint linenums" data-ice="content">/*global app, jasmine, describe, it, beforeEach, expect */
+
+import Controller from &quot;../js/controller.js&quot;;
+
+describe(&quot;controller&quot;, function() {
+	&quot;use strict&quot;;
+
+	var subject, model, view;
+
+	var setUpModel = function(todos) {
+		model.read.and.callFake(function(query, callback) {
+			callback = callback || query;
+			callback(todos);
+		});
+
+		model.getCount.and.callFake(function(callback) {
+			var todoCounts = {
+				active: todos.filter(function(todo) {
+					return !todo.completed;
+				}).length,
+				completed: todos.filter(function(todo) {
+					return !!todo.completed;
+				}).length,
+				total: todos.length
+			};
+
+			callback(todoCounts);
+		});
+
+		model.remove.and.callFake(function(id, callback) {
+			callback();
+		});
+
+		model.create.and.callFake(function(title, callback) {
+			callback();
+		});
+
+		model.update.and.callFake(function(id, updateData, callback) {
+			callback();
+		});
+	};
+
+	var createViewStub = function() {
+		var eventRegistry = {}; // * object that stock an event attached to the handler (here the constructor Controller)
+		// * &quot;eventRegistry&quot; == &quot;viewCommands&quot; in view.js l.137
+		return {
+			render: jasmine.createSpy(&quot;render&quot;),
+			bind: function(event, handler) {
+				// * see controller.js l.17. It fake the result of View.prototype.bind l.178
+				eventRegistry[event] = handler;
+			},
+			trigger: function(event, parameter) {
+				// * &quot;event&quot; == &quot;viewCmd&quot; in view.js l.137
+				eventRegistry[event](parameter); // * ==  viewCommands[viewCmd]() in view.js l.137
+			}
+		};
+	};
+
+	beforeEach(function() {
+		model = jasmine.createSpyObj(&quot;model&quot;, [
+			&quot;read&quot;,
+			&quot;getCount&quot;,
+			&quot;remove&quot;,
+			&quot;create&quot;,
+			&quot;update&quot;
+		]);
+		view = createViewStub();
+		subject = new Controller(model, view); // * linked with script on SpecRunner.html
+	});
+
+	it(&quot;should show entries on start-up&quot;, function() {
+		/* // TODO: write test
+		setUpModel([]); // * on start-up no todo created, storage.js create an empty array
+
+		subject.setView(&quot;#/&quot;); // * on start-up first page is homepage -&gt; &quot;&quot; = All
+
+		expect(view.render).toHaveBeenCalled(); // * // via Controller.vetView the view.render method is called indirectyl */
+
+		subject.setView(&quot;&quot;);
+
+		expect(subject._activeRoute).toBeDefined();
+	});
+
+	describe(&quot;routing&quot;, function() {
+		it(&quot;should show all entries without a route&quot;, function() {
+			var todo = { title: &quot;my todo&quot; };
+			setUpModel([todo]);
+
+			subject.setView(&quot;&quot;); // * Set view is a prototype method from controller.js. This method calls indirectly the view.render method
+
+			expect(view.render).toHaveBeenCalledWith(&quot;showEntries&quot;, [todo]); // * showEntries is first arg in controller.js prototype showAll, showCompleted and showActive methods
+			expect(view.render).toHaveBeenCalledWith(&quot;setFilter&quot;, &quot;&quot;);
+		});
+
+		it(&apos;should show all entries without &quot;all&quot; route&apos;, function() {
+			var todo = { title: &quot;my todo&quot; };
+			setUpModel([todo]);
+
+			subject.setView(&quot;#/&quot;);
+
+			expect(view.render).toHaveBeenCalledWith(&quot;showEntries&quot;, [todo]);
+			expect(view.render).toHaveBeenCalledWith(&quot;setFilter&quot;, &quot;&quot;);
+		});
+
+		it(&quot;should show active entries&quot;, function() {
+			// TODO: write test
+			let todo = { title: &quot;my todo&quot; };
+			setUpModel([todo]);
+
+			subject.setView(&quot;#/active&quot;);
+
+			expect(view.render).toHaveBeenCalledWith(&quot;showEntries&quot;, [todo]);
+			expect(view.render).toHaveBeenCalledWith(&quot;setFilter&quot;, &quot;active&quot;);
+		});
+
+		it(&quot;should show completed entries&quot;, function() {
+			// TODO: write test
+			let todo = { title: &quot;my todo&quot; };
+			setUpModel([todo]);
+
+			subject.setView(&quot;#/completed&quot;);
+
+			expect(view.render).toHaveBeenCalledWith(&quot;showEntries&quot;, [todo]);
+			expect(view.render).toHaveBeenCalledWith(&quot;setFilter&quot;, &quot;completed&quot;);
+		});
+	});
+
+	it(&quot;should show the content block when todos exists&quot;, function() {
+		setUpModel([{ title: &quot;my todo&quot;, completed: true }]);
+
+		subject.setView(&quot;&quot;);
+
+		expect(view.render).toHaveBeenCalledWith(&quot;contentBlockVisibility&quot;, {
+			visible: true
+		});
+	});
+
+	it(&quot;should hide the content block when no todos exists&quot;, function() {
+		setUpModel([]);
+
+		subject.setView(&quot;&quot;);
+
+		expect(view.render).toHaveBeenCalledWith(&quot;contentBlockVisibility&quot;, {
+			visible: false
+		});
+	});
+
+	it(&quot;should check the toggle all button, if all todos are completed&quot;, function() {
+		setUpModel([
+			{ title: &quot;my todo&quot;, completed: true },
+			{ title: &quot;my todo2&quot;, completed: true }
+		]);
+
+		subject.setView(&quot;&quot;);
+
+		expect(view.render).toHaveBeenCalledWith(&quot;toggleAll&quot;, {
+			checked: true
+		});
+	});
+
+	// * added by me
+	it(&quot;should check the toggle all button, if all todos are not completed&quot;, function() {
+		setUpModel([
+			{ title: &quot;my todo&quot;, completed: true },
+			{ title: &quot;my todo&quot;, completed: false }
+		]);
+
+		subject.setView(&quot;&quot;);
+
+		expect(view.render).toHaveBeenCalledWith(&quot;toggleAll&quot;, {
+			checked: false
+		});
+	});
+
+	it(&apos;should set the &quot;clear completed&quot; button&apos;, function() {
+		var todo = { id: 42, title: &quot;my todo&quot;, completed: true };
+		setUpModel([todo]);
+
+		subject.setView(&quot;&quot;);
+
+		expect(view.render).toHaveBeenCalledWith(&quot;clearCompletedButton&quot;, {
+			completed: 1,
+			visible: true
+		});
+	});
+
+	// * added by me
+	it(&apos;should unset the &quot;clear completed&quot; button&apos;, function() {
+		setUpModel([
+			{ title: &quot;my todo&quot;, completed: false },
+			{ title: &quot;my todo2&quot;, completed: false }
+		]);
+
+		subject.setView(&quot;&quot;);
+
+		expect(view.render).toHaveBeenCalledWith(&quot;clearCompletedButton&quot;, {
+			completed: 0,
+			visible: false
+		});
+	});
+
+	it(&apos;should highlight &quot;All&quot; filter by default&apos;, function() {
+		// TODO: write test
+		subject.setView(&quot;&quot;);
+
+		expect(view.render).toHaveBeenCalledWith(&quot;setFilter&quot;, &quot;&quot;);
+	});
+
+	it(&apos;should highlight &quot;Active&quot; filter when switching to active view&apos;, function() {
+		// TODO: write test
+		subject.setView(&quot;#/active&quot;);
+
+		expect(view.render).toHaveBeenCalledWith(&quot;setFilter&quot;, &quot;active&quot;);
+	});
+
+	describe(&quot;toggle all&quot;, function() {
+		it(&quot;should toggle all todos to completed&quot;, function() {
+			// TODO: write test
+			setUpModel([
+				{ id: 11, title: &quot;my todo&quot;, completed: false },
+				{ id: 12, title: &quot;my todo&quot;, completed: false }
+			]);
+
+			subject.setView(&quot;&quot;);
+
+			model.getCount.and.callFake(function(callback) {
+				// * simule that all todos are turn to completed. Note: model.getCount is update but model.read is still completed.false
+				callback({
+					active: 0,
+					completed: 2,
+					total: 2
+				});
+			});
+
+			view.trigger(&quot;toggleAll&quot;, { completed: true }); // * act as controller.js l.46 to act as toggleAll has been clicked
+
+			expect(model.getCount).toHaveBeenCalledWith(jasmine.any(Function)); // * controller.js l.240 check and send back object that list active, completed and total of todos
+			expect(model.read).toHaveBeenCalledWith(
+				{ completed: false }, // * controller.js l.224, searching uncompleted todo to turn them completed
+				jasmine.any(Function)
+			);
+			expect(model.update).toHaveBeenCalledWith(
+				11,
+				{ completed: true },
+				jasmine.any(Function)
+			);
+			expect(model.update).toHaveBeenCalledWith(
+				12,
+				{ completed: true },
+				jasmine.any(Function)
+			);
+			/* expect(view.render).toHaveBeenCalledWith(&quot;updateElementCount&quot;, 0); */
+		});
+
+		it(&quot;should update the view&quot;, function() {
+			// TODO: write test
+			setUpModel([
+				{
+					id: 42,
+					title: &quot;my todo&quot;,
+					completed: false
+				},
+				{
+					id: 41,
+					title: &quot;my todo2&quot;,
+					completed: false
+				}
+			]);
+
+			subject.setView(&quot;&quot;);
+
+			// * added by me
+			view.render.calls.reset(); // *  Reset this spy as if it has never been called.
+			model.read.calls.reset();
+			model.getCount.and.callFake(function(callback) {
+				callback({
+					active: 0,
+					completed: 2,
+					total: 2
+				});
+			});
+
+			view.trigger(&quot;toggleAll&quot;, { id: 42, completed: true });
+			view.trigger(&quot;toggleAll&quot;, { id: 41, completed: true });
+
+			expect(view.render).toHaveBeenCalledWith(&quot;elementComplete&quot;, {
+				id: 42,
+				completed: true
+			});
+			expect(view.render).toHaveBeenCalledWith(&quot;elementComplete&quot;, {
+				id: 41,
+				completed: true
+			});
+
+			expect(view.render).toHaveBeenCalledWith(&quot;toggleAll&quot;, { checked: true }); // * controller.js l.247: this update the toggleAll button from grey to dark
+			expect(view.render).toHaveBeenCalledWith(&quot;updateElementCount&quot;, 0); // * controller.js l.241: check all todos.active -&gt; in this case 0 because when toggleAll clicked it modify all todos.active to todos.completes
+		});
+	});
+
+	describe(&quot;new todo&quot;, function() {
+		it(&quot;should add a new todo to the model&quot;, function() {
+			// TODO: write test`
+			setUpModel([]);
+
+			subject.setView(&quot;&quot;);
+
+			view.trigger(&quot;newTodo&quot;, &quot;a new todo&quot;);
+
+			expect(model.create).toHaveBeenCalledWith(
+				&quot;a new todo&quot;,
+				jasmine.any(Function)
+			);
+			expect(model.read).toHaveBeenCalledWith(jasmine.any(Function));
+			expect(model.getCount).toHaveBeenCalledWith(jasmine.any(Function));
+			expect(model.create).toHaveBeenCalledWith(
+				&quot;a new todo&quot;,
+				jasmine.any(Function)
+			);
+		});
+
+		it(&quot;should add a new todo to the view&quot;, function() {
+			setUpModel([]);
+
+			subject.setView(&quot;&quot;);
+
+			view.render.calls.reset(); // *  Reset this spy as if it has never been called.
+			model.read.calls.reset();
+			model.read.and.callFake(function(callback) {
+				// * By chaining the spy with and.callFake, all calls to the spy will delegate to the supplied function.
+				callback([
+					{
+						title: &quot;a new todo&quot;,
+						completed: false
+					}
+				]);
+			});
+			// * model.read act as the model.js read method which return the todos parse list
+
+			view.trigger(&quot;newTodo&quot;, &quot;a new todo&quot;); // equal line in view.js l.137 ? no
+			// * trigger should act as View.protoype.bind. Here &quot;a new todo&quot; equal the result of handler in &quot;if(event === newTodo)&quot; statement where event is &quot;newTodo&quot;
+
+			expect(model.read).toHaveBeenCalled();
+
+			expect(view.render).toHaveBeenCalledWith(&quot;showEntries&quot;, [
+				{
+					title: &quot;a new todo&quot;,
+					completed: false
+				}
+			]);
+			expect(view.render).toHaveBeenCalledWith(&quot;clearNewTodo&quot;);
+		});
+
+		it(&quot;should clear the input field when a new todo is added&quot;, function() {
+			setUpModel([]);
+
+			subject.setView(&quot;&quot;);
+
+			view.trigger(&quot;newTodo&quot;, &quot;a new todo&quot;);
+
+			expect(view.render).toHaveBeenCalledWith(&quot;clearNewTodo&quot;);
+		});
+	});
+
+	describe(&quot;element removal&quot;, function() {
+		it(&quot;should remove an entry from the model&quot;, function() {
+			// TODO: write test
+			var todo = { id: 42, title: &quot;my todo&quot;, completed: true };
+			setUpModel([todo]);
+
+			subject.setView(&quot;&quot;);
+
+			view.trigger(&quot;itemRemove&quot;, { id: 42 });
+
+			expect(model.read).toHaveBeenCalledWith(jasmine.any(Function));
+
+			// * controller.js l.165: get all the todos from model.js. note: Since the return valu items is never user I delete it
+
+			expect(model.remove).toHaveBeenCalledWith(42, jasmine.any(Function)); // * controller.js l.175
+		});
+
+		it(&quot;should remove an entry from the view&quot;, function() {
+			var todo = { id: 42, title: &quot;my todo&quot;, completed: true };
+			setUpModel([todo]);
+
+			subject.setView(&quot;&quot;);
+			model.getCount.and.callFake(function(callback) {
+				// * simule that we delete the only todo
+				callback({
+					active: 0,
+					completed: 0,
+					total: 0
+				});
+			});
+			view.trigger(&quot;itemRemove&quot;, { id: 42 });
+
+			expect(view.render).toHaveBeenCalledWith(&quot;removeItem&quot;, 42);
+			expect(view.render).toHaveBeenCalledWith(&quot;clearCompletedButton&quot;, {
+				completed: 0,
+				visible: false
+			});
+			expect(view.render).toHaveBeenCalledWith(&quot;contentBlockVisibility&quot;, {
+				visible: false
+			});
+		});
+
+		it(&quot;should update the element count&quot;, function() {
+			var todo = { id: 42, title: &quot;my todo&quot;, completed: true };
+			setUpModel([todo]);
+
+			subject.setView(&quot;&quot;);
+			view.trigger(&quot;itemRemove&quot;, { id: 42 });
+
+			expect(view.render).toHaveBeenCalledWith(&quot;updateElementCount&quot;, 0);
+		});
+	});
+
+	describe(&quot;remove completed&quot;, function() {
+		it(&quot;should remove a completed entry from the model&quot;, function() {
+			var todo = { id: 42, title: &quot;my todo&quot;, completed: true };
+			setUpModel([todo]);
+
+			subject.setView(&quot;&quot;);
+			view.trigger(&quot;removeCompleted&quot;);
+
+			expect(model.read).toHaveBeenCalledWith(
+				{ completed: true },
+				jasmine.any(Function)
+			);
+			expect(model.remove).toHaveBeenCalledWith(42, jasmine.any(Function));
+		});
+
+		//* added by me
+		it(&quot;should remove a completed entry and keep active one from the model&quot;, function() {
+			var todos = [
+				{ id: 42, title: &quot;my todo&quot;, completed: true },
+				{ id: 43, title: &quot;my todo2&quot;, completed: false }
+			];
+			setUpModel(todos);
+
+			subject.setView(&quot;&quot;);
+
+			model.read.and.callFake(function(query, callback) {
+				callback = callback || query;
+				callback([{ id: 42, title: &quot;my todo&quot;, completed: true }]);
+			});
+			view.trigger(&quot;removeCompleted&quot;);
+
+			expect(model.read).toHaveBeenCalledWith(
+				{ completed: true },
+				jasmine.any(Function)
+			);
+			expect(model.remove).toHaveBeenCalledWith(42, jasmine.any(Function));
+			expect(model.remove).not.toHaveBeenCalledWith(43, jasmine.any(Function));
+		});
+
+		it(&quot;should remove a completed entry from the view&quot;, function() {
+			var todo = { id: 42, title: &quot;my todo&quot;, completed: true };
+			setUpModel([todo]);
+
+			subject.setView(&quot;&quot;);
+			view.trigger(&quot;removeCompleted&quot;);
+
+			expect(view.render).toHaveBeenCalledWith(&quot;removeItem&quot;, 42);
+		});
+
+		// * added by me
+		it(&quot;should remove a completed entry and keep active one from the view&quot;, function() {
+			var todos = [
+				{ id: 42, title: &quot;my todo&quot;, completed: true },
+				{ id: 43, title: &quot;my todo2&quot;, completed: false }
+			];
+			setUpModel(todos);
+
+			subject.setView(&quot;&quot;);
+
+			model.read.and.callFake(function(query, callback) {
+				callback = callback || query;
+				callback([{ id: 42, title: &quot;my todo&quot;, completed: true }]);
+			});
+			view.trigger(&quot;removeCompleted&quot;);
+
+			expect(view.render).toHaveBeenCalledWith(&quot;removeItem&quot;, 42);
+			expect(view.render).not.toHaveBeenCalledWith(&quot;removeItem&quot;, 43);
+		});
+	});
+
+	describe(&quot;element complete toggle&quot;, function() {
+		it(&quot;should update the model&quot;, function() {
+			var todo = { id: 21, title: &quot;my todo&quot;, completed: false };
+			setUpModel([todo]);
+			subject.setView(&quot;&quot;);
+
+			view.trigger(&quot;itemToggle&quot;, { id: 21, completed: true });
+
+			expect(model.update).toHaveBeenCalledWith(
+				21,
+				{ completed: true },
+				jasmine.any(Function)
+			);
+		});
+
+		it(&quot;should update the view&quot;, function() {
+			var todo = { id: 42, title: &quot;my todo&quot;, completed: false };
+			setUpModel([todo]);
+			subject.setView(&quot;&quot;);
+
+			view.trigger(&quot;itemToggle&quot;, { id: 42, completed: true });
+
+			expect(view.render).toHaveBeenCalledWith(&quot;elementComplete&quot;, {
+				id: 42,
+				completed: true
+			});
+		});
+	});
+
+	describe(&quot;edit item&quot;, function() {
+		it(&quot;should switch to edit mode&quot;, function() {
+			var todo = { id: 21, title: &quot;my todo&quot;, completed: false };
+			setUpModel([todo]);
+
+			subject.setView(&quot;&quot;);
+
+			view.trigger(&quot;itemEdit&quot;, { id: 21 });
+
+			expect(view.render).toHaveBeenCalledWith(&quot;editItem&quot;, {
+				id: 21,
+				title: &quot;my todo&quot;
+			});
+		});
+
+		it(&quot;should leave edit mode on done&quot;, function() {
+			var todo = { id: 21, title: &quot;my todo&quot;, completed: false };
+			setUpModel([todo]);
+
+			subject.setView(&quot;&quot;);
+
+			view.trigger(&quot;itemEditDone&quot;, { id: 21, title: &quot;new title&quot; });
+
+			expect(view.render).toHaveBeenCalledWith(&quot;editItemDone&quot;, {
+				id: 21,
+				title: &quot;new title&quot;
+			});
+		});
+
+		it(&quot;should persist the changes on done&quot;, function() {
+			var todo = { id: 21, title: &quot;my todo&quot;, completed: false };
+			setUpModel([todo]);
+
+			subject.setView(&quot;&quot;);
+
+			view.trigger(&quot;itemEditDone&quot;, { id: 21, title: &quot;new title&quot; });
+
+			expect(model.update).toHaveBeenCalledWith(
+				21,
+				{ title: &quot;new title&quot; },
+				jasmine.any(Function)
+			);
+		});
+
+		it(&quot;should remove the element from the model when persisting an empty title&quot;, function() {
+			var todo = { id: 21, title: &quot;my todo&quot;, completed: false };
+			setUpModel([todo]);
+
+			subject.setView(&quot;&quot;);
+
+			view.trigger(&quot;itemEditDone&quot;, { id: 21, title: &quot;&quot; });
+
+			expect(model.remove).toHaveBeenCalledWith(21, jasmine.any(Function));
+		});
+
+		it(&quot;should remove the element from the view when persisting an empty title&quot;, function() {
+			var todo = { id: 21, title: &quot;my todo&quot;, completed: false };
+			setUpModel([todo]);
+
+			subject.setView(&quot;&quot;);
+
+			view.trigger(&quot;itemEditDone&quot;, { id: 21, title: &quot;&quot; });
+
+			expect(view.render).toHaveBeenCalledWith(&quot;removeItem&quot;, 21);
+		});
+
+		it(&quot;should leave edit mode on cancel&quot;, function() {
+			var todo = { id: 21, title: &quot;my todo&quot;, completed: false };
+			setUpModel([todo]);
+
+			subject.setView(&quot;&quot;);
+
+			view.trigger(&quot;itemEditCancel&quot;, { id: 21 });
+
+			expect(view.render).toHaveBeenCalledWith(&quot;editItemDone&quot;, {
+				id: 21,
+				title: &quot;my todo&quot;
+			});
+		});
+
+		it(&quot;should not persist the changes on cancel&quot;, function() {
+			var todo = { id: 21, title: &quot;my todo&quot;, completed: false };
+			setUpModel([todo]);
+
+			subject.setView(&quot;&quot;);
+
+			view.trigger(&quot;itemEditCancel&quot;, { id: 21 });
+
+			expect(model.update).not.toHaveBeenCalled();
+		});
+	});
+});
+</code></pre>
+
+</div>
+
+<footer class="footer">
+  Generated by <a href="https://esdoc.org">ESDoc<span data-ice="esdocVersion">(1.1.0)</span><img src="./image/esdoc-logo-mini-black.png"></a>
+</footer>
+
+<script src="script/search_index.js"></script>
+<script src="script/search.js"></script>
+<script src="script/pretty-print.js"></script>
+<script src="script/inherited-summary.js"></script>
+<script src="script/test-summary.js"></script>
+<script src="script/inner-link.js"></script>
+<script src="script/patch-for-local.js"></script>
+</body>
+</html>

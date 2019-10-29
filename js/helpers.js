@@ -37,7 +37,6 @@ class Helpers {
 	 * @param {boolean} useCapture
 	 */
 	$on(target, type, callback, useCapture) {
-		console.log(target, type, callback, useCapture);
 		target.addEventListener(type, callback, !!useCapture);
 	}
 

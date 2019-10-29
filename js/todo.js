@@ -37,7 +37,6 @@ class Todo {
 		 * @type {object} Takes a model and view and acts as the controller between them.
 		 */
 		this.controller = new Controller(this.model, this.view);
-		console.log(this.model);
 	}
 }
 
