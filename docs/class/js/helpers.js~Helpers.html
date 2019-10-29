@@ -36,24 +36,30 @@
 <li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/js/template.js~Template.html">Template</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/js/todo.js~Todo.html">Todo</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/js/view.js~View.html">View</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-helpers">helpers</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-todo">todo</a></span></span></li>
 </ul>
 </div>
 </nav>
 
 <div class="content" data-ice="content"><div class="header-notice">
-  <div data-ice="importPath" class="import-path"><pre class="prettyprint"><code data-ice="importPathCode">import Helpers from &apos;<span><a href="file/js/helpers.js.html#lineNumber2">./js/helpers.js</a></span>&apos;</code></pre></div>
+  <div data-ice="importPath" class="import-path"><pre class="prettyprint"><code data-ice="importPathCode"></code></pre></div>
   <span data-ice="access">public</span>
   <span data-ice="kind">class</span>
   
   
   
-  <span data-ice="source">| <span><a href="file/js/helpers.js.html#lineNumber2">source</a></span></span>
+  <span data-ice="source">| <span><a href="file/js/helpers.js.html#lineNumber9">source</a></span></span>
 </div>
 
 <div class="self-detail detail">
   <h1 data-ice="name">Helpers</h1>
 
-  
+  <div data-ice="instanceDocs" class="instance-docs">
+    <span>You can directly use an instance of this class.</span>
+    
+  <span data-ice="instanceDoc"><span><a href="variable/index.html#static-variable-helpers">helpers</a></span></span>
+</div>
 
   
   
@@ -67,12 +73,20 @@
 
   
   
-  
+  <div class="description" data-ice="description"><p>Manage the events with the DOM through the methods defined</p>
+</div>
   
 
   
 
-  
+  <div data-ice="exampleDocs">
+    <h4>Example:</h4>
+    
+  <div class="example-doc" data-ice="exampleDoc">
+      
+      <pre class="prettyprint source-code"><code data-ice="exampleCode">let myHelpers = new MyHelpers();</code></pre>
+    </div>
+</div>
 
   
 
@@ -101,7 +115,7 @@
           
           
           
-          <span class="code" data-ice="name"><span><a href="class/js/helpers.js~Helpers.html#instance-method-$delegate">$delegate</a></span></span><span class="code" data-ice="signature">(target: <span>*</span>, selector: <span>*</span>, type: <span>*</span>, handler: <span>*</span>)</span>
+          <span class="code" data-ice="name"><span><a href="class/js/helpers.js~Helpers.html#instance-method-$delegate">$delegate</a></span></span><span class="code" data-ice="signature">(target: <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object">object</a></span>, selector: <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String">string</a></span>, type: <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String">string</a></span>, handler: <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Function">function</a></span>)</span>
         </p>
       </div>
       <div>
@@ -129,13 +143,14 @@
           
           
           
-          <span class="code" data-ice="name"><span><a href="class/js/helpers.js~Helpers.html#instance-method-$on">$on</a></span></span><span class="code" data-ice="signature">(target: <span>*</span>, type: <span>*</span>, callback: <span>*</span>, useCapture: <span>*</span>)</span>
+          <span class="code" data-ice="name"><span><a href="class/js/helpers.js~Helpers.html#instance-method-$on">$on</a></span></span><span class="code" data-ice="signature">(target: <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object">object</a></span>, type: <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String">string</a></span>, callback: <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Function">function</a></span>, useCapture: <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Boolean">boolean</a></span>)</span>
         </p>
       </div>
       <div>
         
         
-        
+        <div data-ice="description"><p>Build an event listener according to the arguments passed in</p>
+</div>
       </div>
     </td>
     <td>
@@ -157,13 +172,14 @@
           
           
           
-          <span class="code" data-ice="name"><span><a href="class/js/helpers.js~Helpers.html#instance-method-$parent">$parent</a></span></span><span class="code" data-ice="signature">(element: <span>*</span>, tagName: <span>*</span>): <span>*</span></span>
+          <span class="code" data-ice="name"><span><a href="class/js/helpers.js~Helpers.html#instance-method-$parent">$parent</a></span></span><span class="code" data-ice="signature">(element: <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object">object</a></span>, tagName: <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String">string</a></span>): <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object">object</a></span></span>
         </p>
       </div>
       <div>
         
         
-        
+        <div data-ice="description"><p>Reach the parent node of a given element</p>
+</div>
       </div>
     </td>
     <td>
@@ -185,13 +201,14 @@
           
           
           
-          <span class="code" data-ice="name"><span><a href="class/js/helpers.js~Helpers.html#instance-method-qs">qs</a></span></span><span class="code" data-ice="signature">(selector: <span>*</span>, scope: <span>*</span>): <span>*</span></span>
+          <span class="code" data-ice="name"><span><a href="class/js/helpers.js~Helpers.html#instance-method-qs">qs</a></span></span><span class="code" data-ice="signature">(selector: <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String">string</a></span>, scope: <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/undefined">undefined</a></span> | <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object">object</a></span>): <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object">object</a></span></span>
         </p>
       </div>
       <div>
         
         
-        
+        <div data-ice="description"><p>Act as a querySelector event</p>
+</div>
       </div>
     </td>
     <td>
@@ -213,13 +230,14 @@
           
           
           
-          <span class="code" data-ice="name"><span><a href="class/js/helpers.js~Helpers.html#instance-method-qsa">qsa</a></span></span><span class="code" data-ice="signature">(selector: <span>*</span>, scope: <span>*</span>): <span>*</span></span>
+          <span class="code" data-ice="name"><span><a href="class/js/helpers.js~Helpers.html#instance-method-qsa">qsa</a></span></span><span class="code" data-ice="signature">(selector: <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String">string</a></span>, scope: <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/undefined">undefined</a></span> | <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object">object</a></span>): <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object">object</a></span></span>
         </p>
       </div>
       <div>
         
         
-        
+        <div data-ice="description"><p>Act as a querySelectorAll event</p>
+</div>
       </div>
     </td>
     <td>
@@ -247,11 +265,11 @@
     
     
     
-    <span class="code" data-ice="name">$delegate</span><span class="code" data-ice="signature">(target: <span>*</span>, selector: <span>*</span>, type: <span>*</span>, handler: <span>*</span>)</span>
+    <span class="code" data-ice="name">$delegate</span><span class="code" data-ice="signature">(target: <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object">object</a></span>, selector: <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String">string</a></span>, type: <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String">string</a></span>, handler: <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Function">function</a></span>)</span>
     <span class="right-info">
       
       
-      <span data-ice="source"><span><a href="file/js/helpers.js.html#lineNumber15">source</a></span></span>
+      <span data-ice="source"><span><a href="file/js/helpers.js.html#lineNumber52">source</a></span></span>
     </span>
   </h3>
 
@@ -272,27 +290,31 @@
     
     <tr data-ice="property" data-depth="0">
       <td data-ice="name" class="code" data-depth="0">target</td>
-      <td data-ice="type" class="code"><span>*</span></td>
+      <td data-ice="type" class="code"><span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object">object</a></span></td>
       <td data-ice="appendix"></td>
-      <td data-ice="description"></td>
+      <td data-ice="description"><p>Represents the targeted HTML tag from the DOM</p>
+</td>
     </tr>
 <tr data-ice="property" data-depth="0">
       <td data-ice="name" class="code" data-depth="0">selector</td>
-      <td data-ice="type" class="code"><span>*</span></td>
+      <td data-ice="type" class="code"><span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String">string</a></span></td>
       <td data-ice="appendix"></td>
-      <td data-ice="description"></td>
+      <td data-ice="description"><p>Represents the element/class DOM selector to be reach</p>
+</td>
     </tr>
 <tr data-ice="property" data-depth="0">
       <td data-ice="name" class="code" data-depth="0">type</td>
-      <td data-ice="type" class="code"><span>*</span></td>
+      <td data-ice="type" class="code"><span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String">string</a></span></td>
       <td data-ice="appendix"></td>
-      <td data-ice="description"></td>
+      <td data-ice="description"><p>Represents the type of event</p>
+</td>
     </tr>
 <tr data-ice="property" data-depth="0">
       <td data-ice="name" class="code" data-depth="0">handler</td>
-      <td data-ice="type" class="code"><span>*</span></td>
+      <td data-ice="type" class="code"><span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Function">function</a></span></td>
       <td data-ice="appendix"></td>
-      <td data-ice="description"></td>
+      <td data-ice="description"><p>Represent the callback function attach to this event</p>
+</td>
     </tr>
 </tbody>
   </table>
@@ -324,18 +346,19 @@
     
     
     
-    <span class="code" data-ice="name">$on</span><span class="code" data-ice="signature">(target: <span>*</span>, type: <span>*</span>, callback: <span>*</span>, useCapture: <span>*</span>)</span>
+    <span class="code" data-ice="name">$on</span><span class="code" data-ice="signature">(target: <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object">object</a></span>, type: <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String">string</a></span>, callback: <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Function">function</a></span>, useCapture: <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Boolean">boolean</a></span>)</span>
     <span class="right-info">
       
       
-      <span data-ice="source"><span><a href="file/js/helpers.js.html#lineNumber11">source</a></span></span>
+      <span data-ice="source"><span><a href="file/js/helpers.js.html#lineNumber39">source</a></span></span>
     </span>
   </h3>
 
   
   
   
-  
+  <div data-ice="description"><p>Build an event listener according to the arguments passed in</p>
+</div>
 
   
 
@@ -349,25 +372,28 @@
     
     <tr data-ice="property" data-depth="0">
       <td data-ice="name" class="code" data-depth="0">target</td>
-      <td data-ice="type" class="code"><span>*</span></td>
+      <td data-ice="type" class="code"><span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object">object</a></span></td>
       <td data-ice="appendix"></td>
-      <td data-ice="description"></td>
+      <td data-ice="description"><p>Represents the targeted HTML tag from the DOM</p>
+</td>
     </tr>
 <tr data-ice="property" data-depth="0">
       <td data-ice="name" class="code" data-depth="0">type</td>
-      <td data-ice="type" class="code"><span>*</span></td>
+      <td data-ice="type" class="code"><span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String">string</a></span></td>
       <td data-ice="appendix"></td>
-      <td data-ice="description"></td>
+      <td data-ice="description"><p>Represents the type of event</p>
+</td>
     </tr>
 <tr data-ice="property" data-depth="0">
       <td data-ice="name" class="code" data-depth="0">callback</td>
-      <td data-ice="type" class="code"><span>*</span></td>
+      <td data-ice="type" class="code"><span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Function">function</a></span></td>
       <td data-ice="appendix"></td>
-      <td data-ice="description"></td>
+      <td data-ice="description"><p>Represent the callback function attach to this event</p>
+</td>
     </tr>
 <tr data-ice="property" data-depth="0">
       <td data-ice="name" class="code" data-depth="0">useCapture</td>
-      <td data-ice="type" class="code"><span>*</span></td>
+      <td data-ice="type" class="code"><span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Boolean">boolean</a></span></td>
       <td data-ice="appendix"></td>
       <td data-ice="description"></td>
     </tr>
@@ -401,18 +427,19 @@
     
     
     
-    <span class="code" data-ice="name">$parent</span><span class="code" data-ice="signature">(element: <span>*</span>, tagName: <span>*</span>): <span>*</span></span>
+    <span class="code" data-ice="name">$parent</span><span class="code" data-ice="signature">(element: <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object">object</a></span>, tagName: <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String">string</a></span>): <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object">object</a></span></span>
     <span class="right-info">
       
       
-      <span data-ice="source"><span><a href="file/js/helpers.js.html#lineNumber34">source</a></span></span>
+      <span data-ice="source"><span><a href="file/js/helpers.js.html#lineNumber77">source</a></span></span>
     </span>
   </h3>
 
   
   
   
-  
+  <div data-ice="description"><p>Reach the parent node of a given element</p>
+</div>
 
   
 
@@ -426,15 +453,17 @@
     
     <tr data-ice="property" data-depth="0">
       <td data-ice="name" class="code" data-depth="0">element</td>
-      <td data-ice="type" class="code"><span>*</span></td>
+      <td data-ice="type" class="code"><span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object">object</a></span></td>
       <td data-ice="appendix"></td>
-      <td data-ice="description"></td>
+      <td data-ice="description"><p>Represents the element HTML tag that has been clicked from the DOM</p>
+</td>
     </tr>
 <tr data-ice="property" data-depth="0">
       <td data-ice="name" class="code" data-depth="0">tagName</td>
-      <td data-ice="type" class="code"><span>*</span></td>
+      <td data-ice="type" class="code"><span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String">string</a></span></td>
       <td data-ice="appendix"></td>
-      <td data-ice="description"></td>
+      <td data-ice="description"><p>The tag name to be reach</p>
+</td>
     </tr>
 </tbody>
   </table>
@@ -446,8 +475,9 @@
     <table>
       <tbody>
         <tr>
-          <td class="return-type code" data-ice="returnType"><span>*</span></td>
-          
+          <td class="return-type code" data-ice="returnType"><span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object">object</a></span></td>
+          <td class="return-desc" data-ice="returnDescription"><p>Return the parentNode of a specific tag name (if exist).</p>
+</td>
         </tr>
       </tbody>
     </table>
@@ -478,18 +508,19 @@
     
     
     
-    <span class="code" data-ice="name">qs</span><span class="code" data-ice="signature">(selector: <span>*</span>, scope: <span>*</span>): <span>*</span></span>
+    <span class="code" data-ice="name">qs</span><span class="code" data-ice="signature">(selector: <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String">string</a></span>, scope: <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/undefined">undefined</a></span> | <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object">object</a></span>): <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object">object</a></span></span>
     <span class="right-info">
       
       
-      <span data-ice="source"><span><a href="file/js/helpers.js.html#lineNumber3">source</a></span></span>
+      <span data-ice="source"><span><a href="file/js/helpers.js.html#lineNumber17">source</a></span></span>
     </span>
   </h3>
 
   
   
   
-  
+  <div data-ice="description"><p>Act as a querySelector event</p>
+</div>
 
   
 
@@ -503,15 +534,17 @@
     
     <tr data-ice="property" data-depth="0">
       <td data-ice="name" class="code" data-depth="0">selector</td>
-      <td data-ice="type" class="code"><span>*</span></td>
+      <td data-ice="type" class="code"><span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String">string</a></span></td>
       <td data-ice="appendix"></td>
-      <td data-ice="description"></td>
+      <td data-ice="description"><p>Represents the class selector to be reach</p>
+</td>
     </tr>
 <tr data-ice="property" data-depth="0">
       <td data-ice="name" class="code" data-depth="0">scope</td>
-      <td data-ice="type" class="code"><span>*</span></td>
+      <td data-ice="type" class="code"><span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/undefined">undefined</a></span> | <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object">object</a></span></td>
       <td data-ice="appendix"></td>
-      <td data-ice="description"></td>
+      <td data-ice="description"><p>Represente the scope on which to look for the DOM&apos;s class selector</p>
+</td>
     </tr>
 </tbody>
   </table>
@@ -523,8 +556,9 @@
     <table>
       <tbody>
         <tr>
-          <td class="return-type code" data-ice="returnType"><span>*</span></td>
-          
+          <td class="return-type code" data-ice="returnType"><span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object">object</a></span></td>
+          <td class="return-desc" data-ice="returnDescription"><p>Return the element from querySelector</p>
+</td>
         </tr>
       </tbody>
     </table>
@@ -555,18 +589,19 @@
     
     
     
-    <span class="code" data-ice="name">qsa</span><span class="code" data-ice="signature">(selector: <span>*</span>, scope: <span>*</span>): <span>*</span></span>
+    <span class="code" data-ice="name">qsa</span><span class="code" data-ice="signature">(selector: <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String">string</a></span>, scope: <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/undefined">undefined</a></span> | <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object">object</a></span>): <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object">object</a></span></span>
     <span class="right-info">
       
       
-      <span data-ice="source"><span><a href="file/js/helpers.js.html#lineNumber7">source</a></span></span>
+      <span data-ice="source"><span><a href="file/js/helpers.js.html#lineNumber28">source</a></span></span>
     </span>
   </h3>
 
   
   
   
-  
+  <div data-ice="description"><p>Act as a querySelectorAll event</p>
+</div>
 
   
 
@@ -580,15 +615,17 @@
     
     <tr data-ice="property" data-depth="0">
       <td data-ice="name" class="code" data-depth="0">selector</td>
-      <td data-ice="type" class="code"><span>*</span></td>
+      <td data-ice="type" class="code"><span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String">string</a></span></td>
       <td data-ice="appendix"></td>
-      <td data-ice="description"></td>
+      <td data-ice="description"><p>Represents the element/class DOM selector to be reach</p>
+</td>
     </tr>
 <tr data-ice="property" data-depth="0">
       <td data-ice="name" class="code" data-depth="0">scope</td>
-      <td data-ice="type" class="code"><span>*</span></td>
+      <td data-ice="type" class="code"><span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/undefined">undefined</a></span> | <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object">object</a></span></td>
       <td data-ice="appendix"></td>
-      <td data-ice="description"></td>
+      <td data-ice="description"><p>Represente the scope on which to look for the DOM&apos;s class selector</p>
+</td>
     </tr>
 </tbody>
   </table>
@@ -600,8 +637,9 @@
     <table>
       <tbody>
         <tr>
-          <td class="return-type code" data-ice="returnType"><span>*</span></td>
-          
+          <td class="return-type code" data-ice="returnType"><span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object">object</a></span></td>
+          <td class="return-desc" data-ice="returnDescription"><p>Return the elements from querySelectorAll</p>
+</td>
         </tr>
       </tbody>
     </table>

@@ -114,7 +114,7 @@ export default class View {
 	/**
 	 *
 	 * @param {number} id The id of the todo to edit
-	 * @param {string} title the title of the todo to edit
+	 * @param {string} title The title of the todo to edit
 	 */
 	_editItem(id, title) {
 		let listItem = helpers.qs('[data-id="' + id + '"]');

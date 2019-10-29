@@ -567,7 +567,7 @@
     "__docId__": 48,
     "kind": "file",
     "name": "js/app.js",
-    "content": "/*global app, $on */\n\n/* import Controller from \"./controller.js\";\nimport Model from \"./model.js\";\nimport Store from \"./store.js\";\nimport Template from \"./template.js\";\nimport View from \"./view.js\"; */\nimport Todo from \"./todo.js\";\nimport Helpers from \"./helpers.js\";\nlet helpers = new Helpers();\n/**\n * Sets up a brand new Todo list.\n *\n * @param {string} name The name of your new to do list.\n */\n(function() {\n\tlet todo = new Todo(\"todos-vanillajs\");\n\n\tfunction setView() {\n\t\ttodo.controller.setView(document.location.hash);\n\t}\n\tsetView();\n\n\thelpers.$on(window, \"load\", setView);\n\thelpers.$on(window, \"hashchange\", setView);\n})();\n",
+    "content": "/*global app, $on */\n\nimport todo from \"./todo.js\";\nimport helpers from \"./helpers.js\";\n/**\n * Sets up a brand new Todo list.\n *\n * @param {string} name The name of your new to do list.\n */\n(function() {\n\tfunction setView() {\n\t\ttodo.controller.setView(document.location.hash);\n\t}\n\tsetView();\n\n\thelpers.$on(window, \"load\", setView);\n\thelpers.$on(window, \"hashchange\", setView);\n})();\n",
     "static": true,
     "longname": "/Users/raphaeldelorme/Documents/DEV/OCR/WIP/P8/oc_p8_dev/js/app.js",
     "access": "public",
@@ -576,27 +576,6 @@
   },
   {
     "__docId__": 49,
-    "kind": "variable",
-    "name": "helpers",
-    "memberof": "js/app.js",
-    "static": true,
-    "longname": "js/app.js~helpers",
-    "access": "public",
-    "export": false,
-    "importPath": "./js/app.js",
-    "importStyle": null,
-    "description": null,
-    "lineNumber": 10,
-    "undocument": true,
-    "type": {
-      "types": [
-        "js/helpers.js~Helpers"
-      ]
-    },
-    "ignore": true
-  },
-  {
-    "__docId__": 50,
     "kind": "file",
     "name": "js/controller.js",
     "content": "/**\n * Takes a model and view and acts as the controller between them.\n *\n * @example\n * let myController = new MyController(model, view);\n */\nexport default class Controller {\n\t/**\n\t *\n\t * @constructor\n\t * @param {object} model The model instance\n\t * @param {object} view The view instance\n\t */\n\tconstructor(model, view) {\n\t\t/**\n\t\t * @type {Object} model\n\t\t */\n\t\tthis.model = model;\n\t\t/**\n\t\t * @type {Object} view\n\t\t */\n\t\tthis.view = view;\n\t\tthis.addItem = this.addItem.bind(this);\n\t\tthis.view.bind(\"newTodo\", title => {\n\t\t\tthis.addItem(title);\n\t\t});\n\t\tthis.view.bind(\"itemEdit\", item => {\n\t\t\tthis.editItem(item.id);\n\t\t});\n\t\tthis.view.bind(\"itemEditDone\", item => {\n\t\t\tthis.editItemSave(item.id, item.title);\n\t\t});\n\t\tthis.view.bind(\"itemEditCancel\", item => {\n\t\t\tthis.editItemCancel(item.id);\n\t\t});\n\t\tthis.view.bind(\"itemRemove\", item => {\n\t\t\tthis.removeItem(item.id);\n\t\t});\n\n\t\tthis.view.bind(\"itemToggle\", item => {\n\t\t\tthis.toggleComplete(item.id, item.completed);\n\t\t});\n\n\t\tthis.view.bind(\"removeCompleted\", () => {\n\t\t\tthis.removeCompletedItems();\n\t\t});\n\n\t\tthis.view.bind(\"toggleAll\", status => {\n\t\t\tthis.toggleAll(status.completed);\n\t\t});\n\t}\n\t/**\n\t * An event to fire whenever you want to add an item. Simply pass in the event\n\t * object and it'll handle the DOM insertion and saving of the new item.\n\t *\n\t * @param {string} title The title of the new todo to add\n\t */\n\taddItem(title) {\n\t\tif (title.trim() === \"\") {\n\t\t\treturn;\n\t\t}\n\n\t\tthis.model.create(title, () => {\n\t\t\tthis.view.render(\"clearNewTodo\");\n\t\t\tthis._filter(true);\n\t\t});\n\t}\n\t/**\n\t * Triggers the item editing mode.\n\t *\n\t * @param {number} id The id of the todo to edite\n\t */\n\teditItem(id) {\n\t\tthis.model.read(id, data => {\n\t\t\tthis.view.render(\"editItem\", { id: id, title: data[0].title });\n\t\t});\n\t}\n\t/**\n\t * Finishes the item editing mode successfully.\n\t *\n\t * @param {number} id The id of the save todo edite\n\t * @param {string} title Todo's title\n\t */\n\teditItemSave(id, title) {\n\t\twhile (title[0] === \" \") {\n\t\t\ttitle = title.slice(1);\n\t\t}\n\n\t\twhile (title[title.length - 1] === \" \") {\n\t\t\ttitle = title.slice(0, -1);\n\t\t}\n\n\t\tif (title.length !== 0) {\n\t\t\tthis.model.update(id, { title: title }, () => {\n\t\t\t\tthis.view.render(\"editItemDone\", { id: id, title: title });\n\t\t\t});\n\t\t} else {\n\t\t\tthis.removeItem(id);\n\t\t}\n\t}\n\t/**\n\t * Cancels the item editing mode.\n\t *\n\t * @param {number} id The id of the todo to cancel the editing\n\t */\n\teditItemCancel(id) {\n\t\tthis.model.read(id, data => {\n\t\t\tthis.view.render(\"editItemDone\", { id: id, title: data[0].title });\n\t\t});\n\t}\n\t/**\n\t * By giving it an ID it'll find the DOM element matching that ID,\n\t * remove it from the DOM and also remove it from storage.\n\t *\n\t * @param {number} id The ID of the item to remove from the DOM and storage.\n\t */\n\tremoveItem(id) {\n\t\tthis.model.remove(id, () => {\n\t\t\tthis.view.render(\"removeItem\", id);\n\t\t});\n\n\t\tthis._filter();\n\t}\n\t/**\n\t * Will remove all completed items from the DOM and storage.\n\t */\n\tremoveCompletedItems() {\n\t\tthis.model.read({ completed: true }, data => {\n\t\t\tdata.forEach(item => {\n\t\t\t\tthis.removeItem(item.id);\n\t\t\t});\n\t\t});\n\n\t\tthis._filter();\n\t}\n\t/**\n\t * Give it an ID of a model and it will update the item\n\t * in storage based on the checkbox's state.\n\t *\n\t * @param {number} id The ID of the element to complete or uncomplete\n\t * @param {object} completed To check the state of complete or not\n\t * @param {boolean|undefined} silent Prevent re-filtering the todo items\n\t */\n\ttoggleComplete(id, completed, silent) {\n\t\tthis.model.update(id, { completed: completed }, () => {\n\t\t\tthis.view.render(\"elementComplete\", {\n\t\t\t\tid: id,\n\t\t\t\tcompleted: completed\n\t\t\t});\n\t\t});\n\n\t\tif (!silent) {\n\t\t\tthis._filter();\n\t\t}\n\t}\n\t/**\n\t * Will toggle ALL checkboxes' on/off state and completeness of models\n\t * Just pass in the event object.\n\t *\n\t * @param {boolean|undefined} completed State of the toggleAll checkbox\n\t */\n\ttoggleAll(completed) {\n\t\tthis.model.read({ completed: !completed }, data => {\n\t\t\tdata.forEach(item => {\n\t\t\t\tthis.toggleComplete(item.id, completed, true);\n\t\t\t});\n\t\t});\n\n\t\tthis._filter();\n\t}\n\t/**\n\t * Updates the pieces of the page which change depending on the remaining\n\t * number of todos.\n\t *\n\t * @private\n\t */\n\t_updateCount() {\n\t\tthis.model.getCount(todos => {\n\t\t\tthis.view.render(\"updateElementCount\", todos.active);\n\t\t\tthis.view.render(\"clearCompletedButton\", {\n\t\t\t\tcompleted: todos.completed,\n\t\t\t\tvisible: todos.completed > 0\n\t\t\t});\n\n\t\t\tthis.view.render(\"toggleAll\", {\n\t\t\t\tchecked: todos.completed === todos.total\n\t\t\t});\n\t\t\tthis.view.render(\"contentBlockVisibility\", {\n\t\t\t\tvisible: todos.total > 0\n\t\t\t});\n\t\t});\n\t}\n\t/**\n\t * Re-filters the todo items, based on the active route.\n\t *\n\t * @param {boolean|undefined} force  forces a re-painting of todo items.\n\t * @private\n\t */\n\t_filter(force) {\n\t\tlet activeRoute =\n\t\t\tthis._activeRoute.charAt(0).toUpperCase() + this._activeRoute.substr(1);\n\n\t\t// Update the elements on the page, which change with each completed todo\n\t\tthis._updateCount();\n\n\t\t// If the last active route isn't \"All\", or we're switching routes, we\n\t\t// re-create the todo item elements, calling:\n\t\t//   this.show[All|Active|Completed]();\n\t\tif (\n\t\t\tforce ||\n\t\t\tthis._lastActiveRoute !== \"All\" ||\n\t\t\tthis._lastActiveRoute !== activeRoute\n\t\t) {\n\t\t\tthis[\"show\" + activeRoute]();\n\t\t}\n\t\t/**\n\t\t * Store a reference to the last active route, allowing us to add condition and not show the new active route if it's the same as the last active route.\n\t\t *\n\t\t * @type {string} _lastActiveRoute\n\t\t */\n\t\tthis._lastActiveRoute = activeRoute;\n\t}\n\t/**\n\t * Simply updates the filter nav's selected states.\n\t *\n\t * @param {string} currentPage\n\t * @private\n\t */\n\t_updateFilterState(currentPage) {\n\t\t/**\n\t\t * Store a reference to the active route, allowing us to re-filter todo items as they are marked complete or incomplete.\n\t\t *\n\t\t * @type {string} _activeRoute\n\t\t */\n\t\tthis._activeRoute = currentPage;\n\n\t\tif (currentPage === \"\") {\n\t\t\tthis._activeRoute = \"All\";\n\t\t}\n\n\t\tthis._filter();\n\n\t\tthis.view.render(\"setFilter\", currentPage);\n\t}\n\t/**\n\t * Loads and initialises the view.\n\t *\n\t * @param {string} '' | 'active' | 'completed'\n\t */\n\tsetView(locationHash) {\n\t\tlet route = locationHash.split(\"/\")[1];\n\t\tlet page = route || \"\";\n\t\tthis._updateFilterState(page);\n\t}\n\n\t/**\n\t * An event to fire on load. Will get all items and display them in the\n\t * todo-list\n\t */\n\tshowAll() {\n\t\tthis.model.read(data => {\n\t\t\tthis.view.render(\"showEntries\", data);\n\t\t});\n\t}\n\n\t/**\n\t * Renders all active tasks\n\t */\n\tshowActive() {\n\t\tthis.model.read({ completed: false }, data => {\n\t\t\tthis.view.render(\"showEntries\", data);\n\t\t});\n\t}\n\n\t/**\n\t * Renders all completed tasks\n\t */\n\tshowCompleted() {\n\t\tthis.model.read({ completed: true }, data => {\n\t\t\tthis.view.render(\"showEntries\", data);\n\t\t});\n\t}\n}\n",
@@ -607,7 +586,7 @@
     "lineNumber": 1
   },
   {
-    "__docId__": 51,
+    "__docId__": 50,
     "kind": "class",
     "name": "Controller",
     "memberof": "js/controller.js",
@@ -625,7 +604,7 @@
     "interface": false
   },
   {
-    "__docId__": 52,
+    "__docId__": 51,
     "kind": "constructor",
     "name": "constructor",
     "memberof": "js/controller.js~Controller",
@@ -666,7 +645,7 @@
     ]
   },
   {
-    "__docId__": 53,
+    "__docId__": 52,
     "kind": "member",
     "name": "model",
     "memberof": "js/controller.js~Controller",
@@ -685,7 +664,7 @@
     }
   },
   {
-    "__docId__": 54,
+    "__docId__": 53,
     "kind": "member",
     "name": "view",
     "memberof": "js/controller.js~Controller",
@@ -704,7 +683,7 @@
     }
   },
   {
-    "__docId__": 56,
+    "__docId__": 55,
     "kind": "method",
     "name": "addItem",
     "memberof": "js/controller.js~Controller",
@@ -730,7 +709,7 @@
     "return": null
   },
   {
-    "__docId__": 57,
+    "__docId__": 56,
     "kind": "method",
     "name": "editItem",
     "memberof": "js/controller.js~Controller",
@@ -756,7 +735,7 @@
     "return": null
   },
   {
-    "__docId__": 58,
+    "__docId__": 57,
     "kind": "method",
     "name": "editItemSave",
     "memberof": "js/controller.js~Controller",
@@ -792,7 +771,7 @@
     "return": null
   },
   {
-    "__docId__": 59,
+    "__docId__": 58,
     "kind": "method",
     "name": "editItemCancel",
     "memberof": "js/controller.js~Controller",
@@ -818,7 +797,7 @@
     "return": null
   },
   {
-    "__docId__": 60,
+    "__docId__": 59,
     "kind": "method",
     "name": "removeItem",
     "memberof": "js/controller.js~Controller",
@@ -844,7 +823,7 @@
     "return": null
   },
   {
-    "__docId__": 61,
+    "__docId__": 60,
     "kind": "method",
     "name": "removeCompletedItems",
     "memberof": "js/controller.js~Controller",
@@ -859,7 +838,7 @@
     "return": null
   },
   {
-    "__docId__": 62,
+    "__docId__": 61,
     "kind": "method",
     "name": "toggleComplete",
     "memberof": "js/controller.js~Controller",
@@ -906,7 +885,7 @@
     "return": null
   },
   {
-    "__docId__": 63,
+    "__docId__": 62,
     "kind": "method",
     "name": "toggleAll",
     "memberof": "js/controller.js~Controller",
@@ -933,7 +912,7 @@
     "return": null
   },
   {
-    "__docId__": 64,
+    "__docId__": 63,
     "kind": "method",
     "name": "_updateCount",
     "memberof": "js/controller.js~Controller",
@@ -948,7 +927,7 @@
     "return": null
   },
   {
-    "__docId__": 65,
+    "__docId__": 64,
     "kind": "method",
     "name": "_filter",
     "memberof": "js/controller.js~Controller",
@@ -975,7 +954,7 @@
     "return": null
   },
   {
-    "__docId__": 66,
+    "__docId__": 65,
     "kind": "member",
     "name": "_lastActiveRoute",
     "memberof": "js/controller.js~Controller",
@@ -994,7 +973,7 @@
     }
   },
   {
-    "__docId__": 67,
+    "__docId__": 66,
     "kind": "method",
     "name": "_updateFilterState",
     "memberof": "js/controller.js~Controller",
@@ -1020,7 +999,7 @@
     "return": null
   },
   {
-    "__docId__": 68,
+    "__docId__": 67,
     "kind": "member",
     "name": "_activeRoute",
     "memberof": "js/controller.js~Controller",
@@ -1039,7 +1018,7 @@
     }
   },
   {
-    "__docId__": 70,
+    "__docId__": 69,
     "kind": "method",
     "name": "setView",
     "memberof": "js/controller.js~Controller",
@@ -1065,7 +1044,7 @@
     "return": null
   },
   {
-    "__docId__": 71,
+    "__docId__": 70,
     "kind": "method",
     "name": "showAll",
     "memberof": "js/controller.js~Controller",
@@ -1080,7 +1059,7 @@
     "return": null
   },
   {
-    "__docId__": 72,
+    "__docId__": 71,
     "kind": "method",
     "name": "showActive",
     "memberof": "js/controller.js~Controller",
@@ -1095,7 +1074,7 @@
     "return": null
   },
   {
-    "__docId__": 73,
+    "__docId__": 72,
     "kind": "method",
     "name": "showCompleted",
     "memberof": "js/controller.js~Controller",
@@ -1110,10 +1089,10 @@
     "return": null
   },
   {
-    "__docId__": 74,
+    "__docId__": 73,
     "kind": "file",
     "name": "js/helpers.js",
-    "content": "/*global NodeList */\nexport default class Helpers {\n\tqs(selector, scope) {\n\t\treturn (scope || document).querySelector(selector);\n\t}\n\n\tqsa(selector, scope) {\n\t\treturn (scope || document).querySelectorAll(selector);\n\t}\n\n\t$on(target, type, callback, useCapture) {\n\t\ttarget.addEventListener(type, callback, !!useCapture);\n\t}\n\n\t$delegate(target, selector, type, handler) {\n\t\tself = this;\n\t\tfunction dispatchEvent(event) {\n\t\t\tlet targetElement = event.target;\n\t\t\tlet potentialElements = self.qsa(selector, target);\n\t\t\tlet hasMatch =\n\t\t\t\tArray.prototype.indexOf.call(potentialElements, targetElement) >= 0;\n\n\t\t\tif (hasMatch) {\n\t\t\t\thandler.call(targetElement, event);\n\t\t\t}\n\t\t}\n\n\t\t// https://developer.mozilla.org/en-US/docs/Web/Events/blur\n\t\tlet useCapture = type === \"blur\" || type === \"focus\";\n\n\t\tthis.$on(target, type, dispatchEvent, useCapture);\n\t}\n\n\t$parent(element, tagName) {\n\t\tif (!element.parentNode) {\n\t\t\treturn;\n\t\t}\n\t\tif (element.parentNode.tagName.toLowerCase() === tagName.toLowerCase()) {\n\t\t\treturn element.parentNode;\n\t\t}\n\t\treturn this.$parent(element.parentNode, tagName);\n\t}\n}\n\nNodeList.prototype.forEach = Array.prototype.forEach;\n",
+    "content": "/*global NodeList */\n\n/**\n * Manage the events with the DOM through the methods defined\n *\n * @example\n * let myHelpers = new MyHelpers();\n */\nclass Helpers {\n\t/**\n\t * Act as a querySelector event\n\t *\n\t * @param {string} selector Represents the class selector to be reach\n\t * @param {undefined|object} scope Represente the scope on which to look for the DOM's class selector\n\t * @returns {object} Return the element from querySelector\n\t */\n\tqs(selector, scope) {\n\t\treturn (scope || document).querySelector(selector);\n\t}\n\n\t/**\n\t * Act as a querySelectorAll event\n\t *\n\t * @param {string} selector Represents the element/class DOM selector to be reach\n\t * @param {undefined|object} scope Represente the scope on which to look for the DOM's class selector\n\t * @returns {object} Return the elements from querySelectorAll\n\t */\n\tqsa(selector, scope) {\n\t\treturn (scope || document).querySelectorAll(selector);\n\t}\n\t/**\n\t * Build an event listener according to the arguments passed in\n\t *\n\t * @param {object} target Represents the targeted HTML tag from the DOM\n\t * @param {string} type Represents the type of event\n\t * @param {function} callback Represent the callback function attach to this event\n\t * @param {boolean} useCapture\n\t */\n\t$on(target, type, callback, useCapture) {\n\t\tconsole.log(target, type, callback, useCapture);\n\t\ttarget.addEventListener(type, callback, !!useCapture);\n\t}\n\n\t/**\n\t *\n\t *\n\t * @param {object} target Represents the targeted HTML tag from the DOM\n\t * @param {string} selector Represents the element/class DOM selector to be reach\n\t * @param {string} type Represents the type of event\n\t * @param {function} handler Represent the callback function attach to this event\n\t */\n\t$delegate(target, selector, type, handler) {\n\t\tself = this;\n\t\tfunction dispatchEvent(event) {\n\t\t\tlet targetElement = event.target;\n\t\t\tlet potentialElements = self.qsa(selector, target);\n\t\t\tlet hasMatch =\n\t\t\t\tArray.prototype.indexOf.call(potentialElements, targetElement) >= 0;\n\n\t\t\tif (hasMatch) {\n\t\t\t\thandler.call(targetElement, event);\n\t\t\t}\n\t\t}\n\n\t\t// https://developer.mozilla.org/en-US/docs/Web/Events/blur\n\t\tlet useCapture = type === \"blur\" || type === \"focus\";\n\n\t\tthis.$on(target, type, dispatchEvent, useCapture);\n\t}\n\t/**\n\t * Reach the parent node of a given element\n\t *\n\t * @param {object} element Represents the element HTML tag that has been clicked from the DOM\n\t * @param {string} tagName The tag name to be reach\n\t * @return {object} Return the parentNode of a specific tag name (if exist).\n\t */\n\t$parent(element, tagName) {\n\t\tif (!element.parentNode) {\n\t\t\treturn;\n\t\t}\n\t\tif (element.parentNode.tagName.toLowerCase() === tagName.toLowerCase()) {\n\t\t\treturn element.parentNode;\n\t\t}\n\t\treturn this.$parent(element.parentNode, tagName);\n\t}\n}\n\nNodeList.prototype.forEach = Array.prototype.forEach;\n\nlet helpers = new Helpers();\n\nexport default helpers;\n",
     "static": true,
     "longname": "/Users/raphaeldelorme/Documents/DEV/OCR/WIP/P8/oc_p8_dev/js/helpers.js",
     "access": "public",
@@ -1121,7 +1100,7 @@
     "lineNumber": 1
   },
   {
-    "__docId__": 75,
+    "__docId__": 74,
     "kind": "class",
     "name": "Helpers",
     "memberof": "js/helpers.js",
@@ -1130,14 +1109,17 @@
     "access": "public",
     "export": true,
     "importPath": "./js/helpers.js",
-    "importStyle": "Helpers",
-    "description": null,
-    "lineNumber": 2,
-    "undocument": true,
+    "importStyle": null,
+    "description": "Manage the events with the DOM through the methods defined",
+    "examples": [
+      "let myHelpers = new MyHelpers();"
+    ],
+    "lineNumber": 9,
+    "pseudoExport": true,
     "interface": false
   },
   {
-    "__docId__": 76,
+    "__docId__": 75,
     "kind": "method",
     "name": "qs",
     "memberof": "js/helpers.js~Helpers",
@@ -1146,31 +1128,48 @@
     "static": false,
     "longname": "js/helpers.js~Helpers#qs",
     "access": "public",
-    "description": null,
-    "lineNumber": 3,
-    "undocument": true,
+    "description": "Act as a querySelector event",
+    "lineNumber": 17,
+    "unknown": [
+      {
+        "tagName": "@returns",
+        "tagValue": "{object} Return the element from querySelector"
+      }
+    ],
     "params": [
       {
-        "name": "selector",
+        "nullable": null,
         "types": [
-          "*"
-        ]
+          "string"
+        ],
+        "spread": false,
+        "optional": false,
+        "name": "selector",
+        "description": "Represents the class selector to be reach"
       },
       {
-        "name": "scope",
+        "nullable": null,
         "types": [
-          "*"
-        ]
+          "undefined",
+          "object"
+        ],
+        "spread": false,
+        "optional": false,
+        "name": "scope",
+        "description": "Represente the scope on which to look for the DOM's class selector"
       }
     ],
     "return": {
+      "nullable": null,
       "types": [
-        "*"
-      ]
+        "object"
+      ],
+      "spread": false,
+      "description": "Return the element from querySelector"
     }
   },
   {
-    "__docId__": 77,
+    "__docId__": 76,
     "kind": "method",
     "name": "qsa",
     "memberof": "js/helpers.js~Helpers",
@@ -1179,31 +1178,48 @@
     "static": false,
     "longname": "js/helpers.js~Helpers#qsa",
     "access": "public",
-    "description": null,
-    "lineNumber": 7,
-    "undocument": true,
+    "description": "Act as a querySelectorAll event",
+    "lineNumber": 28,
+    "unknown": [
+      {
+        "tagName": "@returns",
+        "tagValue": "{object} Return the elements from querySelectorAll"
+      }
+    ],
     "params": [
       {
-        "name": "selector",
+        "nullable": null,
         "types": [
-          "*"
-        ]
+          "string"
+        ],
+        "spread": false,
+        "optional": false,
+        "name": "selector",
+        "description": "Represents the element/class DOM selector to be reach"
       },
       {
-        "name": "scope",
+        "nullable": null,
         "types": [
-          "*"
-        ]
+          "undefined",
+          "object"
+        ],
+        "spread": false,
+        "optional": false,
+        "name": "scope",
+        "description": "Represente the scope on which to look for the DOM's class selector"
       }
     ],
     "return": {
+      "nullable": null,
       "types": [
-        "*"
-      ]
+        "object"
+      ],
+      "spread": false,
+      "description": "Return the elements from querySelectorAll"
     }
   },
   {
-    "__docId__": 78,
+    "__docId__": 77,
     "kind": "method",
     "name": "$on",
     "memberof": "js/helpers.js~Helpers",
@@ -1212,39 +1228,54 @@
     "static": false,
     "longname": "js/helpers.js~Helpers#$on",
     "access": "public",
-    "description": null,
-    "lineNumber": 11,
-    "undocument": true,
+    "description": "Build an event listener according to the arguments passed in",
+    "lineNumber": 39,
     "params": [
       {
+        "nullable": null,
+        "types": [
+          "object"
+        ],
+        "spread": false,
+        "optional": false,
         "name": "target",
-        "types": [
-          "*"
-        ]
+        "description": "Represents the targeted HTML tag from the DOM"
       },
       {
+        "nullable": null,
+        "types": [
+          "string"
+        ],
+        "spread": false,
+        "optional": false,
         "name": "type",
-        "types": [
-          "*"
-        ]
+        "description": "Represents the type of event"
       },
       {
+        "nullable": null,
+        "types": [
+          "function"
+        ],
+        "spread": false,
+        "optional": false,
         "name": "callback",
-        "types": [
-          "*"
-        ]
+        "description": "Represent the callback function attach to this event"
       },
       {
-        "name": "useCapture",
+        "nullable": null,
         "types": [
-          "*"
-        ]
+          "boolean"
+        ],
+        "spread": false,
+        "optional": false,
+        "name": "useCapture",
+        "description": ""
       }
     ],
     "return": null
   },
   {
-    "__docId__": 79,
+    "__docId__": 78,
     "kind": "method",
     "name": "$delegate",
     "memberof": "js/helpers.js~Helpers",
@@ -1253,39 +1284,54 @@
     "static": false,
     "longname": "js/helpers.js~Helpers#$delegate",
     "access": "public",
-    "description": null,
-    "lineNumber": 15,
-    "undocument": true,
+    "description": "",
+    "lineNumber": 52,
     "params": [
       {
+        "nullable": null,
+        "types": [
+          "object"
+        ],
+        "spread": false,
+        "optional": false,
         "name": "target",
-        "types": [
-          "*"
-        ]
+        "description": "Represents the targeted HTML tag from the DOM"
       },
       {
+        "nullable": null,
+        "types": [
+          "string"
+        ],
+        "spread": false,
+        "optional": false,
         "name": "selector",
-        "types": [
-          "*"
-        ]
+        "description": "Represents the element/class DOM selector to be reach"
       },
       {
+        "nullable": null,
+        "types": [
+          "string"
+        ],
+        "spread": false,
+        "optional": false,
         "name": "type",
-        "types": [
-          "*"
-        ]
+        "description": "Represents the type of event"
       },
       {
-        "name": "handler",
+        "nullable": null,
         "types": [
-          "*"
-        ]
+          "function"
+        ],
+        "spread": false,
+        "optional": false,
+        "name": "handler",
+        "description": "Represent the callback function attach to this event"
       }
     ],
     "return": null
   },
   {
-    "__docId__": 80,
+    "__docId__": 79,
     "kind": "method",
     "name": "$parent",
     "memberof": "js/helpers.js~Helpers",
@@ -1294,26 +1340,56 @@
     "static": false,
     "longname": "js/helpers.js~Helpers#$parent",
     "access": "public",
-    "description": null,
-    "lineNumber": 34,
-    "undocument": true,
+    "description": "Reach the parent node of a given element",
+    "lineNumber": 77,
     "params": [
       {
-        "name": "element",
+        "nullable": null,
         "types": [
-          "*"
-        ]
+          "object"
+        ],
+        "spread": false,
+        "optional": false,
+        "name": "element",
+        "description": "Represents the element HTML tag that has been clicked from the DOM"
       },
       {
-        "name": "tagName",
+        "nullable": null,
         "types": [
-          "*"
-        ]
+          "string"
+        ],
+        "spread": false,
+        "optional": false,
+        "name": "tagName",
+        "description": "The tag name to be reach"
       }
     ],
     "return": {
+      "nullable": null,
       "types": [
-        "*"
+        "object"
+      ],
+      "spread": false,
+      "description": "Return the parentNode of a specific tag name (if exist)."
+    }
+  },
+  {
+    "__docId__": 80,
+    "kind": "variable",
+    "name": "helpers",
+    "memberof": "js/helpers.js",
+    "static": true,
+    "longname": "js/helpers.js~helpers",
+    "access": "public",
+    "export": true,
+    "importPath": "./js/helpers.js",
+    "importStyle": "helpers",
+    "description": null,
+    "lineNumber": 92,
+    "undocument": true,
+    "type": {
+      "types": [
+        "js/helpers.js~Helpers"
       ]
     }
   },
@@ -1618,7 +1694,7 @@
     "__docId__": 91,
     "kind": "file",
     "name": "js/store.js",
-    "content": "/*jshint eqeqeq:false */\n/**\n * Takes a model and view and acts as the controller between them.\n *\n * @example\n * let myStorage = new MyStore(name, callback);\n */\nexport default class Store {\n\t/**\n\t * Creates a new client side storage object and will create an empty\n\t * collection if no collection already exists.\n\t * @constructor\n\t * @param {string} name The name of our DB we want to use\n\t * @param {function} callback Our fake DB uses callbacks because in\n\t * real life you probably would be making AJAX calls\n\t */\n\tconstructor(name, callback) {\n\t\tcallback = callback || function() {};\n\t\t/**\n\t\t * @type {string} name of the database\n\t\t */\n\t\tthis._dbName = name;\n\n\t\tif (!localStorage[name]) {\n\t\t\tlet data = {\n\t\t\t\ttodos: []\n\t\t\t};\n\t\t\tlocalStorage[name] = JSON.stringify(data);\n\t\t}\n\n\t\tcallback.call(this, JSON.stringify(localStorage[name]));\n\t}\n\n\t/**\n\t * Finds items based on a query given as a JS object\n\t *\n\t * @param {object} query The query to match against (i.e. {foo: 'bar'})\n\t * @param {function} callback\t The callback to fire when the query has\n\t * completed running\n\t *\n\t * @example\n\t * db.find({foo: 'bar', hello: 'world'}, function (data) {\n\t *\t // data will return any items that have foo: bar and\n\t *\t // hello: world in their properties\n\t * });\n\t */\n\tfind(query, callback) {\n\t\tif (!callback) {\n\t\t\treturn;\n\t\t}\n\n\t\tlet todos = JSON.parse(localStorage[this._dbName]).todos;\n\n\t\tcallback.call(\n\t\t\tthis,\n\t\t\ttodos.filter(todo => {\n\t\t\t\tfor (let q in query) {\n\t\t\t\t\tif (query[q] !== todo[q]) {\n\t\t\t\t\t\treturn false;\n\t\t\t\t\t}\n\t\t\t\t}\n\t\t\t\treturn true;\n\t\t\t})\n\t\t);\n\t}\n\n\t/**\n\t * Will retrieve all data from the collection\n\t *\n\t * @param {function} callback The callback to fire upon retrieving data\n\t */\n\tfindAll(callback) {\n\t\tcallback = callback || function() {};\n\t\tcallback.call(this, JSON.parse(localStorage[this._dbName]).todos); // * \"this\" indicates where the function attached to \"call\" should refere to\n\t}\n\n\t/**\n\t * Will save the given data to the DB. If no item exists it will create a new\n\t * item, otherwise it'll simply update an existing item's properties\n\t *\n\t * @param {object} updateData The data to save back into the DB\n\t * @param {function} callback The callback to fire after saving\n\t * @param {number} id An optional param to enter an ID of an item to update\n\t */\n\tsave(updateData, callback, id) {\n\t\tlet data = JSON.parse(localStorage[this._dbName]);\n\t\tlet todos = data.todos;\n\n\t\tcallback = callback || function() {};\n\t\t// If an ID was actually given, find the item and update each property\n\t\tif (id) {\n\t\t\tfor (let todo of todos) {\n\t\t\t\tif (todo.id === id) {\n\t\t\t\t\tfor (let key in updateData) {\n\t\t\t\t\t\ttodo[key] = updateData[key];\n\t\t\t\t\t}\n\t\t\t\t\tbreak;\n\t\t\t\t}\n\t\t\t}\n\n\t\t\tlocalStorage[this._dbName] = JSON.stringify(data);\n\t\t\tcallback.call(this, todos);\n\t\t} else {\n\t\t\t// Assign an ID\n\t\t\tlet newId = this.createId(todos);\n\t\t\tupdateData.id = newId;\n\t\t\tupdateData.id = parseInt(newId);\n\t\t\ttodos.push(updateData);\n\t\t\tlocalStorage[this._dbName] = JSON.stringify(data);\n\t\t\tcallback.call(this, [updateData]);\n\t\t}\n\t}\n\n\t/**\n\t * Will create a unique id for the new created todo\n\t *\n\t * @param {array} todos The todos array to iterate trough it and get a new unique id\n\t * @return {number} Return an brand new and unique id\n\t */\n\n\tcreateId(todos) {\n\t\tlet newId;\n\t\tlet max = 0;\n\t\tif (todos.length === 0) {\n\t\t\tnewId = 1;\n\t\t}\n\t\tfor (let todo of todos) {\n\t\t\tif (todo.id > max) {\n\t\t\t\tmax = todo.id;\n\t\t\t}\n\t\t\tnewId = max + 1;\n\t\t}\n\t\treturn newId;\n\t}\n\n\t/**\n\t * Will remove an item from the Store based on its ID\n\t *\n\t * @param {number} id The ID of the item you want to remove\n\t * @param {function} callback The callback to fire after saving\n\t */\n\tremove(id, callback) {\n\t\tlet data = JSON.parse(localStorage[this._dbName]);\n\t\tlet todos = data.todos;\n\t\t/* let todoId; */\n\n\t\tfor (let i = 0; i < todos.length; i++) {\n\t\t\tif (todos[i].id == id) {\n\t\t\t\ttodos.splice(i, 1);\n\t\t\t}\n\t\t}\n\n\t\tlocalStorage[this._dbName] = JSON.stringify(data);\n\t\tcallback.call(this, todos);\n\t}\n\n\t/**\n\t * Will drop all storage and start fresh\n\t *\n\t * @param {function} callback The callback to fire after dropping the data\n\t */\n\tdrop(callback) {\n\t\tlet data = { todos: [] };\n\t\tlocalStorage[this._dbName] = JSON.stringify(data);\n\t\tcallback.call(this, data.todos);\n\t}\n}\n",
+    "content": "/*jshint eqeqeq:false */\n/**\n * Creates a new client side storage object and will create an empty\n * collection if no collection already exists.\n *\n * @example\n * let myStorage = new MyStore(name, callback);\n */\nexport default class Store {\n\t/**\n\t *\n\t * @constructor\n\t * @param {string} name The name of our DB we want to use\n\t * @param {function} callback Our fake DB uses callbacks because in\n\t * real life you probably would be making AJAX calls\n\t */\n\tconstructor(name, callback) {\n\t\tcallback = callback || function() {};\n\t\t/**\n\t\t * @type {string} name of the database\n\t\t */\n\t\tthis._dbName = name;\n\n\t\tif (!localStorage[name]) {\n\t\t\tlet data = {\n\t\t\t\ttodos: []\n\t\t\t};\n\t\t\tlocalStorage[name] = JSON.stringify(data);\n\t\t}\n\n\t\tcallback.call(this, JSON.stringify(localStorage[name]));\n\t}\n\n\t/**\n\t * Finds items based on a query given as a JS object\n\t *\n\t * @param {object} query The query to match against (i.e. {foo: 'bar'})\n\t * @param {function} callback\t The callback to fire when the query has\n\t * completed running\n\t *\n\t * @example\n\t * db.find({foo: 'bar', hello: 'world'}, function (data) {\n\t *\t // data will return any items that have foo: bar and\n\t *\t // hello: world in their properties\n\t * });\n\t */\n\tfind(query, callback) {\n\t\tif (!callback) {\n\t\t\treturn;\n\t\t}\n\n\t\tlet todos = JSON.parse(localStorage[this._dbName]).todos;\n\n\t\tcallback.call(\n\t\t\tthis,\n\t\t\ttodos.filter(todo => {\n\t\t\t\tfor (let q in query) {\n\t\t\t\t\tif (query[q] !== todo[q]) {\n\t\t\t\t\t\treturn false;\n\t\t\t\t\t}\n\t\t\t\t}\n\t\t\t\treturn true;\n\t\t\t})\n\t\t);\n\t}\n\n\t/**\n\t * Will retrieve all data from the collection\n\t *\n\t * @param {function} callback The callback to fire upon retrieving data\n\t */\n\tfindAll(callback) {\n\t\tcallback = callback || function() {};\n\t\tcallback.call(this, JSON.parse(localStorage[this._dbName]).todos); // * \"this\" indicates where the function attached to \"call\" should refere to\n\t}\n\n\t/**\n\t * Will save the given data to the DB. If no item exists it will create a new\n\t * item, otherwise it'll simply update an existing item's properties\n\t *\n\t * @param {object} updateData The data to save back into the DB\n\t * @param {function} callback The callback to fire after saving\n\t * @param {number} id An optional param to enter an ID of an item to update\n\t */\n\tsave(updateData, callback, id) {\n\t\tlet data = JSON.parse(localStorage[this._dbName]);\n\t\tlet todos = data.todos;\n\n\t\tcallback = callback || function() {};\n\t\t// If an ID was actually given, find the item and update each property\n\t\tif (id) {\n\t\t\tfor (let todo of todos) {\n\t\t\t\tif (todo.id === id) {\n\t\t\t\t\tfor (let key in updateData) {\n\t\t\t\t\t\ttodo[key] = updateData[key];\n\t\t\t\t\t}\n\t\t\t\t\tbreak;\n\t\t\t\t}\n\t\t\t}\n\n\t\t\tlocalStorage[this._dbName] = JSON.stringify(data);\n\t\t\tcallback.call(this, todos);\n\t\t} else {\n\t\t\t// Assign an ID\n\t\t\tlet newId = this.createId(todos);\n\t\t\tupdateData.id = newId;\n\t\t\tupdateData.id = parseInt(newId);\n\t\t\ttodos.push(updateData);\n\t\t\tlocalStorage[this._dbName] = JSON.stringify(data);\n\t\t\tcallback.call(this, [updateData]);\n\t\t}\n\t}\n\n\t/**\n\t * Will create a unique id for the new created todo\n\t *\n\t * @param {array} todos The todos array to iterate trough it and get a new unique id\n\t * @return {number} Return an brand new and unique id\n\t */\n\n\tcreateId(todos) {\n\t\tlet newId;\n\t\tlet max = 0;\n\t\tif (todos.length === 0) {\n\t\t\tnewId = 1;\n\t\t}\n\t\tfor (let todo of todos) {\n\t\t\tif (todo.id > max) {\n\t\t\t\tmax = todo.id;\n\t\t\t}\n\t\t\tnewId = max + 1;\n\t\t}\n\t\treturn newId;\n\t}\n\n\t/**\n\t * Will remove an item from the Store based on its ID\n\t *\n\t * @param {number} id The ID of the item you want to remove\n\t * @param {function} callback The callback to fire after saving\n\t */\n\tremove(id, callback) {\n\t\tlet data = JSON.parse(localStorage[this._dbName]);\n\t\tlet todos = data.todos;\n\t\t/* let todoId; */\n\n\t\tfor (let i = 0; i < todos.length; i++) {\n\t\t\tif (todos[i].id == id) {\n\t\t\t\ttodos.splice(i, 1);\n\t\t\t}\n\t\t}\n\n\t\tlocalStorage[this._dbName] = JSON.stringify(data);\n\t\tcallback.call(this, todos);\n\t}\n\n\t/**\n\t * Will drop all storage and start fresh\n\t *\n\t * @param {function} callback The callback to fire after dropping the data\n\t */\n\tdrop(callback) {\n\t\tlet data = { todos: [] };\n\t\tlocalStorage[this._dbName] = JSON.stringify(data);\n\t\tcallback.call(this, data.todos);\n\t}\n}\n",
     "static": true,
     "longname": "/Users/raphaeldelorme/Documents/DEV/OCR/WIP/P8/oc_p8_dev/js/store.js",
     "access": "public",
@@ -1636,11 +1712,11 @@
     "export": true,
     "importPath": "./js/store.js",
     "importStyle": "Store",
-    "description": "Takes a model and view and acts as the controller between them.",
+    "description": "Creates a new client side storage object and will create an empty\ncollection if no collection already exists.",
     "examples": [
       "let myStorage = new MyStore(name, callback);"
     ],
-    "lineNumber": 8,
+    "lineNumber": 9,
     "interface": false
   },
   {
@@ -1653,7 +1729,7 @@
     "static": false,
     "longname": "js/store.js~Store#constructor",
     "access": "public",
-    "description": "Creates a new client side storage object and will create an empty\ncollection if no collection already exists.",
+    "description": "",
     "lineNumber": 17,
     "unknown": [
       {
@@ -1913,7 +1989,7 @@
     "__docId__": 101,
     "kind": "file",
     "name": "js/template.js",
-    "content": "/**\n * @type {object} Stores all signs that could result of conflict\n */\nlet htmlEscapes = {\n\t\"&\": \"&amp;\",\n\t\"<\": \"&lt;\",\n\t\">\": \"&gt;\",\n\t'\"': \"&quot;\",\n\t\"'\": \"&#x27;\",\n\t\"`\": \"&#x60;\"\n};\n\n/**\n *\n * @param {string} chr Represent the incompatible HTML sign define by the new RegExp\n * @return {string} Return a string with the HTML equivalent writing of the incompatible sign\n */\nlet escapeHtmlChar = function(chr) {\n\treturn htmlEscapes[chr];\n};\n\n/**\n * @type {object} Represent the charachter to exclude from the user input\n */\nlet reUnescapedHtml = /[&<>\"'`]/g;\n/**\n * @type {object} Represent the charachter to exclude from the user input\n */\nlet reHasUnescapedHtml = new RegExp(reUnescapedHtml.source);\n\n/**\n *\n * @param {string} string The string to check with RegExp\n */\nlet escape = function(string) {\n\treturn string && reHasUnescapedHtml.test(string)\n\t\t? string.replace(reUnescapedHtml, escapeHtmlChar)\n\t\t: string;\n};\n\n/**\n * Sets up defaults for all the Template methods such as a default template\n * @example\n * let myTemplate = new MyTemplate();\n */\nexport default class Template {\n\t/**\n\t * @constructor\n\t */\n\tconstructor() {\n\t\t/**\n\t\t * @type {string} default template which create an html implementation for each todo\n\t\t */\n\t\tthis.defaultTemplate =\n\t\t\t'<li data-id=\"{{id}}\" class=\"{{completed}}\">' +\n\t\t\t'<div class=\"view\">' +\n\t\t\t'<input class=\"toggle\" type=\"checkbox\" {{checked}}>' +\n\t\t\t\"<label>{{title}}</label>\" +\n\t\t\t'<button class=\"destroy\"></button>' +\n\t\t\t\"</div>\" +\n\t\t\t\"</li>\";\n\t}\n\t/**\n\t * Creates an <li> HTML string and returns it for placement in your app.\n\t *\n\t * NOTE: In real life you should be using a templating engine such as Mustache or Handlebars, however, this is a vanilla JS example.\n\t *\n\t * @param {object} data The object containing keys you want to find in the template to replace.\n\t * @returns {string} HTML String of an <li> element\n\t *\n\t * @example\n\t * view.show({\n\t *\tid: 1,\n\t *\ttitle: \"Hello World\",\n\t *\tcompleted: 0,\n\t * });\n\t */\n\tshow(data) {\n\t\tlet i, l;\n\t\tlet view = \"\";\n\n\t\tfor (i = 0, l = data.length; i < l; i++) {\n\t\t\tlet template = this.defaultTemplate;\n\t\t\tlet completed = \"\";\n\t\t\tlet checked = \"\";\n\n\t\t\tif (data[i].completed) {\n\t\t\t\tcompleted = \"completed\";\n\t\t\t\tchecked = \"checked\";\n\t\t\t}\n\n\t\t\ttemplate = template.replace(\"{{id}}\", data[i].id);\n\t\t\ttemplate = template.replace(\"{{title}}\", escape(data[i].title));\n\t\t\ttemplate = template.replace(\"{{completed}}\", completed);\n\t\t\ttemplate = template.replace(\"{{checked}}\", checked);\n\n\t\t\tview = view + template;\n\t\t}\n\n\t\treturn view;\n\t}\n\n\t/**\n\t * Displays a counter of how many to dos are left to complete\n\t *\n\t * @param {number} activeTodos The number of active todos.\n\t * @returns {string} String containing the count\n\t */\n\titemCounter(activeTodos) {\n\t\tlet plural = activeTodos === 1 ? \"\" : \"s\";\n\n\t\treturn \"<strong>\" + activeTodos + \"</strong> item\" + plural + \" left\";\n\t}\n\n\t/**\n\t * Updates the text within the \"Clear completed\" button\n\t *\n\t * @param  {[type]} completedTodos The number of completed todos.\n\t * @returns {string} String containing the count\n\t */\n\tclearCompletedButton(completedTodos) {\n\t\tif (completedTodos > 0) {\n\t\t\treturn \"Clear completed\";\n\t\t} else {\n\t\t\treturn \"\";\n\t\t}\n\t}\n}\n",
+    "content": "/**\n * @type {object} Stores all signs that could result of conflict\n */\nlet htmlEscapes = {\n\t\"&\": \"&amp;\",\n\t\"<\": \"&lt;\",\n\t\">\": \"&gt;\",\n\t'\"': \"&quot;\",\n\t\"'\": \"&#x27;\",\n\t\"`\": \"&#x60;\"\n};\n\n/**\n *\n * @param {string} chr Represent the incompatible HTML sign define by the new RegExp\n * @return {string} Return a string with the HTML equivalent writing of the incompatible sign\n */\nlet escapeHtmlChar = function(chr) {\n\treturn htmlEscapes[chr];\n};\n\n/**\n * @type {object} Represent the charachter to exclude from the user input\n */\nlet reUnescapedHtml = /[&<>\"'`]/g;\n/**\n * @type {object} Represent the charachter to exclude from the user input\n */\nlet reHasUnescapedHtml = new RegExp(reUnescapedHtml.source);\n\n/**\n *\n * @param {string} string The string to check with RegExp\n */\nlet escape = function(string) {\n\treturn string && reHasUnescapedHtml.test(string)\n\t\t? string.replace(reUnescapedHtml, escapeHtmlChar)\n\t\t: string;\n};\n\n/**\n * Sets up defaults for all the Template methods such as a default template\n * @example\n * let myTemplate = new MyTemplate();\n */\nexport default class Template {\n\t/**\n\t * @constructor\n\t */\n\tconstructor() {\n\t\t/**\n\t\t * @type {string} Default template which create an html implementation for each todo\n\t\t */\n\t\tthis.defaultTemplate =\n\t\t\t'<li data-id=\"{{id}}\" class=\"{{completed}}\">' +\n\t\t\t'<div class=\"view\">' +\n\t\t\t'<input class=\"toggle\" type=\"checkbox\" {{checked}}>' +\n\t\t\t\"<label>{{title}}</label>\" +\n\t\t\t'<button class=\"destroy\"></button>' +\n\t\t\t\"</div>\" +\n\t\t\t\"</li>\";\n\t}\n\t/**\n\t * Creates an <li> HTML string and returns it for placement in your app.\n\t *\n\t * NOTE: In real life you should be using a templating engine such as Mustache or Handlebars, however, this is a vanilla JS example.\n\t *\n\t * @param {object} data The object containing keys you want to find in the template to replace.\n\t * @returns {string} HTML String of an <li> element\n\t *\n\t * @example\n\t * view.show({\n\t *\tid: 1,\n\t *\ttitle: \"Hello World\",\n\t *\tcompleted: 0,\n\t * });\n\t */\n\tshow(data) {\n\t\tlet i, l;\n\t\tlet view = \"\";\n\n\t\tfor (i = 0, l = data.length; i < l; i++) {\n\t\t\tlet template = this.defaultTemplate;\n\t\t\tlet completed = \"\";\n\t\t\tlet checked = \"\";\n\n\t\t\tif (data[i].completed) {\n\t\t\t\tcompleted = \"completed\";\n\t\t\t\tchecked = \"checked\";\n\t\t\t}\n\n\t\t\ttemplate = template.replace(\"{{id}}\", data[i].id);\n\t\t\ttemplate = template.replace(\"{{title}}\", escape(data[i].title));\n\t\t\ttemplate = template.replace(\"{{completed}}\", completed);\n\t\t\ttemplate = template.replace(\"{{checked}}\", checked);\n\n\t\t\tview = view + template;\n\t\t}\n\n\t\treturn view;\n\t}\n\n\t/**\n\t * Displays a counter of how many to dos are left to complete\n\t *\n\t * @param {number} activeTodos The number of active todos.\n\t * @returns {string} String containing the count\n\t */\n\titemCounter(activeTodos) {\n\t\tlet plural = activeTodos === 1 ? \"\" : \"s\";\n\n\t\treturn \"<strong>\" + activeTodos + \"</strong> item\" + plural + \" left\";\n\t}\n\n\t/**\n\t * Updates the text within the \"Clear completed\" button\n\t *\n\t * @param  {[type]} completedTodos The number of completed todos.\n\t * @returns {string} String containing the count\n\t */\n\tclearCompletedButton(completedTodos) {\n\t\tif (completedTodos > 0) {\n\t\t\treturn \"Clear completed\";\n\t\t} else {\n\t\t\treturn \"\";\n\t\t}\n\t}\n}\n",
     "static": true,
     "longname": "/Users/raphaeldelorme/Documents/DEV/OCR/WIP/P8/oc_p8_dev/js/template.js",
     "access": "public",
@@ -2240,7 +2316,7 @@
     "__docId__": 113,
     "kind": "file",
     "name": "js/todo.js",
-    "content": "import Controller from \"./controller.js\";\nimport Model from \"./model.js\";\nimport Store from \"./store.js\";\nimport Template from \"./template.js\";\nimport View from \"./view.js\";\n\nexport default class Todo {\n\tconstructor(name) {\n\t\tthis.storage = new Store(name);\n\t\tthis.model = new Model(this.storage);\n\t\tthis.template = new Template();\n\t\tthis.view = new View(this.template);\n\t\tthis.controller = new Controller(this.model, this.view);\n\t}\n}\n",
+    "content": "import Controller from \"./controller.js\";\nimport Model from \"./model.js\";\nimport Store from \"./store.js\";\nimport Template from \"./template.js\";\nimport View from \"./view.js\";\n\n/**\n * Create a Todo app object\n *\n * @example\n * let myTodo = new MyTodo(todoAppName);\n */\nclass Todo {\n\t/**\n\t *\n\t * @constructor\n\t * @param {string} name The name of the todo app, which will be use as localStorage name to store datas\n\t */\n\tconstructor(name) {\n\t\t/**\n\t\t * @type {object} Creates a new client side storage object and will create an empty collection if no collection already exists.\n\t\t */\n\t\tthis.storage = new Store(name);\n\t\t/**\n\t\t * @type {object} Creates a new Model instance and hooks up the storage.\n\t\t */\n\t\tthis.model = new Model(this.storage);\n\t\t/**\n\t\t * @type {object} Sets up defaults for all the Template methods such as a default template\n\t\t */\n\t\tthis.template = new Template();\n\t\t/**\n\t\t * @type {object} View that abstracts away the browser's DOM completely.\n\t\t */\n\t\tthis.view = new View(this.template);\n\t\t/**\n\t\t * @type {object} Takes a model and view and acts as the controller between them.\n\t\t */\n\t\tthis.controller = new Controller(this.model, this.view);\n\t\tconsole.log(this.model);\n\t}\n}\n\nlet todo = new Todo(\"todos-vanillajs\");\n\nexport default todo;\n",
     "static": true,
     "longname": "/Users/raphaeldelorme/Documents/DEV/OCR/WIP/P8/oc_p8_dev/js/todo.js",
     "access": "public",
@@ -2257,10 +2333,13 @@
     "access": "public",
     "export": true,
     "importPath": "./js/todo.js",
-    "importStyle": "Todo",
-    "description": null,
-    "lineNumber": 7,
-    "undocument": true,
+    "importStyle": null,
+    "description": "Create a Todo app object",
+    "examples": [
+      "let myTodo = new MyTodo(todoAppName);"
+    ],
+    "lineNumber": 13,
+    "pseudoExport": true,
     "interface": false
   },
   {
@@ -2273,9 +2352,26 @@
     "static": false,
     "longname": "js/todo.js~Todo#constructor",
     "access": "public",
-    "description": null,
-    "lineNumber": 8,
-    "undocument": true
+    "description": "",
+    "lineNumber": 19,
+    "unknown": [
+      {
+        "tagName": "@constructor",
+        "tagValue": ""
+      }
+    ],
+    "params": [
+      {
+        "nullable": null,
+        "types": [
+          "string"
+        ],
+        "spread": false,
+        "optional": false,
+        "name": "name",
+        "description": "The name of the todo app, which will be use as localStorage name to store datas"
+      }
+    ]
   },
   {
     "__docId__": 116,
@@ -2285,13 +2381,15 @@
     "static": false,
     "longname": "js/todo.js~Todo#storage",
     "access": "public",
-    "description": null,
-    "lineNumber": 9,
-    "undocument": true,
+    "description": "",
+    "lineNumber": 23,
     "type": {
+      "nullable": null,
       "types": [
-        "*"
-      ]
+        "object"
+      ],
+      "spread": false,
+      "description": null
     }
   },
   {
@@ -2302,13 +2400,15 @@
     "static": false,
     "longname": "js/todo.js~Todo#model",
     "access": "public",
-    "description": null,
-    "lineNumber": 10,
-    "undocument": true,
+    "description": "",
+    "lineNumber": 27,
     "type": {
+      "nullable": null,
       "types": [
-        "*"
-      ]
+        "object"
+      ],
+      "spread": false,
+      "description": null
     }
   },
   {
@@ -2319,13 +2419,15 @@
     "static": false,
     "longname": "js/todo.js~Todo#template",
     "access": "public",
-    "description": null,
-    "lineNumber": 11,
-    "undocument": true,
+    "description": "",
+    "lineNumber": 31,
     "type": {
+      "nullable": null,
       "types": [
-        "*"
-      ]
+        "object"
+      ],
+      "spread": false,
+      "description": null
     }
   },
   {
@@ -2336,13 +2438,15 @@
     "static": false,
     "longname": "js/todo.js~Todo#view",
     "access": "public",
-    "description": null,
-    "lineNumber": 12,
-    "undocument": true,
+    "description": "",
+    "lineNumber": 35,
     "type": {
+      "nullable": null,
       "types": [
-        "*"
-      ]
+        "object"
+      ],
+      "spread": false,
+      "description": null
     }
   },
   {
@@ -2353,46 +2457,47 @@
     "static": false,
     "longname": "js/todo.js~Todo#controller",
     "access": "public",
-    "description": null,
-    "lineNumber": 13,
-    "undocument": true,
+    "description": "",
+    "lineNumber": 39,
     "type": {
+      "nullable": null,
       "types": [
-        "*"
-      ]
+        "object"
+      ],
+      "spread": false,
+      "description": null
     }
   },
   {
     "__docId__": 121,
+    "kind": "variable",
+    "name": "todo",
+    "memberof": "js/todo.js",
+    "static": true,
+    "longname": "js/todo.js~todo",
+    "access": "public",
+    "export": true,
+    "importPath": "./js/todo.js",
+    "importStyle": "todo",
+    "description": null,
+    "lineNumber": 46,
+    "undocument": true,
+    "type": {
+      "types": [
+        "js/todo.js~Todo"
+      ]
+    }
+  },
+  {
+    "__docId__": 122,
     "kind": "file",
     "name": "js/view.js",
-    "content": "/*global qs, qsa, $on, $parent, $delegate */\nimport Helpers from \"./helpers.js\";\nlet helpers = new Helpers();\n\n/**\n * View that abstracts away the browser's DOM completely.\n * It has two simple entry points:\n *\n *   - bind(eventName, handler)\n *     Takes a todo application event and registers the handler\n *   - render(command, parameterObject)\n *     Renders the given command with the options\n * @example\n * let myView = MyView(myTemplate)\n */\nexport default class View {\n\t/**\n\t * @constructor\n\t * @param {string} template Represent the HTML template of a todo\n\t */\n\tconstructor(template) {\n\t\t/**\n\t\t * @type {string} template\n\t\t */\n\t\tthis.template = template;\n\n\t\t/**\n\t\t * @type {number} Key code for the Enter touch\n\t\t */\n\t\tthis.ENTER_KEY = 13;\n\t\t/**\n\t\t * @type {number} Key code for the Escape touch\n\t\t */\n\t\tthis.ESCAPE_KEY = 27;\n\n\t\t/**\n\t\t * @type {object} Represent the HTML tag that contains the \".todo-list\" class\n\t\t */\n\t\tthis.$todoList = helpers.qs(\".todo-list\");\n\t\t/**\n\t\t * @type {object} Represent the HTML tag that contains the \".todo-count\" class\n\t\t */\n\t\tthis.$todoItemCounter = helpers.qs(\".todo-count\");\n\t\t/**\n\t\t * @type {object} Represent the HTML tag that contains the \".clear-completed\" class\n\t\t */\n\t\tthis.$clearCompleted = helpers.qs(\".clear-completed\");\n\t\t/**\n\t\t * @type {object} Represent the HTML tag that contains the \".main\" class\n\t\t */\n\t\tthis.$main = helpers.qs(\".main\");\n\t\t/**\n\t\t * @type {object} Represent the HTML tag that contains the \".footer\" class\n\t\t */\n\t\tthis.$footer = helpers.qs(\".footer\");\n\t\t/**\n\t\t * @type {object} Represent the HTML tag that contains the \".toggle-all\" class\n\t\t */\n\t\tthis.$toggleAll = helpers.qs(\".toggle-all\");\n\t\t/**\n\t\t * @type {object} Represent the HTML tag that contains the \".new-todo\" class\n\t\t */\n\t\tthis.$newTodo = helpers.qs(\".new-todo\");\n\t}\n\t/**\n\t *\n\t * @param {number} id The id of the todo to remove\n\t */\n\t_removeItem(id) {\n\t\tlet elem = helpers.qs('[data-id=\"' + id + '\"]');\n\n\t\tif (elem) {\n\t\t\tthis.$todoList.removeChild(elem);\n\t\t}\n\t}\n\t/**\n\t *\n\t * @param {number} completedCount Number of completed todos\n\t * @param {boolean} visible Control the visibility of the \"clear completed\" button\n\t */\n\t_clearCompletedButton(completedCount, visible) {\n\t\tthis.$clearCompleted.innerHTML = this.template.clearCompletedButton(\n\t\t\tcompletedCount\n\t\t);\n\t\tthis.$clearCompleted.style.display = visible ? \"block\" : \"none\";\n\t}\n\n\t/**\n\t *\n\t * @param {string} currentPage The name of the current page\n\t */\n\t_setFilter(currentPage) {\n\t\thelpers.qs(\".filters .selected\").className = \"\";\n\t\thelpers.qs('.filters [href=\"#/' + currentPage + '\"]').className =\n\t\t\t\"selected\";\n\t}\n\n\t/**\n\t *\n\t * @param {number} id The id of the todo to toggle status\n\t * @param {boolean} completed Indicate the todo state\n\t */\n\t_elementComplete(id, completed) {\n\t\tlet listItem = helpers.qs('[data-id=\"' + id + '\"]');\n\n\t\tif (!listItem) {\n\t\t\treturn;\n\t\t}\n\n\t\tlistItem.className = completed ? \"completed\" : \"\";\n\n\t\t// In case it was toggled from an event and not by clicking the checkbox\n\t\thelpers.qs(\"input\", listItem).checked = completed;\n\t}\n\t/**\n\t *\n\t * @param {number} id The id of the todo to edit\n\t * @param {string} title the title of the todo to edit\n\t */\n\t_editItem(id, title) {\n\t\tlet listItem = helpers.qs('[data-id=\"' + id + '\"]');\n\n\t\tif (!listItem) {\n\t\t\treturn;\n\t\t}\n\n\t\tlistItem.className = listItem.className + \" editing\";\n\n\t\tlet input = document.createElement(\"input\");\n\t\tinput.className = \"edit\";\n\n\t\tlistItem.appendChild(input);\n\t\tinput.focus();\n\t\tinput.value = title;\n\t}\n\t/**\n\t *\n\t * @param {number} id The id of the todo that has been edited\n\t * @param {string} title The name of the todo that has been edited\n\t */\n\t_editItemDone(id, title) {\n\t\tlet listItem = helpers.qs('[data-id=\"' + id + '\"]');\n\n\t\tif (!listItem) {\n\t\t\treturn;\n\t\t}\n\n\t\tlet input = helpers.qs(\"input.edit\", listItem);\n\t\tlistItem.removeChild(input);\n\n\t\tlistItem.className = listItem.className.replace(\"editing\", \"\");\n\n\t\thelpers.qsa(\"label\", listItem).forEach(function(label) {\n\t\t\tlabel.textContent = title;\n\t\t});\n\t}\n\n\t/**\n\t *\n\t * @param {string} viewCmd The name of the command to reach (which equivalent to a viewCommands method)\n\t * @param {object|Array|string|number} parameter Parameter to change for a todo or multiple todos\n\t */\n\trender(viewCmd, parameter) {\n\t\tlet viewCommands = {\n\t\t\tshowEntries: () => {\n\t\t\t\tthis.$todoList.innerHTML = this.template.show(parameter);\n\t\t\t},\n\t\t\tremoveItem: () => {\n\t\t\t\tthis._removeItem(parameter);\n\t\t\t},\n\t\t\tupdateElementCount: () => {\n\t\t\t\tthis.$todoItemCounter.innerHTML = this.template.itemCounter(parameter);\n\t\t\t},\n\t\t\tclearCompletedButton: () => {\n\t\t\t\tthis._clearCompletedButton(parameter.completed, parameter.visible);\n\t\t\t},\n\t\t\tcontentBlockVisibility: () => {\n\t\t\t\tthis.$main.style.display = this.$footer.style.display = parameter.visible\n\t\t\t\t\t? \"block\"\n\t\t\t\t\t: \"none\";\n\t\t\t},\n\t\t\ttoggleAll: () => {\n\t\t\t\tthis.$toggleAll.checked = parameter.checked; // * if all todo are completed parameter.checked = true otherwise false\n\t\t\t},\n\t\t\tsetFilter: () => {\n\t\t\t\tthis._setFilter(parameter);\n\t\t\t},\n\t\t\tclearNewTodo: () => {\n\t\t\t\tthis.$newTodo.value = \"\";\n\t\t\t},\n\t\t\telementComplete: () => {\n\t\t\t\tthis._elementComplete(parameter.id, parameter.completed);\n\t\t\t},\n\t\t\teditItem: () => {\n\t\t\t\tthis._editItem(parameter.id, parameter.title);\n\t\t\t},\n\t\t\teditItemDone: () => {\n\t\t\t\tthis._editItemDone(parameter.id, parameter.title);\n\t\t\t}\n\t\t};\n\n\t\tviewCommands[viewCmd]();\n\t}\n\n\t/**\n\t *\n\t * @param {object} element Represent the HTML tag of the targeted element\n\t * @return {number} The id of the parent li element of the targeted HTML tag\n\t */\n\t_itemId(element) {\n\t\tlet li = helpers.$parent(element, \"li\");\n\t\treturn parseInt(li.dataset.id, 10);\n\t}\n\n\t/**\n\t *\n\t * @param {function} handler Callback function\n\t */\n\t_bindItemEditDone(handler) {\n\t\tlet self = this;\n\t\thelpers.$delegate(self.$todoList, \"li .edit\", \"blur\", function() {\n\t\t\tif (!this.dataset.iscanceled) {\n\t\t\t\thandler({\n\t\t\t\t\tid: self._itemId(this),\n\t\t\t\t\ttitle: this.value\n\t\t\t\t});\n\t\t\t}\n\t\t});\n\n\t\thelpers.$delegate(self.$todoList, \"li .edit\", \"keypress\", function(event) {\n\t\t\tif (event.keyCode === self.ENTER_KEY) {\n\t\t\t\t// Remove the cursor from the input when you hit enter just like if it\n\t\t\t\t// were a real form\n\t\t\t\tthis.blur();\n\t\t\t}\n\t\t});\n\t}\n\t/**\n\t *\n\t * @param {function} handler Callback function\n\t */\n\t_bindItemEditCancel(handler) {\n\t\tlet self = this;\n\t\thelpers.$delegate(self.$todoList, \"li .edit\", \"keyup\", function(event) {\n\t\t\tif (event.keyCode === self.ESCAPE_KEY) {\n\t\t\t\tthis.dataset.iscanceled = true;\n\t\t\t\tthis.blur();\n\n\t\t\t\thandler({ id: self._itemId(this) });\n\t\t\t}\n\t\t});\n\t}\n\n\t/**\n\t *\n\t * @param {string} event Name of the event\n\t * @param {function} handler callback function\n\t */\n\tbind(event, handler) {\n\t\tlet self = this;\n\t\t// * check how this callback works\n\t\tif (event === \"newTodo\") {\n\t\t\thelpers.$on(this.$newTodo, \"change\", () => {\n\t\t\t\thandler(this.$newTodo.value);\n\t\t\t});\n\t\t} else if (event === \"removeCompleted\") {\n\t\t\thelpers.$on(this.$clearCompleted, \"click\", () => {\n\t\t\t\thandler();\n\t\t\t});\n\t\t} else if (event === \"toggleAll\") {\n\t\t\thelpers.$on(this.$toggleAll, \"click\", function() {\n\t\t\t\thandler({ completed: this.checked });\n\t\t\t});\n\t\t} else if (event === \"itemEdit\") {\n\t\t\thelpers.$delegate(this.$todoList, \"li label\", \"dblclick\", function() {\n\t\t\t\thandler({ id: self._itemId(this) });\n\t\t\t});\n\t\t} else if (event === \"itemRemove\") {\n\t\t\thelpers.$delegate(this.$todoList, \".destroy\", \"click\", function() {\n\t\t\t\thandler({ id: self._itemId(this) });\n\t\t\t});\n\t\t} else if (event === \"itemToggle\") {\n\t\t\thelpers.$delegate(this.$todoList, \".toggle\", \"click\", function() {\n\t\t\t\thandler({\n\t\t\t\t\tid: self._itemId(this),\n\t\t\t\t\tcompleted: this.checked\n\t\t\t\t});\n\t\t\t});\n\t\t} else if (event === \"itemEditDone\") {\n\t\t\tthis._bindItemEditDone(handler);\n\t\t} else if (event === \"itemEditCancel\") {\n\t\t\tthis._bindItemEditCancel(handler);\n\t\t}\n\t}\n}\n",
+    "content": "/*global qs, qsa, $on, $parent, $delegate */\nimport helpers from \"./helpers.js\";\n\n/**\n * View that abstracts away the browser's DOM completely.\n * It has two simple entry points:\n *\n *   - bind(eventName, handler)\n *     Takes a todo application event and registers the handler\n *   - render(command, parameterObject)\n *     Renders the given command with the options\n * @example\n * let myView = MyView(myTemplate)\n */\nexport default class View {\n\t/**\n\t * @constructor\n\t * @param {string} template Represent the HTML template of a todo\n\t */\n\tconstructor(template) {\n\t\t/**\n\t\t * @type {string} template\n\t\t */\n\t\tthis.template = template;\n\n\t\t/**\n\t\t * @type {number} Key code for the Enter touch\n\t\t */\n\t\tthis.ENTER_KEY = 13;\n\t\t/**\n\t\t * @type {number} Key code for the Escape touch\n\t\t */\n\t\tthis.ESCAPE_KEY = 27;\n\n\t\t/**\n\t\t * @type {object} Represent the HTML tag that contains the \".todo-list\" class\n\t\t */\n\t\tthis.$todoList = helpers.qs(\".todo-list\");\n\t\t/**\n\t\t * @type {object} Represent the HTML tag that contains the \".todo-count\" class\n\t\t */\n\t\tthis.$todoItemCounter = helpers.qs(\".todo-count\");\n\t\t/**\n\t\t * @type {object} Represent the HTML tag that contains the \".clear-completed\" class\n\t\t */\n\t\tthis.$clearCompleted = helpers.qs(\".clear-completed\");\n\t\t/**\n\t\t * @type {object} Represent the HTML tag that contains the \".main\" class\n\t\t */\n\t\tthis.$main = helpers.qs(\".main\");\n\t\t/**\n\t\t * @type {object} Represent the HTML tag that contains the \".footer\" class\n\t\t */\n\t\tthis.$footer = helpers.qs(\".footer\");\n\t\t/**\n\t\t * @type {object} Represent the HTML tag that contains the \".toggle-all\" class\n\t\t */\n\t\tthis.$toggleAll = helpers.qs(\".toggle-all\");\n\t\t/**\n\t\t * @type {object} Represent the HTML tag that contains the \".new-todo\" class\n\t\t */\n\t\tthis.$newTodo = helpers.qs(\".new-todo\");\n\t}\n\t/**\n\t *\n\t * @param {number} id The id of the todo to remove\n\t */\n\t_removeItem(id) {\n\t\tlet elem = helpers.qs('[data-id=\"' + id + '\"]');\n\n\t\tif (elem) {\n\t\t\tthis.$todoList.removeChild(elem);\n\t\t}\n\t}\n\t/**\n\t *\n\t * @param {number} completedCount Number of completed todos\n\t * @param {boolean} visible Control the visibility of the \"clear completed\" button\n\t */\n\t_clearCompletedButton(completedCount, visible) {\n\t\tthis.$clearCompleted.innerHTML = this.template.clearCompletedButton(\n\t\t\tcompletedCount\n\t\t);\n\t\tthis.$clearCompleted.style.display = visible ? \"block\" : \"none\";\n\t}\n\n\t/**\n\t *\n\t * @param {string} currentPage The name of the current page\n\t */\n\t_setFilter(currentPage) {\n\t\thelpers.qs(\".filters .selected\").className = \"\";\n\t\thelpers.qs('.filters [href=\"#/' + currentPage + '\"]').className =\n\t\t\t\"selected\";\n\t}\n\n\t/**\n\t *\n\t * @param {number} id The id of the todo to toggle status\n\t * @param {boolean} completed Indicate the todo state\n\t */\n\t_elementComplete(id, completed) {\n\t\tlet listItem = helpers.qs('[data-id=\"' + id + '\"]');\n\n\t\tif (!listItem) {\n\t\t\treturn;\n\t\t}\n\n\t\tlistItem.className = completed ? \"completed\" : \"\";\n\n\t\t// In case it was toggled from an event and not by clicking the checkbox\n\t\thelpers.qs(\"input\", listItem).checked = completed;\n\t}\n\t/**\n\t *\n\t * @param {number} id The id of the todo to edit\n\t * @param {string} title The title of the todo to edit\n\t */\n\t_editItem(id, title) {\n\t\tlet listItem = helpers.qs('[data-id=\"' + id + '\"]');\n\n\t\tif (!listItem) {\n\t\t\treturn;\n\t\t}\n\n\t\tlistItem.className = listItem.className + \" editing\";\n\n\t\tlet input = document.createElement(\"input\");\n\t\tinput.className = \"edit\";\n\n\t\tlistItem.appendChild(input);\n\t\tinput.focus();\n\t\tinput.value = title;\n\t}\n\t/**\n\t *\n\t * @param {number} id The id of the todo that has been edited\n\t * @param {string} title The name of the todo that has been edited\n\t */\n\t_editItemDone(id, title) {\n\t\tlet listItem = helpers.qs('[data-id=\"' + id + '\"]');\n\n\t\tif (!listItem) {\n\t\t\treturn;\n\t\t}\n\n\t\tlet input = helpers.qs(\"input.edit\", listItem);\n\t\tlistItem.removeChild(input);\n\n\t\tlistItem.className = listItem.className.replace(\"editing\", \"\");\n\n\t\thelpers.qsa(\"label\", listItem).forEach(function(label) {\n\t\t\tlabel.textContent = title;\n\t\t});\n\t}\n\n\t/**\n\t *\n\t * @param {string} viewCmd The name of the command to reach (which equivalent to a viewCommands method)\n\t * @param {object|Array|string|number} parameter Parameter to change for a todo or multiple todos\n\t */\n\trender(viewCmd, parameter) {\n\t\tlet viewCommands = {\n\t\t\tshowEntries: () => {\n\t\t\t\tthis.$todoList.innerHTML = this.template.show(parameter);\n\t\t\t},\n\t\t\tremoveItem: () => {\n\t\t\t\tthis._removeItem(parameter);\n\t\t\t},\n\t\t\tupdateElementCount: () => {\n\t\t\t\tthis.$todoItemCounter.innerHTML = this.template.itemCounter(parameter);\n\t\t\t},\n\t\t\tclearCompletedButton: () => {\n\t\t\t\tthis._clearCompletedButton(parameter.completed, parameter.visible);\n\t\t\t},\n\t\t\tcontentBlockVisibility: () => {\n\t\t\t\tthis.$main.style.display = this.$footer.style.display = parameter.visible\n\t\t\t\t\t? \"block\"\n\t\t\t\t\t: \"none\";\n\t\t\t},\n\t\t\ttoggleAll: () => {\n\t\t\t\tthis.$toggleAll.checked = parameter.checked; // * if all todo are completed parameter.checked = true otherwise false\n\t\t\t},\n\t\t\tsetFilter: () => {\n\t\t\t\tthis._setFilter(parameter);\n\t\t\t},\n\t\t\tclearNewTodo: () => {\n\t\t\t\tthis.$newTodo.value = \"\";\n\t\t\t},\n\t\t\telementComplete: () => {\n\t\t\t\tthis._elementComplete(parameter.id, parameter.completed);\n\t\t\t},\n\t\t\teditItem: () => {\n\t\t\t\tthis._editItem(parameter.id, parameter.title);\n\t\t\t},\n\t\t\teditItemDone: () => {\n\t\t\t\tthis._editItemDone(parameter.id, parameter.title);\n\t\t\t}\n\t\t};\n\n\t\tviewCommands[viewCmd]();\n\t}\n\n\t/**\n\t *\n\t * @param {object} element Represent the HTML tag of the targeted element\n\t * @return {number} The id of the parent li element of the targeted HTML tag\n\t */\n\t_itemId(element) {\n\t\tlet li = helpers.$parent(element, \"li\");\n\t\treturn parseInt(li.dataset.id, 10);\n\t}\n\n\t/**\n\t *\n\t * @param {function} handler Callback function\n\t */\n\t_bindItemEditDone(handler) {\n\t\tlet self = this;\n\t\thelpers.$delegate(self.$todoList, \"li .edit\", \"blur\", function() {\n\t\t\tif (!this.dataset.iscanceled) {\n\t\t\t\thandler({\n\t\t\t\t\tid: self._itemId(this),\n\t\t\t\t\ttitle: this.value\n\t\t\t\t});\n\t\t\t}\n\t\t});\n\n\t\thelpers.$delegate(self.$todoList, \"li .edit\", \"keypress\", function(event) {\n\t\t\tif (event.keyCode === self.ENTER_KEY) {\n\t\t\t\t// Remove the cursor from the input when you hit enter just like if it\n\t\t\t\t// were a real form\n\t\t\t\tthis.blur();\n\t\t\t}\n\t\t});\n\t}\n\t/**\n\t *\n\t * @param {function} handler Callback function\n\t */\n\t_bindItemEditCancel(handler) {\n\t\tlet self = this;\n\t\thelpers.$delegate(self.$todoList, \"li .edit\", \"keyup\", function(event) {\n\t\t\tif (event.keyCode === self.ESCAPE_KEY) {\n\t\t\t\tthis.dataset.iscanceled = true;\n\t\t\t\tthis.blur();\n\n\t\t\t\thandler({ id: self._itemId(this) });\n\t\t\t}\n\t\t});\n\t}\n\n\t/**\n\t *\n\t * @param {string} event Name of the event\n\t * @param {function} handler callback function\n\t */\n\tbind(event, handler) {\n\t\tlet self = this;\n\t\t// * check how this callback works\n\t\tif (event === \"newTodo\") {\n\t\t\thelpers.$on(this.$newTodo, \"change\", () => {\n\t\t\t\thandler(this.$newTodo.value);\n\t\t\t});\n\t\t} else if (event === \"removeCompleted\") {\n\t\t\thelpers.$on(this.$clearCompleted, \"click\", () => {\n\t\t\t\thandler();\n\t\t\t});\n\t\t} else if (event === \"toggleAll\") {\n\t\t\thelpers.$on(this.$toggleAll, \"click\", function() {\n\t\t\t\thandler({ completed: this.checked });\n\t\t\t});\n\t\t} else if (event === \"itemEdit\") {\n\t\t\thelpers.$delegate(this.$todoList, \"li label\", \"dblclick\", function() {\n\t\t\t\thandler({ id: self._itemId(this) });\n\t\t\t});\n\t\t} else if (event === \"itemRemove\") {\n\t\t\thelpers.$delegate(this.$todoList, \".destroy\", \"click\", function() {\n\t\t\t\thandler({ id: self._itemId(this) });\n\t\t\t});\n\t\t} else if (event === \"itemToggle\") {\n\t\t\thelpers.$delegate(this.$todoList, \".toggle\", \"click\", function() {\n\t\t\t\thandler({\n\t\t\t\t\tid: self._itemId(this),\n\t\t\t\t\tcompleted: this.checked\n\t\t\t\t});\n\t\t\t});\n\t\t} else if (event === \"itemEditDone\") {\n\t\t\tthis._bindItemEditDone(handler);\n\t\t} else if (event === \"itemEditCancel\") {\n\t\t\tthis._bindItemEditCancel(handler);\n\t\t}\n\t}\n}\n",
     "static": true,
     "longname": "/Users/raphaeldelorme/Documents/DEV/OCR/WIP/P8/oc_p8_dev/js/view.js",
     "access": "public",
     "description": null,
     "lineNumber": 1
-  },
-  {
-    "__docId__": 122,
-    "kind": "variable",
-    "name": "helpers",
-    "memberof": "js/view.js",
-    "static": true,
-    "longname": "js/view.js~helpers",
-    "access": "public",
-    "export": false,
-    "importPath": "./js/view.js",
-    "importStyle": null,
-    "description": null,
-    "lineNumber": 3,
-    "undocument": true,
-    "type": {
-      "types": [
-        "js/helpers.js~Helpers"
-      ]
-    },
-    "ignore": true
   },
   {
     "__docId__": 123,
@@ -2409,7 +2514,7 @@
     "examples": [
       "let myView = MyView(myTemplate)"
     ],
-    "lineNumber": 16,
+    "lineNumber": 15,
     "interface": false
   },
   {
@@ -2423,7 +2528,7 @@
     "longname": "js/view.js~View#constructor",
     "access": "public",
     "description": "",
-    "lineNumber": 21,
+    "lineNumber": 20,
     "unknown": [
       {
         "tagName": "@constructor",
@@ -2452,7 +2557,7 @@
     "longname": "js/view.js~View#template",
     "access": "public",
     "description": "",
-    "lineNumber": 25,
+    "lineNumber": 24,
     "type": {
       "nullable": null,
       "types": [
@@ -2471,7 +2576,7 @@
     "longname": "js/view.js~View#ENTER_KEY",
     "access": "public",
     "description": "",
-    "lineNumber": 30,
+    "lineNumber": 29,
     "type": {
       "nullable": null,
       "types": [
@@ -2490,7 +2595,7 @@
     "longname": "js/view.js~View#ESCAPE_KEY",
     "access": "public",
     "description": "",
-    "lineNumber": 34,
+    "lineNumber": 33,
     "type": {
       "nullable": null,
       "types": [
@@ -2509,7 +2614,7 @@
     "longname": "js/view.js~View#$todoList",
     "access": "public",
     "description": "",
-    "lineNumber": 39,
+    "lineNumber": 38,
     "type": {
       "nullable": null,
       "types": [
@@ -2528,7 +2633,7 @@
     "longname": "js/view.js~View#$todoItemCounter",
     "access": "public",
     "description": "",
-    "lineNumber": 43,
+    "lineNumber": 42,
     "type": {
       "nullable": null,
       "types": [
@@ -2547,7 +2652,7 @@
     "longname": "js/view.js~View#$clearCompleted",
     "access": "public",
     "description": "",
-    "lineNumber": 47,
+    "lineNumber": 46,
     "type": {
       "nullable": null,
       "types": [
@@ -2566,7 +2671,7 @@
     "longname": "js/view.js~View#$main",
     "access": "public",
     "description": "",
-    "lineNumber": 51,
+    "lineNumber": 50,
     "type": {
       "nullable": null,
       "types": [
@@ -2585,7 +2690,7 @@
     "longname": "js/view.js~View#$footer",
     "access": "public",
     "description": "",
-    "lineNumber": 55,
+    "lineNumber": 54,
     "type": {
       "nullable": null,
       "types": [
@@ -2604,7 +2709,7 @@
     "longname": "js/view.js~View#$toggleAll",
     "access": "public",
     "description": "",
-    "lineNumber": 59,
+    "lineNumber": 58,
     "type": {
       "nullable": null,
       "types": [
@@ -2623,7 +2728,7 @@
     "longname": "js/view.js~View#$newTodo",
     "access": "public",
     "description": "",
-    "lineNumber": 63,
+    "lineNumber": 62,
     "type": {
       "nullable": null,
       "types": [
@@ -2644,7 +2749,7 @@
     "longname": "js/view.js~View#_removeItem",
     "access": "private",
     "description": "",
-    "lineNumber": 69,
+    "lineNumber": 68,
     "params": [
       {
         "nullable": null,
@@ -2670,7 +2775,7 @@
     "longname": "js/view.js~View#_clearCompletedButton",
     "access": "private",
     "description": "",
-    "lineNumber": 81,
+    "lineNumber": 80,
     "params": [
       {
         "nullable": null,
@@ -2706,7 +2811,7 @@
     "longname": "js/view.js~View#_setFilter",
     "access": "private",
     "description": "",
-    "lineNumber": 92,
+    "lineNumber": 91,
     "params": [
       {
         "nullable": null,
@@ -2732,7 +2837,7 @@
     "longname": "js/view.js~View#_elementComplete",
     "access": "private",
     "description": "",
-    "lineNumber": 103,
+    "lineNumber": 102,
     "params": [
       {
         "nullable": null,
@@ -2768,7 +2873,7 @@
     "longname": "js/view.js~View#_editItem",
     "access": "private",
     "description": "",
-    "lineNumber": 120,
+    "lineNumber": 119,
     "params": [
       {
         "nullable": null,
@@ -2788,7 +2893,7 @@
         "spread": false,
         "optional": false,
         "name": "title",
-        "description": "the title of the todo to edit"
+        "description": "The title of the todo to edit"
       }
     ],
     "return": null
@@ -2804,7 +2909,7 @@
     "longname": "js/view.js~View#_editItemDone",
     "access": "private",
     "description": "",
-    "lineNumber": 141,
+    "lineNumber": 140,
     "params": [
       {
         "nullable": null,
@@ -2840,7 +2945,7 @@
     "longname": "js/view.js~View#render",
     "access": "public",
     "description": "",
-    "lineNumber": 163,
+    "lineNumber": 162,
     "params": [
       {
         "nullable": null,
@@ -2879,7 +2984,7 @@
     "longname": "js/view.js~View#_itemId",
     "access": "private",
     "description": "",
-    "lineNumber": 210,
+    "lineNumber": 209,
     "params": [
       {
         "nullable": null,
@@ -2912,7 +3017,7 @@
     "longname": "js/view.js~View#_bindItemEditDone",
     "access": "private",
     "description": "",
-    "lineNumber": 219,
+    "lineNumber": 218,
     "params": [
       {
         "nullable": null,
@@ -2938,7 +3043,7 @@
     "longname": "js/view.js~View#_bindItemEditCancel",
     "access": "private",
     "description": "",
-    "lineNumber": 242,
+    "lineNumber": 241,
     "params": [
       {
         "nullable": null,
@@ -2964,7 +3069,7 @@
     "longname": "js/view.js~View#bind",
     "access": "public",
     "description": "",
-    "lineNumber": 259,
+    "lineNumber": 258,
     "params": [
       {
         "nullable": null,

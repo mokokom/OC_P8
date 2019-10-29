@@ -1850,7 +1850,7 @@
                       "leadingComments": [
                         {
                           "type": "CommentBlock",
-                          "value": "*\n\t\t * @type {string} default template which create an html implementation for each todo\n\t\t ",
+                          "value": "*\n\t\t * @type {string} Default template which create an html implementation for each todo\n\t\t ",
                           "start": 1136,
                           "end": 1232,
                           "loc": {
@@ -4713,7 +4713,7 @@
     },
     {
       "type": "CommentBlock",
-      "value": "*\n\t\t * @type {string} default template which create an html implementation for each todo\n\t\t ",
+      "value": "*\n\t\t * @type {string} Default template which create an html implementation for each todo\n\t\t ",
       "start": 1136,
       "end": 1232,
       "loc": {
@@ -7543,7 +7543,7 @@
     },
     {
       "type": "CommentBlock",
-      "value": "*\n\t\t * @type {string} default template which create an html implementation for each todo\n\t\t ",
+      "value": "*\n\t\t * @type {string} Default template which create an html implementation for each todo\n\t\t ",
       "start": 1136,
       "end": 1232,
       "loc": {

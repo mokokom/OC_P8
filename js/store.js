@@ -1,14 +1,14 @@
 /*jshint eqeqeq:false */
 /**
- * Takes a model and view and acts as the controller between them.
+ * Creates a new client side storage object and will create an empty
+ * collection if no collection already exists.
  *
  * @example
  * let myStorage = new MyStore(name, callback);
  */
 export default class Store {
 	/**
-	 * Creates a new client side storage object and will create an empty
-	 * collection if no collection already exists.
+	 *
 	 * @constructor
 	 * @param {string} name The name of our DB we want to use
 	 * @param {function} callback Our fake DB uses callbacks because in

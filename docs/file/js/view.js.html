@@ -36,14 +36,15 @@
 <li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/js/template.js~Template.html">Template</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/js/todo.js~Todo.html">Todo</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/js/view.js~View.html">View</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-helpers">helpers</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-todo">todo</a></span></span></li>
 </ul>
 </div>
 </nav>
 
 <div class="content" data-ice="content"><h1 data-ice="title">js/view.js</h1>
 <pre class="source-code line-number raw-source-code"><code class="prettyprint linenums" data-ice="content">/*global qs, qsa, $on, $parent, $delegate */
-import Helpers from &quot;./helpers.js&quot;;
-let helpers = new Helpers();
+import helpers from &quot;./helpers.js&quot;;
 
 /**
  * View that abstracts away the browser&apos;s DOM completely.
@@ -158,7 +159,7 @@ export default class View {
 	/**
 	 *
 	 * @param {number} id The id of the todo to edit
-	 * @param {string} title the title of the todo to edit
+	 * @param {string} title The title of the todo to edit
 	 */
 	_editItem(id, title) {
 		let listItem = helpers.qs(&apos;[data-id=&quot;&apos; + id + &apos;&quot;]&apos;);

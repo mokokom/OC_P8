@@ -49,7 +49,7 @@ export default class Template {
 	 */
 	constructor() {
 		/**
-		 * @type {string} default template which create an html implementation for each todo
+		 * @type {string} Default template which create an html implementation for each todo
 		 */
 		this.defaultTemplate =
 			'<li data-id="{{id}}" class="{{completed}}">' +

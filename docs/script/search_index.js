@@ -42,6 +42,18 @@ window.esdocSearchIndex = [
     "class"
   ],
   [
+    "./js/helpers.js~helpers",
+    "variable/index.html#static-variable-helpers",
+    "<span>helpers</span> <span class=\"search-result-import-path\">./js/helpers.js</span>",
+    "variable"
+  ],
+  [
+    "./js/todo.js~todo",
+    "variable/index.html#static-variable-todo",
+    "<span>todo</span> <span class=\"search-result-import-path\">./js/todo.js</span>",
+    "variable"
+  ],
+  [
     "js/.external-ecmascript.js~array",
     "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array",
     "js/.external-ecmascript.js~Array",
