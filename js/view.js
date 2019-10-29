@@ -1,6 +1,5 @@
 /*global qs, qsa, $on, $parent, $delegate */
-import Helpers from "./helpers.js";
-let helpers = new Helpers();
+import helpers from "./helpers.js";
 
 /**
  * View that abstracts away the browser's DOM completely.

@@ -6,8 +6,7 @@ import Store from "./store.js";
 import Template from "./template.js";
 import View from "./view.js"; */
 import Todo from "./todo.js";
-import Helpers from "./helpers.js";
-let helpers = new Helpers();
+import helpers from "./helpers.js";
 /**
  * Sets up a brand new Todo list.
  *

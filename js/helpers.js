@@ -1,5 +1,5 @@
 /*global NodeList */
-export default class Helpers {
+class Helpers {
 	qs(selector, scope) {
 		return (scope || document).querySelector(selector);
 	}
@@ -43,3 +43,7 @@ export default class Helpers {
 }
 
 NodeList.prototype.forEach = Array.prototype.forEach;
+
+let helpers = new Helpers();
+
+export default helpers;
