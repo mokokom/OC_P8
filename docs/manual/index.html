@@ -86,7 +86,15 @@
     </div>
 <div class="manual-card-wrap" data-ice="cards">
       <div class="manual-card">
-        <div data-ice="card"><h1>Application architecture</h1></div>
+        <div data-ice="card"><h1>Application architecture</h1><p>The overwall app is based on the <a href="https://en.wikipedia.org/wiki/Model%E2%80%93view%E2%80%93controller">Model&#x2013;View&#x2013;Controller</a> (MVC) software design pattern. The files interact thanks to the ES6 <code>export</code>/<code>import</code> modules.</p><p><img src="/images/app_files_structure.png" alt="app file structure"></p><p><code>index.html</code> is the skeleton of the website homepage. It loads all scripts.</p><p><code>app.js</code> launch the app by initializing the view.</p><p><code>components</code> folder contain seven files. Each file represents a ES6 class module:</p><ol>
+<li><code>controllers.js</code> (<a href="/docs/class/js/components/controller.js~Controller.html">see documentation</a>)</li>
+<li><code>helpers.js</code> (<a href="/docs/class/js/components/helpers.js~Helpers.html">see documentation</a>)</li>
+<li><code>model.js</code> (<a href="/docs/class/js/components/model.js~Model.html">see documentation</a>)</li>
+<li><code>store.js</code> (<a href="/docs/class/js/components/store.js~Store.html">see documentation</a>)</li>
+<li><code>template.js</code> (<a href="/components/template.js~Template.html">see documentation</a>)</li>
+<li><code>todo.js</code> (<a href="/docs/class/js/components/todo.js~Todo.html">see documentation</a>)</li>
+<li><code>view.js</code> (<a href="/docs/class/js/components/view.js~View.html">see documentation</a>)</li>
+</ol></div>
         <a data-ice="link" href="manual/application_architecture.html"></a>
       </div>
     </div>

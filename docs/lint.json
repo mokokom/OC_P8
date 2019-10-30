@@ -4,27 +4,27 @@
     "filePath": "js/components/controller.js",
     "lines": [
       {
-        "lineNumber": 244,
+        "lineNumber": 238,
         "line": "\t/**"
       },
       {
-        "lineNumber": 245,
+        "lineNumber": 239,
         "line": "\t * Loads and initialises the view."
       },
       {
-        "lineNumber": 246,
+        "lineNumber": 240,
         "line": "\t *"
       },
       {
-        "lineNumber": 247,
+        "lineNumber": 241,
         "line": "\t * @param {string} '' | 'active' | 'completed'"
       },
       {
-        "lineNumber": 248,
+        "lineNumber": 242,
         "line": "\t */"
       },
       {
-        "lineNumber": 249,
+        "lineNumber": 243,
         "line": "\tsetView(locationHash) {"
       }
     ],

@@ -792,12 +792,6 @@ window.esdocSearchIndex = [
     "method"
   ],
   [
-    "js/components/model.js~model#removeall",
-    "class/js/components/model.js~Model.html#instance-method-removeAll",
-    "js/components/model.js~Model#removeAll",
-    "method"
-  ],
-  [
     "js/components/model.js~model#storage",
     "class/js/components/model.js~Model.html#instance-member-storage",
     "js/components/model.js~Model#storage",
