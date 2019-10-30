@@ -88,7 +88,7 @@ export default class Model {
 
 	/**
 	 * WARNING: Will remove ALL data from storage.
-	 *
+	 * @ignore
 	 * @param {function} callback The callback to fire when the storage is wiped.
 	 */
 	removeAll(callback) {
