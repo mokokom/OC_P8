@@ -82,13 +82,7 @@ export default class Controller {
 	 * @param {string} title Todo's title
 	 */
 	editItemSave(id, title) {
-		while (title[0] === " ") {
-			title = title.slice(1);
-		}
-
-		while (title[title.length - 1] === " ") {
-			title = title.slice(0, -1);
-		}
+		title = title.trim();
 
 		if (title.length !== 0) {
 			this.model.update(id, { title: title }, () => {

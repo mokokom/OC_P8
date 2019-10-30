@@ -142,7 +142,6 @@ export default class Store {
 	remove(id, callback) {
 		let data = JSON.parse(localStorage[this._dbName]);
 		let todos = data.todos;
-		/* let todoId; */
 
 		for (let i = 0; i < todos.length; i++) {
 			if (todos[i].id == id) {

@@ -92,7 +92,7 @@ export default class Model {
 	 * @param {function} callback The callback to fire when the storage is wiped.
 	 */
 	removeAll(callback) {
-		this.storage.drop(callback);
+		this.storage.drop(callback); // TODO indicate that it's not use
 	}
 
 	/**
