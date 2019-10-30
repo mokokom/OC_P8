@@ -1,67 +1,175 @@
 <!DOCTYPE html>
 <html>
-<head>
-  <meta charset="utf-8">
-  <base data-ice="baseUrl">
-  <title data-ice="title">Home</title>
-  <link type="text/css" rel="stylesheet" href="css/style.css">
-  <link type="text/css" rel="stylesheet" href="css/prettify-tomorrow.css">
-  <script src="script/prettify/prettify.js"></script>
-  <script src="script/manual.js"></script>
-</head>
-<body class="layout-container" data-ice="rootContainer">
+	<head>
+		<meta charset="utf-8" />
+		<base data-ice="baseUrl" />
+		<title data-ice="title">Home</title>
+		<link type="text/css" rel="stylesheet" href="css/style.css" />
+		<link type="text/css" rel="stylesheet" href="css/prettify-tomorrow.css" />
+		<script src="script/prettify/prettify.js"></script>
+		<script src="script/manual.js"></script>
+	</head>
+	<body class="layout-container" data-ice="rootContainer">
+		<header>
+			<a href="./">Home</a>
+			<a href="./manual/index.html" data-ice="manualHeaderLink">Manual</a>
+			<a href="identifiers.html">Reference</a>
+			<a href="source.html">Source</a>
+			<a href="test.html" data-ice="testLink">Test</a>
+			<a href="../index.html">Site</a>
+			<div class="search-box">
+				<span>
+					<img src="./image/search.png" />
+					<span class="search-input-edge"></span
+					><input class="search-input" /><span class="search-input-edge"></span>
+				</span>
+				<ul class="search-result"></ul>
+			</div>
+		</header>
 
-<header>
-  <a href="./">Home</a>
-  <a href="./manual/index.html" data-ice="manualHeaderLink">Manual</a>
-  <a href="identifiers.html">Reference</a>
-  <a href="source.html">Source</a>
-  <a href="test.html" data-ice="testLink">Test</a>
-  <div class="search-box">
-  <span>
-    <img src="./image/search.png">
-    <span class="search-input-edge"></span><input class="search-input"><span class="search-input-edge"></span>
-  </span>
-    <ul class="search-result"></ul>
-  </div>
-</header>
+		<nav class="navigation" data-ice="nav">
+			<div>
+				<ul>
+					<li data-ice="doc">
+						<a
+							data-ice="dirPath"
+							class="nav-dir-path"
+							href="identifiers.html#components"
+							>components</a
+						><span data-ice="kind" class="kind-class">C</span
+						><span data-ice="name"
+							><span
+								><a href="class/js/components/controller.js~Controller.html"
+									>Controller</a
+								></span
+							></span
+						>
+					</li>
+					<li data-ice="doc">
+						<span data-ice="kind" class="kind-class">C</span
+						><span data-ice="name"
+							><span
+								><a href="class/js/components/helpers.js~Helpers.html"
+									>Helpers</a
+								></span
+							></span
+						>
+					</li>
+					<li data-ice="doc">
+						<span data-ice="kind" class="kind-class">C</span
+						><span data-ice="name"
+							><span
+								><a href="class/js/components/model.js~Model.html"
+									>Model</a
+								></span
+							></span
+						>
+					</li>
+					<li data-ice="doc">
+						<span data-ice="kind" class="kind-class">C</span
+						><span data-ice="name"
+							><span
+								><a href="class/js/components/store.js~Store.html"
+									>Store</a
+								></span
+							></span
+						>
+					</li>
+					<li data-ice="doc">
+						<span data-ice="kind" class="kind-class">C</span
+						><span data-ice="name"
+							><span
+								><a href="class/js/components/template.js~Template.html"
+									>Template</a
+								></span
+							></span
+						>
+					</li>
+					<li data-ice="doc">
+						<span data-ice="kind" class="kind-class">C</span
+						><span data-ice="name"
+							><span
+								><a href="class/js/components/todo.js~Todo.html">Todo</a></span
+							></span
+						>
+					</li>
+					<li data-ice="doc">
+						<span data-ice="kind" class="kind-class">C</span
+						><span data-ice="name"
+							><span
+								><a href="class/js/components/view.js~View.html">View</a></span
+							></span
+						>
+					</li>
+					<li data-ice="doc">
+						<span data-ice="kind" class="kind-variable">V</span
+						><span data-ice="name"
+							><span
+								><a href="variable/index.html#static-variable-helpers"
+									>helpers</a
+								></span
+							></span
+						>
+					</li>
+					<li data-ice="doc">
+						<span data-ice="kind" class="kind-variable">V</span
+						><span data-ice="name"
+							><span
+								><a href="variable/index.html#static-variable-todo"
+									>todo</a
+								></span
+							></span
+						>
+					</li>
+				</ul>
+			</div>
+		</nav>
 
-<nav class="navigation" data-ice="nav"><div>
-  <ul>
-    
-  <li data-ice="doc"><a data-ice="dirPath" class="nav-dir-path" href="identifiers.html#components">components</a><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/js/components/controller.js~Controller.html">Controller</a></span></span></li>
-<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/js/components/helpers.js~Helpers.html">Helpers</a></span></span></li>
-<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/js/components/model.js~Model.html">Model</a></span></span></li>
-<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/js/components/store.js~Store.html">Store</a></span></span></li>
-<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/js/components/template.js~Template.html">Template</a></span></span></li>
-<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/js/components/todo.js~Todo.html">Todo</a></span></span></li>
-<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/js/components/view.js~View.html">View</a></span></span></li>
-<li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-helpers">helpers</a></span></span></li>
-<li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-todo">todo</a></span></span></li>
-</ul>
-</div>
-</nav>
+		<div class="content" data-ice="content">
+			<div data-ice="index" class="github-markdown">
+				<h1 id="to-do-list-app">to-do list app</h1>
+				<p>
+					Have peace of mind by adding all your tasks to your
+					<strong>to-do list</strong> (wherever you are or whatever device you
+					use).
+				</p>
+				<p>
+					<strong>to-do list</strong> is a SPA (single page application)
+					modeling a simple todo list allowing you to add and follow your
+					day-to-day tasks :
+				</p>
+				<p>
+					Please <strong><a href="https://mysite.com">try it out</a></strong
+					>!!
+				</p>
+				<p><img src="/images/screenshot_todos.png" alt="todos homepage" /></p>
+				<p>
+					It has never been easier to add, modify, delete, filter your todos!
+					But if you need, check the
+					<strong><a href="./manual/tutorial.html">tutorial</a></strong> for
+					more details!
+				</p>
+				<p>
+					Check the <strong><a href="./manual">manual</a></strong> if you want
+					to dive into code details for future evolution and maintenance.
+				</p>
+			</div>
+		</div>
 
-<div class="content" data-ice="content"><div data-ice="index" class="github-markdown"><h1 id="to-do-list-app">to-do list app</h1><p>Have peace of mind by adding all your tasks to your <strong>to-do list</strong> (wherever you are or whatever device you use).</p>
-<p><strong>to-do list</strong> is a SPA (single page application) modeling a simple todo list allowing you to add and follow your day-to-day tasks :</p>
-<p>Please <strong><a href="https://mysite.com">try it out</a></strong>!!</p>
-<p><img src="/images/screenshot_todos.png" alt="todos homepage"></p>
-<p>It has never been easier to add, modify, delete, filter your todos!
-But if you need, check the <strong><a href="./manual/tutorial.html">tutorial</a></strong> for more details!</p>
-<p>Check the <strong><a href="./manual">manual</a></strong> if you want to dive into code details for future evolution and maintenance.</p>
-</div>
-</div>
+		<footer class="footer">
+			Generated by
+			<a href="https://esdoc.org"
+				>ESDoc<span data-ice="esdocVersion">(1.1.0)</span
+				><img src="./image/esdoc-logo-mini-black.png"
+			/></a>
+		</footer>
 
-<footer class="footer">
-  Generated by <a href="https://esdoc.org">ESDoc<span data-ice="esdocVersion">(1.1.0)</span><img src="./image/esdoc-logo-mini-black.png"></a>
-</footer>
-
-<script src="script/search_index.js"></script>
-<script src="script/search.js"></script>
-<script src="script/pretty-print.js"></script>
-<script src="script/inherited-summary.js"></script>
-<script src="script/test-summary.js"></script>
-<script src="script/inner-link.js"></script>
-<script src="script/patch-for-local.js"></script>
-</body>
+		<script src="script/search_index.js"></script>
+		<script src="script/search.js"></script>
+		<script src="script/pretty-print.js"></script>
+		<script src="script/inherited-summary.js"></script>
+		<script src="script/test-summary.js"></script>
+		<script src="script/inner-link.js"></script>
+		<script src="script/patch-for-local.js"></script>
+	</body>
 </html>
