@@ -1,0 +1,356 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <base data-ice="baseUrl" href="../../../">
+  <title data-ice="title">js/components/view.js</title>
+  <link type="text/css" rel="stylesheet" href="css/style.css">
+  <link type="text/css" rel="stylesheet" href="css/prettify-tomorrow.css">
+  <script src="script/prettify/prettify.js"></script>
+  <script src="script/manual.js"></script>
+</head>
+<body class="layout-container" data-ice="rootContainer">
+
+<header>
+  <a href="./">Home</a>
+  <a href="./manual/index.html" data-ice="manualHeaderLink">Manual</a>
+  <a href="identifiers.html">Reference</a>
+  <a href="source.html">Source</a>
+  <a href="test.html" data-ice="testLink">Test</a>
+  <div class="search-box">
+  <span>
+    <img src="./image/search.png">
+    <span class="search-input-edge"></span><input class="search-input"><span class="search-input-edge"></span>
+  </span>
+    <ul class="search-result"></ul>
+  </div>
+</header>
+
+<nav class="navigation" data-ice="nav"><div>
+  <ul>
+    
+  <li data-ice="doc"><a data-ice="dirPath" class="nav-dir-path" href="identifiers.html#components">components</a><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/js/components/controller.js~Controller.html">Controller</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/js/components/helpers.js~Helpers.html">Helpers</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/js/components/model.js~Model.html">Model</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/js/components/store.js~Store.html">Store</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/js/components/template.js~Template.html">Template</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/js/components/todo.js~Todo.html">Todo</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/js/components/view.js~View.html">View</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-helpers">helpers</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-todo">todo</a></span></span></li>
+</ul>
+</div>
+</nav>
+
+<div class="content" data-ice="content"><h1 data-ice="title">js/components/view.js</h1>
+<pre class="source-code line-number raw-source-code"><code class="prettyprint linenums" data-ice="content">/*global qs, qsa, $on, $parent, $delegate */
+import helpers from &quot;./helpers.js&quot;;
+
+/**
+ * View that abstracts away the browser&apos;s DOM completely.
+ * It has two simple entry points:
+ *
+ *   - bind(eventName, handler)
+ *     Takes a todo application event and registers the handler
+ *   - render(command, parameterObject)
+ *     Renders the given command with the options
+ * @example
+ * let myView = MyView(myTemplate)
+ */
+export default class View {
+	/**
+	 * @constructor
+	 * @param {string} template Represent the HTML template of a todo
+	 */
+	constructor(template) {
+		/**
+		 * @type {string} template
+		 */
+		this.template = template;
+
+		/**
+		 * @type {number} Key code for the Enter touch
+		 */
+		this.ENTER_KEY = 13;
+		/**
+		 * @type {number} Key code for the Escape touch
+		 */
+		this.ESCAPE_KEY = 27;
+
+		/**
+		 * @type {object} Represent the HTML tag that contains the &quot;.todo-list&quot; class
+		 */
+		this.$todoList = helpers.qs(&quot;.todo-list&quot;);
+		/**
+		 * @type {object} Represent the HTML tag that contains the &quot;.todo-count&quot; class
+		 */
+		this.$todoItemCounter = helpers.qs(&quot;.todo-count&quot;);
+		/**
+		 * @type {object} Represent the HTML tag that contains the &quot;.clear-completed&quot; class
+		 */
+		this.$clearCompleted = helpers.qs(&quot;.clear-completed&quot;);
+		/**
+		 * @type {object} Represent the HTML tag that contains the &quot;.main&quot; class
+		 */
+		this.$main = helpers.qs(&quot;.main&quot;);
+		/**
+		 * @type {object} Represent the HTML tag that contains the &quot;.footer&quot; class
+		 */
+		this.$footer = helpers.qs(&quot;.footer&quot;);
+		/**
+		 * @type {object} Represent the HTML tag that contains the &quot;.toggle-all&quot; class
+		 */
+		this.$toggleAll = helpers.qs(&quot;.toggle-all&quot;);
+		/**
+		 * @type {object} Represent the HTML tag that contains the &quot;.new-todo&quot; class
+		 */
+		this.$newTodo = helpers.qs(&quot;.new-todo&quot;);
+	}
+	/**
+	 *
+	 * @param {number} id The id of the todo to remove
+	 */
+	_removeItem(id) {
+		let elem = helpers.qs(&apos;[data-id=&quot;&apos; + id + &apos;&quot;]&apos;);
+
+		if (elem) {
+			this.$todoList.removeChild(elem);
+		}
+	}
+	/**
+	 *
+	 * @param {number} completedCount Number of completed todos
+	 * @param {boolean} visible Control the visibility of the &quot;clear completed&quot; button
+	 */
+	_clearCompletedButton(completedCount, visible) {
+		this.$clearCompleted.innerHTML = this.template.clearCompletedButton(
+			completedCount
+		);
+		this.$clearCompleted.style.display = visible ? &quot;block&quot; : &quot;none&quot;;
+	}
+
+	/**
+	 *
+	 * @param {string} currentPage The name of the current page
+	 */
+	_setFilter(currentPage) {
+		helpers.qs(&quot;.filters .selected&quot;).className = &quot;&quot;;
+		helpers.qs(&apos;.filters [href=&quot;#/&apos; + currentPage + &apos;&quot;]&apos;).className =
+			&quot;selected&quot;;
+	}
+
+	/**
+	 *
+	 * @param {number} id The id of the todo to toggle status
+	 * @param {boolean} completed Indicate the todo state
+	 */
+	_elementComplete(id, completed) {
+		let listItem = helpers.qs(&apos;[data-id=&quot;&apos; + id + &apos;&quot;]&apos;);
+
+		if (!listItem) {
+			return;
+		}
+
+		listItem.className = completed ? &quot;completed&quot; : &quot;&quot;;
+
+		// In case it was toggled from an event and not by clicking the checkbox
+		helpers.qs(&quot;input&quot;, listItem).checked = completed;
+	}
+	/**
+	 *
+	 * @param {number} id The id of the todo to edit
+	 * @param {string} title The title of the todo to edit
+	 */
+	_editItem(id, title) {
+		let listItem = helpers.qs(&apos;[data-id=&quot;&apos; + id + &apos;&quot;]&apos;);
+
+		if (!listItem) {
+			return;
+		}
+
+		listItem.className = listItem.className + &quot; editing&quot;;
+
+		let input = document.createElement(&quot;input&quot;);
+		input.className = &quot;edit&quot;;
+
+		listItem.appendChild(input);
+		input.focus();
+		input.value = title;
+	}
+	/**
+	 *
+	 * @param {number} id The id of the todo that has been edited
+	 * @param {string} title The name of the todo that has been edited
+	 */
+	_editItemDone(id, title) {
+		let listItem = helpers.qs(&apos;[data-id=&quot;&apos; + id + &apos;&quot;]&apos;);
+
+		if (!listItem) {
+			return;
+		}
+
+		let input = helpers.qs(&quot;input.edit&quot;, listItem);
+		listItem.removeChild(input);
+
+		listItem.className = listItem.className.replace(&quot;editing&quot;, &quot;&quot;);
+
+		helpers.qsa(&quot;label&quot;, listItem).forEach(function(label) {
+			label.textContent = title;
+		});
+	}
+
+	/**
+	 *
+	 * @param {string} viewCmd The name of the command to reach (which equivalent to a viewCommands method)
+	 * @param {object|Array|string|number} parameter Parameter to change for a todo or multiple todos
+	 */
+	render(viewCmd, parameter) {
+		let viewCommands = {
+			showEntries: () =&gt; {
+				this.$todoList.innerHTML = this.template.show(parameter);
+			},
+			removeItem: () =&gt; {
+				this._removeItem(parameter);
+			},
+			updateElementCount: () =&gt; {
+				this.$todoItemCounter.innerHTML = this.template.itemCounter(parameter);
+			},
+			clearCompletedButton: () =&gt; {
+				this._clearCompletedButton(parameter.completed, parameter.visible);
+			},
+			contentBlockVisibility: () =&gt; {
+				this.$main.style.display = this.$footer.style.display = parameter.visible
+					? &quot;block&quot;
+					: &quot;none&quot;;
+			},
+			toggleAll: () =&gt; {
+				this.$toggleAll.checked = parameter.checked; // * if all todo are completed parameter.checked = true otherwise false
+			},
+			setFilter: () =&gt; {
+				this._setFilter(parameter);
+			},
+			clearNewTodo: () =&gt; {
+				this.$newTodo.value = &quot;&quot;;
+			},
+			elementComplete: () =&gt; {
+				this._elementComplete(parameter.id, parameter.completed);
+			},
+			editItem: () =&gt; {
+				this._editItem(parameter.id, parameter.title);
+			},
+			editItemDone: () =&gt; {
+				this._editItemDone(parameter.id, parameter.title);
+			}
+		};
+
+		viewCommands[viewCmd]();
+	}
+
+	/**
+	 *
+	 * @param {object} element Represent the HTML tag of the targeted element
+	 * @return {number} The id of the parent li element of the targeted HTML tag
+	 */
+	_itemId(element) {
+		let li = helpers.$parent(element, &quot;li&quot;);
+		return parseInt(li.dataset.id, 10);
+	}
+
+	/**
+	 *
+	 * @param {function} handler Callback function
+	 */
+	_bindItemEditDone(handler) {
+		let self = this;
+		helpers.$delegate(self.$todoList, &quot;li .edit&quot;, &quot;blur&quot;, function() {
+			if (!this.dataset.iscanceled) {
+				handler({
+					id: self._itemId(this),
+					title: this.value
+				});
+			}
+		});
+
+		helpers.$delegate(self.$todoList, &quot;li .edit&quot;, &quot;keypress&quot;, function(event) {
+			if (event.keyCode === self.ENTER_KEY) {
+				// Remove the cursor from the input when you hit enter just like if it
+				// were a real form
+				this.blur();
+			}
+		});
+	}
+	/**
+	 *
+	 * @param {function} handler Callback function
+	 */
+	_bindItemEditCancel(handler) {
+		let self = this;
+		helpers.$delegate(self.$todoList, &quot;li .edit&quot;, &quot;keyup&quot;, function(event) {
+			if (event.keyCode === self.ESCAPE_KEY) {
+				this.dataset.iscanceled = true;
+				this.blur();
+
+				handler({ id: self._itemId(this) });
+			}
+		});
+	}
+
+	/**
+	 *
+	 * @param {string} event Name of the event
+	 * @param {function} handler callback function
+	 */
+	bind(event, handler) {
+		let self = this;
+		// * check how this callback works
+		if (event === &quot;newTodo&quot;) {
+			helpers.$on(this.$newTodo, &quot;change&quot;, () =&gt; {
+				handler(this.$newTodo.value);
+			});
+		} else if (event === &quot;removeCompleted&quot;) {
+			helpers.$on(this.$clearCompleted, &quot;click&quot;, () =&gt; {
+				handler();
+			});
+		} else if (event === &quot;toggleAll&quot;) {
+			helpers.$on(this.$toggleAll, &quot;click&quot;, function() {
+				handler({ completed: this.checked });
+			});
+		} else if (event === &quot;itemEdit&quot;) {
+			helpers.$delegate(this.$todoList, &quot;li label&quot;, &quot;dblclick&quot;, function() {
+				handler({ id: self._itemId(this) });
+			});
+		} else if (event === &quot;itemRemove&quot;) {
+			helpers.$delegate(this.$todoList, &quot;.destroy&quot;, &quot;click&quot;, function() {
+				handler({ id: self._itemId(this) });
+			});
+		} else if (event === &quot;itemToggle&quot;) {
+			helpers.$delegate(this.$todoList, &quot;.toggle&quot;, &quot;click&quot;, function() {
+				handler({
+					id: self._itemId(this),
+					completed: this.checked
+				});
+			});
+		} else if (event === &quot;itemEditDone&quot;) {
+			this._bindItemEditDone(handler);
+		} else if (event === &quot;itemEditCancel&quot;) {
+			this._bindItemEditCancel(handler);
+		}
+	}
+}
+</code></pre>
+
+</div>
+
+<footer class="footer">
+  Generated by <a href="https://esdoc.org">ESDoc<span data-ice="esdocVersion">(1.1.0)</span><img src="./image/esdoc-logo-mini-black.png"></a>
+</footer>
+
+<script src="script/search_index.js"></script>
+<script src="script/search.js"></script>
+<script src="script/pretty-print.js"></script>
+<script src="script/inherited-summary.js"></script>
+<script src="script/test-summary.js"></script>
+<script src="script/inner-link.js"></script>
+<script src="script/patch-for-local.js"></script>
+</body>
+</html>

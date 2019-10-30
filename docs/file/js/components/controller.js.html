@@ -1,0 +1,345 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <base data-ice="baseUrl" href="../../../">
+  <title data-ice="title">js/components/controller.js</title>
+  <link type="text/css" rel="stylesheet" href="css/style.css">
+  <link type="text/css" rel="stylesheet" href="css/prettify-tomorrow.css">
+  <script src="script/prettify/prettify.js"></script>
+  <script src="script/manual.js"></script>
+</head>
+<body class="layout-container" data-ice="rootContainer">
+
+<header>
+  <a href="./">Home</a>
+  <a href="./manual/index.html" data-ice="manualHeaderLink">Manual</a>
+  <a href="identifiers.html">Reference</a>
+  <a href="source.html">Source</a>
+  <a href="test.html" data-ice="testLink">Test</a>
+  <div class="search-box">
+  <span>
+    <img src="./image/search.png">
+    <span class="search-input-edge"></span><input class="search-input"><span class="search-input-edge"></span>
+  </span>
+    <ul class="search-result"></ul>
+  </div>
+</header>
+
+<nav class="navigation" data-ice="nav"><div>
+  <ul>
+    
+  <li data-ice="doc"><a data-ice="dirPath" class="nav-dir-path" href="identifiers.html#components">components</a><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/js/components/controller.js~Controller.html">Controller</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/js/components/helpers.js~Helpers.html">Helpers</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/js/components/model.js~Model.html">Model</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/js/components/store.js~Store.html">Store</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/js/components/template.js~Template.html">Template</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/js/components/todo.js~Todo.html">Todo</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/js/components/view.js~View.html">View</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-helpers">helpers</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-todo">todo</a></span></span></li>
+</ul>
+</div>
+</nav>
+
+<div class="content" data-ice="content"><h1 data-ice="title">js/components/controller.js</h1>
+<pre class="source-code line-number raw-source-code"><code class="prettyprint linenums" data-ice="content">/**
+ * Takes a model and view and acts as the controller between them.
+ *
+ * @example
+ * let myController = new MyController(model, view);
+ */
+export default class Controller {
+	/**
+	 *
+	 * @constructor
+	 * @param {object} model The model instance
+	 * @param {object} view The view instance
+	 */
+	constructor(model, view) {
+		/**
+		 * @type {Object} model
+		 */
+		this.model = model;
+		/**
+		 * @type {Object} view
+		 */
+		this.view = view;
+		this.addItem = this.addItem.bind(this);
+		this.view.bind(&quot;newTodo&quot;, title =&gt; {
+			this.addItem(title);
+		});
+		this.view.bind(&quot;itemEdit&quot;, item =&gt; {
+			this.editItem(item.id);
+		});
+		this.view.bind(&quot;itemEditDone&quot;, item =&gt; {
+			this.editItemSave(item.id, item.title);
+		});
+		this.view.bind(&quot;itemEditCancel&quot;, item =&gt; {
+			this.editItemCancel(item.id);
+		});
+		this.view.bind(&quot;itemRemove&quot;, item =&gt; {
+			this.removeItem(item.id);
+		});
+
+		this.view.bind(&quot;itemToggle&quot;, item =&gt; {
+			this.toggleComplete(item.id, item.completed);
+		});
+
+		this.view.bind(&quot;removeCompleted&quot;, () =&gt; {
+			this.removeCompletedItems();
+		});
+
+		this.view.bind(&quot;toggleAll&quot;, status =&gt; {
+			this.toggleAll(status.completed);
+		});
+	}
+	/**
+	 * An event to fire whenever you want to add an item. Simply pass in the event
+	 * object and it&apos;ll handle the DOM insertion and saving of the new item.
+	 *
+	 * @param {string} title The title of the new todo to add
+	 */
+	addItem(title) {
+		if (title.trim() === &quot;&quot;) {
+			return;
+		}
+
+		this.model.create(title, () =&gt; {
+			this.view.render(&quot;clearNewTodo&quot;);
+			this._filter(true);
+		});
+	}
+	/**
+	 * Triggers the item editing mode.
+	 *
+	 * @param {number} id The id of the todo to edite
+	 */
+	editItem(id) {
+		this.model.read(id, data =&gt; {
+			this.view.render(&quot;editItem&quot;, { id: id, title: data[0].title });
+		});
+	}
+	/**
+	 * Finishes the item editing mode successfully.
+	 *
+	 * @param {number} id The id of the save todo edite
+	 * @param {string} title Todo&apos;s title
+	 */
+	editItemSave(id, title) {
+		while (title[0] === &quot; &quot;) {
+			title = title.slice(1);
+		}
+
+		while (title[title.length - 1] === &quot; &quot;) {
+			title = title.slice(0, -1);
+		}
+
+		if (title.length !== 0) {
+			this.model.update(id, { title: title }, () =&gt; {
+				this.view.render(&quot;editItemDone&quot;, { id: id, title: title });
+			});
+		} else {
+			this.removeItem(id);
+		}
+	}
+	/**
+	 * Cancels the item editing mode.
+	 *
+	 * @param {number} id The id of the todo to cancel the editing
+	 */
+	editItemCancel(id) {
+		this.model.read(id, data =&gt; {
+			this.view.render(&quot;editItemDone&quot;, { id: id, title: data[0].title });
+		});
+	}
+	/**
+	 * By giving it an ID it&apos;ll find the DOM element matching that ID,
+	 * remove it from the DOM and also remove it from storage.
+	 *
+	 * @param {number} id The ID of the item to remove from the DOM and storage.
+	 */
+	removeItem(id) {
+		this.model.remove(id, () =&gt; {
+			this.view.render(&quot;removeItem&quot;, id);
+		});
+
+		this._filter();
+	}
+	/**
+	 * Will remove all completed items from the DOM and storage.
+	 */
+	removeCompletedItems() {
+		this.model.read({ completed: true }, data =&gt; {
+			data.forEach(item =&gt; {
+				this.removeItem(item.id);
+			});
+		});
+
+		this._filter();
+	}
+	/**
+	 * Give it an ID of a model and it will update the item
+	 * in storage based on the checkbox&apos;s state.
+	 *
+	 * @param {number} id The ID of the element to complete or uncomplete
+	 * @param {object} completed To check the state of complete or not
+	 * @param {boolean|undefined} silent Prevent re-filtering the todo items
+	 */
+	toggleComplete(id, completed, silent) {
+		this.model.update(id, { completed: completed }, () =&gt; {
+			this.view.render(&quot;elementComplete&quot;, {
+				id: id,
+				completed: completed
+			});
+		});
+
+		if (!silent) {
+			this._filter();
+		}
+	}
+	/**
+	 * Will toggle ALL checkboxes&apos; on/off state and completeness of models
+	 * Just pass in the event object.
+	 *
+	 * @param {boolean|undefined} completed State of the toggleAll checkbox
+	 */
+	toggleAll(completed) {
+		this.model.read({ completed: !completed }, data =&gt; {
+			data.forEach(item =&gt; {
+				this.toggleComplete(item.id, completed, true);
+			});
+		});
+
+		this._filter();
+	}
+	/**
+	 * Updates the pieces of the page which change depending on the remaining
+	 * number of todos.
+	 *
+	 * @private
+	 */
+	_updateCount() {
+		this.model.getCount(todos =&gt; {
+			this.view.render(&quot;updateElementCount&quot;, todos.active);
+			this.view.render(&quot;clearCompletedButton&quot;, {
+				completed: todos.completed,
+				visible: todos.completed &gt; 0
+			});
+
+			this.view.render(&quot;toggleAll&quot;, {
+				checked: todos.completed === todos.total
+			});
+			this.view.render(&quot;contentBlockVisibility&quot;, {
+				visible: todos.total &gt; 0
+			});
+		});
+	}
+	/**
+	 * Re-filters the todo items, based on the active route.
+	 *
+	 * @param {boolean|undefined} force  forces a re-painting of todo items.
+	 * @private
+	 */
+	_filter(force) {
+		let activeRoute =
+			this._activeRoute.charAt(0).toUpperCase() + this._activeRoute.substr(1);
+
+		// Update the elements on the page, which change with each completed todo
+		this._updateCount();
+
+		// If the last active route isn&apos;t &quot;All&quot;, or we&apos;re switching routes, we
+		// re-create the todo item elements, calling:
+		//   this.show[All|Active|Completed]();
+		if (
+			force ||
+			this._lastActiveRoute !== &quot;All&quot; ||
+			this._lastActiveRoute !== activeRoute
+		) {
+			this[&quot;show&quot; + activeRoute]();
+		}
+		/**
+		 * Store a reference to the last active route, allowing us to add condition and not show the new active route if it&apos;s the same as the last active route.
+		 *
+		 * @type {string} _lastActiveRoute
+		 */
+		this._lastActiveRoute = activeRoute;
+	}
+	/**
+	 * Simply updates the filter nav&apos;s selected states.
+	 *
+	 * @param {string} currentPage
+	 * @private
+	 */
+	_updateFilterState(currentPage) {
+		/**
+		 * Store a reference to the active route, allowing us to re-filter todo items as they are marked complete or incomplete.
+		 *
+		 * @type {string} _activeRoute
+		 */
+		this._activeRoute = currentPage;
+
+		if (currentPage === &quot;&quot;) {
+			this._activeRoute = &quot;All&quot;;
+		}
+
+		this._filter();
+
+		this.view.render(&quot;setFilter&quot;, currentPage);
+	}
+	/**
+	 * Loads and initialises the view.
+	 *
+	 * @param {string} &apos;&apos; | &apos;active&apos; | &apos;completed&apos;
+	 */
+	setView(locationHash) {
+		let route = locationHash.split(&quot;/&quot;)[1];
+		let page = route || &quot;&quot;;
+		this._updateFilterState(page);
+	}
+
+	/**
+	 * An event to fire on load. Will get all items and display them in the
+	 * todo-list
+	 */
+	showAll() {
+		this.model.read(data =&gt; {
+			this.view.render(&quot;showEntries&quot;, data);
+		});
+	}
+
+	/**
+	 * Renders all active tasks
+	 */
+	showActive() {
+		this.model.read({ completed: false }, data =&gt; {
+			this.view.render(&quot;showEntries&quot;, data);
+		});
+	}
+
+	/**
+	 * Renders all completed tasks
+	 */
+	showCompleted() {
+		this.model.read({ completed: true }, data =&gt; {
+			this.view.render(&quot;showEntries&quot;, data);
+		});
+	}
+}
+</code></pre>
+
+</div>
+
+<footer class="footer">
+  Generated by <a href="https://esdoc.org">ESDoc<span data-ice="esdocVersion">(1.1.0)</span><img src="./image/esdoc-logo-mini-black.png"></a>
+</footer>
+
+<script src="script/search_index.js"></script>
+<script src="script/search.js"></script>
+<script src="script/pretty-print.js"></script>
+<script src="script/inherited-summary.js"></script>
+<script src="script/test-summary.js"></script>
+<script src="script/inner-link.js"></script>
+<script src="script/patch-for-local.js"></script>
+</body>
+</html>

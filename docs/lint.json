@@ -1,7 +1,7 @@
 [
   {
     "name": "Controller#setView",
-    "filePath": "js/controller.js",
+    "filePath": "js/components/controller.js",
     "lines": [
       {
         "lineNumber": 244,

@@ -3,41 +3,41 @@
   "expectCount": 88,
   "actualCount": 86,
   "files": {
-    "js/controller.js": {
+    "js/components/controller.js": {
       "expectCount": 21,
       "actualCount": 21,
       "undocumentLines": []
     },
-    "js/helpers.js": {
+    "js/components/helpers.js": {
       "expectCount": 7,
       "actualCount": 6,
       "undocumentLines": [
-        92
+        91
       ]
     },
-    "js/model.js": {
+    "js/components/model.js": {
       "expectCount": 9,
       "actualCount": 9,
       "undocumentLines": []
     },
-    "js/store.js": {
+    "js/components/store.js": {
       "expectCount": 9,
       "actualCount": 9,
       "undocumentLines": []
     },
-    "js/template.js": {
+    "js/components/template.js": {
       "expectCount": 11,
       "actualCount": 11,
       "undocumentLines": []
     },
-    "js/todo.js": {
+    "js/components/todo.js": {
       "expectCount": 8,
       "actualCount": 7,
       "undocumentLines": [
-        46
+        45
       ]
     },
-    "js/view.js": {
+    "js/components/view.js": {
       "expectCount": 23,
       "actualCount": 23,
       "undocumentLines": []

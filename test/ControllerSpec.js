@@ -1,6 +1,6 @@
 /*global app, jasmine, describe, it, beforeEach, expect */
 
-import Controller from "../js/controller.js";
+import Controller from "../js/components/controller.js";
 
 describe("controller", function() {
 	"use strict";

@@ -1,7 +1,7 @@
 /*global app, $on */
 
-import todo from "./todo.js";
-import helpers from "./helpers.js";
+import todo from "./components/todo.js";
+import helpers from "./components/helpers.js";
 /**
  * Sets up a brand new Todo list.
  *

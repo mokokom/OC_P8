@@ -1,56 +1,56 @@
 window.esdocSearchIndex = [
   [
-    "./js/controller.js~controller",
-    "class/js/controller.js~Controller.html",
-    "<span>Controller</span> <span class=\"search-result-import-path\">./js/controller.js</span>",
+    "./js/components/controller.js~controller",
+    "class/js/components/controller.js~Controller.html",
+    "<span>Controller</span> <span class=\"search-result-import-path\">./js/components/controller.js</span>",
     "class"
   ],
   [
-    "./js/helpers.js~helpers",
-    "class/js/helpers.js~Helpers.html",
-    "<span>Helpers</span> <span class=\"search-result-import-path\">./js/helpers.js</span>",
+    "./js/components/helpers.js~helpers",
+    "class/js/components/helpers.js~Helpers.html",
+    "<span>Helpers</span> <span class=\"search-result-import-path\">./js/components/helpers.js</span>",
     "class"
   ],
   [
-    "./js/model.js~model",
-    "class/js/model.js~Model.html",
-    "<span>Model</span> <span class=\"search-result-import-path\">./js/model.js</span>",
+    "./js/components/model.js~model",
+    "class/js/components/model.js~Model.html",
+    "<span>Model</span> <span class=\"search-result-import-path\">./js/components/model.js</span>",
     "class"
   ],
   [
-    "./js/store.js~store",
-    "class/js/store.js~Store.html",
-    "<span>Store</span> <span class=\"search-result-import-path\">./js/store.js</span>",
+    "./js/components/store.js~store",
+    "class/js/components/store.js~Store.html",
+    "<span>Store</span> <span class=\"search-result-import-path\">./js/components/store.js</span>",
     "class"
   ],
   [
-    "./js/template.js~template",
-    "class/js/template.js~Template.html",
-    "<span>Template</span> <span class=\"search-result-import-path\">./js/template.js</span>",
+    "./js/components/template.js~template",
+    "class/js/components/template.js~Template.html",
+    "<span>Template</span> <span class=\"search-result-import-path\">./js/components/template.js</span>",
     "class"
   ],
   [
-    "./js/todo.js~todo",
-    "class/js/todo.js~Todo.html",
-    "<span>Todo</span> <span class=\"search-result-import-path\">./js/todo.js</span>",
+    "./js/components/todo.js~todo",
+    "class/js/components/todo.js~Todo.html",
+    "<span>Todo</span> <span class=\"search-result-import-path\">./js/components/todo.js</span>",
     "class"
   ],
   [
-    "./js/view.js~view",
-    "class/js/view.js~View.html",
-    "<span>View</span> <span class=\"search-result-import-path\">./js/view.js</span>",
+    "./js/components/view.js~view",
+    "class/js/components/view.js~View.html",
+    "<span>View</span> <span class=\"search-result-import-path\">./js/components/view.js</span>",
     "class"
   ],
   [
-    "./js/helpers.js~helpers",
+    "./js/components/helpers.js~helpers",
     "variable/index.html#static-variable-helpers",
-    "<span>helpers</span> <span class=\"search-result-import-path\">./js/helpers.js</span>",
+    "<span>helpers</span> <span class=\"search-result-import-path\">./js/components/helpers.js</span>",
     "variable"
   ],
   [
-    "./js/todo.js~todo",
+    "./js/components/todo.js~todo",
     "variable/index.html#static-variable-todo",
-    "<span>todo</span> <span class=\"search-result-import-path\">./js/todo.js</span>",
+    "<span>todo</span> <span class=\"search-result-import-path\">./js/components/todo.js</span>",
     "variable"
   ],
   [
@@ -594,489 +594,489 @@ window.esdocSearchIndex = [
     "file"
   ],
   [
-    "js/controller.js",
-    "file/js/controller.js.html",
-    "js/controller.js",
+    "js/components/controller.js",
+    "file/js/components/controller.js.html",
+    "js/components/controller.js",
     "file"
   ],
   [
-    "js/controller.js~controller#_activeroute",
-    "class/js/controller.js~Controller.html#instance-member-_activeRoute",
-    "js/controller.js~Controller#_activeRoute",
+    "js/components/controller.js~controller#_activeroute",
+    "class/js/components/controller.js~Controller.html#instance-member-_activeRoute",
+    "js/components/controller.js~Controller#_activeRoute",
     "member"
   ],
   [
-    "js/controller.js~controller#_filter",
-    "class/js/controller.js~Controller.html#instance-method-_filter",
-    "js/controller.js~Controller#_filter",
+    "js/components/controller.js~controller#_filter",
+    "class/js/components/controller.js~Controller.html#instance-method-_filter",
+    "js/components/controller.js~Controller#_filter",
     "method"
   ],
   [
-    "js/controller.js~controller#_lastactiveroute",
-    "class/js/controller.js~Controller.html#instance-member-_lastActiveRoute",
-    "js/controller.js~Controller#_lastActiveRoute",
+    "js/components/controller.js~controller#_lastactiveroute",
+    "class/js/components/controller.js~Controller.html#instance-member-_lastActiveRoute",
+    "js/components/controller.js~Controller#_lastActiveRoute",
     "member"
   ],
   [
-    "js/controller.js~controller#_updatecount",
-    "class/js/controller.js~Controller.html#instance-method-_updateCount",
-    "js/controller.js~Controller#_updateCount",
+    "js/components/controller.js~controller#_updatecount",
+    "class/js/components/controller.js~Controller.html#instance-method-_updateCount",
+    "js/components/controller.js~Controller#_updateCount",
     "method"
   ],
   [
-    "js/controller.js~controller#_updatefilterstate",
-    "class/js/controller.js~Controller.html#instance-method-_updateFilterState",
-    "js/controller.js~Controller#_updateFilterState",
+    "js/components/controller.js~controller#_updatefilterstate",
+    "class/js/components/controller.js~Controller.html#instance-method-_updateFilterState",
+    "js/components/controller.js~Controller#_updateFilterState",
     "method"
   ],
   [
-    "js/controller.js~controller#additem",
-    "class/js/controller.js~Controller.html#instance-method-addItem",
-    "js/controller.js~Controller#addItem",
+    "js/components/controller.js~controller#additem",
+    "class/js/components/controller.js~Controller.html#instance-method-addItem",
+    "js/components/controller.js~Controller#addItem",
     "method"
   ],
   [
-    "js/controller.js~controller#constructor",
-    "class/js/controller.js~Controller.html#instance-constructor-constructor",
-    "js/controller.js~Controller#constructor",
+    "js/components/controller.js~controller#constructor",
+    "class/js/components/controller.js~Controller.html#instance-constructor-constructor",
+    "js/components/controller.js~Controller#constructor",
     "method"
   ],
   [
-    "js/controller.js~controller#edititem",
-    "class/js/controller.js~Controller.html#instance-method-editItem",
-    "js/controller.js~Controller#editItem",
+    "js/components/controller.js~controller#edititem",
+    "class/js/components/controller.js~Controller.html#instance-method-editItem",
+    "js/components/controller.js~Controller#editItem",
     "method"
   ],
   [
-    "js/controller.js~controller#edititemcancel",
-    "class/js/controller.js~Controller.html#instance-method-editItemCancel",
-    "js/controller.js~Controller#editItemCancel",
+    "js/components/controller.js~controller#edititemcancel",
+    "class/js/components/controller.js~Controller.html#instance-method-editItemCancel",
+    "js/components/controller.js~Controller#editItemCancel",
     "method"
   ],
   [
-    "js/controller.js~controller#edititemsave",
-    "class/js/controller.js~Controller.html#instance-method-editItemSave",
-    "js/controller.js~Controller#editItemSave",
+    "js/components/controller.js~controller#edititemsave",
+    "class/js/components/controller.js~Controller.html#instance-method-editItemSave",
+    "js/components/controller.js~Controller#editItemSave",
     "method"
   ],
   [
-    "js/controller.js~controller#model",
-    "class/js/controller.js~Controller.html#instance-member-model",
-    "js/controller.js~Controller#model",
+    "js/components/controller.js~controller#model",
+    "class/js/components/controller.js~Controller.html#instance-member-model",
+    "js/components/controller.js~Controller#model",
     "member"
   ],
   [
-    "js/controller.js~controller#removecompleteditems",
-    "class/js/controller.js~Controller.html#instance-method-removeCompletedItems",
-    "js/controller.js~Controller#removeCompletedItems",
+    "js/components/controller.js~controller#removecompleteditems",
+    "class/js/components/controller.js~Controller.html#instance-method-removeCompletedItems",
+    "js/components/controller.js~Controller#removeCompletedItems",
     "method"
   ],
   [
-    "js/controller.js~controller#removeitem",
-    "class/js/controller.js~Controller.html#instance-method-removeItem",
-    "js/controller.js~Controller#removeItem",
+    "js/components/controller.js~controller#removeitem",
+    "class/js/components/controller.js~Controller.html#instance-method-removeItem",
+    "js/components/controller.js~Controller#removeItem",
     "method"
   ],
   [
-    "js/controller.js~controller#setview",
-    "class/js/controller.js~Controller.html#instance-method-setView",
-    "js/controller.js~Controller#setView",
+    "js/components/controller.js~controller#setview",
+    "class/js/components/controller.js~Controller.html#instance-method-setView",
+    "js/components/controller.js~Controller#setView",
     "method"
   ],
   [
-    "js/controller.js~controller#showactive",
-    "class/js/controller.js~Controller.html#instance-method-showActive",
-    "js/controller.js~Controller#showActive",
+    "js/components/controller.js~controller#showactive",
+    "class/js/components/controller.js~Controller.html#instance-method-showActive",
+    "js/components/controller.js~Controller#showActive",
     "method"
   ],
   [
-    "js/controller.js~controller#showall",
-    "class/js/controller.js~Controller.html#instance-method-showAll",
-    "js/controller.js~Controller#showAll",
+    "js/components/controller.js~controller#showall",
+    "class/js/components/controller.js~Controller.html#instance-method-showAll",
+    "js/components/controller.js~Controller#showAll",
     "method"
   ],
   [
-    "js/controller.js~controller#showcompleted",
-    "class/js/controller.js~Controller.html#instance-method-showCompleted",
-    "js/controller.js~Controller#showCompleted",
+    "js/components/controller.js~controller#showcompleted",
+    "class/js/components/controller.js~Controller.html#instance-method-showCompleted",
+    "js/components/controller.js~Controller#showCompleted",
     "method"
   ],
   [
-    "js/controller.js~controller#toggleall",
-    "class/js/controller.js~Controller.html#instance-method-toggleAll",
-    "js/controller.js~Controller#toggleAll",
+    "js/components/controller.js~controller#toggleall",
+    "class/js/components/controller.js~Controller.html#instance-method-toggleAll",
+    "js/components/controller.js~Controller#toggleAll",
     "method"
   ],
   [
-    "js/controller.js~controller#togglecomplete",
-    "class/js/controller.js~Controller.html#instance-method-toggleComplete",
-    "js/controller.js~Controller#toggleComplete",
+    "js/components/controller.js~controller#togglecomplete",
+    "class/js/components/controller.js~Controller.html#instance-method-toggleComplete",
+    "js/components/controller.js~Controller#toggleComplete",
     "method"
   ],
   [
-    "js/controller.js~controller#view",
-    "class/js/controller.js~Controller.html#instance-member-view",
-    "js/controller.js~Controller#view",
+    "js/components/controller.js~controller#view",
+    "class/js/components/controller.js~Controller.html#instance-member-view",
+    "js/components/controller.js~Controller#view",
     "member"
   ],
   [
-    "js/helpers.js",
-    "file/js/helpers.js.html",
-    "js/helpers.js",
+    "js/components/helpers.js",
+    "file/js/components/helpers.js.html",
+    "js/components/helpers.js",
     "file"
   ],
   [
-    "js/helpers.js~helpers#$delegate",
-    "class/js/helpers.js~Helpers.html#instance-method-$delegate",
-    "js/helpers.js~Helpers#$delegate",
+    "js/components/helpers.js~helpers#$delegate",
+    "class/js/components/helpers.js~Helpers.html#instance-method-$delegate",
+    "js/components/helpers.js~Helpers#$delegate",
     "method"
   ],
   [
-    "js/helpers.js~helpers#$on",
-    "class/js/helpers.js~Helpers.html#instance-method-$on",
-    "js/helpers.js~Helpers#$on",
+    "js/components/helpers.js~helpers#$on",
+    "class/js/components/helpers.js~Helpers.html#instance-method-$on",
+    "js/components/helpers.js~Helpers#$on",
     "method"
   ],
   [
-    "js/helpers.js~helpers#$parent",
-    "class/js/helpers.js~Helpers.html#instance-method-$parent",
-    "js/helpers.js~Helpers#$parent",
+    "js/components/helpers.js~helpers#$parent",
+    "class/js/components/helpers.js~Helpers.html#instance-method-$parent",
+    "js/components/helpers.js~Helpers#$parent",
     "method"
   ],
   [
-    "js/helpers.js~helpers#qs",
-    "class/js/helpers.js~Helpers.html#instance-method-qs",
-    "js/helpers.js~Helpers#qs",
+    "js/components/helpers.js~helpers#qs",
+    "class/js/components/helpers.js~Helpers.html#instance-method-qs",
+    "js/components/helpers.js~Helpers#qs",
     "method"
   ],
   [
-    "js/helpers.js~helpers#qsa",
-    "class/js/helpers.js~Helpers.html#instance-method-qsa",
-    "js/helpers.js~Helpers#qsa",
+    "js/components/helpers.js~helpers#qsa",
+    "class/js/components/helpers.js~Helpers.html#instance-method-qsa",
+    "js/components/helpers.js~Helpers#qsa",
     "method"
   ],
   [
-    "js/model.js",
-    "file/js/model.js.html",
-    "js/model.js",
+    "js/components/model.js",
+    "file/js/components/model.js.html",
+    "js/components/model.js",
     "file"
   ],
   [
-    "js/model.js~model#constructor",
-    "class/js/model.js~Model.html#instance-constructor-constructor",
-    "js/model.js~Model#constructor",
+    "js/components/model.js~model#constructor",
+    "class/js/components/model.js~Model.html#instance-constructor-constructor",
+    "js/components/model.js~Model#constructor",
     "method"
   ],
   [
-    "js/model.js~model#create",
-    "class/js/model.js~Model.html#instance-method-create",
-    "js/model.js~Model#create",
+    "js/components/model.js~model#create",
+    "class/js/components/model.js~Model.html#instance-method-create",
+    "js/components/model.js~Model#create",
     "method"
   ],
   [
-    "js/model.js~model#getcount",
-    "class/js/model.js~Model.html#instance-method-getCount",
-    "js/model.js~Model#getCount",
+    "js/components/model.js~model#getcount",
+    "class/js/components/model.js~Model.html#instance-method-getCount",
+    "js/components/model.js~Model#getCount",
     "method"
   ],
   [
-    "js/model.js~model#read",
-    "class/js/model.js~Model.html#instance-method-read",
-    "js/model.js~Model#read",
+    "js/components/model.js~model#read",
+    "class/js/components/model.js~Model.html#instance-method-read",
+    "js/components/model.js~Model#read",
     "method"
   ],
   [
-    "js/model.js~model#remove",
-    "class/js/model.js~Model.html#instance-method-remove",
-    "js/model.js~Model#remove",
+    "js/components/model.js~model#remove",
+    "class/js/components/model.js~Model.html#instance-method-remove",
+    "js/components/model.js~Model#remove",
     "method"
   ],
   [
-    "js/model.js~model#removeall",
-    "class/js/model.js~Model.html#instance-method-removeAll",
-    "js/model.js~Model#removeAll",
+    "js/components/model.js~model#removeall",
+    "class/js/components/model.js~Model.html#instance-method-removeAll",
+    "js/components/model.js~Model#removeAll",
     "method"
   ],
   [
-    "js/model.js~model#storage",
-    "class/js/model.js~Model.html#instance-member-storage",
-    "js/model.js~Model#storage",
+    "js/components/model.js~model#storage",
+    "class/js/components/model.js~Model.html#instance-member-storage",
+    "js/components/model.js~Model#storage",
     "member"
   ],
   [
-    "js/model.js~model#update",
-    "class/js/model.js~Model.html#instance-method-update",
-    "js/model.js~Model#update",
+    "js/components/model.js~model#update",
+    "class/js/components/model.js~Model.html#instance-method-update",
+    "js/components/model.js~Model#update",
     "method"
   ],
   [
-    "js/store.js",
-    "file/js/store.js.html",
-    "js/store.js",
+    "js/components/store.js",
+    "file/js/components/store.js.html",
+    "js/components/store.js",
     "file"
   ],
   [
-    "js/store.js~store#_dbname",
-    "class/js/store.js~Store.html#instance-member-_dbName",
-    "js/store.js~Store#_dbName",
+    "js/components/store.js~store#_dbname",
+    "class/js/components/store.js~Store.html#instance-member-_dbName",
+    "js/components/store.js~Store#_dbName",
     "member"
   ],
   [
-    "js/store.js~store#constructor",
-    "class/js/store.js~Store.html#instance-constructor-constructor",
-    "js/store.js~Store#constructor",
+    "js/components/store.js~store#constructor",
+    "class/js/components/store.js~Store.html#instance-constructor-constructor",
+    "js/components/store.js~Store#constructor",
     "method"
   ],
   [
-    "js/store.js~store#createid",
-    "class/js/store.js~Store.html#instance-method-createId",
-    "js/store.js~Store#createId",
+    "js/components/store.js~store#createid",
+    "class/js/components/store.js~Store.html#instance-method-createId",
+    "js/components/store.js~Store#createId",
     "method"
   ],
   [
-    "js/store.js~store#drop",
-    "class/js/store.js~Store.html#instance-method-drop",
-    "js/store.js~Store#drop",
+    "js/components/store.js~store#drop",
+    "class/js/components/store.js~Store.html#instance-method-drop",
+    "js/components/store.js~Store#drop",
     "method"
   ],
   [
-    "js/store.js~store#find",
-    "class/js/store.js~Store.html#instance-method-find",
-    "js/store.js~Store#find",
+    "js/components/store.js~store#find",
+    "class/js/components/store.js~Store.html#instance-method-find",
+    "js/components/store.js~Store#find",
     "method"
   ],
   [
-    "js/store.js~store#findall",
-    "class/js/store.js~Store.html#instance-method-findAll",
-    "js/store.js~Store#findAll",
+    "js/components/store.js~store#findall",
+    "class/js/components/store.js~Store.html#instance-method-findAll",
+    "js/components/store.js~Store#findAll",
     "method"
   ],
   [
-    "js/store.js~store#remove",
-    "class/js/store.js~Store.html#instance-method-remove",
-    "js/store.js~Store#remove",
+    "js/components/store.js~store#remove",
+    "class/js/components/store.js~Store.html#instance-method-remove",
+    "js/components/store.js~Store#remove",
     "method"
   ],
   [
-    "js/store.js~store#save",
-    "class/js/store.js~Store.html#instance-method-save",
-    "js/store.js~Store#save",
+    "js/components/store.js~store#save",
+    "class/js/components/store.js~Store.html#instance-method-save",
+    "js/components/store.js~Store#save",
     "method"
   ],
   [
-    "js/template.js",
-    "file/js/template.js.html",
-    "js/template.js",
+    "js/components/template.js",
+    "file/js/components/template.js.html",
+    "js/components/template.js",
     "file"
   ],
   [
-    "js/template.js~template#clearcompletedbutton",
-    "class/js/template.js~Template.html#instance-method-clearCompletedButton",
-    "js/template.js~Template#clearCompletedButton",
+    "js/components/template.js~template#clearcompletedbutton",
+    "class/js/components/template.js~Template.html#instance-method-clearCompletedButton",
+    "js/components/template.js~Template#clearCompletedButton",
     "method"
   ],
   [
-    "js/template.js~template#constructor",
-    "class/js/template.js~Template.html#instance-constructor-constructor",
-    "js/template.js~Template#constructor",
+    "js/components/template.js~template#constructor",
+    "class/js/components/template.js~Template.html#instance-constructor-constructor",
+    "js/components/template.js~Template#constructor",
     "method"
   ],
   [
-    "js/template.js~template#defaulttemplate",
-    "class/js/template.js~Template.html#instance-member-defaultTemplate",
-    "js/template.js~Template#defaultTemplate",
+    "js/components/template.js~template#defaulttemplate",
+    "class/js/components/template.js~Template.html#instance-member-defaultTemplate",
+    "js/components/template.js~Template#defaultTemplate",
     "member"
   ],
   [
-    "js/template.js~template#itemcounter",
-    "class/js/template.js~Template.html#instance-method-itemCounter",
-    "js/template.js~Template#itemCounter",
+    "js/components/template.js~template#itemcounter",
+    "class/js/components/template.js~Template.html#instance-method-itemCounter",
+    "js/components/template.js~Template#itemCounter",
     "method"
   ],
   [
-    "js/template.js~template#show",
-    "class/js/template.js~Template.html#instance-method-show",
-    "js/template.js~Template#show",
+    "js/components/template.js~template#show",
+    "class/js/components/template.js~Template.html#instance-method-show",
+    "js/components/template.js~Template#show",
     "method"
   ],
   [
-    "js/todo.js",
-    "file/js/todo.js.html",
-    "js/todo.js",
+    "js/components/todo.js",
+    "file/js/components/todo.js.html",
+    "js/components/todo.js",
     "file"
   ],
   [
-    "js/todo.js~todo#constructor",
-    "class/js/todo.js~Todo.html#instance-constructor-constructor",
-    "js/todo.js~Todo#constructor",
+    "js/components/todo.js~todo#constructor",
+    "class/js/components/todo.js~Todo.html#instance-constructor-constructor",
+    "js/components/todo.js~Todo#constructor",
     "method"
   ],
   [
-    "js/todo.js~todo#controller",
-    "class/js/todo.js~Todo.html#instance-member-controller",
-    "js/todo.js~Todo#controller",
+    "js/components/todo.js~todo#controller",
+    "class/js/components/todo.js~Todo.html#instance-member-controller",
+    "js/components/todo.js~Todo#controller",
     "member"
   ],
   [
-    "js/todo.js~todo#model",
-    "class/js/todo.js~Todo.html#instance-member-model",
-    "js/todo.js~Todo#model",
+    "js/components/todo.js~todo#model",
+    "class/js/components/todo.js~Todo.html#instance-member-model",
+    "js/components/todo.js~Todo#model",
     "member"
   ],
   [
-    "js/todo.js~todo#storage",
-    "class/js/todo.js~Todo.html#instance-member-storage",
-    "js/todo.js~Todo#storage",
+    "js/components/todo.js~todo#storage",
+    "class/js/components/todo.js~Todo.html#instance-member-storage",
+    "js/components/todo.js~Todo#storage",
     "member"
   ],
   [
-    "js/todo.js~todo#template",
-    "class/js/todo.js~Todo.html#instance-member-template",
-    "js/todo.js~Todo#template",
+    "js/components/todo.js~todo#template",
+    "class/js/components/todo.js~Todo.html#instance-member-template",
+    "js/components/todo.js~Todo#template",
     "member"
   ],
   [
-    "js/todo.js~todo#view",
-    "class/js/todo.js~Todo.html#instance-member-view",
-    "js/todo.js~Todo#view",
+    "js/components/todo.js~todo#view",
+    "class/js/components/todo.js~Todo.html#instance-member-view",
+    "js/components/todo.js~Todo#view",
     "member"
   ],
   [
-    "js/view.js",
-    "file/js/view.js.html",
-    "js/view.js",
+    "js/components/view.js",
+    "file/js/components/view.js.html",
+    "js/components/view.js",
     "file"
   ],
   [
-    "js/view.js~view#$clearcompleted",
-    "class/js/view.js~View.html#instance-member-$clearCompleted",
-    "js/view.js~View#$clearCompleted",
+    "js/components/view.js~view#$clearcompleted",
+    "class/js/components/view.js~View.html#instance-member-$clearCompleted",
+    "js/components/view.js~View#$clearCompleted",
     "member"
   ],
   [
-    "js/view.js~view#$footer",
-    "class/js/view.js~View.html#instance-member-$footer",
-    "js/view.js~View#$footer",
+    "js/components/view.js~view#$footer",
+    "class/js/components/view.js~View.html#instance-member-$footer",
+    "js/components/view.js~View#$footer",
     "member"
   ],
   [
-    "js/view.js~view#$main",
-    "class/js/view.js~View.html#instance-member-$main",
-    "js/view.js~View#$main",
+    "js/components/view.js~view#$main",
+    "class/js/components/view.js~View.html#instance-member-$main",
+    "js/components/view.js~View#$main",
     "member"
   ],
   [
-    "js/view.js~view#$newtodo",
-    "class/js/view.js~View.html#instance-member-$newTodo",
-    "js/view.js~View#$newTodo",
+    "js/components/view.js~view#$newtodo",
+    "class/js/components/view.js~View.html#instance-member-$newTodo",
+    "js/components/view.js~View#$newTodo",
     "member"
   ],
   [
-    "js/view.js~view#$todoitemcounter",
-    "class/js/view.js~View.html#instance-member-$todoItemCounter",
-    "js/view.js~View#$todoItemCounter",
+    "js/components/view.js~view#$todoitemcounter",
+    "class/js/components/view.js~View.html#instance-member-$todoItemCounter",
+    "js/components/view.js~View#$todoItemCounter",
     "member"
   ],
   [
-    "js/view.js~view#$todolist",
-    "class/js/view.js~View.html#instance-member-$todoList",
-    "js/view.js~View#$todoList",
+    "js/components/view.js~view#$todolist",
+    "class/js/components/view.js~View.html#instance-member-$todoList",
+    "js/components/view.js~View#$todoList",
     "member"
   ],
   [
-    "js/view.js~view#$toggleall",
-    "class/js/view.js~View.html#instance-member-$toggleAll",
-    "js/view.js~View#$toggleAll",
+    "js/components/view.js~view#$toggleall",
+    "class/js/components/view.js~View.html#instance-member-$toggleAll",
+    "js/components/view.js~View#$toggleAll",
     "member"
   ],
   [
-    "js/view.js~view#enter_key",
-    "class/js/view.js~View.html#instance-member-ENTER_KEY",
-    "js/view.js~View#ENTER_KEY",
+    "js/components/view.js~view#enter_key",
+    "class/js/components/view.js~View.html#instance-member-ENTER_KEY",
+    "js/components/view.js~View#ENTER_KEY",
     "member"
   ],
   [
-    "js/view.js~view#escape_key",
-    "class/js/view.js~View.html#instance-member-ESCAPE_KEY",
-    "js/view.js~View#ESCAPE_KEY",
+    "js/components/view.js~view#escape_key",
+    "class/js/components/view.js~View.html#instance-member-ESCAPE_KEY",
+    "js/components/view.js~View#ESCAPE_KEY",
     "member"
   ],
   [
-    "js/view.js~view#_binditemeditcancel",
-    "class/js/view.js~View.html#instance-method-_bindItemEditCancel",
-    "js/view.js~View#_bindItemEditCancel",
+    "js/components/view.js~view#_binditemeditcancel",
+    "class/js/components/view.js~View.html#instance-method-_bindItemEditCancel",
+    "js/components/view.js~View#_bindItemEditCancel",
     "method"
   ],
   [
-    "js/view.js~view#_binditemeditdone",
-    "class/js/view.js~View.html#instance-method-_bindItemEditDone",
-    "js/view.js~View#_bindItemEditDone",
+    "js/components/view.js~view#_binditemeditdone",
+    "class/js/components/view.js~View.html#instance-method-_bindItemEditDone",
+    "js/components/view.js~View#_bindItemEditDone",
     "method"
   ],
   [
-    "js/view.js~view#_clearcompletedbutton",
-    "class/js/view.js~View.html#instance-method-_clearCompletedButton",
-    "js/view.js~View#_clearCompletedButton",
+    "js/components/view.js~view#_clearcompletedbutton",
+    "class/js/components/view.js~View.html#instance-method-_clearCompletedButton",
+    "js/components/view.js~View#_clearCompletedButton",
     "method"
   ],
   [
-    "js/view.js~view#_edititem",
-    "class/js/view.js~View.html#instance-method-_editItem",
-    "js/view.js~View#_editItem",
+    "js/components/view.js~view#_edititem",
+    "class/js/components/view.js~View.html#instance-method-_editItem",
+    "js/components/view.js~View#_editItem",
     "method"
   ],
   [
-    "js/view.js~view#_edititemdone",
-    "class/js/view.js~View.html#instance-method-_editItemDone",
-    "js/view.js~View#_editItemDone",
+    "js/components/view.js~view#_edititemdone",
+    "class/js/components/view.js~View.html#instance-method-_editItemDone",
+    "js/components/view.js~View#_editItemDone",
     "method"
   ],
   [
-    "js/view.js~view#_elementcomplete",
-    "class/js/view.js~View.html#instance-method-_elementComplete",
-    "js/view.js~View#_elementComplete",
+    "js/components/view.js~view#_elementcomplete",
+    "class/js/components/view.js~View.html#instance-method-_elementComplete",
+    "js/components/view.js~View#_elementComplete",
     "method"
   ],
   [
-    "js/view.js~view#_itemid",
-    "class/js/view.js~View.html#instance-method-_itemId",
-    "js/view.js~View#_itemId",
+    "js/components/view.js~view#_itemid",
+    "class/js/components/view.js~View.html#instance-method-_itemId",
+    "js/components/view.js~View#_itemId",
     "method"
   ],
   [
-    "js/view.js~view#_removeitem",
-    "class/js/view.js~View.html#instance-method-_removeItem",
-    "js/view.js~View#_removeItem",
+    "js/components/view.js~view#_removeitem",
+    "class/js/components/view.js~View.html#instance-method-_removeItem",
+    "js/components/view.js~View#_removeItem",
     "method"
   ],
   [
-    "js/view.js~view#_setfilter",
-    "class/js/view.js~View.html#instance-method-_setFilter",
-    "js/view.js~View#_setFilter",
+    "js/components/view.js~view#_setfilter",
+    "class/js/components/view.js~View.html#instance-method-_setFilter",
+    "js/components/view.js~View#_setFilter",
     "method"
   ],
   [
-    "js/view.js~view#bind",
-    "class/js/view.js~View.html#instance-method-bind",
-    "js/view.js~View#bind",
+    "js/components/view.js~view#bind",
+    "class/js/components/view.js~View.html#instance-method-bind",
+    "js/components/view.js~View#bind",
     "method"
   ],
   [
-    "js/view.js~view#constructor",
-    "class/js/view.js~View.html#instance-constructor-constructor",
-    "js/view.js~View#constructor",
+    "js/components/view.js~view#constructor",
+    "class/js/components/view.js~View.html#instance-constructor-constructor",
+    "js/components/view.js~View#constructor",
     "method"
   ],
   [
-    "js/view.js~view#render",
-    "class/js/view.js~View.html#instance-method-render",
-    "js/view.js~View#render",
+    "js/components/view.js~view#render",
+    "class/js/components/view.js~View.html#instance-method-render",
+    "js/components/view.js~View#render",
     "method"
   ],
   [
-    "js/view.js~view#template",
-    "class/js/view.js~View.html#instance-member-template",
-    "js/view.js~View#template",
+    "js/components/view.js~view#template",
+    "class/js/components/view.js~View.html#instance-member-template",
+    "js/components/view.js~View#template",
     "member"
   ],
   [

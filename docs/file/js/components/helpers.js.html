@@ -2,8 +2,8 @@
 <html>
 <head>
   <meta charset="utf-8">
-  <base data-ice="baseUrl">
-  <title data-ice="title">Home</title>
+  <base data-ice="baseUrl" href="../../../">
+  <title data-ice="title">js/components/helpers.js</title>
   <link type="text/css" rel="stylesheet" href="css/style.css">
   <link type="text/css" rel="stylesheet" href="css/prettify-tomorrow.css">
   <script src="script/prettify/prettify.js"></script>
@@ -42,14 +42,100 @@
 </div>
 </nav>
 
-<div class="content" data-ice="content"><div data-ice="index" class="github-markdown"><h1 id="to-do-list-app">to-do list app</h1><p>Have peace of mind by adding all your tasks to your <strong>to-do list</strong> (wherever you are or whatever device you use).</p>
-<p><strong>to-do list</strong> is a SPA (single page application) modeling a simple todo list allowing you to add and follow your day-to-day tasks :</p>
-<p>Please <strong><a href="https://mysite.com">try it out</a></strong>!!</p>
-<p><img src="/images/screenshot_todos.png" alt="todos homepage"></p>
-<p>It has never been easier to add, modify, delete, filter your todos!
-But if you need, check the <strong><a href="./manual/tutorial.html">tutorial</a></strong> for more details!</p>
-<p>Check the <strong><a href="./manual">manual</a></strong> if you want to dive into code details for future evolution and maintenance.</p>
-</div>
+<div class="content" data-ice="content"><h1 data-ice="title">js/components/helpers.js</h1>
+<pre class="source-code line-number raw-source-code"><code class="prettyprint linenums" data-ice="content">/*global NodeList */
+
+/**
+ * Manage the events with the DOM through the methods defined
+ *
+ * @example
+ * let myHelpers = new MyHelpers();
+ */
+class Helpers {
+	/**
+	 * Act as a querySelector event
+	 *
+	 * @param {string} selector Represents the class selector to be reach
+	 * @param {undefined|object} scope Represente the scope on which to look for the DOM&apos;s class selector
+	 * @returns {object} Return the element from querySelector
+	 */
+	qs(selector, scope) {
+		return (scope || document).querySelector(selector);
+	}
+
+	/**
+	 * Act as a querySelectorAll event
+	 *
+	 * @param {string} selector Represents the element/class DOM selector to be reach
+	 * @param {undefined|object} scope Represente the scope on which to look for the DOM&apos;s class selector
+	 * @returns {object} Return the elements from querySelectorAll
+	 */
+	qsa(selector, scope) {
+		return (scope || document).querySelectorAll(selector);
+	}
+	/**
+	 * Build an event listener according to the arguments passed in
+	 *
+	 * @param {object} target Represents the targeted HTML tag from the DOM
+	 * @param {string} type Represents the type of event
+	 * @param {function} callback Represent the callback function attach to this event
+	 * @param {boolean} useCapture
+	 */
+	$on(target, type, callback, useCapture) {
+		target.addEventListener(type, callback, !!useCapture);
+	}
+
+	/**
+	 *
+	 *
+	 * @param {object} target Represents the targeted HTML tag from the DOM
+	 * @param {string} selector Represents the element/class DOM selector to be reach
+	 * @param {string} type Represents the type of event
+	 * @param {function} handler Represent the callback function attach to this event
+	 */
+	$delegate(target, selector, type, handler) {
+		self = this;
+		function dispatchEvent(event) {
+			let targetElement = event.target;
+			let potentialElements = self.qsa(selector, target);
+			let hasMatch =
+				Array.prototype.indexOf.call(potentialElements, targetElement) &gt;= 0;
+
+			if (hasMatch) {
+				handler.call(targetElement, event);
+			}
+		}
+
+		// https://developer.mozilla.org/en-US/docs/Web/Events/blur
+		let useCapture = type === &quot;blur&quot; || type === &quot;focus&quot;;
+
+		this.$on(target, type, dispatchEvent, useCapture);
+	}
+	/**
+	 * Reach the parent node of a given element
+	 *
+	 * @param {object} element Represents the element HTML tag that has been clicked from the DOM
+	 * @param {string} tagName The tag name to be reach
+	 * @return {object} Return the parentNode of a specific tag name (if exist).
+	 */
+	$parent(element, tagName) {
+		if (!element.parentNode) {
+			return;
+		}
+		if (element.parentNode.tagName.toLowerCase() === tagName.toLowerCase()) {
+			return element.parentNode;
+		}
+		return this.$parent(element.parentNode, tagName);
+	}
+}
+
+NodeList.prototype.forEach = Array.prototype.forEach;
+
+let helpers = new Helpers();
+
+export default helpers;
+</code></pre>
+
 </div>
 
 <footer class="footer">
