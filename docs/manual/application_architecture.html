@@ -38,6 +38,8 @@
     <ul class="manual-toc">
       
     <li data-ice="manualNav" class="indent-h1" data-link="manual/application_architecture.html"><a href="manual/application_architecture.html" data-ice="link">Application architecture</a></li>
+<li data-ice="manualNav" class="indent-h3" data-link="manual/application_architecture.html"><a href="manual/application_architecture.html#application--39-s-structure-diagram" data-ice="link">Application&apos;s structure diagram</a></li>
+<li data-ice="manualNav" class="indent-h3" data-link="manual/application_architecture.html"><a href="manual/application_architecture.html#application--39-s-files-structure" data-ice="link">Application&apos;s files structure</a></li>
 </ul>
   </div>
 <div data-ice="manual">
@@ -55,8 +57,13 @@
 <div data-ice="manual">
     <ul class="manual-toc">
       
-    <li data-ice="manualNav" class="indent-h1" data-link="manual/benchmarking.html"><a href="manual/benchmarking.html" data-ice="link">Benchmarking: todolistme.net</a></li>
-<li data-ice="manualNav" class="indent-h2" data-link="manual/benchmarking.html"><a href="manual/benchmarking.html#performance-audit" data-ice="link">Performance audit</a></li>
+    <li data-ice="manualNav" class="indent-h1" data-link="manual/benchmarking.html"><a href="manual/benchmarking.html" data-ice="link">Benchmarking</a></li>
+<li data-ice="manualNav" class="indent-h2" data-link="manual/benchmarking.html"><a href="manual/benchmarking.html#global-application-overview" data-ice="link">Global application overview</a></li>
+<li data-ice="manualNav" class="indent-h3" data-link="manual/benchmarking.html"><a href="manual/benchmarking.html#features" data-ice="link">Features</a></li>
+<li data-ice="manualNav" class="indent-h3" data-link="manual/benchmarking.html"><a href="manual/benchmarking.html#technology-lookup" data-ice="link">Technology lookup</a></li>
+<li data-ice="manualNav" class="indent-h2" data-link="manual/benchmarking.html"><a href="manual/benchmarking.html#performance" data-ice="link">Performance</a></li>
+<li data-ice="manualNav" class="indent-h3" data-link="manual/benchmarking.html"><a href="manual/benchmarking.html#network" data-ice="link">Network</a></li>
+<li data-ice="manualNav" class="indent-h3" data-link="manual/benchmarking.html"><a href="manual/benchmarking.html#audit" data-ice="link">Audit</a></li>
 </ul>
   </div>
 <div data-ice="manual">
@@ -67,8 +74,11 @@
 </div>
 </nav>
 
-<div class="content" data-ice="content"><div class="github-markdown" data-ice="content"><h1 id="application-architecture">Application architecture</h1><p>The overwall app is based on the <a href="https://en.wikipedia.org/wiki/Model%E2%80%93view%E2%80%93controller">Model&#x2013;View&#x2013;Controller</a> (MVC) software design pattern. The files interact thanks to the ES6 <code>export</code>/<code>import</code> modules.</p>
-<p><img src="/images/app_files_structure.png" alt="app file structure"></p>
+<div class="content" data-ice="content"><div class="github-markdown" data-ice="content"><h1 id="application-architecture">Application architecture</h1><p>The overwall app is based on the <a href="https://en.wikipedia.org/wiki/Model%E2%80%93view%E2%80%93controller">Model&#x2013;View&#x2013;Controller</a> (MVC) software design pattern. The files interact with each other using the ES6 <code>export</code> / <code>import</code> modules.</p>
+<h3 id="application--39-s-structure-diagram">Application&apos;s structure diagram</h3><p><img src="/images/app_architecture/Todo_app_schema.png" alt="app file structure"></p>
+<p><em>Todo application MVC architecture</em></p>
+<h3 id="application--39-s-files-structure">Application&apos;s files structure</h3><p><img src="/images/app_architecture/app_files_structure.png" alt="app file structure"></p>
+<p><em>Application&apos;s files structure</em></p>
 <p><code>index.html</code> is the skeleton of the website homepage. It loads all scripts.</p>
 <p><code>app.js</code> launch the app by initializing the view.</p>
 <p><code>components</code> folder contain seven files. Each file represents a ES6 class module:</p>
@@ -77,7 +87,7 @@
 <li><code>helpers.js</code> (<a href="/docs/class/js/components/helpers.js~Helpers.html">see documentation</a>)</li>
 <li><code>model.js</code> (<a href="/docs/class/js/components/model.js~Model.html">see documentation</a>)</li>
 <li><code>store.js</code> (<a href="/docs/class/js/components/store.js~Store.html">see documentation</a>)</li>
-<li><code>template.js</code> (<a href="/components/template.js~Template.html">see documentation</a>)</li>
+<li><code>template.js</code> (<a href="/docs/class/js/components/template.js~Template.html">see documentation</a>)</li>
 <li><code>todo.js</code> (<a href="/docs/class/js/components/todo.js~Todo.html">see documentation</a>)</li>
 <li><code>view.js</code> (<a href="/docs/class/js/components/view.js~View.html">see documentation</a>)</li>
 </ol>

@@ -38,6 +38,8 @@
     <ul class="manual-toc">
       
     <li data-ice="manualNav" class="indent-h1" data-link="manual/application_architecture.html"><a href="manual/application_architecture.html" data-ice="link">Application architecture</a></li>
+<li data-ice="manualNav" class="indent-h3" data-link="manual/application_architecture.html"><a href="manual/application_architecture.html#application--39-s-structure-diagram" data-ice="link">Application&apos;s structure diagram</a></li>
+<li data-ice="manualNav" class="indent-h3" data-link="manual/application_architecture.html"><a href="manual/application_architecture.html#application--39-s-files-structure" data-ice="link">Application&apos;s files structure</a></li>
 </ul>
   </div>
 <div data-ice="manual">
@@ -55,8 +57,13 @@
 <div data-ice="manual">
     <ul class="manual-toc">
       
-    <li data-ice="manualNav" class="indent-h1" data-link="manual/benchmarking.html"><a href="manual/benchmarking.html" data-ice="link">Benchmarking: todolistme.net</a></li>
-<li data-ice="manualNav" class="indent-h2" data-link="manual/benchmarking.html"><a href="manual/benchmarking.html#performance-audit" data-ice="link">Performance audit</a></li>
+    <li data-ice="manualNav" class="indent-h1" data-link="manual/benchmarking.html"><a href="manual/benchmarking.html" data-ice="link">Benchmarking</a></li>
+<li data-ice="manualNav" class="indent-h2" data-link="manual/benchmarking.html"><a href="manual/benchmarking.html#global-application-overview" data-ice="link">Global application overview</a></li>
+<li data-ice="manualNav" class="indent-h3" data-link="manual/benchmarking.html"><a href="manual/benchmarking.html#features" data-ice="link">Features</a></li>
+<li data-ice="manualNav" class="indent-h3" data-link="manual/benchmarking.html"><a href="manual/benchmarking.html#technology-lookup" data-ice="link">Technology lookup</a></li>
+<li data-ice="manualNav" class="indent-h2" data-link="manual/benchmarking.html"><a href="manual/benchmarking.html#performance" data-ice="link">Performance</a></li>
+<li data-ice="manualNav" class="indent-h3" data-link="manual/benchmarking.html"><a href="manual/benchmarking.html#network" data-ice="link">Network</a></li>
+<li data-ice="manualNav" class="indent-h3" data-link="manual/benchmarking.html"><a href="manual/benchmarking.html#audit" data-ice="link">Audit</a></li>
 </ul>
   </div>
 <div data-ice="manual">
@@ -67,7 +74,93 @@
 </div>
 </nav>
 
-<div class="content" data-ice="content"><div class="github-markdown" data-ice="content"><h1 id="benchmarking---strong--a-href--http---todolistme-net---todolistme-net--a---strong-">Benchmarking: <strong><a href="http://todolistme.net/">todolistme.net</a></strong></h1><h2 id="performance-audit">Performance audit</h2></div>
+<div class="content" data-ice="content"><div class="github-markdown" data-ice="content"><h1 id="benchmarking">Benchmarking</h1><p><strong><a href="http://todolistme.net/">todolistme.net</a></strong></p>
+<h2 id="global-application-overview">Global application overview</h2><h3 id="features">Features</h3><p><strong><a href="http://todolistme.net/">todolistme</a></strong> is an todo list app. Its functionalities are as follows:</p>
+<ul>
+<li>create, delete, modify a custom list for the todos</li>
+<li>switch between your todos lists</li>
+<li>add, remove, modify a todo in whichever list</li>
+<li>organize todos according to four filter</li>
+<li>print todos list</li>
+<li>set a due date for tasks</li>
+<li>syncing option, to share or synchronise your todos with friends or multiple devices</li>
+<li>remote option, to open the todo list in a small new window</li>
+</ul>
+<h3 id="technology-lookup">Technology lookup</h3><p><img src="/images/benchmarking/technology_lookup.png" alt="Technology lookup"></p>
+<p><em>generate with <a href="https://www.wappalyzer.com/">Wappalizer</a></em></p>
+<h2 id="performance">Performance</h2><p>The test performance compare <strong><a href="http://todolistme.net/">todolistme.net</a></strong> and your <strong><a href="https://todos.mokokom.com/">to-do list</a></strong> app.</p>
+<p>Details of the performance testing</p>
+<p><strong>Navigator</strong>: Google Chrome Version 78.0.3904.70</p>
+<p><strong>Parameters</strong>:</p>
+<ul>
+<li>incognito mode</li>
+<li>disabled cache</li>
+<li>default online connection</li>
+</ul>
+<p><strong>Tools</strong>:</p>
+<ol>
+<li>Chrome DevTools:<ul>
+<li>Network</li>
+<li>Coverage</li>
+</ul>
+</li>
+</ol>
+<h3 id="network">Network</h3><table>
+<thead>
+<tr>
+<th></th>
+<th><strong><a href="https://todos.mokokom.com/">to-do list</a></strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><br><strong>requests</strong>: 13 <br><strong>transfered</strong>: 16.1KB <br><strong>ressources</strong>: 46.3KB <br><strong>finish</strong>: 397ms <br><strong>DOMContentLoaded</strong>: 410ms <br><strong>loaded</strong>: 409ms</td>
+<td><img src="/images/benchmarking/todos_overwall_network.png" alt="Technology lookup"></td>
+</tr>
+<tr>
+<td>Note</td>
+<td>Everything seem to works find and load in time. On issue with <code>onlearn.json</code></td>
+</tr>
+<tr>
+<td><strong>Improvement</strong></td>
+<td>fix issue <code>onlearn.json</code> file</td>
+</tr>
+</tbody>
+</table>
+<table>
+<thead>
+<tr>
+<th></th>
+<th><a href="http://todolistme.net/">todolistme.net</a></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><br><strong>requests</strong>: 89 <br><strong>transfered</strong>: 1.1MB <br><strong>ressources</strong>: 2.9MB <br><strong>finish</strong>: 3.14s <br><strong>DOMContentLoaded</strong>: 949ms <br><strong>loaded</strong>: 2.62s</td>
+<td><img src="/images/benchmarking/todolistme_overall_network.png" alt="Technology lookup"></td>
+</tr>
+<tr>
+<td>Note 1</td>
+<td>png files (texture.png load in 1.08s!), ads and <code>jquery-ui.js</code> slow down site&apos;s loading. see below: <br> <img src="/images/benchmarking/loading_content_todolistme.png" alt="loading content todolistme"> <br></td>
+</tr>
+<tr>
+<td>Note 2</td>
+<td>coverage tool show that only 95,6% of jQuery and 97.2% of jquery-ui is used <br> <img src="/images/benchmarking/jquery_coverage.png" alt="jQuery coverage"></td>
+</tr>
+<tr>
+<td><strong>Improvements</strong></td>
+<td><br> - optimization of png files (ex: replace texture.png background with CSS background or SVG ) <br> - block ads <br> - ES6 instead of jQuery <br> - integrated only useful jquery-ui functions <br> - use cache</td>
+</tr>
+</tbody>
+</table>
+<h3 id="audit">Audit</h3><p>notes comparaison:</p>
+<ul>
+<li>security https vs no https</li>
+<li>ES6 vs old js</li>
+<li>no librairie to load vs jQuery and jQuery UI</li>
+<li>not lot of feature vs more features</li>
+</ul>
+</div>
 </div>
 
 <footer class="footer">
