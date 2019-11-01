@@ -264,9 +264,76 @@
 </thead>
 <tbody>
 <tr>
-<td><strong>global score</strong></td>
+<td><strong>Global score</strong></td>
 <td><img src="/images/benchmarking/audit/todos_global_score.png" alt="todos global score"></td>
 <td>- Accessibility <br> - SEO</td>
+</tr>
+<tr>
+<td><strong>Performance</strong></td>
+<td><img src="/images/benchmarking/audit/todos_perf.png" alt="todos performance"></td>
+<td>- Preload key requests: add <code>\&lt;link rel=preload&gt;</code> to prioritize fetching resources that are currently requested later in page load.</td>
+</tr>
+<tr>
+<td><strong>Accessibility</strong></td>
+<td><img src="/images/benchmarking/audit/todos_perf.png" alt="todos accessibility"></td>
+<td>- Form elements do not have associated labels: add <code>type=&quot;text&quot;</code> to the <code>input</code> element in index.html</td>
+</tr>
+<tr>
+<td><strong>Best practices</strong></td>
+<td><img src="/images/benchmarking/audit/todos_best_practices.png" alt="todos best practices"></td>
+<td>- Browser errors were logged to the console: learn.json, <em>Failed to load resource: the server responded with a status of 404</em></td>
+</tr>
+<tr>
+<td><strong>SEO</strong></td>
+<td><img src="/images/benchmarking/audit/todos_seo.png" alt="todos seo"></td>
+<td>- add <code>\&lt;meta name=&quot;viewport&quot;&gt;</code> tag with <code>width</code> or <code>initial-scale</code> <br> - add <code>meta description</code> <br> - add description text to link in /docs/index.html</td>
+</tr>
+<tr>
+<td><strong>Progressive web app</strong></td>
+<td><img src="/images/benchmarking/audit/todos_pwa.png" alt="todos progressive web app"></td>
+<td>- add service worker to the app to cache files locally and use it offline <br> - prompt user to install the web app <br> - configure a custom splash screen</td>
+</tr>
+</tbody>
+</table><ol>
+<li><strong><a href="http://todolistme.net/">todolistme.net</a></strong> audit</li>
+</ol><table>
+<thead>
+<tr>
+<th></th>
+<th><strong><a href="https://todos.mokokom.com/">to-do list</a></strong></th>
+<th>Improvements</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Global score</strong></td>
+<td><img src="/images/benchmarking/audit/tlm_global_score.png" alt="todos global score"></td>
+<td>- Performance <br> - Accessibility <br> - Best practices <br> - SEO <br> - Progressive web app</td>
+</tr>
+<tr>
+<td><strong>Performance</strong></td>
+<td><img src="/images/benchmarking/audit/tlm_perf.png" alt="todos performance"></td>
+<td>- Serve images in next-gen formats <br> - Eliminate render-blocking resources <br> - Minify JavaScript <br> - Remove unused CSS <br> - Defer offscreen images</td>
+</tr>
+<tr>
+<td><strong>Accessibility</strong></td>
+<td><img src="/images/benchmarking/audit/tlm_access.png" alt="todos accessibility"></td>
+<td>- [id] attributes on the page are not unique <br> - <code>\&lt;frame&gt;</code> elements do not have a title <br> - Image elements do not have [alt] attributes <br> - Form elements do not have associated labels <br> - \&lt;html&gt; element does not have a [lang] attribute</td>
+</tr>
+<tr>
+<td><strong>Best practices</strong></td>
+<td><img src="/images/benchmarking/audit/tlm_best_pract.png" alt="todos best practices"></td>
+<td>- Does not use HTTPS <br> - Does not use HTTP/2 for all of its resources <br> - Uses document.write() <br> - Includes front-end JavaScript libraries with known security vulnerabilities</td>
+</tr>
+<tr>
+<td><strong>SEO</strong></td>
+<td><img src="/images/benchmarking/audit/tlm_seo.png" alt="todos seo"></td>
+<td>- Does not have a <code>\&lt;meta name=&quot;viewport&quot;&gt;</code> tag with width or initial-scale <br> - Image elements do not have [alt] attributes</td>
+</tr>
+<tr>
+<td><strong>Progressive web app</strong></td>
+<td><img src="/images/benchmarking/audit/todos_pwa.png" alt="todos progressive web app"></td>
+<td>- add service worker to the app to cache files locally and use it offline <br> - prompt user to install the web app <br> - configure a custom splash screen</td>
 </tr>
 </tbody>
 </table><p>notes comparaison:</p><ul>
@@ -274,6 +341,7 @@
 <li>ES6 vs old js</li>
 <li>no librairie to load vs jQuery and jQuery UI</li>
 <li>not lot of feature vs more features</li>
+<li>both app are not fit for PWA</li>
 </ul></div>
         <a data-ice="link" href="manual/benchmarking.html"></a>
       </div>
