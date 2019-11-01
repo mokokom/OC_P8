@@ -64,6 +64,7 @@
 <li data-ice="manualNav" class="indent-h2" data-link="manual/benchmarking.html"><a href="manual/benchmarking.html#performance" data-ice="link">Performance</a></li>
 <li data-ice="manualNav" class="indent-h3" data-link="manual/benchmarking.html"><a href="manual/benchmarking.html#network" data-ice="link">Network</a></li>
 <li data-ice="manualNav" class="indent-h3" data-link="manual/benchmarking.html"><a href="manual/benchmarking.html#audit" data-ice="link">Audit</a></li>
+<li data-ice="manualNav" class="indent-h2" data-link="manual/benchmarking.html"><a href="manual/benchmarking.html#resume" data-ice="link">Resume</a></li>
 </ul>
   </div>
 <div data-ice="manual">
@@ -184,16 +185,8 @@
 </thead>
 <tbody>
 <tr>
-<td><br><strong>requests</strong>: 13 <br><strong>transfered</strong>: 16.1KB <br><strong>ressources</strong>: 46.3KB <br><strong>finish</strong>: 397ms <br><strong>DOMContentLoaded</strong>: 410ms <br><strong>loaded</strong>: 409ms</td>
+<td><br><strong>requests</strong>: 12 <br><strong>transfered</strong>: 16.0KB <br><strong>ressources</strong>: 46.5KB <br><strong>finish</strong>: 297ms <br><strong>DOMContentLoaded</strong>: 308ms <br><strong>loaded</strong>: 307ms</td>
 <td><img src="/images/benchmarking/performance/todos_overwall_network.png" alt="Technology lookup"> <br></td>
-</tr>
-<tr>
-<td>Note</td>
-<td>Except the one HTTP communication protocol error with <code>onlearn.json</code>, everything seems to work find and load in time. <br></td>
-</tr>
-<tr>
-<td><strong>Improvement</strong></td>
-<td>fix issue <code>onlearn.json</code> file <br></td>
 </tr>
 </tbody>
 </table><ol>
@@ -207,16 +200,12 @@
 </thead>
 <tbody>
 <tr>
-<td><br><strong>requests</strong>: 116 <br><strong>transfered</strong>: 2.5MB <br><strong>ressources</strong>: 5.0MB <br><strong>finish</strong>: 5.71s <br><strong>DOMContentLoaded</strong>: 1.35s <br><strong>loaded</strong>: 4.22s</td>
+<td><br><strong>requests</strong>: 129 <br><strong>transfered</strong>: 1.3MB <br><strong>ressources</strong>: 3.4MB <br><strong>finish</strong>: 6.76s <br><strong>DOMContentLoaded</strong>: 2.68s <br><strong>loaded</strong>: 5.73s</td>
 <td><img src="/images/benchmarking/performance/todolistme_overall_network.png" alt="Technology lookup"> <br></td>
 </tr>
 <tr>
-<td>Note 1</td>
-<td><br> png files (texture.png load in 1.08s!), ads and <code>jquery-ui.js</code> slow down site&apos;s loading. See below: <br> <img src="/images/benchmarking/performance/loading_content_todolistme.png" alt="loading content todolistme"> <br></td>
-</tr>
-<tr>
-<td>Note 2</td>
-<td><br> coverage tool show that only 95,6% of jQuery and 97.2% of jquery-ui is used <br> <img src="/images/benchmarking/performance/jquery_coverage.png" alt="jQuery coverage"> <br></td>
+<td>Notes</td>
+<td>- png files (texture.png load in 3.47s!), ads and <code>jquery-ui.js</code> slow down site&apos;s loading. <br> - coverage tool show that only 95,6% of jQuery and 97.2% of jquery-ui is used <br> <img src="/images/benchmarking/performance/jquery_coverage.png" alt="jQuery coverage"></td>
 </tr>
 <tr>
 <td><strong>Improvements</strong></td>
@@ -266,27 +255,27 @@
 <tr>
 <td><strong>Global score</strong></td>
 <td><img src="/images/benchmarking/audit/todos_global_score.png" alt="todos global score"></td>
-<td>- Accessibility <br> - SEO</td>
+<td></td>
 </tr>
 <tr>
 <td><strong>Performance</strong></td>
 <td><img src="/images/benchmarking/audit/todos_perf.png" alt="todos performance"></td>
-<td>- Preload key requests: add <code>\&lt;link rel=preload&gt;</code> to prioritize fetching resources that are currently requested later in page load.</td>
+<td>- Preload key requests: add <code> &lt;link rel=preload&gt;</code> to prioritize fetching resources that are currently requested later in page load.</td>
 </tr>
 <tr>
 <td><strong>Accessibility</strong></td>
-<td><img src="/images/benchmarking/audit/todos_perf.png" alt="todos accessibility"></td>
-<td>- Form elements do not have associated labels: add <code>type=&quot;text&quot;</code> to the <code>input</code> element in index.html</td>
+<td><img src="/images/benchmarking/audit/todos_access.png" alt="todos accessibility"></td>
+<td></td>
 </tr>
 <tr>
 <td><strong>Best practices</strong></td>
 <td><img src="/images/benchmarking/audit/todos_best_practices.png" alt="todos best practices"></td>
-<td>- Browser errors were logged to the console: learn.json, <em>Failed to load resource: the server responded with a status of 404</em></td>
+<td></td>
 </tr>
 <tr>
 <td><strong>SEO</strong></td>
 <td><img src="/images/benchmarking/audit/todos_seo.png" alt="todos seo"></td>
-<td>- add <code>\&lt;meta name=&quot;viewport&quot;&gt;</code> tag with <code>width</code> or <code>initial-scale</code> <br> - add <code>meta description</code> <br> - add description text to link in /docs/index.html</td>
+<td></td>
 </tr>
 <tr>
 <td><strong>Progressive web app</strong></td>
@@ -313,35 +302,78 @@
 <tr>
 <td><strong>Performance</strong></td>
 <td><img src="/images/benchmarking/audit/tlm_perf.png" alt="todos performance"></td>
-<td>- Serve images in next-gen formats <br> - Eliminate render-blocking resources <br> - Minify JavaScript <br> - Remove unused CSS <br> - Defer offscreen images</td>
+<td>- Serve images in next-gen formats (like JPEG 2000, JPEG XR, and WebP) <br> - Eliminate render-blocking resources (use <code>async</code> for non-critical scripts)<br> - Minify JavaScript (use <a href="https://github.com/mishoo/UglifyJS2">UglifyJS</a>)<br> - Remove unused CSS <br> - Defer offscreen images</td>
 </tr>
 <tr>
 <td><strong>Accessibility</strong></td>
 <td><img src="/images/benchmarking/audit/tlm_access.png" alt="todos accessibility"></td>
-<td>- [id] attributes on the page are not unique <br> - <code>\&lt;frame&gt;</code> elements do not have a title <br> - Image elements do not have [alt] attributes <br> - Form elements do not have associated labels <br> - \&lt;html&gt; element does not have a [lang] attribute</td>
+<td>- Fix issue with non-unique [id] attributes on the page <br> - Add title to <code>&lt;frame&gt;</code> elements <br> - Add [alt] attributes to image elements <br> - Add associated labels to form elements <br> - Add [lang] attribute to <code>&lt;html&gt;</code> element</td>
 </tr>
 <tr>
 <td><strong>Best practices</strong></td>
 <td><img src="/images/benchmarking/audit/tlm_best_pract.png" alt="todos best practices"></td>
-<td>- Does not use HTTPS <br> - Does not use HTTP/2 for all of its resources <br> - Uses document.write() <br> - Includes front-end JavaScript libraries with known security vulnerabilities</td>
+<td>- Use HTTPS instead of HTTP <br> - Use HTTP/2 for all of the resources <br> - Avoid to use document.write() <br> - Check and remove the includes front-end JavaScript libraries with known security vulnerabilities</td>
 </tr>
 <tr>
 <td><strong>SEO</strong></td>
 <td><img src="/images/benchmarking/audit/tlm_seo.png" alt="todos seo"></td>
-<td>- Does not have a <code>\&lt;meta name=&quot;viewport&quot;&gt;</code> tag with width or initial-scale <br> - Image elements do not have [alt] attributes</td>
+<td>- Add a <code>&lt;meta name=&quot;viewport&quot;&gt;</code> tag with width or initial-scale <br> - Add image elements [alt] attributes</td>
 </tr>
 <tr>
 <td><strong>Progressive web app</strong></td>
 <td><img src="/images/benchmarking/audit/todos_pwa.png" alt="todos progressive web app"></td>
-<td>- add service worker to the app to cache files locally and use it offline <br> - prompt user to install the web app <br> - configure a custom splash screen</td>
+<td>- Add service worker to the app to cache files locally and use it offline <br> - Prompt user to install the web app <br> - Configure a custom splash screen <br> - Redirect HTTP traffic to HTTPS</td>
 </tr>
 </tbody>
-</table><p>notes comparaison:</p><ul>
-<li>security https vs no https</li>
-<li>ES6 vs old js</li>
-<li>no librairie to load vs jQuery and jQuery UI</li>
-<li>not lot of feature vs more features</li>
-<li>both app are not fit for PWA</li>
+</table><h2>Resume</h2><table>
+<thead>
+<tr>
+<th></th>
+<th><strong><a href="https://todos.mokokom.com/">to-do list</a></strong></th>
+<th><strong><a href="http://todolistme.net/">todolistme</a></strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Features</td>
+<td>-</td>
+<td>+</td>
+</tr>
+<tr>
+<td>Design</td>
+<td>+</td>
+<td>-</td>
+</tr>
+<tr>
+<td>Performance</td>
+<td>+</td>
+<td>-</td>
+</tr>
+<tr>
+<td>Accessibility</td>
+<td>+</td>
+<td>-</td>
+</tr>
+<tr>
+<td>Best Practices</td>
+<td>+</td>
+<td>-</td>
+</tr>
+<tr>
+<td>SEO</td>
+<td>+</td>
+<td>-</td>
+</tr>
+<tr>
+<td>Progressive web app</td>
+<td>-</td>
+<td>-</td>
+</tr>
+</tbody>
+</table><p><strong><a href="https://todos.mokokom.com/">to-do list</a></strong> is way more efficient than the competing app. However it offers less functionality. Areas of improvement includes:</p><ul>
+<li>adding features(set a due date for tasks, syncinc option..)</li>
+<li>improving the Progressive Web App with points listed above (in Audit)</li>
+<li>working on responsive design to offer a fully user experience</li>
 </ul></div>
         <a data-ice="link" href="manual/benchmarking.html"></a>
       </div>
