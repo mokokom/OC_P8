@@ -3097,7 +3097,7 @@
   },
   {
     "kind": "index",
-    "content": "# to-do list app\n\nHave peace of mind by adding all your tasks to your **to-do list** (wherever you are or whatever device you use).\n\n**to-do list** is a SPA (single page application) modeling a simple todo list allowing you to add and follow your day-to-day tasks :\n\nPlease **[try it out](https://mysite.com)**!!\n\n![todos homepage](/images/tuto/screenshot_todos.png)\n\nIt has never been easier to add, modify, delete, filter your todos!\nBut if you need, check the **[tutorial](./manual/tutorial.html)** for more details!\n\nCheck the **[manual](./manual)** if you want to dive into code details for future evolution and maintenance.\n",
+    "content": "# to-do list app\n\nHave peace of mind by adding all your tasks to your **to-do list** (wherever you are or whatever device you use).\n\n**to-do list** is a single page application (SPA) modeling a simple todo list allowing you to add and follow your day-to-day tasks :\n\nPlease **[try it out](https://todos.mokokom.com/)**!!\n\n![todos homepage](/images/tuto/screenshot_todos.png)\n\nIt has never been easier to add, modify, delete, filter your todos!\nBut if you need, check the **[tutorial](./manual/tutorial.html)** for more details!\n\nCheck the **[manual](./manual)** if you want to dive into code details for future evolution and maintenance.\n",
     "longname": "/Users/raphaeldelorme/Documents/DEV/OCR/WIP/P8/oc_p8_dev/README.md",
     "name": "./README.md",
     "static": true,

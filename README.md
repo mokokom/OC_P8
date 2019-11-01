@@ -2,9 +2,9 @@
 
 Have peace of mind by adding all your tasks to your **to-do list** (wherever you are or whatever device you use).
 
-**to-do list** is a SPA (single page application) modeling a simple todo list allowing you to add and follow your day-to-day tasks :
+**to-do list** is a single page application (SPA) modeling a simple todo list allowing you to add and follow your day-to-day tasks :
 
-Please **[try it out](https://mysite.com)**!!
+Please **[try it out](https://todos.mokokom.com/)**!!
 
 ![todos homepage](/images/tuto/screenshot_todos.png)
 
