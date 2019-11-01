@@ -143,7 +143,7 @@
     </div>
 <div class="manual-card-wrap" data-ice="cards">
       <div class="manual-card">
-        <div data-ice="card"><h1>Benchmarking</h1><p><strong><a href="http://todolistme.net/">todolistme.net</a></strong></p><h2>Global application overview</h2><h3>Features</h3><p><strong><a href="http://todolistme.net/">todolistme</a></strong> is an todo list app. Its functionalities are as follows:</p><ul>
+        <div data-ice="card"><h1>Benchmarking</h1><p>The benchmarking will be based on the competitor site <strong><a href="http://todolistme.net/">todolistme.net</a></strong></p><h2>Global application overview</h2><h3>Features</h3><p><strong><a href="http://todolistme.net/">todolistme</a></strong> is an todo list app. Its functionalities are as follows:</p><ul>
 <li>create, delete, modify a custom list for the todos</li>
 <li>switch between your todos lists</li>
 <li>add, remove, modify a todo in whichever list</li>
@@ -152,7 +152,7 @@
 <li>set a due date for tasks</li>
 <li>syncing option, to share or synchronise your todos with friends or multiple devices</li>
 <li>remote option, to open the todo list in a small new window</li>
-</ul><h3>Technology lookup</h3><p><img src="/images/benchmarking/technology_lookup.png" alt="Technology lookup"></p><p><em>generate with <a href="https://www.wappalyzer.com/">Wappalizer</a></em></p><h2>Performance</h2><p>The test performance compare <strong><a href="http://todolistme.net/">todolistme.net</a></strong> and your <strong><a href="https://todos.mokokom.com/">to-do list</a></strong> app.</p><p>Details of the performance testing</p><table>
+</ul><h3>Technology lookup</h3><p><img src="/images/benchmarking/technology_lookup.png" alt="Technology lookup"></p><p><em>generate with <a href="https://www.wappalyzer.com/">Wappalizer</a></em></p><h2>Performance</h2><p>The test performance compare your <strong><a href="https://todos.mokokom.com/">to-do list</a></strong> app and <strong><a href="http://todolistme.net/">todolistme.net</a></strong>.</p><h3>Network</h3><p>Performance testing details</p><table>
 <thead>
 <tr>
 <th>title</th>
@@ -166,14 +166,16 @@
 </tr>
 <tr>
 <td><strong>Parameters</strong></td>
-<td>- incognito mode<br> - disabled cache <br> - default online connection</td>
+<td>- incognito mode<br> - disabled cache <br> - default online connection <br> - both site are hosted on a server</td>
 </tr>
 <tr>
 <td><strong>Tools</strong></td>
-<td>1. Chrome DevTools <br> - Network <br> - Coverage</td>
+<td>Chrome DevTools <br> - Network <br> - Coverage</td>
 </tr>
 </tbody>
-</table><h3>Network</h3><table>
+</table><ol>
+<li><strong><a href="https://todos.mokokom.com/">to-do list</a></strong> network performances</li>
+</ol><table>
 <thead>
 <tr>
 <th></th>
@@ -183,43 +185,91 @@
 <tbody>
 <tr>
 <td><br><strong>requests</strong>: 13 <br><strong>transfered</strong>: 16.1KB <br><strong>ressources</strong>: 46.3KB <br><strong>finish</strong>: 397ms <br><strong>DOMContentLoaded</strong>: 410ms <br><strong>loaded</strong>: 409ms</td>
-<td><img src="/images/benchmarking/todos_overwall_network.png" alt="Technology lookup"> <br></td>
+<td><img src="/images/benchmarking/performance/todos_overwall_network.png" alt="Technology lookup"> <br></td>
 </tr>
 <tr>
 <td>Note</td>
-<td>Everything seem to works find and load in time. One HTTP communication protocol error with <code>onlearn.json</code> <br></td>
+<td>Except the one HTTP communication protocol error with <code>onlearn.json</code>, everything seems to work find and load in time. <br></td>
 </tr>
 <tr>
 <td><strong>Improvement</strong></td>
 <td>fix issue <code>onlearn.json</code> file <br></td>
 </tr>
 </tbody>
-</table><table>
+</table><ol>
+<li><strong><a href="http://todolistme.net/">todolistme.net</a></strong> network performances</li>
+</ol><table>
 <thead>
 <tr>
 <th></th>
-<th><a href="http://todolistme.net/">todolistme.net</a> <br></th>
+<th><strong><a href="http://todolistme.net/">todolistme.net</a></strong> <br></th>
 </tr>
 </thead>
 <tbody>
 <tr>
 <td><br><strong>requests</strong>: 116 <br><strong>transfered</strong>: 2.5MB <br><strong>ressources</strong>: 5.0MB <br><strong>finish</strong>: 5.71s <br><strong>DOMContentLoaded</strong>: 1.35s <br><strong>loaded</strong>: 4.22s</td>
-<td><img src="/images/benchmarking/todolistme_overall_network.png" alt="Technology lookup"> <br></td>
+<td><img src="/images/benchmarking/performance/todolistme_overall_network.png" alt="Technology lookup"> <br></td>
 </tr>
 <tr>
 <td>Note 1</td>
-<td><br> png files (texture.png load in 1.08s!), ads and <code>jquery-ui.js</code> slow down site&apos;s loading. see below: <br> <img src="/images/benchmarking/loading_content_todolistme.png" alt="loading content todolistme"> <br></td>
+<td><br> png files (texture.png load in 1.08s!), ads and <code>jquery-ui.js</code> slow down site&apos;s loading. See below: <br> <img src="/images/benchmarking/performance/loading_content_todolistme.png" alt="loading content todolistme"> <br></td>
 </tr>
 <tr>
 <td>Note 2</td>
-<td><br> coverage tool show that only 95,6% of jQuery and 97.2% of jquery-ui is used <br> <img src="/images/benchmarking/jquery_coverage.png" alt="jQuery coverage"> <br></td>
+<td><br> coverage tool show that only 95,6% of jQuery and 97.2% of jquery-ui is used <br> <img src="/images/benchmarking/performance/jquery_coverage.png" alt="jQuery coverage"> <br></td>
 </tr>
 <tr>
 <td><strong>Improvements</strong></td>
 <td><br> - optimization of png files (ex: replace texture.png background with CSS background or SVG ) <br> - block ads <br> - ES6 instead of jQuery <br> - integrated only useful jquery-ui functions <br> - use cache <br></td>
 </tr>
 </tbody>
-</table><h3>Audit</h3><p>notes comparaison:</p><ul>
+</table><h3>Audit</h3><p>Audit details</p><table>
+<thead>
+<tr>
+<th>title</th>
+<th>infos</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Navigator</strong></td>
+<td>Google Chrome Version 78.0.3904.70</td>
+</tr>
+<tr>
+<td><strong>Device</strong></td>
+<td>Desktop</td>
+</tr>
+<tr>
+<td><strong>Audits</strong></td>
+<td>- Performance<br> - Progressive web app <br> - Best practices <br> - Accessibility <br> - SEO</td>
+</tr>
+<tr>
+<td><strong>Throttling</strong></td>
+<td>Applied slow 4G, 4x CPU Slowdown</td>
+</tr>
+<tr>
+<td></td>
+<td>Clear storage</td>
+</tr>
+</tbody>
+</table><ol>
+<li><strong><a href="https://todos.mokokom.com/">to-do list</a></strong> audit</li>
+</ol><table>
+<thead>
+<tr>
+<th></th>
+<th><strong><a href="https://todos.mokokom.com/">to-do list</a></strong></th>
+<th>Improvements</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>global score</strong></td>
+<td><img src="/images/benchmarking/audit/todos_global_score.png" alt="todos global score"></td>
+<td>- Accessibility <br> - SEO</td>
+</tr>
+</tbody>
+</table><p>notes comparaison:</p><ul>
 <li>security https vs no https</li>
 <li>ES6 vs old js</li>
 <li>no librairie to load vs jQuery and jQuery UI</li>

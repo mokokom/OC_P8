@@ -6,7 +6,7 @@ Have peace of mind by adding all your tasks to your **to-do list** (wherever you
 
 Please **[try it out](https://mysite.com)**!!
 
-![todos homepage](/images/screenshot_todos.png)
+![todos homepage](/images/tuto/screenshot_todos.png)
 
 It has never been easier to add, modify, delete, filter your todos!
 But if you need, check the **[tutorial](./manual/tutorial.html)** for more details!
